@@ -1,0 +1,40 @@
+name: Deploy JevSentinel Telegram Bot
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: Create Fly app if needed
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        run: |
+          fly apps list >/dev/null
+          if ! fly apps list --json | grep -q '"Name":"jevsentinel"'; then
+            fly apps create jevsentinel
+          fi
+
+      - name: Set runtime secrets
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
+        run: |
+          test -n "$TELEGRAM_BOT_TOKEN"
+          test -n "$TYPESAFE_API_KEY"
+          fly secrets set TELEGRAM_BOT_TOKEN="$TELEGRAM_BOT_TOKEN" TYPESAFE_API_KEY="$TYPESAFE_API_KEY"
+
+      - name: Deploy
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        run: fly deploy --remote-only
