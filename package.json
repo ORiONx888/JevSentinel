@@ -3,11 +3,10 @@
   "version": "0.1.0",
   "private": false,
   "type": "module",
-  "engines": {
-    "node": ">=24"
-  },
+  "engines": { "node": ">=24" },
   "scripts": {
-    "jev:test": "node src/jev-test.mjs"
+    "jev:test": "node src/jev-test.mjs",
+    "test": "node --test"
   },
   "dependencies": {
     "@typesafe-ai/sdk": "^0.6.0"
