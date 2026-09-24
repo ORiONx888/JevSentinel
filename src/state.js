@@ -22,7 +22,7 @@ export function buildJevState(observation, intelligence = {}) {
     wallets: o.wallets,
     transfers: o.transfers,
     security: o.security,
-    externalIntelligence: providerViews,
+    intelligence: providerViews,
     metadata: o.metadata
   };
 }
@@ -34,19 +34,29 @@ export function buildDecisionQuestions() {
       prompt: "Does the combined evidence justify escalating this token from monitoring to active risk attention?"
     },
     dominantRisk: {
-      type: "noul",
-      prompt: "What is the dominant risk mechanism in the supplied evidence right now?"
+      type: "choice",
+      options: {
+        structural: "Authority, liquidity, holder concentration, sellability, or token-security conditions dominate.",
+        wallet: "Wallet concentration, relationships, rotation, or coordinated wallet behavior dominate.",
+        flow: "Abnormal transfers, selling pressure, or movement patterns dominate.",
+        market: "Price, liquidity, volume, or market-stress deterioration dominates.",
+        temporal: "The speed or progression of deterioration dominates.",
+        none: "No single risk mechanism clearly dominates."
+      },
+      prompt: "Which single risk mechanism best explains the current evidence?"
     },
     evidenceQuality: {
-      type: "noul",
-      prompt: "Is the evidence coherent and timely enough to support a meaningful risk judgment?"
+      type: "score",
+      levels: ["insufficient", "limited", "usable", "strong"],
+      prompt: "How coherent, timely, and internally consistent is the supplied evidence for making a risk judgment?"
     },
     falsePositive: {
       type: "noul",
-      prompt: "Does the combined evidence look more consistent with normal market activity than genuine deterioration?"
+      prompt: "Is the combined evidence more consistent with normal market activity than genuine deterioration?"
     },
     urgency: {
-      type: "noul",
+      type: "score",
+      levels: ["monitor", "elevated", "urgent", "immediate"],
       prompt: "How time-sensitive is the observed risk based only on the supplied state?"
     }
   };
