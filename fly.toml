@@ -1,0 +1,19 @@
+app = "jevsentinel"
+primary_region = "yyz"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  NODE_ENV = "production"
+
+[vm]
+  cpu_kind = "shared"
+  cpus = 1
+  memory = "256mb"
+
+[processes]
+  app = "node src/telegram-run.mjs"
+
+[[restart]]
+  policy = "always"
