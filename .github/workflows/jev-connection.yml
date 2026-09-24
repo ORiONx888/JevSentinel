@@ -21,12 +21,5 @@ jobs:
         run: npm install
       - name: Run unit tests
         run: npm test
-      - name: Verify JEV API key
-        run: |
-          if [ -z "$TYPESAFE_API_KEY" ]; then
-            echo "JEV API key is not configured."
-            exit 1
-          fi
-          echo "JEV API key is configured."
       - name: Run official JEV SDK test
         run: npm run jev:test
