@@ -14,7 +14,6 @@ export function createObservation(input = {}) {
     wallets: input.wallets ?? {},
     transfers: input.transfers ?? {},
     security: input.security ?? {},
-    external: input.external ?? {},
     metadata: input.metadata ?? {}
   };
 }
