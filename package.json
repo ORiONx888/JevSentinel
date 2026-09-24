@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": false,
   "type": "module",
-  "engines": { "node": ">=24" },
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "jev:test": "node src/jev-test.mjs",
-    "test": "node --test test/*.test.mjs"
+    "test": "node --test test/*.test.mjs",
+    "telegram:start": "node src/telegram-run.mjs"
   },
   "dependencies": {
     "@typesafe-ai/sdk": "^0.6.0"
