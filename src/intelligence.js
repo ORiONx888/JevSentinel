@@ -1,5 +1,5 @@
 const PROVIDER_FIELDS = Object.freeze([
-  "riskScore", "riskLevel", "isRug", "confidence", "riskFlags",
+  "score", "riskLevel", "isRug", "confidence", "riskFlags",
   "temporalScore", "temporalStage", "estimatedPullHours",
   "authority", "liquidity", "holders", "behavior", "wallet",
   "transferBurst", "walletRotation", "honeypot"
@@ -32,8 +32,7 @@ export async function collectIntelligence(providers, observation) {
   const entries = await Promise.all(
     providers.map(async (provider) => {
       try {
-        const raw = await provider.scan(observation);
-        return normalizeIntelligence(provider.name, raw);
+        return normalizeIntelligence(provider.name, await provider.scan(observation));
       } catch (error) {
         return normalizeProviderFailure(provider.name, error);
       }
@@ -42,11 +41,9 @@ export async function collectIntelligence(providers, observation) {
   return Object.fromEntries(entries.map((entry) => [entry.provider, entry]));
 }
 
-/**
- * Provider contract only. Provider names stay internal; JEV output uses our nomenclature.
- */
 export class IntelligenceProvider {
   constructor(name, scan) {
+    if (!name || typeof scan !== "function") throw new TypeError("provider name and scan function are required");
     this.name = name;
     this.scan = scan;
   }
