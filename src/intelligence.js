@@ -1,8 +1,9 @@
 const PROVIDER_FIELDS = Object.freeze([
   "score", "riskLevel", "isRug", "confidence", "riskFlags",
-  "temporalScore", "temporalStage", "estimatedPullHours",
+  "rugStage", "rugStageName", "temporalScore", "temporalStage", "estimatedPullHours",
   "authority", "liquidity", "holders", "behavior", "wallet",
-  "transferBurst", "walletRotation", "honeypot"
+  "honeypot", "burst", "transferCount", "totalAmount",
+  "uniqueSenders", "uniqueReceivers", "watchedMatches", "windowMs", "direction"
 ]);
 
 export function normalizeIntelligence(provider, raw = {}) {
@@ -28,11 +29,12 @@ export function normalizeProviderFailure(provider, error) {
   };
 }
 
-export async function collectIntelligence(providers, observation) {
+export async function collectIntelligence(providers, observation, { timeoutMs = 1500 } = {}) {
   const entries = await Promise.all(
     providers.map(async (provider) => {
       try {
-        return normalizeIntelligence(provider.name, await provider.scan(observation));
+        const result = await withTimeout(provider.scan(observation), timeoutMs);
+        return normalizeIntelligence(provider.name, result);
       } catch (error) {
         return normalizeProviderFailure(provider.name, error);
       }
@@ -41,9 +43,22 @@ export async function collectIntelligence(providers, observation) {
   return Object.fromEntries(entries.map((entry) => [entry.provider, entry]));
 }
 
+function withTimeout(promise, timeoutMs) {
+  if (!Number.isFinite(timeoutMs) || timeoutMs <= 0) return promise;
+  let timer;
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => {
+      timer = setTimeout(() => reject(new Error(`provider timeout after ${timeoutMs}ms`)), timeoutMs);
+    })
+  ]).finally(() => clearTimeout(timer));
+}
+
 export class IntelligenceProvider {
   constructor(name, scan) {
-    if (!name || typeof scan !== "function") throw new TypeError("provider name and scan function are required");
+    if (!name || typeof scan !== "function") {
+      throw new TypeError("provider name and scan function are required");
+    }
     this.name = name;
     this.scan = scan;
   }
