@@ -1,0 +1,33 @@
+name: JEV Connection Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-jev:
+    runs-on: ubuntu-latest
+    env:
+      TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Verify JEV API key is available
+        run: |
+          if [ -z "$TYPESAFE_API_KEY" ]; then
+            echo "JEV API key is not configured."
+            exit 1
+          fi
+          echo "JEV API key is configured."
+
+      - name: Run JEV connection test
+        run: npm run jev:test
