@@ -1,2 +1,2 @@
-export { createDrainBrainProvider } from "./drainBrain.js";
+export { createNativeRiskProvider } from "./nativeRisk.js";
 export { createTransferFlowProvider } from "./transferFlow.js";
