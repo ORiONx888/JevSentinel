@@ -21,5 +21,11 @@ jobs:
         run: npm install
       - name: Run unit tests
         run: npm test
+      - name: Verify Telegram bot token
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: |
+          test -n "$TELEGRAM_BOT_TOKEN"
+          node --input-type=module -e 'const t=process.env.TELEGRAM_BOT_TOKEN; const r=await fetch("https://api.telegram.org/bot"+t+"/getMe"); const j=await r.json(); if(!r.ok||!j.ok) throw new Error("Telegram bot token verification failed"); console.log("Telegram bot connected: @"+j.result.username);'
       - name: Run official JEV SDK test
         run: npm run jev:test
