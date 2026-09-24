@@ -30,8 +30,8 @@ test("normalizes external intelligence into provider-neutral fields", async () =
   const result = await engine.assess(createObservation({ mint: "mint1", sourceCard: "HOT" }));
   assert.equal(result.intelligence["external-behavior"].fields.score, 91);
   assert.equal(result.intelligence["external-behavior"].fields.behavior, 25);
-  assert.equal(result.state.externalIntelligence[0].fields.behavior, 25);
-  assert.equal(result.state.externalIntelligence[0].provider, undefined);
+  assert.equal(result.state.intelligence[0].fields.behavior, 25);
+  assert.equal(result.state.intelligence[0].provider, undefined);
   assert.equal(telemetry.all().length, 1);
 });
 
