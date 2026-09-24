@@ -8,5 +8,8 @@
   },
   "scripts": {
     "jev:test": "node src/jev-test.mjs"
+  },
+  "dependencies": {
+    "@typesafe-ai/sdk": "^0.6.0"
   }
 }
