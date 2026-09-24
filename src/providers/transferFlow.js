@@ -28,9 +28,7 @@ export function createTransferFlowProvider({ windowMs = 5_000 } = {}) {
       uniqueReceivers: uniqueReceivers.size,
       watchedMatches,
       windowMs,
-      direction: recent.length
-        ? classifyDirection(recent, watched)
-        : "none"
+      direction: recent.length ? classifyDirection(recent, watched) : "none"
     };
   });
 }
