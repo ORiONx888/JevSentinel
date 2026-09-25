@@ -2,6 +2,7 @@ import { noul, TypeSafeClient } from "@typesafe-ai/sdk";
 import { createJevEvaluator } from "./jev.js";
 import { createJevSentinel } from "./engine.js";
 import { createTransferFlowProvider } from "./providers/transferFlow.js";
+import { createTokenResearchProvider } from "./providers/tokenResearch.js";
 import { buildCw2Observation } from "./cw2Monitor.js";
 import { createGroupStore } from "./groupStore.js";
 import { createLiveMonitor } from "./liveMonitor.js";
