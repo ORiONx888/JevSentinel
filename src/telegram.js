@@ -243,17 +243,24 @@ function liveContext(assessment, state) {
   const sellers = String(acceleration.sellers ?? "").toLowerCase();
 
   if (selling === "increasing") signals.push("👛 Seller activity accelerating");
+  if (selling === "decreasing") signals.push("👛 Seller activity easing");
   if (liquidity === "deteriorating") signals.push("💧 Liquidity deterioration increasing");
+  if (liquidity === "improving") signals.push("💧 Liquidity improving");
   if (price === "deteriorating") signals.push("📉 Price deterioration accelerating");
+  if (price === "improving") signals.push("📈 Price recovering");
   if (sellers === "increasing") signals.push("👥 Seller count increasing");
+  if (sellers === "decreasing") signals.push("👥 Seller count decreasing");
 
   if (retrace === "likelyNormalRetrace") signals.push("🔄 Retrace remains the leading explanation");
   else if (retrace === "mixedEvidence") signals.push("🟡 Evidence remains mixed");
   else if (retrace === "possibleSingleActorDump") signals.push("👤 Single-actor selling remains plausible");
   else if (retrace === "insufficientEvidence") signals.push("👁️ Evidence remains limited — monitoring continues");
 
-  if (!signals.length && evidenceQuality === "strong") signals.push("🟢 Risk picture remains stable");
-  if (!signals.length) signals.push("👁️ No material change detected");
+  const sampleCount = Number(state?.temporal?.sampleCount ?? 0);
+  const hasComparison = sampleCount >= 2;
+  if (!signals.length && !hasComparison) signals.push("📊 Collecting live comparison data");
+  if (!signals.length && hasComparison && evidenceQuality === "strong") signals.push("🟢 No material deterioration detected");
+  if (!signals.length && hasComparison) signals.push("🟡 Live comparison shows no clear deterioration");
 
   return [...new Set(signals)].slice(0, 3);
 }
