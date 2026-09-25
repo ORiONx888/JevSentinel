@@ -10,7 +10,7 @@ export function createLiveMonitor({
 
   const jobs = new Map();
 
-  function start({ mint, run }) {
+  function start({ mint, run, onAssessment }) {
     if (!mint || typeof run !== "function") throw new TypeError("mint and run are required");
     stop(mint);
 
@@ -30,7 +30,7 @@ export function createLiveMonitor({
         if (result?.state) {
           job.snapshots = [...job.snapshots, result.state].slice(-maxSnapshots);
         }
-        if (result) await onAssessment(result, job.snapshots);
+        if (result && typeof onAssessment === "function") await onAssessment(result, job.snapshots);
       } catch (error) {
         logger?.error?.("[jevsentinel-live] monitoring tick failed");
       } finally {
