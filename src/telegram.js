@@ -4,6 +4,7 @@ import { createJevSentinel } from "./engine.js";
 import { createNativeRiskProvider } from "./providers/nativeRisk.js";
 import { createTransferFlowProvider } from "./providers/transferFlow.js";
 import { buildCw2Observation } from "./cw2Monitor.js";
+import { createGroupStore } from "./groupStore.js";
 
 const API_ROOT = "https://api.telegram.org";
 const GROUP_KEY_PATTERN = /^[A-Za-z0-9._-]{20,300}$/;
@@ -173,13 +174,42 @@ function answerSummary(assessment) {
   return { classification: "CW2 JEV ASSESSMENT — MONITORING", summary: "JEV did not escalate this token based on the supplied evidence.", signals: [urgency ? `Urgency: ${urgency}` : "Escalation: false"] };
 }
 
-export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call = telegramCall, pollIntervalMs = 1_000, logger = console } = {}) {
+export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call = telegramCall, pollIntervalMs = 1_000, logger = console, persistGroups = true, storePath } = {}) {
   if (!token?.trim()) throw new Error("TELEGRAM_BOT_TOKEN is required");
   let offset = 0;
   let running = false;
   let botId = null;
   const groups = new Map();
   const processed = new Set();
+  const groupStore = persistGroups ? createGroupStore({
+    filePath: storePath,
+    encryptionSecret: process.env.JEV_GROUP_STORE_KEY ?? token,
+  }) : null;
+
+  function persistGroupsNow() {
+    if (!groupStore) return;
+    groupStore.save([...groups.entries()].map(([chatId, group]) => ({
+      chatId,
+      apiKey: group.apiKey,
+      activatedAt: group.activatedAt,
+      enabled: group.enabled !== false,
+    })));
+  }
+
+  function restoreGroups() {
+    if (!groupStore) return;
+    const saved = groupStore.load();
+    for (const entry of saved) {
+      if (!entry?.chatId || !entry?.apiKey) continue;
+      groups.set(String(entry.chatId), {
+        apiKey: entry.apiKey,
+        runtime: createGroupRuntime(entry.apiKey),
+        activatedAt: entry.activatedAt ?? new Date().toISOString(),
+        enabled: entry.enabled !== false,
+      });
+    }
+    logger.log?.("[jevsentinel-telegram] persistent group configuration restored", JSON.stringify({ count: groups.size }));
+  }
 
   async function sendMessage(chatId, text, extra = {}) {
     return call("sendMessage", {
@@ -200,6 +230,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
     try {
       client = await validateJevKey(apiKey);
       groups.set(String(chatId), { apiKey, runtime: createGroupRuntime(apiKey), activatedAt: new Date().toISOString(), enabled: true });
+      persistGroupsNow();
     } catch {
       await sendMessage(chatId, "❌ <b>JEV key could not be verified.</b>\n\nThe key was not retained. Please send a valid key.");
       return false;
@@ -332,6 +363,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
       return false;
     }
     group.enabled = enabled;
+    persistGroupsNow();
     await sendMessage(chatId, enabled
       ? "🟢 <b>JevSentinel monitoring ON.</b>\n\nMonitoring: <b>CONVICTION PULSE CW2 only</b>"
       : "⚪ <b>JevSentinel monitoring OFF.</b>\n\nNo CW2 cards will be processed until /jevon is used.");
@@ -431,6 +463,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
   async function start() {
     if (running) return;
     running = true;
+    restoreGroups();
     const me = await call("getMe", {}, { token });
     botId = me?.id ?? null;
     logger.log?.("[jevsentinel-telegram] Telegram bot capabilities", JSON.stringify({
