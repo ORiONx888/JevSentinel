@@ -14,13 +14,14 @@ export function createJevSentinel({ providers = [], evaluator, telemetry, logger
       const priorSnapshots = history.map(stateToSnapshot).filter(Boolean);
       const currentSnapshot = intelligenceToSnapshot(intelligence);
       const temporal = buildTemporalState([...priorSnapshots, currentSnapshot]);
-      const evidence = buildEvidenceState(intelligence, temporal);
+      const evidence = buildEvidenceState(intelligence, temporal, history);
       const state = buildJevState(observation, intelligence);
       state.temporal = temporal;
       state.evidence = evidence;
 
       logger?.log?.("[jevsentinel] decision input", JSON.stringify(buildDecisionInputSummary(state, intelligence)));
       const assessment = await evaluator.evaluate(state);
+      state.verdict = assessment;
       const record = createTelemetryRecord({ observation, state, intelligence, assessment });
       telemetry.append(record);
 
