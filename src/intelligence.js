@@ -5,9 +5,11 @@ const PROVIDER_FIELDS = Object.freeze([
   "honeypot", "burst", "transferCount", "totalAmount",
   "uniqueSenders", "uniqueReceivers", "watchedMatches", "windowMs", "direction",
   "priceVelocity", "liquidityVelocity", "volumeVelocity", "sellUsd", "buyUsd", "sellerCount",
-  "signalCount",
+  "signalCount", "uniqueSellers", "uniqueBuyers", "sellerAcceleration", "coordinatedSellers", "events",
   "marketCapUsd", "priceUsd", "priceChange5mPct", "priceChange1hPct", "volume5mUsd", "volume1hUsd",
-  "buyCount5m", "sellCount5m", "buySellRatio5m", "liquidityUsd", "pairAgeHours", "pairAddress", "dex", "source"
+  "buyCount5m", "sellCount5m", "buySellRatio5m", "liquidityUsd", "pairAgeHours", "pairAddress", "dex", "source",
+  "tokenIntegrity", "tokenProgram", "token2022", "holderStructure", "creatorIntelligence",
+  "walletBehaviour", "flowDynamics", "marketDynamics", "liquidityStructure", "sellability"
 ]);
 
 export function normalizeIntelligence(provider, raw = {}) {
@@ -33,7 +35,7 @@ export function normalizeProviderFailure(provider, error) {
   };
 }
 
-export async function collectIntelligence(providers, observation, { timeoutMs = 1500 } = {}) {
+export async function collectIntelligence(providers, observation, { timeoutMs = 3_500 } = {}) {
   const entries = await Promise.all(
     providers.map(async (provider) => {
       try {
