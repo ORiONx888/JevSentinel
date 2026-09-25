@@ -65,6 +65,12 @@ function intelligenceToSnapshot(intelligence) {
 
 function stateToSnapshot(state) {
   if (!state) return null;
+  // Prefer the already-normalized temporal snapshot. This preserves the exact
+  // provider-derived market/flow fields across live-monitor ticks instead of
+  // reconstructing history from the reduced evidence groups.
+  if (state.temporal?.latest?.observedAt) {
+    return { ...state.temporal.latest };
+  }
   const evidence = state.evidence ?? {};
   const market = evidence.marketDynamics ?? {};
   const liquidity = evidence.liquidityStructure ?? {};
