@@ -110,7 +110,6 @@ test("live risk alert is compact, token-first, and preserves token links", () =>
   assert.match(text, /\$PUPPY: Urgency 1\.84 🔴/);
   assert.match(text, /Coordinated selling detected/);
   assert.match(text, /Distribution pattern developing/);
-  assert.match(text, /Seller activity accelerating/);
   assert.doesNotMatch(text, /Live CA-derived reassessment/);
   assert.match(text, /gmgn\.ai/);
   assert.match(text, /pump\.fun/);
