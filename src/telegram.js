@@ -166,13 +166,110 @@ function createGroupRuntime(apiKey, logger = null) {
   return { client, sentinel, telemetry, history: new Map(), lastDecisions: new Map(), liveMonitor: createLiveMonitor({ intervalMs: 30_000, maxSnapshots: 12, logger }) };
 }
 
+function answerValue(answer) {
+  if (!answer) return null;
+  return answer.choice ?? answer.value ?? answer.noul ?? null;
+}
+
+function urgencyInfo(assessment) {
+  const answer = assessment?.answers?.urgency ?? {};
+  const numeric = typeof answer.score === "number"
+    ? answer.score
+    : typeof answer.value === "number"
+      ? answer.value
+      : null;
+  const level = typeof answer.choice === "string"
+    ? answer.choice
+    : typeof answer.value === "string"
+      ? answer.value
+      : null;
+  const dot = level === "immediate" ? "🔴"
+    : level === "urgent" ? "🟠"
+      : level === "elevated" ? "🟡"
+        : level === "monitor" ? "🟢"
+          : "⚪";
+  return {
+    numeric,
+    level,
+    label: numeric != null ? numeric.toFixed(2) : (level ?? "unknown"),
+    dot,
+  };
+}
+
 function answerSummary(assessment) {
   const answers = assessment?.answers ?? {};
   const escalation = answers.escalation?.noul;
-  const urgency = answers.urgency?.score ?? answers.urgency?.value ?? answers.urgency?.choice;
-  const dominant = answers.dominantRisk?.choice;
-  if (escalation === true) return { classification: "RISK ATTENTION ESCALATED", summary: `JEV escalated this CW2 token for active risk attention.${dominant ? ` Dominant risk: ${dominant}.` : ""}`, signals: [urgency ? `Urgency: ${urgency}` : "Escalation: true"] };
-  return { classification: "CW2 JEV ASSESSMENT — MONITORING", summary: "JEV did not escalate this token based on the supplied evidence.", signals: [urgency ? `Urgency: ${urgency}` : "Escalation: false"] };
+  const urgency = urgencyInfo(assessment);
+  const dominant = answerValue(answers.dominantRisk);
+  if (escalation === true) {
+    return {
+      classification: "RISK ATTENTION ESCALATED",
+      summary: "JEV escalated this CW2 token for active risk attention.",
+      signals: [`Urgency: ${urgency.label}${urgency.level ? ` (${urgency.level})` : ""}`, ...(dominant ? [`Dominant risk: ${dominant}`] : [])],
+    };
+  }
+  return {
+    classification: "CW2 JEV ASSESSMENT — MONITORING",
+    summary: "JEV is continuing to monitor this token.",
+    signals: [`Urgency: ${urgency.label}${urgency.level ? ` (${urgency.level})` : ""}`],
+  };
+}
+
+function liveContext(assessment, state) {
+  const answers = assessment?.answers ?? {};
+  const signals = [];
+  const progression = answerValue(answers.progression);
+  const retrace = answerValue(answers.retraceAlternative);
+  const deterioration = answerValue(answers.deterioration);
+  const dominant = answerValue(answers.dominantRisk);
+  const coordinated = answers.coordinatedBehavior?.noul === true;
+  const evidenceQuality = answerValue(answers.evidenceQuality);
+
+  if (coordinated) signals.push("🔴 Coordinated selling detected");
+  if (progression === "extraction") signals.push("🚨 Extraction pattern developing");
+  else if (progression === "distribution") signals.push("⚠️ Distribution pattern developing");
+  else if (progression === "preparation") signals.push("👁️ Positioning activity detected");
+
+  if (deterioration === "severe") signals.push("📉 Price/market deterioration is severe");
+  else if (deterioration === "elevated") signals.push("📉 Deterioration increasing");
+
+  const fields = (state?.intelligence ?? []).flatMap((provider) => Object.entries(provider.fields ?? {}));
+  const values = Object.fromEntries(fields);
+  const selling = String(values.sellerAcceleration ?? "").toLowerCase();
+  const liquidity = String(values.liquidityVelocity ?? "").toLowerCase();
+  const price = String(values.priceVelocity ?? "").toLowerCase();
+  if (selling === "increasing") signals.push("👛 Seller activity accelerating");
+  if (liquidity === "deteriorating") signals.push("💧 Liquidity deterioration increasing");
+  if (price === "deteriorating") signals.push("📉 Price deterioration accelerating");
+
+  if (retrace === "likelyNormalRetrace") signals.push("🔄 Retrace remains the leading explanation");
+  else if (retrace === "mixedEvidence") signals.push("🟡 Evidence remains mixed");
+  else if (retrace === "possibleSingleActorDump") signals.push("👤 Single-actor selling remains plausible");
+  else if (retrace === "insufficientEvidence") signals.push("👁️ Evidence remains limited — monitoring continues");
+
+  if (!signals.length && evidenceQuality === "strong") signals.push("🟢 Risk picture remains stable");
+  if (!signals.length) signals.push("👁️ No material change detected");
+
+  return [...new Set(signals)].slice(0, 3);
+}
+
+export function buildLiveRiskAlert({
+  mint,
+  symbol = "UNKNOWN",
+  assessment = {},
+  state = null,
+  sourceMessageId = null,
+}) {
+  const urgency = urgencyInfo(assessment);
+  const context = liveContext(assessment, state);
+  const lines = [
+    `<b>${escapeHtml(symbol)}: Urgency ${escapeHtml(urgency.label)} ${urgency.dot}</b>`,
+    "",
+    ...context.map((line) => escapeHtml(line)),
+    "",
+    tokenLinks(mint).map((x) => `<a href="${x.url}">${x.label}</a>`).join("  "),
+  ];
+  return lines.join("\n");
 }
 
 export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call = telegramCall, pollIntervalMs = 1_000, logger = console, persistGroups = true, storePath } = {}) {
@@ -357,13 +454,11 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
             liveResult.state
           ].slice(-12));
           if (!changed && liveResult.assessment?.answers?.escalation?.noul !== true) return;
-          await sendMessage(message.chat.id, buildRiskAlert({
+          await sendMessage(message.chat.id, buildLiveRiskAlert({
             mint: observation.mint,
             symbol: observation.symbol,
-            sourceCard: "CONVICTION PULSE CW2 — LIVE",
-            classification: liveSummary.classification,
-            summary: liveSummary.summary,
-            signals: [...liveSummary.signals, "Live CA-derived reassessment"],
+            assessment: liveResult.assessment,
+            state: liveResult.state,
             sourceMessageId: message.message_id,
           }), { reply_to_message_id: message.message_id });
         }
