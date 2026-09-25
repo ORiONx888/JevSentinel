@@ -64,6 +64,8 @@ export function buildEvidenceState(intelligence = {}, temporal = {}, history = [
     }
   };
 
+  evidence.alternativeExplanation = buildAlternativeExplanationEvidence(evidence, history);
+
   const missingGroups = GROUPS.filter((group) => !hasEvidence(evidence[group]));
   evidence.evidenceQuality = {
     providerCount: Object.keys(intelligence).length,
@@ -79,6 +81,51 @@ export function buildEvidenceState(intelligence = {}, temporal = {}, history = [
   };
 
   return evidence;
+}
+
+function buildAlternativeExplanationEvidence(evidence, history) {
+  const flow = evidence.flowDynamics ?? {};
+  const market = evidence.marketDynamics ?? {};
+  const liquidity = evidence.liquidityStructure ?? {};
+  const wallet = evidence.walletBehaviour ?? {};
+  const temporal = evidence.temporalIntelligence ?? {};
+
+  return {
+    purpose: "Separate a possible single-actor retrace or dump from coordinated extraction.",
+    uniqueSellerCount: firstValue(flow.uniqueSellers, flow.uniqueSellerCount, market.uniqueSellers),
+    uniqueBuyerCount: firstValue(flow.uniqueBuyers, flow.uniqueBuyerCount, market.uniqueBuyers),
+    dominantSellerShare: firstValue(flow.dominantSellerShare, flow.topSellerShare),
+    sellerAcceleration: firstValue(flow.sellerAcceleration, temporal.sellerAcceleration),
+    coordinatedSellerEvidence: firstValue(flow.coordinatedSellers, flow.coordinatedSellerEvidence, wallet.coordinatedSellers),
+    holderGrowthOrRedistribution: firstValue(evidence.holderStructure.holderGrowth, evidence.holderStructure.holderDelta, evidence.holderStructure.redistribution),
+    liquidityStabilityOrRemoval: firstValue(liquidity.liquidityChangePct, liquidity.liquidityRemoved, liquidity.stability),
+    priceRecoveryEvidence: firstValue(market.recoveryAttempt, market.priceRecovery, temporal.recoveryAttempt),
+    popularityContext: {
+      volume5mUsd: market.volume5mUsd ?? null,
+      volume1hUsd: market.volume1hUsd ?? null,
+      uniqueBuyers: firstValue(flow.uniqueBuyers, flow.uniqueBuyerCount, market.uniqueBuyers),
+      holderGrowth: firstValue(evidence.holderStructure.holderGrowth, evidence.holderStructure.holderDelta)
+    },
+    severeEvidencePresent: hasSevereExtractionEvidence(evidence),
+    priorSnapshotCount: Array.isArray(history) ? history.length : 0,
+    interpretationRule: "Popularity and activity are context, not safety proof; confirmed severe evidence must not be overridden by a retrace explanation."
+  };
+}
+
+function firstValue(...values) {
+  return values.find((value) => value !== null && value !== undefined) ?? null;
+}
+
+function hasSevereExtractionEvidence(evidence) {
+  const flags = evidence.tokenIntegrity?.riskFlags;
+  const liquidity = evidence.liquidityStructure ?? {};
+  const flow = evidence.flowDynamics ?? {};
+  return Boolean(
+    Array.isArray(flags) && flags.some((flag) => /liquidity.*(remov|withdraw)|coordinated|rug/i.test(String(flag)))
+    || liquidity.liquidityRemoved === true
+    || flow.coordinatedSellerEvidence === true
+    || flow.coordinatedSellers === true
+  );
 }
 
 function hasEvidence(value) {
