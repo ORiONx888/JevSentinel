@@ -233,14 +233,19 @@ function liveContext(assessment, state) {
   if (deterioration === "severe") signals.push("📉 Price/market deterioration is severe");
   else if (deterioration === "elevated") signals.push("📉 Deterioration increasing");
 
-  const fields = (state?.intelligence ?? []).flatMap((provider) => Object.entries(provider.fields ?? {}));
-  const values = Object.fromEntries(fields);
-  const selling = String(values.sellerAcceleration ?? "").toLowerCase();
-  const liquidity = String(values.liquidityVelocity ?? "").toLowerCase();
-  const price = String(values.priceVelocity ?? "").toLowerCase();
+  // Prefer the engine's temporal state for live changes. Provider fields are
+  // point-in-time observations and may not expose the direction that changed
+  // between snapshots.
+  const acceleration = state?.temporal?.acceleration ?? {};
+  const selling = String(acceleration.selling ?? "").toLowerCase();
+  const liquidity = String(acceleration.liquidity ?? "").toLowerCase();
+  const price = String(acceleration.price ?? "").toLowerCase();
+  const sellers = String(acceleration.sellers ?? "").toLowerCase();
+
   if (selling === "increasing") signals.push("👛 Seller activity accelerating");
   if (liquidity === "deteriorating") signals.push("💧 Liquidity deterioration increasing");
   if (price === "deteriorating") signals.push("📉 Price deterioration accelerating");
+  if (sellers === "increasing") signals.push("👥 Seller count increasing");
 
   if (retrace === "likelyNormalRetrace") signals.push("🔄 Retrace remains the leading explanation");
   else if (retrace === "mixedEvidence") signals.push("🟡 Evidence remains mixed");
