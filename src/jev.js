@@ -7,6 +7,9 @@ export function createJevEvaluator({ client = new TypeSafeClient(), model = "jev
       const definitions = buildDecisionQuestions();
       const questions = {
         escalation: noul(definitions.escalation.prompt),
+        coordinatedBehavior: noul(definitions.coordinatedBehavior.prompt),
+        progression: choice(definitions.progression.prompt, definitions.progression.options),
+        deterioration: score(definitions.deterioration.prompt, definitions.deterioration.levels),
         dominantRisk: choice(definitions.dominantRisk.prompt, definitions.dominantRisk.options),
         evidenceQuality: score(definitions.evidenceQuality.prompt, definitions.evidenceQuality.levels),
         falsePositive: noul(definitions.falsePositive.prompt),
