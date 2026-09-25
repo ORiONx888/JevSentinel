@@ -4,6 +4,7 @@ import { createJevSentinel } from "./engine.js";
 import { createTransferFlowProvider } from "./providers/transferFlow.js";
 import { buildCw2Observation } from "./cw2Monitor.js";
 import { createGroupStore } from "./groupStore.js";
+import { createLiveMonitor } from "./liveMonitor.js";
 
 const API_ROOT = "https://api.telegram.org";
 const GROUP_KEY_PATTERN = /^[A-Za-z0-9._-]{20,300}$/;
@@ -161,7 +162,7 @@ function createGroupRuntime(apiKey, logger = null) {
     evaluator,
     telemetry,
   });
-  return { client, sentinel, telemetry, history: new Map() };
+  return { client, sentinel, telemetry, history: new Map(), liveMonitor: createLiveMonitor({ intervalMs: 30_000, maxSnapshots: 12, logger }) };
 }
 
 function answerSummary(assessment) {
@@ -334,7 +335,37 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
         signals: summary.signals,
         sourceMessageId: message.message_id,
       }), { reply_to_message_id: message.message_id });
-      logger.log?.("[jevsentinel-telegram] CW2 assessment completed");
+
+      runtime.liveMonitor.start({
+        mint: observation.mint,
+        run: async (priorStates) => runtime.sentinel.assess({
+          ...observation,
+          observedAt: new Date().toISOString(),
+          signalTime: observation.signalTime,
+        }, priorStates),
+        onAssessment: async (liveResult) => {
+          const liveSummary = answerSummary(liveResult.assessment);
+          const previous = runtime.history.get(observation.mint)?.at(-1);
+          const previousAnswers = previous?.assessment?.answers ?? null;
+          const currentAnswers = liveResult.assessment?.answers ?? {};
+          const changed = JSON.stringify(previousAnswers) !== JSON.stringify(currentAnswers);
+          runtime.history.set(observation.mint, [
+            ...(runtime.history.get(observation.mint) ?? []),
+            liveResult.state
+          ].slice(-12));
+          if (!changed && liveResult.assessment?.answers?.escalation?.noul !== true) return;
+          await sendMessage(message.chat.id, buildRiskAlert({
+            mint: observation.mint,
+            symbol: observation.symbol,
+            sourceCard: "CONVICTION PULSE CW2 — LIVE",
+            classification: liveSummary.classification,
+            summary: liveSummary.summary,
+            signals: [...liveSummary.signals, "Live CA-derived reassessment"],
+            sourceMessageId: message.message_id,
+          }), { reply_to_message_id: message.message_id });
+        }
+      });
+      logger.log?.("[jevsentinel-telegram] CW2 assessment completed; live monitoring started");
     } catch (error) {
       logger.error?.("[jevsentinel-telegram] CW2 assessment failed");
       await sendMessage(message.chat.id, "⚠️ <b>JevSentinel could not complete the CW2 assessment.</b> No trading action was taken.", { reply_to_message_id: message.message_id });
