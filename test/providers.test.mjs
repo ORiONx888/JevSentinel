@@ -33,12 +33,13 @@ test("transfer-flow provider detects a short transfer burst and watched-wallet d
     transfers: {
       events: [
         { observedAt: "2026-09-24T12:00:02.000Z", sender: "w1", receiver: "x", amount: 600 },
-        { observedAt: "2026-09-24T12:00:04.000Z", sender: "w2", receiver: "x", amount: 500 }
+        { observedAt: "2026-09-24T12:00:04.000Z", sender: "w2", receiver: "x", amount: 500 },
+        { observedAt: "2026-09-24T12:00:03.000Z", sender: "w3", receiver: "x", amount: 400 }
       ]
     }
   });
   assert.equal(result.burst, true);
-  assert.equal(result.transferCount, 2);
+  assert.equal(result.transferCount, 3);
   assert.equal(result.totalAmount, 1100);
   assert.equal(result.watchedMatches, 1);
   assert.equal(result.direction, "outbound");
@@ -47,6 +48,7 @@ test("transfer-flow provider detects a short transfer burst and watched-wallet d
 test("transfer-flow provider ignores events outside its bounded window", async () => {
   const provider = createTransferFlowProvider({ windowMs: 5_000 });
   const result = await provider.scan({
+    mint: "MINT-OUTSIDE-WINDOW",
     observedAt: "2026-09-24T12:00:10.000Z",
     transfers: { events: [
       { observedAt: "2026-09-24T12:00:00.000Z", sender: "w1", receiver: "x", amount: 1000 }
