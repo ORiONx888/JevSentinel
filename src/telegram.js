@@ -158,7 +158,7 @@ function createGroupRuntime(apiKey, logger = null) {
   };
   const evaluator = createJevEvaluator({ client });
   const sentinel = createJevSentinel({
-    providers: [createNativeRiskProvider(), createTransferFlowProvider()],
+    providers: [createTokenResearchProvider(), createNativeRiskProvider(), createTransferFlowProvider()],
     evaluator,
     telemetry,
   });

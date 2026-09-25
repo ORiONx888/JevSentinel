@@ -33,7 +33,7 @@ export function buildDecisionQuestions() {
   return {
     escalation: {
       type: "noul",
-      prompt: "Does the combined evidence justify escalating this token from monitoring to active risk attention? Consider the supplied security, market, wallet, transfer-flow, intelligence, and temporal evidence together."
+      prompt: "Does the independently gathered token evidence justify escalating this token from monitoring to active risk attention? Use the CA-derived security, market, holder, wallet, transfer-flow, intelligence, and temporal evidence. Do not infer safety from the source alert card."
     },
     dominantRisk: {
       type: "choice",
@@ -45,12 +45,12 @@ export function buildDecisionQuestions() {
         temporal: "The speed or progression of deterioration dominates.",
         none: "No single risk mechanism clearly dominates."
       },
-      prompt: "Which single risk mechanism best explains the current evidence? Use the actual supplied fields, not assumptions."
+      prompt: "Which single risk mechanism best explains the independently gathered token evidence? Use actual CA-derived fields and observed behavior, not source-card claims or assumptions."
     },
     evidenceQuality: {
       type: "score",
       levels: ["insufficient", "limited", "usable", "strong"],
-      prompt: "How coherent, timely, and internally consistent is the supplied evidence for making a risk judgment? Penalize missing or stale evidence."
+      prompt: "How coherent, timely, and internally consistent is the independently gathered token evidence for making a risk judgment? Penalize missing, stale, or provider-failed evidence."
     },
     falsePositive: {
       type: "noul",
