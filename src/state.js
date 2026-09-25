@@ -49,6 +49,17 @@ export function buildDecisionQuestions() {
       },
       prompt: "Which stage best describes the independently observed behavior sequence across the current and prior snapshots? Do not force a stage when the timeline is incomplete."
     },
+    retraceAlternative: {
+      type: "choice",
+      options: {
+        likelyNormalRetrace: "The evidence is more consistent with a normal retrace or profit-taking than extraction, while acknowledging that this is not a safety guarantee.",
+        possibleSingleActorDump: "A single dominant seller or participant may explain the move, with no sufficient independent evidence of coordinated extraction.",
+        mixedEvidence: "Retrace and extraction explanations both remain plausible because the evidence is conflicting, incomplete, or still developing.",
+        possibleCoordinatedExtraction: "Multiple connected or synchronized actors, liquidity deterioration, or other independent signals make coordinated extraction plausible.",
+        insufficientEvidence: "There is not enough independent evidence to distinguish a retrace from dumping or coordinated extraction."
+      },
+      prompt: "Assess the alternative explanation for the observed decline: normal retrace, one dominant participant dumping, mixed evidence, or coordinated extraction. Compare unique seller count, dominant seller share, seller timing, wallet relationships, holder growth or redistribution, liquidity stability or removal, price recovery attempts, volume quality, and prior snapshots. Token popularity or activity is context only and must never be treated as proof of safety. Do not select a normal retrace when severe evidence such as confirmed liquidity removal or multiple coordinated exits is present. Keep observed facts, alternative explanations, coordinated-risk evidence, and confidence conceptually separate."
+    },
     deterioration: {
       type: "score",
       levels: ["stable", "watch", "elevated", "severe"],
