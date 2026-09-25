@@ -336,8 +336,10 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
         sourceMessageId: message.message_id,
       }), { reply_to_message_id: message.message_id });
 
+      runtime.lastDecisions.set(observation.mint, result.assessment?.answers ?? {});
       runtime.liveMonitor.start({
         mint: observation.mint,
+        initialState: result.state,
         run: async (priorStates) => runtime.sentinel.assess({
           ...observation,
           observedAt: new Date().toISOString(),
@@ -345,10 +347,10 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
         }, priorStates),
         onAssessment: async (liveResult) => {
           const liveSummary = answerSummary(liveResult.assessment);
-          const previous = runtime.history.get(observation.mint)?.at(-1);
-          const previousAnswers = previous?.assessment?.answers ?? null;
+          const previousAnswers = runtime.lastDecisions.get(observation.mint) ?? null;
           const currentAnswers = liveResult.assessment?.answers ?? {};
           const changed = JSON.stringify(previousAnswers) !== JSON.stringify(currentAnswers);
+          runtime.lastDecisions.set(observation.mint, currentAnswers);
           runtime.history.set(observation.mint, [
             ...(runtime.history.get(observation.mint) ?? []),
             liveResult.state
