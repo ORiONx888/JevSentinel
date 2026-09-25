@@ -115,7 +115,9 @@ async function fetchChainState(mint, fetchImpl, rpcUrl, timeoutMs) {
     firstObservedSignature: creator.signature,
     firstObservedAt: creator.blockTime ? new Date(creator.blockTime * 1000).toISOString() : null,
     signerCount: creator.signers.length,
-    signers: creator.signers.slice(0, 8)
+    signers: creator.signers.slice(0, 8),
+    recentTransactionCount: creator.recentTransactionCount,
+    failedRecentTransactions: creator.failedRecentTransactions
   } : null;
 
   const tokenIntegrity = {
@@ -156,10 +158,24 @@ async function resolveLargestOwners(accounts, fetchImpl, rpcUrl, timeoutMs) {
 }
 
 async function resolveCreator(mint, fetchImpl, rpcUrl, timeoutMs) {
-  const signatures = await rpc(fetchImpl, rpcUrl, "getSignaturesForAddress", [mint, { limit: 1 }], timeoutMs);
-  const signature = signatures?.[0]?.signature;
+  let before = null;
+  let oldest = [];
+  for (let page = 0; page < 3; page += 1) {
+    const params = { limit: 1000 };
+    if (before) params.before = before;
+    const batch = await rpc(fetchImpl, rpcUrl, "getSignaturesForAddress", [mint, params], timeoutMs);
+    if (!Array.isArray(batch) || !batch.length) break;
+    oldest = batch;
+    before = batch.at(-1)?.signature ?? null;
+    if (batch.length < 1000) break;
+  }
+  const oldestEntry = oldest.at(-1);
+  const signature = oldestEntry?.signature;
   if (!signature) return null;
-  const tx = await rpc(fetchImpl, rpcUrl, "getTransaction", [signature, { encoding: "jsonParsed", maxSupportedTransactionVersion: 0 }], timeoutMs);
+  const tx = await rpc(fetchImpl, rpcUrl, "getTransaction", [
+    signature,
+    { encoding: "jsonParsed", maxSupportedTransactionVersion: 0 }
+  ], timeoutMs);
   const keys = tx?.transaction?.message?.accountKeys ?? [];
   const signers = keys.filter((key) => key?.signer).map((key) => key.pubkey).filter(Boolean);
   const creatorAddress = signers[0] ?? null;
@@ -167,10 +183,12 @@ async function resolveCreator(mint, fetchImpl, rpcUrl, timeoutMs) {
     ? await rpc(fetchImpl, rpcUrl, "getSignaturesForAddress", [creatorAddress, { limit: 20 }], timeoutMs)
     : [];
   return {
-    address: signers[0] ?? null,
+    address: creatorAddress,
     signature,
-    blockTime: tx?.blockTime ?? null,
-    signers
+    blockTime: tx?.blockTime ?? oldestEntry?.blockTime ?? null,
+    signers,
+    recentTransactionCount: Array.isArray(creatorRecent) ? creatorRecent.length : 0,
+    failedRecentTransactions: Array.isArray(creatorRecent) ? creatorRecent.filter((item) => item?.err).length : 0
   };
 }
 
