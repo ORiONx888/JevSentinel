@@ -114,7 +114,26 @@ export function buildStatusMessage({ connected = false, mode = "LOG-ONLY", cards
 }
 
 export function buildHelpMessage() {
-  return "🛡️ <b>JevSentinel Help</b>\n\nFor the current test, add the bot to the target group and activate it with a valid JEV API key.\n\n/jevon — turn CW2 monitoring ON\n/jevoff — turn CW2 monitoring OFF\n/jevstatus — show current status";
+  return [
+    "🛡️ <b>JevSentinel Help</b>",
+    "",
+    "<b>Group setup</b>",
+    "Send a valid JEV API key as a message in the group. The bot deletes the key message immediately, verifies the key, and activates monitoring.",
+    "",
+    "<b>Commands</b>",
+    "/jevhelp — show this help and available commands",
+    "/jevstatus — show whether JEV is configured and monitoring is ON/OFF",
+    "/jevon — turn CW2 monitoring ON (group admins only)",
+    "/jevoff — turn CW2 monitoring OFF (group admins only)",
+    "/jevtest — send a delivery test (private chat)",
+    "",
+    "<b>What is monitored</b>",
+    "CONVICTION PULSE CW2 cards only.",
+    "Other VolSpike cards are ignored during this test.",
+    "",
+    "<b>Mode</b>",
+    "LOG-ONLY — JEVSentinel analyzes risk and sends an alert. No trading or auto-sell actions are performed.",
+  ].join("\n");
 }
 
 function looksLikeApiKey(text) {
