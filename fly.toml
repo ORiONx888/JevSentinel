@@ -17,3 +17,7 @@ primary_region = "yyz"
 
 [[restart]]
   policy = "always"
+
+[[mounts]]
+  source = "jevsentinel_data"
+  destination = "/data"
