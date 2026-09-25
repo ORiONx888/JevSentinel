@@ -35,8 +35,14 @@ test("setup/status/help messages are available", () => {
   assert.match(buildStartMessage(), /JevSentinel/);
   assert.match(buildStatusMessage(), /JevSentinel Status/);
   assert.match(buildHelpMessage(), /JevSentinel Help/);
-  assert.match(buildHelpMessage(), /\/jevon/);
-  assert.match(buildHelpMessage(), /\/jevoff/);
+  const help = buildHelpMessage();
+  assert.match(help, /\/jevon/);
+  assert.match(help, /\/jevoff/);
+  assert.match(help, /\/jevstatus/);
+  assert.match(help, /\/jevhelp/);
+  assert.match(help, /CONVICTION PULSE CW2/);
+  assert.match(help, /LOG-ONLY/);
+  assert.match(help, /No trading or auto-sell/);
 });
 
 test("bot handles start, status and test without a real Telegram call", async () => {
