@@ -1,7 +1,6 @@
 import { noul, TypeSafeClient } from "@typesafe-ai/sdk";
 import { createJevEvaluator } from "./jev.js";
 import { createJevSentinel } from "./engine.js";
-import { createNativeRiskProvider } from "./providers/nativeRisk.js";
 import { createTransferFlowProvider } from "./providers/transferFlow.js";
 import { buildCw2Observation } from "./cw2Monitor.js";
 import { createGroupStore } from "./groupStore.js";
@@ -158,7 +157,7 @@ function createGroupRuntime(apiKey, logger = null) {
   };
   const evaluator = createJevEvaluator({ client });
   const sentinel = createJevSentinel({
-    providers: [createTokenResearchProvider(), createNativeRiskProvider(), createTransferFlowProvider()],
+    providers: [createTokenResearchProvider(), createTransferFlowProvider()],
     evaluator,
     telemetry,
   });
