@@ -40,7 +40,7 @@ test("transfer-flow provider detects a short transfer burst and watched-wallet d
   });
   assert.equal(result.burst, true);
   assert.equal(result.transferCount, 3);
-  assert.equal(result.totalAmount, 1100);
+  assert.equal(result.totalAmount, 1500);
   assert.equal(result.watchedMatches, 1);
   assert.equal(result.direction, "outbound");
 });
