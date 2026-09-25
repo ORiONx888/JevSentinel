@@ -5,7 +5,7 @@ export function telegramConfig(token = process.env.TELEGRAM_BOT_TOKEN) {
   return { token: token.trim(), baseUrl: `${API_ROOT}/bot${token.trim()}` };
 }
 
-export async function telegramCall(method, params = {}, { token, fetchImpl = fetch, timeoutMs = 10_000 } = {}) {
+export async function telegramCall(method, params = {}, { token, fetchImpl = fetch, timeoutMs = 35_000 } = {}) {
   const cfg = telegramConfig(token);
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
@@ -135,7 +135,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
   }
 
   async function pollOnce() {
-    const updates = await call("getUpdates", { offset, timeout: 0, allowed_updates: ["message"] }, { token, timeoutMs: 15_000 });
+    const updates = await call("getUpdates", { offset, timeout: 25, allowed_updates: ["message"] }, { token, timeoutMs: 35_000 });
     for (const update of updates) {
       offset = Math.max(offset, Number(update.update_id) + 1);
       try { await handleUpdate(update); } catch (error) { logger.error?.("[jevsentinel-telegram]", error.message); }
@@ -147,6 +147,12 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
     if (running) return;
     running = true;
     await call("getMe", {}, { token });
+    const webhook = await call("getWebhookInfo", {}, { token });
+    if (webhook?.url) {
+      logger.error?.("[jevsentinel-telegram] Telegram webhook is configured; getUpdates polling cannot receive updates. Webhook was NOT modified.");
+    } else {
+      logger.log?.("[jevsentinel-telegram] Telegram webhook: none; long polling enabled");
+    }
     logger.log?.("[jevsentinel-telegram] connected");
     while (running) {
       try { await pollOnce(); } catch (error) { logger.error?.("[jevsentinel-telegram]", error.message); }
