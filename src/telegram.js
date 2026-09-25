@@ -433,6 +433,15 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
     running = true;
     const me = await call("getMe", {}, { token });
     botId = me?.id ?? null;
+    logger.log?.("[jevsentinel-telegram] Telegram bot capabilities", JSON.stringify({
+      botId: Number(me?.id ?? 0),
+      username: me?.username ?? null,
+      canReadAllGroupMessages: me?.can_read_all_group_messages === true,
+      canJoinGroups: me?.can_join_groups === true,
+    }));
+    if (me?.can_read_all_group_messages !== true) {
+      logger.log?.("[jevsentinel-telegram] bot-to-bot prerequisite: enable Bot-to-Bot Communication Mode in @BotFather and ensure JevSentinel can receive group messages (admin or privacy mode disabled)");
+    }
     const webhook = await call("getWebhookInfo", {}, { token });
     if (webhook?.url) {
       logger.error?.("[jevsentinel-telegram] Telegram webhook is configured; getUpdates polling cannot receive updates. Webhook was NOT modified.");
