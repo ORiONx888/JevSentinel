@@ -34,6 +34,8 @@ test("risk alert identifies token, source and links", () => {
 test("setup/status/help messages are available", () => {
   assert.match(buildStartMessage(), /JevSentinel/);
   assert.match(buildStatusMessage(), /JevSentinel Status/);
+  assert.match(buildStatusMessage({ configured: false, mode: "OFF" }), /NOT CONFIGURED/);
+  assert.match(buildStatusMessage({ configured: true, mode: "LOG-ONLY", cards: ["CONVICTION PULSE CW2"] }), /CONFIGURED/);
   assert.match(buildHelpMessage(), /JevSentinel Help/);
   const help = buildHelpMessage();
   assert.match(help, /\/jevon/);
