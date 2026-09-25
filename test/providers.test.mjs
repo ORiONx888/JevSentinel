@@ -32,9 +32,9 @@ test("transfer-flow provider detects a short transfer burst and watched-wallet d
     wallets: { watched: ["w1"] },
     transfers: {
       events: [
-        { observedAt: "2026-09-24T12:00:02.000Z", sender: "w1", receiver: "x", amount: 600 },
-        { observedAt: "2026-09-24T12:00:04.000Z", sender: "w2", receiver: "x", amount: 500 },
-        { observedAt: "2026-09-24T12:00:03.000Z", sender: "w3", receiver: "x", amount: 400 }
+        { observedAt: "2026-09-24T12:00:02.000Z", sender: "w1", receiver: "x", amount: 600, direction: "out" },
+        { observedAt: "2026-09-24T12:00:04.000Z", sender: "w2", receiver: "x", amount: 500, direction: "out" },
+        { observedAt: "2026-09-24T12:00:03.000Z", sender: "w3", receiver: "x", amount: 400, direction: "out" }
       ]
     }
   });
