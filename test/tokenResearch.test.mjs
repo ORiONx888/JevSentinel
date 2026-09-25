@@ -62,7 +62,7 @@ test("token research digs into CA independently of card fields", async () => {
 
 test("token research tolerates missing market pair", async () => {
   const fetchImpl = async (url, options = {}) => {
-    if (url.includes("dexscreener")) return response({ pairs: [] });
+    if (url.includes("dex.test")) return response({ pairs: [] });
     const body = JSON.parse(options.body);
     if (body.method === "getTokenSupply") return response({ result: { value: { amount: "100", decimals: 0, mintAuthority: null, freezeAuthority: null } } });
     return response({ result: { value: [] } });
