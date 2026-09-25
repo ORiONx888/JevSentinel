@@ -102,12 +102,12 @@ export function buildStartMessage({ group = false } = {}) {
   ].join("\n");
 }
 
-export function buildStatusMessage({ connected = false, mode = "LOG-ONLY", cards = [] } = {}) {
+export function buildStatusMessage({ connected = false, configured = false, mode = "OFF", cards = [] } = {}) {
   return [
     "🛡️ <b>JevSentinel Status</b>",
     "",
     `Bot: <b>${connected ? "CONNECTED" : "DISCONNECTED"}</b>`,
-    "JEV: <b>CONFIGURED VIA RUNTIME KEY</b>",
+    `JEV: <b>${configured ? "CONFIGURED" : "NOT CONFIGURED"}</b>`,
     `Mode: <b>${escapeHtml(mode)}</b>`,
     `Cards: <b>${cards.length ? cards.map(escapeHtml).join(" • ") : "NONE CONNECTED"}</b>`,
   ].join("\n");
@@ -310,7 +310,8 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
         const group = groups.get(String(chatId));
         await sendMessage(chatId, buildStatusMessage({
           connected: true,
-          mode: group?.enabled === false ? "OFF" : "LOG-ONLY",
+          configured: Boolean(group),
+          mode: group ? (group.enabled === false ? "OFF" : "LOG-ONLY") : "OFF",
           cards: group ? ["CONVICTION PULSE CW2"] : [],
         }));
         return;
@@ -344,7 +345,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
     }
 
     if (textValue === "/start" || textValue.startsWith("/start@")) return sendMessage(chatId, buildStartMessage());
-    if (textValue === "/jevstatus" || textValue.startsWith("/jevstatus@")) return sendMessage(chatId, buildStatusMessage({ connected: true }));
+    if (textValue === "/jevstatus" || textValue.startsWith("/jevstatus@")) return sendMessage(chatId, buildStatusMessage({ connected: true, configured: false, mode: "OFF" }));
     if (textValue === "/jevhelp" || textValue.startsWith("/jevhelp@")) return sendMessage(chatId, buildHelpMessage());
     if (textValue === "/jevtest" || textValue.startsWith("/jevtest@")) {
       return sendMessage(chatId, buildRiskAlert({
