@@ -162,6 +162,7 @@ function createGroupRuntime(apiKey, logger = null) {
     providers: [createTokenResearchProvider(), createTransferFlowProvider()],
     evaluator,
     telemetry,
+    logger,
   });
   return { client, sentinel, telemetry, history: new Map(), lastDecisions: new Map(), liveMonitor: createLiveMonitor({ intervalMs: 30_000, maxSnapshots: 12, logger }) };
 }
@@ -187,7 +188,8 @@ function urgencyInfo(assessment) {
     : level === "urgent" ? "🟠"
       : level === "elevated" ? "🟡"
         : level === "monitor" ? "🟢"
-          : numeric != null ? "🔵"\n            : "⚪";
+          : numeric != null ? "🔵"
+            : "⚪";
   return {
     numeric,
     level,

@@ -170,7 +170,23 @@ test("live alert falls back to a short monitoring line when evidence is unchange
     },
   });
   assert.match(text, /\$TEST: Urgency 0\.75 🟢/);
-  assert.match(text, /Risk picture remains stable/);
+  assert.match(text, /Collecting live comparison data/);
   assert.ok(text.split("\\n").length <= 8);
 });
-\n\ntest("live alert distinguishes missing temporal baseline from a completed comparison", () => {\n  const baseline = buildLiveRiskAlert({ mint: "ABC123", symbol: "TEST", assessment: { answers: { urgency: { score: 0.57 } } } });\n  assert.match(baseline, /Urgency 0\\.57 🔵/);\n  assert.match(baseline, /Collecting live comparison data/);\n  assert.doesNotMatch(baseline, /No material change detected/);\n\n  const compared = buildLiveRiskAlert({ mint: "ABC123", symbol: "TEST", assessment: { answers: { urgency: { score: 0.57 } } }, state: { temporal: { sampleCount: 2, acceleration: {} } } });\n  assert.match(compared, /Live comparison shows no clear deterioration/);\n});\n\ntest("live alert reports improving temporal conditions", () => {\n  const text = buildLiveRiskAlert({ mint: "ABC123", symbol: "TEST", assessment: { answers: { urgency: { score: 0.57 } } }, state: { temporal: { sampleCount: 2, acceleration: { liquidity: "improving", price: "improving", sellers: "decreasing" } } } });\n  assert.match(text, /Liquidity improving/);\n  assert.match(text, /Price recovering/);\n  assert.match(text, /Seller count decreasing/);\n});\n
+
+test("live alert distinguishes missing temporal baseline from a completed comparison", () => {
+  const baseline = buildLiveRiskAlert({ mint: "ABC123", symbol: "TEST", assessment: { answers: { urgency: { score: 0.57 } } } });
+  assert.match(baseline, /Urgency 0\.57 🔵/);
+  assert.match(baseline, /Collecting live comparison data/);
+  assert.doesNotMatch(baseline, /No material change detected/);
+
+  const compared = buildLiveRiskAlert({ mint: "ABC123", symbol: "TEST", assessment: { answers: { urgency: { score: 0.57 } } }, state: { temporal: { sampleCount: 2, acceleration: {} } } });
+  assert.match(compared, /Live comparison shows no clear deterioration/);
+});
+
+test("live alert reports improving temporal conditions", () => {
+  const text = buildLiveRiskAlert({ mint: "ABC123", symbol: "TEST", assessment: { answers: { urgency: { score: 0.57 } } }, state: { temporal: { sampleCount: 2, acceleration: { liquidity: "improving", price: "improving", sellers: "decreasing" } } } });
+  assert.match(text, /Liquidity improving/);
+  assert.match(text, /Price recovering/);
+  assert.match(text, /Seller count decreasing/);
+});
