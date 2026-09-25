@@ -72,21 +72,20 @@ function parseTokenBalanceFlow(tx, mint, signatureInfo) {
   if (!meta || !message) return [];
   const pre = new Map((meta.preTokenBalances ?? []).filter((x) => x.mint === mint).map((x) => [
     x.accountIndex,
-    Number(x.uiTokenAmount?.uiAmount ?? 0)
+    { amount: Number(x.uiTokenAmount?.uiAmount ?? 0), owner: x.owner ?? null }
   ]));
   const post = new Map((meta.postTokenBalances ?? []).filter((x) => x.mint === mint).map((x) => [
     x.accountIndex,
-    Number(x.uiTokenAmount?.uiAmount ?? 0)
+    { amount: Number(x.uiTokenAmount?.uiAmount ?? 0), owner: x.owner ?? null }
   ]));
   const keys = message.accountKeys ?? [];
   const events = [];
   for (const index of new Set([...pre.keys(), ...post.keys()])) {
-    const before = pre.get(index) ?? 0;
-    const after = post.get(index) ?? 0;
+    const before = pre.get(index)?.amount ?? 0;
+    const after = post.get(index)?.amount ?? 0;
     const delta = after - before;
     if (!Number.isFinite(delta) || delta === 0) continue;
-    const key = keys[index];
-    const owner = key?.pubkey ?? key;
+    const owner = post.get(index)?.owner ?? pre.get(index)?.owner ?? null;
     events.push({
       observedAt: tx.blockTime ? new Date(tx.blockTime * 1000).toISOString() : new Date().toISOString(),
       timestamp: tx.blockTime ? new Date(tx.blockTime * 1000).toISOString() : new Date().toISOString(),
