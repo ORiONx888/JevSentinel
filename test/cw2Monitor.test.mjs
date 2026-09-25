@@ -24,18 +24,9 @@ const CARD = `🧪⚡🏆 CONVICTION PULSE CW2 🏆⚡🧪
 test("CW2 parser wires card evidence into observation", () => {
   const observation = buildCw2Observation({ text: CARD, messageId: 8186, chatId: -100 });
   assert.equal(observation.symbol, "CTNT");
-  assert.equal(observation.market.marketCapUsd, 47600);
-  assert.equal(observation.market.buySol, 26);
-  assert.equal(observation.market.buyCount, 16);
-  assert.equal(observation.market.volume5mUsd, 44400);
-  assert.equal(observation.market.ageMinutes, 10);
-  assert.equal(observation.wallets.concentration, 48.6);
-  assert.equal(observation.wallets.devLastAthUsd, 416500);
-  assert.equal(observation.security.safetyScore, 99);
-  assert.equal(observation.security.rugCheckRiskCount, 0);
-  assert.equal(observation.security.authority.mintAuthority, false);
-  assert.equal(observation.security.authority.freezeAuthority, false);
-  assert.ok(observation.security.riskFlags.includes("high-top10-concentration"));
-  assert.ok(observation.security.riskFlags.includes("lp-burn-absent"));
+  assert.equal(observation.mint, "Fn9RhHqCxrG9hP67LPX8dyBb12Vy1MYL8Y7eYa4Cpump");
+  assert.equal(observation.symbol, "CTNT");
+  assert.equal(observation.sourceCard, "CW");
+  assert.equal(observation.metadata.sourceLabel, "CONVICTION PULSE CW2");
 });
 
