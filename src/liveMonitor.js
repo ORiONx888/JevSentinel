@@ -1,13 +1,8 @@
-import { buildTemporalState } from "./temporal.js";
-
 export function createLiveMonitor({
   intervalMs = 30_000,
   maxSnapshots = 12,
-  onAssessment,
   logger = null
 } = {}) {
-  if (typeof onAssessment !== "function") throw new TypeError("onAssessment is required");
-
   const jobs = new Map();
 
   function start({ mint, run, onAssessment, initialState = null }) {
@@ -30,7 +25,14 @@ export function createLiveMonitor({
         if (result?.state) {
           job.snapshots = [...job.snapshots, result.state].slice(-maxSnapshots);
         }
-        if (result && typeof onAssessment === "function") await onAssessment(result, job.snapshots);
+        if (result && typeof onAssessment === "function") {
+          await onAssessment(result, job.snapshots);
+        }
+        if (job.snapshots.length >= maxSnapshots) {
+          job.stopped = true;
+          jobs.delete(mint);
+          return;
+        }
       } catch (error) {
         logger?.error?.("[jevsentinel-live] monitoring tick failed");
       } finally {
@@ -39,7 +41,7 @@ export function createLiveMonitor({
       }
     };
 
-    void tick();
+    job.timer = setTimeout(tick, intervalMs);
     return { stop: () => stop(mint) };
   }
 
@@ -57,30 +59,4 @@ export function createLiveMonitor({
   }
 
   return { start, stop, stopAll, size: () => jobs.size };
-}
-
-export function buildLiveSnapshot(state) {
-  const intelligence = state?.intelligence ?? [];
-  const fields = Object.fromEntries(
-    intelligence.flatMap((item) => Object.entries(item.fields ?? {}))
-  );
-  const market = fields.marketDynamics ?? {};
-  const liquidity = fields.liquidityStructure ?? {};
-  const wallet = fields.walletBehaviour ?? {};
-  const flow = fields.flowDynamics ?? {};
-
-  return {
-    observedAt: new Date().toISOString(),
-    price: number(fields.priceUsd),
-    liquidity: number(fields.liquidityUsd ?? liquidity.usd),
-    volume: number(fields.volume5mUsd),
-    sellUsd: number(fields.sellUsd ?? flow.sellUsd),
-    buyUsd: number(fields.buyUsd ?? flow.buyUsd),
-    sellerCount: number(fields.sellerCount ?? wallet.uniqueSellers)
-  };
-}
-
-function number(value) {
-  const n = Number(value);
-  return Number.isFinite(n) ? n : null;
 }
