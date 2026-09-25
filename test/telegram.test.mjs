@@ -55,7 +55,9 @@ test("bot handles start, status and test without a real Telegram call", async ()
   await bot.handleUpdate({ update_id: 1, message: { message_id: 10, chat: { id: 7 }, text: "/start" } });
   await bot.handleUpdate({ update_id: 2, message: { message_id: 11, chat: { id: 7 }, text: "/jevstatus" } });
   await bot.handleUpdate({ update_id: 3, message: { message_id: 12, chat: { id: 7 }, text: "/jevtest" } });
-  assert.equal(calls.length, 3);
+  await bot.handleUpdate({ update_id: 4, message: { message_id: 13, chat: { id: -7, type: "supergroup" }, text: "/jevtest" } });
+  assert.equal(calls.length, 4);
   assert.equal(calls[2].method, "sendMessage");
   assert.equal(calls[2].params.reply_to_message_id, 12);
+  assert.equal(calls[3].params.reply_to_message_id, 13);
 });
