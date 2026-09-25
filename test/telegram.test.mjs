@@ -115,6 +115,32 @@ test("live risk alert is compact, token-first, and preserves token links", () =>
   assert.match(text, /pump\.fun/);
 });
 
+test("live alert uses temporal acceleration for changing market context", () => {
+  const text = buildLiveRiskAlert({
+    mint: "ABC123",
+    symbol: "PAIRPAD",
+    assessment: {
+      answers: {
+        urgency: { score: 0.69, choice: "monitor" },
+      },
+    },
+    state: {
+      temporal: {
+        acceleration: {
+          selling: "increasing",
+          liquidity: "deteriorating",
+          price: "deteriorating",
+          sellers: "increasing",
+        },
+      },
+    },
+  });
+  assert.match(text, /Seller activity accelerating/);
+  assert.match(text, /Liquidity deterioration increasing/);
+  assert.match(text, /Price deterioration accelerating/);
+  assert.doesNotMatch(text, /No material change detected/);
+});
+
 test("urgency dot follows the qualitative JEV urgency level", () => {
   const levels = [
     ["monitor", "🟢"],
