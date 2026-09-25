@@ -108,7 +108,7 @@ test("live risk alert is compact, token-first, and preserves token links", () =>
     sourceMessageId: 42,
   });
   assert.match(text, /\$PUPPY: Urgency 1\.84 🔴/);
-  assert.match(text, /Coordinated selling detected/);
+  assert.match(text, /Coordinated seller activity detected/);
   assert.match(text, /Distribution pattern developing/);
   assert.doesNotMatch(text, /Live CA-derived reassessment/);
   assert.match(text, /gmgn\.ai/);
@@ -126,6 +126,17 @@ test("live alert uses temporal acceleration for changing market context", () => 
     },
     state: {
       temporal: {
+        latest: {
+          sellCount5m: 27,
+          priceChange5mPct: -4.2,
+        },
+        previous: {
+          sellCount5m: 12,
+          priceChange5mPct: -1.1,
+        },
+        deltas: {
+          sellCount5m: 15,
+        },
         acceleration: {
           selling: "increasing",
           liquidity: "deteriorating",
@@ -135,9 +146,9 @@ test("live alert uses temporal acceleration for changing market context", () => 
       },
     },
   });
-  assert.match(text, /Seller activity accelerating/);
-  assert.match(text, /Liquidity deterioration increasing/);
-  assert.match(text, /Price deterioration accelerating/);
+  assert.match(text, /Sells\/5m 12 → 27 \(\+15\)/);
+  assert.match(text, /📉 5m price -4\.2%/);
+  assert.match(text, /Liquidity deterioration increasing|💧 Liquidity declining/);
   assert.doesNotMatch(text, /No material change detected/);
 });
 
@@ -185,8 +196,32 @@ test("live alert distinguishes missing temporal baseline from a completed compar
 });
 
 test("live alert reports improving temporal conditions", () => {
-  const text = buildLiveRiskAlert({ mint: "ABC123", symbol: "TEST", assessment: { answers: { urgency: { score: 0.57 } } }, state: { temporal: { sampleCount: 2, acceleration: { liquidity: "improving", price: "improving", sellers: "decreasing" } } } });
-  assert.match(text, /Liquidity improving/);
-  assert.match(text, /Price recovering/);
-  assert.match(text, /Seller count decreasing/);
+  const text = buildLiveRiskAlert({
+    mint: "ABC123",
+    symbol: "TEST",
+    assessment: { answers: { urgency: { score: 0.57 } } },
+    state: {
+      temporal: {
+        sampleCount: 2,
+        latest: {
+          priceChange5mPct: 2.3,
+          uniqueSellers: 4,
+        },
+        previous: {
+          uniqueSellers: 7,
+        },
+        deltas: {
+          uniqueSellers: -3,
+        },
+        acceleration: {
+          liquidity: "improving",
+          price: "improving",
+          sellers: "decreasing",
+        },
+      },
+    },
+  });
+  assert.match(text, /💧 Liquidity improving/);
+  assert.match(text, /📉 5m price \+2\.3%/);
+  assert.match(text, /👥 Sellers easing 7 → 4 \(-3\)/);
 });
