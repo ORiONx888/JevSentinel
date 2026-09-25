@@ -5,7 +5,7 @@ const PROVIDER_FIELDS = Object.freeze([
   "honeypot", "burst", "transferCount", "totalAmount",
   "uniqueSenders", "uniqueReceivers", "watchedMatches", "windowMs", "direction",
   "priceVelocity", "liquidityVelocity", "volumeVelocity", "sellUsd", "buyUsd", "sellerCount",
-  "signalCount"
+  "signalCount",\n  "marketCapUsd", "priceUsd", "priceChange5mPct", "priceChange1hPct", "volume5mUsd", "volume1hUsd",\n  "buyCount5m", "sellCount5m", "buySellRatio5m", "liquidityUsd", "pairAgeHours", "pairAddress", "dex", "source"
 ]);
 
 export function normalizeIntelligence(provider, raw = {}) {

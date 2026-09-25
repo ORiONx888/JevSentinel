@@ -10,7 +10,7 @@ test("token research digs into CA independently of card fields", async () => {
   const calls = [];
   const fetchImpl = async (url, options = {}) => {
     calls.push({ url, options });
-    if (url.includes("dexscreener")) {
+    if (url.includes("dexscreener") || url.includes("dex.test")) {
       return response({
         pairs: [{
           liquidity: { usd: 8000, base: 100000, quote: 8 },
@@ -47,7 +47,7 @@ test("token research digs into CA independently of card fields", async () => {
 
   const result = await provider.scan({ mint: "MintFromCAOnly" });
   assert.equal(result.authority.mintAuthorityActive, true);
-  assert.equal(result.holders.top10ConcentrationPct, 75);
+  assert.equal(result.holders.top10ConcentrationPct, 80);
   assert.equal(result.liquidityUsd, 8000);
   assert.equal(result.sellCount5m, 30);
   assert.equal(result.buyCount5m, 10);

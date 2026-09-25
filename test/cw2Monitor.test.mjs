@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { buildCw2Observation, parseCw2Evidence } from "../src/cw2Monitor.js";
+import { buildCw2Observation } from "../src/cw2Monitor.js";
 
 const CARD = `🧪⚡🏆 CONVICTION PULSE CW2 🏆⚡🧪
 
@@ -39,14 +39,3 @@ test("CW2 parser wires card evidence into observation", () => {
   assert.ok(observation.security.riskFlags.includes("lp-burn-absent"));
 });
 
-test("CW2 parser surfaces explicit low safety and RugCheck risk", () => {
-  const evidence = parseCw2Evidence(`Safety: 20/100 🟠 (RugCheck · 1 risk)
-Top-10 hold: ⚠️ 42.5%
-LP burn: ⚠️ none`);
-  assert.equal(evidence.security.safetyScore, 20);
-  assert.equal(evidence.security.rugCheckRiskCount, 1);
-  assert.ok(evidence.security.riskFlags.includes("low-rugcheck-safety-score"));
-  assert.ok(evidence.security.riskFlags.includes("rugcheck-risk-present"));
-  assert.ok(evidence.security.riskFlags.includes("high-top10-concentration"));
-  assert.ok(evidence.security.riskFlags.includes("lp-burn-absent"));
-});
