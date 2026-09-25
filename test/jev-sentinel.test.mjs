@@ -62,3 +62,32 @@ test("outcome telemetry can be updated after the original assessment", () => {
   const updated = telemetry.updateOutcome(id, { priceAt5m: 0.5, rugObserved: true });
   assert.equal(updated.outcome.rugObserved, true);
 });
+
+
+test("live history preserves normalized temporal market and flow snapshots", async () => {
+  const provider = new IntelligenceProvider("external-market", async () => ({
+    priceUsd: 1,
+    liquidityUsd: 1000,
+    volume5mUsd: 5000,
+    priceChange5mPct: -2.5,
+    buyCount5m: 40,
+    sellCount5m: 12,
+    buySellRatio5m: 0.77,
+    uniqueSellers: 6,
+    uniqueBuyers: 11
+  }));
+  const telemetry = new MemoryTelemetry();
+  const evaluator = { evaluate: async (state) => ({ answers: { ok: true }, state }) };
+  const engine = createJevSentinel({ providers: [provider], evaluator, telemetry });
+  const first = await engine.assess(createObservation({ mint: "mint-live", sourceCard: "CW2" }));
+  assert.equal(first.state.temporal.latest.sellCount5m, 12);
+
+  const second = await engine.assess(
+    createObservation({ mint: "mint-live", sourceCard: "CW2" }),
+    [first.state]
+  );
+  assert.equal(second.state.temporal.sampleCount, 2);
+  assert.equal(second.state.temporal.previous.sellCount5m, 12);
+  assert.equal(second.state.temporal.latest.sellCount5m, 12);
+  assert.equal(second.state.temporal.latest.uniqueSellers, 6);
+});
