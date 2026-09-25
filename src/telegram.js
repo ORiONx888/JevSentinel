@@ -213,6 +213,18 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
     const chatId = String(message.chat.id);
     const textValue = message.text?.trim() ?? "";
     const existing = groups.get(chatId);
+    logger.log?.(
+      "[jevsentinel-telegram] group message received",
+      JSON.stringify({
+        chatId,
+        messageId: Number(message.message_id ?? 0),
+        configured: Boolean(existing),
+        enabled: existing ? existing.enabled !== false : false,
+        hasText: Boolean(textValue),
+        isCw2: isLikelyCard(textValue),
+        textLength: textValue.length,
+      }),
+    );
 
     if (!existing && looksLikeApiKey(textValue) && !isLikelyCard(textValue)) {
       // Delete before validation so the credential is not left visible in the group.
@@ -225,14 +237,44 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
       return;
     }
 
-    if (!existing || !textValue || existing.enabled === false) return;
+    if (!existing || !textValue || existing.enabled === false) {
+      logger.log?.(
+        "[jevsentinel-telegram] group message ignored",
+        JSON.stringify({
+          chatId,
+          messageId: Number(message.message_id ?? 0),
+          reason: !existing ? "not_configured" : !textValue ? "no_text" : "monitoring_off",
+        }),
+      );
+      return;
+    }
 
     const observation = buildCw2Observation({
       text: textValue,
       messageId: message.message_id,
       chatId: message.chat.id,
     });
-    if (!observation) return;
+    if (!observation) {
+      logger.log?.(
+        "[jevsentinel-telegram] non-CW2 group message ignored",
+        JSON.stringify({
+          chatId,
+          messageId: Number(message.message_id ?? 0),
+          isCw2: isLikelyCard(textValue),
+        }),
+      );
+      return;
+    }
+
+    logger.log?.(
+      "[jevsentinel-telegram] CW2 detected",
+      JSON.stringify({
+        chatId,
+        messageId: Number(message.message_id ?? 0),
+        mintExtracted: Boolean(observation.mint),
+        symbol: observation.symbol,
+      }),
+    );
 
     const runtime = existing.runtime;
     const key = `${chatId}:${message.message_id}`;
@@ -240,10 +282,19 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
     processed.add(key);
 
     try {
+      logger.log?.("[jevsentinel-telegram] CW2 JEV assessment starting", JSON.stringify({
+        chatId,
+        messageId: Number(message.message_id ?? 0),
+      }));
       const history = runtime.history.get(observation.mint) ?? [];
       const result = await runtime.sentinel.assess(observation, history);
       runtime.history.set(observation.mint, [...history, result.state].slice(-5));
       const summary = answerSummary(result.assessment);
+      logger.log?.("[jevsentinel-telegram] CW2 JEV assessment finished", JSON.stringify({
+        chatId,
+        messageId: Number(message.message_id ?? 0),
+        escalation: result.assessment?.answers?.escalation?.noul === true,
+      }));
       await sendMessage(message.chat.id, buildRiskAlert({
         mint: observation.mint,
         symbol: observation.symbol,
@@ -362,6 +413,14 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
 
   async function pollOnce() {
     const updates = await call("getUpdates", { offset, timeout: 25, allowed_updates: ["message"] }, { token, timeoutMs: 35_000 });
+    if (updates.length) {
+      logger.log?.("[jevsentinel-telegram] updates received", JSON.stringify({
+        count: updates.length,
+        firstUpdateId: Number(updates[0]?.update_id ?? 0),
+        lastUpdateId: Number(updates[updates.length - 1]?.update_id ?? 0),
+      }));
+    }
+
     for (const update of updates) {
       offset = Math.max(offset, Number(update.update_id) + 1);
       try { await handleUpdate(update); } catch (error) { logger.error?.("[jevsentinel-telegram]", error.message); }
