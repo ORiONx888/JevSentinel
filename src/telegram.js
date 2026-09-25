@@ -263,7 +263,7 @@ export function buildLiveRiskAlert({
   const urgency = urgencyInfo(assessment);
   const context = liveContext(assessment, state);
   const lines = [
-    `<b>${escapeHtml(symbol)}: Urgency ${escapeHtml(urgency.label)} ${urgency.dot}</b>`,
+    "<b>$" + escapeHtml(symbol) + ": Urgency " + escapeHtml(urgency.label) + " " + urgency.dot + "</b>",
     "",
     ...context.map((line) => escapeHtml(line)),
     "",
