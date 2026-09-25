@@ -327,6 +327,18 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
         await sendMessage(chatId, buildHelpMessage());
         return;
       }
+      if (textValue === "/jevtest" || textValue.startsWith("/jevtest@")) {
+        await sendMessage(chatId, buildRiskAlert({
+          mint: "TEST_MINT_NOT_A_REAL_SIGNAL",
+          symbol: "TEST",
+          sourceCard: "TEST",
+          classification: "TEST ALERT — JEVSENTINEL ACTIVE",
+          summary: "This is a delivery test. No trading action is being requested.",
+          signals: ["Test notification delivered", "No live token assessment"],
+          sourceMessageId: message.message_id,
+        }), { reply_to_message_id: message.message_id });
+        return;
+      }
       await handleGroupMessage(message);
       return;
     }
