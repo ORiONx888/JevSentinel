@@ -10,14 +10,14 @@ export function createLiveMonitor({
 
   const jobs = new Map();
 
-  function start({ mint, run, onAssessment }) {
+  function start({ mint, run, onAssessment, initialState = null }) {
     if (!mint || typeof run !== "function") throw new TypeError("mint and run are required");
     stop(mint);
 
     const job = {
       stopped: false,
       timer: null,
-      snapshots: [],
+      snapshots: initialState ? [initialState] : [],
       running: false
     };
     jobs.set(mint, job);
