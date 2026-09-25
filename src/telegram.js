@@ -92,9 +92,9 @@ export function buildStartMessage({ group = false } = {}) {
     "Real-time token risk monitoring is ready.",
     "",
     "<b>Commands</b>",
-    "/jevstatus — bot and JEV status
-/jevon — turn CW2 monitoring on
-/jevoff — turn CW2 monitoring off",
+    "/jevstatus — bot and JEV status",
+    "/jevon — turn CW2 monitoring on",
+    "/jevoff — turn CW2 monitoring off",
     "/jevtest — send a safe test risk alert",
     "/jevhelp — show help",
     "",
