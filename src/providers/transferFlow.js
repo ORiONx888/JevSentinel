@@ -1,49 +1,64 @@
 import { IntelligenceProvider } from "../intelligence.js";
 
-const DEFAULT_RPC = "https://api.mainnet-beta.solana.com";\nconst cache = new Map();\nlet activeScans = 0;
+const DEFAULT_RPC = "https://api.mainnet-beta.solana.com";
+const cache = new Map();
+let activeScans = 0;
 
 export function createTransferFlowProvider({
   fetchImpl = globalThis.fetch,
   rpcUrl = process.env.SOLANA_RPC_URL ?? DEFAULT_RPC,
   windowMs = 300_000,
   signatureLimit = 40,
-  timeoutMs = 2500
+  timeoutMs = 2500,
+  cacheMs = 10_000,
+  maxConcurrent = 2
 } = {}) {
   if (typeof fetchImpl !== "function") throw new TypeError("fetch is required");
 
   return new IntelligenceProvider("transfer-flow", async (observation) => {
     const mint = observation.mint;
-    const now = Date.parse(observation.observedAt || new Date().toISOString());
-    const events = Array.isArray(observation.transfers?.events) ? observation.transfers.events : [];
-    const chainEvents = await fetchRecentTokenTransfers(mint, fetchImpl, rpcUrl, signatureLimit, timeoutMs);
-    const merged = [...events, ...chainEvents];
+    const cached = cache.get(mint);
+    if (cached && Date.now() - cached.at < cacheMs) return cached.value;
 
-    const recent = merged.filter((event) => {
-      const at = Date.parse(event.observedAt ?? event.timestamp ?? "");
-      return Number.isFinite(at) && now - at >= 0 && now - at <= windowMs;
-    });
+    while (activeScans >= maxConcurrent) await sleep(50);
+    activeScans += 1;
+    try {
+      const now = Date.parse(observation.observedAt || new Date().toISOString());
+      const events = Array.isArray(observation.transfers?.events) ? observation.transfers.events : [];
+      const chainEvents = await fetchRecentTokenTransfers(mint, fetchImpl, rpcUrl, signatureLimit, timeoutMs);
+      const merged = [...events, ...chainEvents];
 
-    const result = {\n      burst: recent.length >= 3,((e) => e.direction === "out" || e.type === "sell").map((e) => e.owner || e.sender).filter(Boolean));
-    const buyers = new Set(recent.filter((e) => e.direction === "in" || e.type === "buy").map((e) => e.owner || e.receiver).filter(Boolean));
-    const watched = new Set(observation.wallets?.watched ?? []);
-    const watchedMatches = recent.filter((e) => watched.has(e.owner) || watched.has(e.sender) || watched.has(e.receiver)).length;
-    const sellerCounts = countBy(recent.filter((e) => e.direction === "out" || e.type === "sell").map((e) => e.owner || e.sender).filter(Boolean));
+      const recent = merged.filter((event) => {
+        const at = Date.parse(event.observedAt ?? event.timestamp ?? "");
+        return Number.isFinite(at) && now - at >= 0 && now - at <= windowMs;
+      });
 
-    return {
-      burst: recent.length >= 3,
-      transferCount: recent.length,
-      totalAmount: recent.reduce((sum, e) => sum + finite(e.amount), 0),
-      uniqueSenders: new Set(recent.map((e) => e.sender).filter(Boolean)).size,
-      uniqueReceivers: new Set(recent.map((e) => e.receiver).filter(Boolean)).size,
-      uniqueSellers: sellers.size,
-      uniqueBuyers: buyers.size,
-      watchedMatches,
-      windowMs,
-      direction: classifyDirection(recent, watched),
-      sellerAcceleration: sellerCounts.size ? Math.max(...sellerCounts.values()) : 0,
-      coordinatedSellers: [...sellerCounts.values()].filter((count) => count >= 2).length,
-      events: recent.slice(-50)
-    };
+      const sellers = new Set(recent.filter((e) => e.direction === "out" || e.type === "sell").map((e) => e.owner || e.sender).filter(Boolean));
+      const buyers = new Set(recent.filter((e) => e.direction === "in" || e.type === "buy").map((e) => e.owner || e.receiver).filter(Boolean));
+      const watched = new Set(observation.wallets?.watched ?? []);
+      const watchedMatches = recent.filter((e) => watched.has(e.owner) || watched.has(e.sender) || watched.has(e.receiver)).length;
+      const sellerCounts = countBy(recent.filter((e) => e.direction === "out" || e.type === "sell").map((e) => e.owner || e.sender).filter(Boolean));
+
+      const result = {
+        burst: recent.length >= 3,
+        transferCount: recent.length,
+        totalAmount: recent.reduce((sum, e) => sum + finite(e.amount), 0),
+        uniqueSenders: new Set(recent.map((e) => e.sender).filter(Boolean)).size,
+        uniqueReceivers: new Set(recent.map((e) => e.receiver).filter(Boolean)).size,
+        uniqueSellers: sellers.size,
+        uniqueBuyers: buyers.size,
+        watchedMatches,
+        windowMs,
+        direction: classifyDirection(recent, watched),
+        sellerAcceleration: sellerCounts.size ? Math.max(...sellerCounts.values()) : 0,
+        coordinatedSellers: [...sellerCounts.values()].filter((count) => count >= 2).length,
+        events: recent.slice(-50)
+      };
+      cache.set(mint, { at: Date.now(), value: result });
+      return result;
+    } finally {
+      activeScans -= 1;
+    }
   });
 }
 
@@ -70,6 +85,7 @@ function parseTokenBalanceFlow(tx, mint, signatureInfo) {
   const meta = tx?.meta;
   const message = tx?.transaction?.message;
   if (!meta || !message) return [];
+
   const pre = new Map((meta.preTokenBalances ?? []).filter((x) => x.mint === mint).map((x) => [
     x.accountIndex,
     { amount: Number(x.uiTokenAmount?.uiAmount ?? 0), owner: x.owner ?? null }
@@ -78,7 +94,7 @@ function parseTokenBalanceFlow(tx, mint, signatureInfo) {
     x.accountIndex,
     { amount: Number(x.uiTokenAmount?.uiAmount ?? 0), owner: x.owner ?? null }
   ]));
-  const keys = message.accountKeys ?? [];
+
   const events = [];
   for (const index of new Set([...pre.keys(), ...post.keys()])) {
     const before = pre.get(index)?.amount ?? 0;
@@ -86,9 +102,10 @@ function parseTokenBalanceFlow(tx, mint, signatureInfo) {
     const delta = after - before;
     if (!Number.isFinite(delta) || delta === 0) continue;
     const owner = post.get(index)?.owner ?? pre.get(index)?.owner ?? null;
+    const timestamp = tx.blockTime ? new Date(tx.blockTime * 1000).toISOString() : new Date().toISOString();
     events.push({
-      observedAt: tx.blockTime ? new Date(tx.blockTime * 1000).toISOString() : new Date().toISOString(),
-      timestamp: tx.blockTime ? new Date(tx.blockTime * 1000).toISOString() : new Date().toISOString(),
+      observedAt: timestamp,
+      timestamp,
       signature: signatureInfo.signature,
       owner: typeof owner === "string" ? owner : null,
       amount: Math.abs(delta),
@@ -135,4 +152,8 @@ function classifyDirection(events, watched) {
 function finite(value) {
   const n = Number(value);
   return Number.isFinite(n) ? n : 0;
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
