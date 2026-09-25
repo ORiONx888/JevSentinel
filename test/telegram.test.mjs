@@ -63,3 +63,24 @@ test("bot handles start, status and test without a real Telegram call", async ()
   assert.equal(calls[2].params.reply_to_message_id, 12);
   assert.equal(calls[3].params.reply_to_message_id, 13);
 });
+
+
+test("startup reports Telegram bot-to-bot readiness", async () => {
+  const logs = [];
+  const call = async (method) => {
+    if (method === "getMe") return { id: 123, is_bot: true, username: "JevSentinelBot", can_read_all_group_messages: false, can_join_groups: true };
+    if (method === "getWebhookInfo") return { url: "" };
+    if (method === "getUpdates") return [];
+    return { message_id: 99 };
+  };
+  let bot;
+  bot = createTelegramBot({
+    token: "test-token",
+    pollIntervalMs: 0,
+    call,
+    logger: { log: (message) => { logs.push(message); if (message === "[jevsentinel-telegram] connected") bot.stop(); }, error: () => {} },
+  });
+  await bot.start();
+  assert.ok(logs.includes("[jevsentinel-telegram] Telegram bot capabilities"));
+  assert.ok(logs.includes("[jevsentinel-telegram] bot-to-bot prerequisite: enable Bot-to-Bot Communication Mode in @BotFather and ensure JevSentinel can receive group messages (admin or privacy mode disabled)"));
+});
