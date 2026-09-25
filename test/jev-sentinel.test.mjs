@@ -31,7 +31,7 @@ test("normalizes external intelligence into provider-neutral fields", async () =
   assert.equal(result.intelligence["external-behavior"].fields.score, 91);
   assert.equal(result.intelligence["external-behavior"].fields.behavior, 25);
   assert.equal(result.state.intelligence[0].fields.behavior, 25);
-  assert.equal(result.state.intelligence[0].provider, undefined);
+  assert.equal(result.state.intelligence[0].provider, "external-behavior");
   assert.equal(telemetry.all().length, 1);
 });
 
@@ -45,7 +45,7 @@ test("provider failure does not stop JEV evaluation", async () => {
   assert.equal(result.assessment.answers.escalation, "unknown");
 });
 
-test("temporal engine measures change rather than fixed thresholds", () => {
+test("temporal engine measures nested state change from real history", () => {
   const state = buildTemporalState([
     { observedAt: "2026-01-01T00:00:00Z", price: 10, liquidity: 100, sellUsd: 10, sellerCount: 1 },
     { observedAt: "2026-01-01T00:01:00Z", price: 8, liquidity: 80, sellUsd: 30, sellerCount: 4 }
