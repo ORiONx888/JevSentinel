@@ -59,9 +59,7 @@ export function buildEvidenceState(intelligence = {}, temporal = {}, history = [
       ...(research.temporalIntelligence ?? {}),
       ...temporal
     },
-    historicalIntelligence: research.historicalIntelligence ?? {
-      sampleCount: temporal.sampleCount ?? 0
-    }
+    historicalIntelligence: research.historicalIntelligence ?? buildHistoricalIntelligence(history, temporal)
   };
 
   evidence.alternativeExplanation = buildAlternativeExplanationEvidence(evidence, history);
@@ -81,6 +79,14 @@ export function buildEvidenceState(intelligence = {}, temporal = {}, history = [
   };
 
   return evidence;
+}
+
+function buildHistoricalIntelligence(history, temporal = {}) {
+  const items = Array.isArray(history) ? history : [];
+  const assessments = items.map((item) => item?.verdict ?? item?.state?.verdict ?? item?.assessment).filter(Boolean);
+  const priorEscalations = assessments.filter((assessment) => assessment?.answers?.escalation?.noul === true).length;
+  const priorDominantRisks = assessments.map((assessment) => assessment?.answers?.dominantRisk?.choice).filter(Boolean);
+  return { sampleCount: temporal.sampleCount ?? items.length, priorAssessments: assessments.length, priorEscalations, priorDominantRisks };
 }
 
 function buildAlternativeExplanationEvidence(evidence, history) {
