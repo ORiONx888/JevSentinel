@@ -35,6 +35,8 @@ test("setup/status/help messages are available", () => {
   assert.match(buildStartMessage(), /JevSentinel/);
   assert.match(buildStatusMessage(), /JevSentinel Status/);
   assert.match(buildHelpMessage(), /JevSentinel Help/);
+  assert.match(buildHelpMessage(), /\/jevon/);
+  assert.match(buildHelpMessage(), /\/jevoff/);
 });
 
 test("bot handles start, status and test without a real Telegram call", async () => {
