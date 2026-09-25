@@ -19,7 +19,7 @@ export function createJevSentinel({ providers = [], evaluator, telemetry, logger
       state.temporal = temporal;
       state.evidence = evidence;
 
-      logger?.log?.("[jevsentinel] decision input", JSON.stringify(buildDecisionInputSummary(state, intelligence)));
+      logger?.log?.("[jevsentinel] temporal state", JSON.stringify({\n        priorSnapshotCount: priorSnapshots.length,\n        currentSnapshot,\n        sampleCount: temporal.sampleCount,\n        deltas: temporal.deltas,\n        acceleration: temporal.acceleration\n      }));\n      logger?.log?.("[jevsentinel] decision input", JSON.stringify(buildDecisionInputSummary(state, intelligence)));
       const assessment = await evaluator.evaluate(state);
       state.verdict = assessment;
       const record = createTelemetryRecord({ observation, state, intelligence, assessment });

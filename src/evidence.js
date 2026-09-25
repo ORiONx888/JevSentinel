@@ -33,7 +33,7 @@ export function buildEvidenceState(intelligence = {}, temporal = {}, history = [
     },
     creatorIntelligence: research.creatorIntelligence ?? null,
     walletBehaviour: research.walletBehaviour ?? native.wallet ?? research.wallet ?? null,
-    flowDynamics: research.flowDynamics ?? {
+    flowDynamics: {
       ...(flow ?? {}),
       ...(research.flowDynamics ?? {})
     },
