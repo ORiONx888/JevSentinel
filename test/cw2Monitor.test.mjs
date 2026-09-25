@@ -14,8 +14,8 @@ test("CW2 parser passes only trigger metadata and CA", () => {
   assert.equal(observation.mint, "Fn9RhHqCxrG9hP67LPX8dyBb12Vy1MYL8Y7eYa4Cpump");
   assert.equal(observation.sourceCard, "CW");
   assert.equal(observation.metadata.sourceLabel, "CONVICTION PULSE CW2");
-  assert.deepEqual(observation.market, {});
-  assert.deepEqual(observation.security, {});
-  assert.deepEqual(observation.wallets, {});
-  assert.deepEqual(observation.transfers, {});
+  assert.equal(observation.market, undefined);
+  assert.equal(observation.security, undefined);
+  assert.equal(observation.wallets, undefined);
+  assert.equal(observation.transfers, undefined);
 });
