@@ -162,7 +162,7 @@ function createGroupRuntime(apiKey, logger = null) {
     evaluator,
     telemetry,
   });
-  return { client, sentinel, telemetry, history: new Map(), liveMonitor: createLiveMonitor({ intervalMs: 30_000, maxSnapshots: 12, logger }) };
+  return { client, sentinel, telemetry, history: new Map(), lastDecisions: new Map(), liveMonitor: createLiveMonitor({ intervalMs: 30_000, maxSnapshots: 12, logger }) };
 }
 
 function answerSummary(assessment) {
