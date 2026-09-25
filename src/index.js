@@ -4,3 +4,4 @@ export { buildEvidenceState } from "./evidence.js";
 export { IntelligenceProvider } from "./intelligence.js";
 export { buildTemporalState } from "./temporal.js";
 export { MemoryTelemetry } from "./telemetry.js";
+export { createNativeRiskProvider, createTransferFlowProvider, createTokenResearchProvider } from "./providers/index.js";
