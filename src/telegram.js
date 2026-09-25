@@ -92,7 +92,9 @@ export function buildStartMessage({ group = false } = {}) {
     "Real-time token risk monitoring is ready.",
     "",
     "<b>Commands</b>",
-    "/jevstatus — bot and JEV status",
+    "/jevstatus — bot and JEV status
+/jevon — turn CW2 monitoring on
+/jevoff — turn CW2 monitoring off",
     "/jevtest — send a safe test risk alert",
     "/jevhelp — show help",
     "",
@@ -112,7 +114,7 @@ export function buildStatusMessage({ connected = false, mode = "LOG-ONLY", cards
 }
 
 export function buildHelpMessage() {
-  return "🛡️ <b>JevSentinel Help</b>\n\nFor the current test, add the bot to the target group. The bot watches new CONVICTION PULSE CW2 cards only after that group has been activated with a valid JEV API key.";
+  return "🛡️ <b>JevSentinel Help</b>\n\nFor the current test, add the bot to the target group and activate it with a valid JEV API key.\n\n/jevon — turn CW2 monitoring ON\n/jevoff — turn CW2 monitoring OFF\n/jevstatus — show current status";
 }
 
 function looksLikeApiKey(text) {
@@ -178,7 +180,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
     let client;
     try {
       client = await validateJevKey(apiKey);
-      groups.set(String(chatId), { apiKey, runtime: createGroupRuntime(apiKey), activatedAt: new Date().toISOString() });
+      groups.set(String(chatId), { apiKey, runtime: createGroupRuntime(apiKey), activatedAt: new Date().toISOString(), enabled: true });
     } catch {
       await sendMessage(chatId, "❌ <b>JEV key could not be verified.</b>\n\nThe key was not retained. Please send a valid key.");
       return false;
@@ -204,7 +206,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
       return;
     }
 
-    if (!existing || !textValue) return;
+    if (!existing || !textValue || existing.enabled === false) return;
 
     const observation = buildCw2Observation({
       text: textValue,
@@ -239,6 +241,33 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
     }
   }
 
+  async function isGroupAdmin(chatId, userId) {
+    try {
+      const member = await call("getChatMember", { chat_id: chatId, user_id: userId }, { token });
+      return member?.status === "creator" || member?.status === "administrator";
+    } catch (error) {
+      logger.error?.("[jevsentinel-telegram] admin check failed");
+      return false;
+    }
+  }
+
+  async function setGroupMonitoring(chatId, enabled, userId) {
+    const group = groups.get(String(chatId));
+    if (!group) {
+      await sendMessage(chatId, "⚪ <b>JEV is not configured.</b> Send a valid JEV API key first.");
+      return false;
+    }
+    if (!(await isGroupAdmin(chatId, userId))) {
+      await sendMessage(chatId, "⛔ <b>Only a group administrator can change JevSentinel monitoring.</b>");
+      return false;
+    }
+    group.enabled = enabled;
+    await sendMessage(chatId, enabled
+      ? "🟢 <b>JevSentinel monitoring ON.</b>\n\nMonitoring: <b>CONVICTION PULSE CW2 only</b>"
+      : "⚪ <b>JevSentinel monitoring OFF.</b>\n\nNo CW2 cards will be processed until /jevon is used.");
+    return true;
+  }
+
   async function handleUpdate(update) {
     const message = update?.message;
     const textValue = message?.text?.trim();
@@ -259,11 +288,20 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
         return;
       }
       if (textValue === "/jevstatus" || textValue.startsWith("/jevstatus@")) {
-        const active = groups.has(String(chatId));
+        const group = groups.get(String(chatId));
         await sendMessage(chatId, buildStatusMessage({
           connected: true,
-          cards: active ? ["CONVICTION PULSE CW2"] : [],
+          mode: group?.enabled === false ? "OFF" : "LOG-ONLY",
+          cards: group ? ["CONVICTION PULSE CW2"] : [],
         }));
+        return;
+      }
+      if (textValue === "/jevon" || textValue.startsWith("/jevon@")) {
+        await setGroupMonitoring(chatId, true, message.from?.id);
+        return;
+      }
+      if (textValue === "/jevoff" || textValue.startsWith("/jevoff@")) {
+        await setGroupMonitoring(chatId, false, message.from?.id);
         return;
       }
       if (textValue === "/jevhelp" || textValue.startsWith("/jevhelp@")) {
