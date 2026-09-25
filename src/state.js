@@ -24,8 +24,7 @@ export function buildJevState(observation, intelligence = {}) {
     wallets: o.wallets,
     transfers: o.transfers,
     security: o.security,
-    intelligence: providerViews,
-    metadata: o.metadata
+    intelligence: providerViews
   };
 }
 
@@ -33,33 +32,33 @@ export function buildDecisionQuestions() {
   return {
     escalation: {
       type: "noul",
-      prompt: "Does the independently gathered token evidence justify escalating this token from monitoring to active risk attention? Use the CA-derived security, market, holder, wallet, transfer-flow, intelligence, and temporal evidence. Do not infer safety from the source alert card."
+      prompt: "Does the independently gathered token evidence justify escalating this token from monitoring to active risk attention? The source alert card is only a trigger. Do not use its scores, safety claims, rug labels, holder percentages, dev claims, volume figures, or other card-derived evidence as evidence for this decision."
     },
     dominantRisk: {
       type: "choice",
       options: {
-        structural: "Authority, liquidity, holder concentration, sellability, or token-security conditions dominate.",
-        wallet: "Wallet concentration, relationships, rotation, or coordinated wallet behavior dominate.",
-        flow: "Abnormal transfers, selling pressure, or movement patterns dominate.",
-        market: "Price, liquidity, volume, or market-stress deterioration dominates.",
+        structural: "Token integrity, authorities, sellability, holder concentration, or liquidity structure dominate.",
+        wallet: "Creator, holder, wallet concentration, rotation, or coordinated wallet behavior dominate.",
+        flow: "Transfers, selling pressure, abnormal movement, or clustered flow dominate.",
+        market: "Price, volume, liquidity, or market-stress deterioration dominate.",
         temporal: "The speed or progression of deterioration dominates.",
         none: "No single risk mechanism clearly dominates."
       },
-      prompt: "Which single risk mechanism best explains the independently gathered token evidence? Use actual CA-derived fields and observed behavior, not source-card claims or assumptions."
+      prompt: "Which single risk mechanism best explains the independently gathered evidence? Use the normalized evidence groups only."
     },
     evidenceQuality: {
       type: "score",
       levels: ["insufficient", "limited", "usable", "strong"],
-      prompt: "How coherent, timely, and internally consistent is the independently gathered token evidence for making a risk judgment? Penalize missing, stale, or provider-failed evidence."
+      prompt: "How coherent, timely, independently gathered, and internally consistent is the evidence? Penalize missing, stale, or provider-failed evidence. Never convert missing evidence into a safety signal."
     },
     falsePositive: {
       type: "noul",
-      prompt: "Is the combined evidence more consistent with normal market activity than genuine deterioration?"
+      prompt: "Is the combined independently gathered evidence more consistent with normal market activity than genuine deterioration?"
     },
     urgency: {
       type: "score",
       levels: ["monitor", "elevated", "urgent", "immediate"],
-      prompt: "How time-sensitive is the observed risk based only on the supplied state? Give greater urgency to concrete security warnings, concentrated holdings, active authorities, abnormal flows, or rapid deterioration when present."
+      prompt: "How time-sensitive is the observed risk based only on the normalized evidence? Give greater urgency to concrete security warnings, concentrated holdings, active authorities, abnormal flows, or rapid deterioration when present."
     }
   };
 }
