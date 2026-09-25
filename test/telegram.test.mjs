@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {
   buildHelpMessage,
+  buildLiveRiskAlert,
   buildRiskAlert,
   buildStartMessage,
   buildStatusMessage,
@@ -83,4 +84,67 @@ test("startup reports Telegram bot-to-bot readiness", async () => {
   await bot.start();
   assert.ok(logs.includes("[jevsentinel-telegram] Telegram bot capabilities"));
   assert.ok(logs.includes("[jevsentinel-telegram] bot-to-bot prerequisite: enable Bot-to-Bot Communication Mode in @BotFather and ensure JevSentinel can receive group messages (admin or privacy mode disabled)"));
+});
+
+
+test("live risk alert is compact, token-first, and preserves token links", () => {
+  const text = buildLiveRiskAlert({
+    mint: "ABC123",
+    symbol: "PUPPY",
+    assessment: {
+      answers: {
+        urgency: { score: 1.84, choice: "immediate" },
+        progression: { choice: "distribution" },
+        deterioration: { value: "elevated" },
+        coordinatedBehavior: { noul: true },
+        retraceAlternative: { choice: "mixedEvidence" },
+      },
+    },
+    state: {
+      intelligence: [
+        { fields: { sellerAcceleration: "increasing", liquidityVelocity: "deteriorating" } },
+      ],
+    },
+    sourceMessageId: 42,
+  });
+  assert.match(text, /\$PUPPY: Urgency 1\.84 🔴/);
+  assert.match(text, /Coordinated selling detected/);
+  assert.match(text, /Distribution pattern developing/);
+  assert.match(text, /Seller activity accelerating/);
+  assert.doesNotMatch(text, /Live CA-derived reassessment/);
+  assert.match(text, /gmgn\.ai/);
+  assert.match(text, /pump\.fun/);
+});
+
+test("urgency dot follows the qualitative JEV urgency level", () => {
+  const levels = [
+    ["monitor", "🟢"],
+    ["elevated", "🟡"],
+    ["urgent", "🟠"],
+    ["immediate", "🔴"],
+  ];
+  for (const [level, dot] of levels) {
+    const text = buildLiveRiskAlert({
+      mint: "ABC123",
+      symbol: "TEST",
+      assessment: { answers: { urgency: { score: 0.5, choice: level } } },
+    });
+    assert.match(text, new RegExp(dot));
+  }
+});
+
+test("live alert falls back to a short monitoring line when evidence is unchanged", () => {
+  const text = buildLiveRiskAlert({
+    mint: "ABC123",
+    symbol: "TEST",
+    assessment: {
+      answers: {
+        urgency: { score: 0.75, choice: "monitor" },
+        evidenceQuality: { choice: "strong" },
+      },
+    },
+  });
+  assert.match(text, /\$TEST: Urgency 0\.75 🟢/);
+  assert.match(text, /Risk picture remains stable/);
+  assert.ok(text.split("\\n").length <= 8);
 });
