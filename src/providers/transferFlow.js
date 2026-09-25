@@ -1,6 +1,6 @@
 import { IntelligenceProvider } from "../intelligence.js";
 
-const DEFAULT_RPC = "https://api.mainnet-beta.solana.com";
+const DEFAULT_RPC = "https://api.mainnet-beta.solana.com";\nconst cache = new Map();\nlet activeScans = 0;
 
 export function createTransferFlowProvider({
   fetchImpl = globalThis.fetch,
@@ -23,7 +23,7 @@ export function createTransferFlowProvider({
       return Number.isFinite(at) && now - at >= 0 && now - at <= windowMs;
     });
 
-    const sellers = new Set(recent.filter((e) => e.direction === "out" || e.type === "sell").map((e) => e.owner || e.sender).filter(Boolean));
+    const result = {\n      burst: recent.length >= 3,((e) => e.direction === "out" || e.type === "sell").map((e) => e.owner || e.sender).filter(Boolean));
     const buyers = new Set(recent.filter((e) => e.direction === "in" || e.type === "buy").map((e) => e.owner || e.receiver).filter(Boolean));
     const watched = new Set(observation.wallets?.watched ?? []);
     const watchedMatches = recent.filter((e) => watched.has(e.owner) || watched.has(e.sender) || watched.has(e.receiver)).length;
