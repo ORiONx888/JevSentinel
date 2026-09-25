@@ -187,7 +187,7 @@ function urgencyInfo(assessment) {
     : level === "urgent" ? "🟠"
       : level === "elevated" ? "🟡"
         : level === "monitor" ? "🟢"
-          : "⚪";
+          : numeric != null ? "🔵"\n            : "⚪";
   return {
     numeric,
     level,
