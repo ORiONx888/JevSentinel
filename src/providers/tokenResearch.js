@@ -160,7 +160,6 @@ async function resolveCreator(mint, fetchImpl, rpcUrl, timeoutMs) {
   const signature = signatures?.[0]?.signature;
   if (!signature) return null;
   const tx = await rpc(fetchImpl, rpcUrl, "getTransaction", [signature, { encoding: "jsonParsed", maxSupportedTransactionVersion: 0 }], timeoutMs);
-  const recentSignatures = await rpc(fetchImpl, rpcUrl, "getSignaturesForAddress", [signers?.[0]?.pubkey ?? signature, { limit: 20 }], timeoutMs).catch(() => []);
   const keys = tx?.transaction?.message?.accountKeys ?? [];
   const signers = keys.filter((key) => key?.signer).map((key) => key.pubkey).filter(Boolean);
   const creatorAddress = signers[0] ?? null;
