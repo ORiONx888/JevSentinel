@@ -11,7 +11,9 @@ export function createJevSentinel({ providers = [], evaluator, telemetry, logger
   return {
     async assess(observation, history = []) {
       const intelligence = await collectIntelligence(providers, observation);
-      const temporal = buildTemporalState(history);
+      const priorSnapshots = history.map(stateToSnapshot).filter(Boolean);
+      const currentSnapshot = intelligenceToSnapshot(intelligence);
+      const temporal = buildTemporalState([...priorSnapshots, currentSnapshot]);
       const evidence = buildEvidenceState(intelligence, temporal);
       const state = buildJevState(observation, intelligence);
       state.temporal = temporal;
@@ -25,6 +27,46 @@ export function createJevSentinel({ providers = [], evaluator, telemetry, logger
       return { id: record.id, state, intelligence, assessment, outcome: null };
     }
   };
+}
+
+function intelligenceToSnapshot(intelligence) {
+  const fields = Object.fromEntries(Object.values(intelligence).flatMap((item) => Object.entries(item.fields ?? {})));
+  const market = fields.marketDynamics ?? {};
+  const liquidity = fields.liquidityStructure ?? {};
+  const flow = fields.flowDynamics ?? {};
+  const wallet = fields.walletBehaviour ?? {};
+  return {
+    observedAt: new Date().toISOString(),
+    price: finite(fields.priceUsd ?? market.priceUsd),
+    liquidity: finite(fields.liquidityUsd ?? liquidity.usd),
+    volume: finite(fields.volume5mUsd ?? market.volume5mUsd),
+    sellUsd: finite(fields.sellUsd ?? flow.sellUsd),
+    buyUsd: finite(fields.buyUsd ?? flow.buyUsd),
+    sellerCount: finite(fields.sellerCount ?? wallet.uniqueSellers)
+  };
+}
+
+function stateToSnapshot(state) {
+  if (!state) return null;
+  const evidence = state.evidence ?? {};
+  const market = evidence.marketDynamics ?? {};
+  const liquidity = evidence.liquidityStructure ?? {};
+  const flow = evidence.flowDynamics ?? {};
+  const wallet = evidence.walletBehaviour ?? {};
+  return {
+    observedAt: state.context?.observedAt ?? state.context?.signalTime,
+    price: finite(market.priceUsd),
+    liquidity: finite(market.liquidityUsd ?? liquidity.usd),
+    volume: finite(market.volume5mUsd),
+    sellUsd: finite(flow.sellUsd),
+    buyUsd: finite(flow.buyUsd),
+    sellerCount: finite(flow.uniqueSellers ?? wallet.uniqueSellers)
+  };
+}
+
+function finite(value) {
+  const n = Number(value);
+  return Number.isFinite(n) ? n : null;
 }
 
 function buildDecisionInputSummary(state, intelligence) {
