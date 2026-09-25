@@ -10,7 +10,7 @@ const GROUPS = [
   "historicalIntelligence"
 ];
 
-export function buildEvidenceState(intelligence = {}, temporal = {}) {
+export function buildEvidenceState(intelligence = {}, temporal = {}, history = []) {
   const research = intelligence["token-research"]?.fields ?? {};
   const native = intelligence["native-risk"]?.fields ?? {};
   const flow = intelligence["transfer-flow"]?.fields ?? {};
