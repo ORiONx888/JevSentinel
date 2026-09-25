@@ -17,7 +17,8 @@ export function createTransferFlowProvider({
 
   return new IntelligenceProvider("transfer-flow", async (observation) => {
     const mint = observation.mint;
-    const cached = cache.get(mint);
+    const cacheKey = typeof mint === "string" && mint.trim() ? mint.trim() : null;
+    const cached = cacheKey ? cache.get(cacheKey) : null;
     if (cached && Date.now() - cached.at < cacheMs) return cached.value;
 
     while (activeScans >= maxConcurrent) await sleep(50);
@@ -54,7 +55,7 @@ export function createTransferFlowProvider({
         coordinatedSellers: [...sellerCounts.values()].filter((count) => count >= 2).length,
         events: recent.slice(-50)
       };
-      cache.set(mint, { at: Date.now(), value: result });
+      if (cacheKey) cache.set(cacheKey, { at: Date.now(), value: result });
       return result;
     } finally {
       activeScans -= 1;
