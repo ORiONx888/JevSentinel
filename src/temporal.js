@@ -6,7 +6,23 @@ export function buildTemporalState(samples = []) {
   const latest = ordered.at(-1);
   const previous = ordered.length > 1 ? ordered.at(-2) : null;
   const deltas = {};
-  for (const key of ["price", "liquidity", "volume", "sellUsd", "buyUsd", "sellerCount"]) {
+  for (const key of [
+    "price",
+    "liquidity",
+    "volume",
+    "priceChange5mPct",
+    "priceChange1hPct",
+    "buyCount5m",
+    "sellCount5m",
+    "buySellRatio5m",
+    "uniqueSellers",
+    "uniqueBuyers",
+    "sellerAcceleration",
+    "coordinatedSellers",
+    "sellUsd",
+    "buyUsd",
+    "sellerCount"
+  ]) {
     if (previous && Number.isFinite(previous[key]) && Number.isFinite(latest[key])) {
       deltas[key] = latest[key] - previous[key];
     }
@@ -16,12 +32,17 @@ export function buildTemporalState(samples = []) {
     sampleCount: ordered.length,
     firstObservedAt: ordered[0].observedAt,
     latestObservedAt: latest.observedAt,
+    latest,
+    previous,
     deltas,
     acceleration: {
-      selling: direction(deltas.sellUsd),
+      selling: direction(deltas.sellCount5m ?? deltas.sellUsd),
+      buyPressure: direction(deltas.buySellRatio5m),
+      volume: direction(deltas.volume),
       liquidity: direction(deltas.liquidity, true),
-      price: direction(deltas.price, true),
-      sellers: direction(deltas.sellerCount)
+      price: direction(deltas.priceChange5mPct ?? deltas.price, true),
+      sellers: direction(deltas.uniqueSellers ?? deltas.sellerCount),
+      coordination: direction(deltas.coordinatedSellers)
     }
   };
 }
@@ -29,14 +50,24 @@ export function buildTemporalState(samples = []) {
 function normalizeSample(sample) {
   if (!sample?.observedAt) return null;
   const market = sample.market ?? {};
+  const flow = sample.flow ?? {};
   return {
     observedAt: sample.observedAt,
     price: finite(sample.price ?? market.price),
     liquidity: finite(sample.liquidity ?? market.liquidity ?? market.liquidityUsd),
     volume: finite(sample.volume ?? market.volume ?? market.volume5mUsd),
+    priceChange5mPct: finite(sample.priceChange5mPct ?? market.priceChange5mPct),
+    priceChange1hPct: finite(sample.priceChange1hPct ?? market.priceChange1hPct),
+    buyCount5m: finite(sample.buyCount5m ?? market.buyCount5m),
+    sellCount5m: finite(sample.sellCount5m ?? market.sellCount5m),
+    buySellRatio5m: finite(sample.buySellRatio5m ?? market.buySellRatio5m),
+    uniqueSellers: finite(sample.uniqueSellers ?? flow.uniqueSellers ?? sample.sellerCount ?? market.sellerCount),
+    uniqueBuyers: finite(sample.uniqueBuyers ?? flow.uniqueBuyers),
+    sellerAcceleration: finite(sample.sellerAcceleration ?? flow.sellerAcceleration),
+    coordinatedSellers: finite(sample.coordinatedSellers ?? flow.coordinatedSellers),
     sellUsd: finite(sample.sellUsd ?? market.sellUsd),
     buyUsd: finite(sample.buyUsd ?? market.buyUsd),
-    sellerCount: finite(sample.sellerCount ?? market.sellerCount)
+    sellerCount: finite(sample.sellerCount ?? flow.uniqueSellers ?? market.sellerCount)
   };
 }
 

@@ -48,9 +48,18 @@ function intelligenceToSnapshot(intelligence) {
     price: finite(fields.priceUsd ?? market.priceUsd),
     liquidity: finite(fields.liquidityUsd ?? liquidity.usd),
     volume: finite(fields.volume5mUsd ?? market.volume5mUsd),
+    priceChange5mPct: finite(fields.priceChange5mPct ?? market.priceChange5mPct),
+    priceChange1hPct: finite(fields.priceChange1hPct ?? market.priceChange1hPct),
+    buyCount5m: finite(fields.buyCount5m ?? market.buyCount5m),
+    sellCount5m: finite(fields.sellCount5m ?? market.sellCount5m),
+    buySellRatio5m: finite(fields.buySellRatio5m ?? market.buySellRatio5m),
+    uniqueSellers: finite(fields.uniqueSellers ?? flow.uniqueSellers ?? wallet.uniqueSellers),
+    uniqueBuyers: finite(fields.uniqueBuyers ?? flow.uniqueBuyers ?? wallet.uniqueBuyers),
+    sellerAcceleration: finite(fields.sellerAcceleration ?? flow.sellerAcceleration),
+    coordinatedSellers: finite(fields.coordinatedSellers ?? flow.coordinatedSellers),
     sellUsd: finite(fields.sellUsd ?? flow.sellUsd),
     buyUsd: finite(fields.buyUsd ?? flow.buyUsd),
-    sellerCount: finite(fields.sellerCount ?? wallet.uniqueSellers)
+    sellerCount: finite(fields.sellerCount ?? flow.uniqueSellers ?? wallet.uniqueSellers)
   };
 }
 
@@ -65,6 +74,16 @@ function stateToSnapshot(state) {
     observedAt: state.context?.observedAt ?? state.context?.signalTime,
     price: finite(market.priceUsd),
     liquidity: finite(market.liquidityUsd ?? liquidity.usd),
+    volume: finite(market.volume5mUsd),
+    priceChange5mPct: finite(market.priceChange5mPct),
+    priceChange1hPct: finite(market.priceChange1hPct),
+    buyCount5m: finite(market.buyCount5m),
+    sellCount5m: finite(market.sellCount5m),
+    buySellRatio5m: finite(market.buySellRatio5m),
+    uniqueSellers: finite(flow.uniqueSellers ?? wallet.uniqueSellers),
+    uniqueBuyers: finite(flow.uniqueBuyers ?? wallet.uniqueBuyers),
+    sellerAcceleration: finite(flow.sellerAcceleration),
+    coordinatedSellers: finite(flow.coordinatedSellers),
     volume: finite(market.volume5mUsd),
     sellUsd: finite(flow.sellUsd),
     buyUsd: finite(flow.buyUsd),

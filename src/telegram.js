@@ -226,8 +226,15 @@ function liveContext(assessment, state) {
   const dominant = answerValue(answers.dominantRisk);
   const coordinated = answers.coordinatedBehavior?.noul === true;
   const evidenceQuality = answerValue(answers.evidenceQuality);
+  const temporal = state?.temporal ?? {};
+  const latest = temporal.latest ?? {};
+  const previous = temporal.previous ?? {};
+  const deltas = temporal.deltas ?? {};
+  const acceleration = temporal.acceleration ?? {};
 
-  if (coordinated) signals.push("🔴 Coordinated selling detected");
+  if (coordinated || Number(latest.coordinatedSellers) > 0) {
+    signals.push("🔴 Coordinated seller activity detected");
+  }
   if (progression === "extraction") signals.push("🚨 Extraction pattern developing");
   else if (progression === "distribution") signals.push("⚠️ Distribution pattern developing");
   else if (progression === "preparation") signals.push("👁️ Positioning activity detected");
@@ -235,36 +242,77 @@ function liveContext(assessment, state) {
   if (deterioration === "severe") signals.push("📉 Price/market deterioration is severe");
   else if (deterioration === "elevated") signals.push("📉 Deterioration increasing");
 
-  // Prefer the engine's temporal state for live changes. Provider fields are
-  // point-in-time observations and may not expose the direction that changed
-  // between snapshots.
-  const acceleration = state?.temporal?.acceleration ?? {};
-  const selling = String(acceleration.selling ?? "").toLowerCase();
-  const liquidity = String(acceleration.liquidity ?? "").toLowerCase();
-  const price = String(acceleration.price ?? "").toLowerCase();
-  const sellers = String(acceleration.sellers ?? "").toLowerCase();
+  if (acceleration.selling === "increasing") {
+    signals.push(formatDelta("🔻 Sells/5m", previous.sellCount5m, latest.sellCount5m, deltas.sellCount5m));
+  } else if (acceleration.selling === "decreasing") {
+    signals.push(formatDelta("🔻 Sells/5m easing", previous.sellCount5m, latest.sellCount5m, deltas.sellCount5m));
+  }
 
-  if (selling === "increasing") signals.push("👛 Seller activity accelerating");
-  if (selling === "decreasing") signals.push("👛 Seller activity easing");
-  if (liquidity === "deteriorating") signals.push("💧 Liquidity deterioration increasing");
-  if (liquidity === "improving") signals.push("💧 Liquidity improving");
-  if (price === "deteriorating") signals.push("📉 Price deterioration accelerating");
-  if (price === "improving") signals.push("📈 Price recovering");
-  if (sellers === "increasing") signals.push("👥 Seller count increasing");
-  if (sellers === "decreasing") signals.push("👥 Seller count decreasing");
+  if (Number.isFinite(latest.buySellRatio5m) && Number.isFinite(previous.buySellRatio5m) && latest.buySellRatio5m !== previous.buySellRatio5m) {
+    signals.push(
+      `⚖️ Buy share ${formatPct(previous.buySellRatio5m)} → ${formatPct(latest.buySellRatio5m)}`
+    );
+  }
+
+  if (Number.isFinite(latest.priceChange5mPct)) {
+    const priceText = `📉 5m price ${formatSignedPct(latest.priceChange5mPct)}`;
+    signals.push(priceText);
+  }
+
+  if (Number.isFinite(latest.volume5mUsd) || Number.isFinite(latest.volume)) {
+    const volume = latest.volume5mUsd ?? latest.volume;
+    const delta = deltas.volume;
+    if (Number.isFinite(delta) && delta !== 0) {
+      signals.push(`📊 5m volume ${formatUsd(volume)} (${delta > 0 ? "+" : ""}${formatUsd(delta)})`);
+    } else {
+      signals.push(`📊 5m volume ${formatUsd(volume)}`);
+    }
+  }
+
+  if (acceleration.liquidity === "deteriorating") signals.push("💧 Liquidity declining");
+  if (acceleration.liquidity === "improving") signals.push("💧 Liquidity improving");
+  if (acceleration.sellers === "increasing") signals.push(formatDelta("👥 Sellers", previous.uniqueSellers, latest.uniqueSellers, deltas.uniqueSellers));
+  if (acceleration.sellers === "decreasing") signals.push(formatDelta("👥 Sellers easing", previous.uniqueSellers, latest.uniqueSellers, deltas.uniqueSellers));
 
   if (retrace === "likelyNormalRetrace") signals.push("🔄 Retrace remains the leading explanation");
   else if (retrace === "mixedEvidence") signals.push("🟡 Evidence remains mixed");
   else if (retrace === "possibleSingleActorDump") signals.push("👤 Single-actor selling remains plausible");
   else if (retrace === "insufficientEvidence") signals.push("👁️ Evidence remains limited — monitoring continues");
 
-  const sampleCount = Number(state?.temporal?.sampleCount ?? 0);
-  const hasComparison = sampleCount >= 2;
-  if (!signals.length && !hasComparison) signals.push("📊 Collecting live comparison data");
-  if (!signals.length && hasComparison && evidenceQuality === "strong") signals.push("🟢 No material deterioration detected");
-  if (!signals.length && hasComparison) signals.push("🟡 Live comparison shows no clear deterioration");
+  const sampleCount = Number(temporal.sampleCount ?? 0);
+  if (!signals.length && sampleCount < 2) signals.push("📊 Collecting live comparison data");
+  if (!signals.length && sampleCount >= 2 && evidenceQuality === "strong") signals.push("🟢 No material deterioration detected");
+  if (!signals.length && sampleCount >= 2) signals.push("🟡 Live comparison shows no clear deterioration");
 
   return [...new Set(signals)].slice(0, 3);
+}
+
+function formatDelta(label, previous, latest, delta) {
+  if (Number.isFinite(previous) && Number.isFinite(latest) && Number.isFinite(delta)) {
+    return `${label} ${formatNumber(previous)} → ${formatNumber(latest)} (${delta > 0 ? "+" : ""}${formatNumber(delta)})`;
+  }
+  return label;
+}
+
+function formatNumber(value) {
+  return Number.isInteger(value) ? String(value) : Number(value).toFixed(2);
+}
+
+function formatPct(value) {
+  return `${(Number(value) * 100).toFixed(0)}%`;
+}
+
+function formatSignedPct(value) {
+  const n = Number(value);
+  return `${n > 0 ? "+" : ""}${n.toFixed(1)}%`;
+}
+
+function formatUsd(value) {
+  const n = Number(value);
+  if (!Number.isFinite(n)) return "n/a";
+  if (Math.abs(n) >= 1_000_000) return `$${(n / 1_000_000).toFixed(1)}M`;
+  if (Math.abs(n) >= 1_000) return `$${(n / 1_000).toFixed(1)}K`;
+  return `$${n.toFixed(0)}`;
 }
 
 export function buildLiveRiskAlert({
@@ -462,12 +510,13 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
           const previousAnswers = runtime.lastDecisions.get(observation.mint) ?? null;
           const currentAnswers = liveResult.assessment?.answers ?? {};
           const changed = JSON.stringify(previousAnswers) !== JSON.stringify(currentAnswers);
+          const temporalChanged = Object.keys(liveResult.state?.temporal?.deltas ?? {}).length > 0;
           runtime.lastDecisions.set(observation.mint, currentAnswers);
           runtime.history.set(observation.mint, [
             ...(runtime.history.get(observation.mint) ?? []),
             liveResult.state
           ].slice(-12));
-          if (!changed && liveResult.assessment?.answers?.escalation?.noul !== true) return;
+          if (!changed && !temporalChanged && liveResult.assessment?.answers?.escalation?.noul !== true) return;
           await sendMessage(message.chat.id, buildLiveRiskAlert({
             mint: observation.mint,
             symbol: observation.symbol,
