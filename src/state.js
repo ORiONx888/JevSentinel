@@ -2,10 +2,12 @@ import { createObservation } from "./schema.js";
 
 export function buildJevState(observation, intelligence = {}) {
   const o = createObservation(observation);
-  const providerViews = Object.values(intelligence).map((item) => ({
+  const providerViews = Object.entries(intelligence).map(([provider, item]) => ({
+    provider,
     available: item.available,
     fields: item.fields,
-    observedAt: item.observedAt
+    observedAt: item.observedAt,
+    ...(item.error ? { error: item.error } : {})
   }));
 
   return {
@@ -31,7 +33,7 @@ export function buildDecisionQuestions() {
   return {
     escalation: {
       type: "noul",
-      prompt: "Does the combined evidence justify escalating this token from monitoring to active risk attention?"
+      prompt: "Does the combined evidence justify escalating this token from monitoring to active risk attention? Consider the supplied security, market, wallet, transfer-flow, intelligence, and temporal evidence together."
     },
     dominantRisk: {
       type: "choice",
@@ -43,12 +45,12 @@ export function buildDecisionQuestions() {
         temporal: "The speed or progression of deterioration dominates.",
         none: "No single risk mechanism clearly dominates."
       },
-      prompt: "Which single risk mechanism best explains the current evidence?"
+      prompt: "Which single risk mechanism best explains the current evidence? Use the actual supplied fields, not assumptions."
     },
     evidenceQuality: {
       type: "score",
       levels: ["insufficient", "limited", "usable", "strong"],
-      prompt: "How coherent, timely, and internally consistent is the supplied evidence for making a risk judgment?"
+      prompt: "How coherent, timely, and internally consistent is the supplied evidence for making a risk judgment? Penalize missing or stale evidence."
     },
     falsePositive: {
       type: "noul",
@@ -57,7 +59,7 @@ export function buildDecisionQuestions() {
     urgency: {
       type: "score",
       levels: ["monitor", "elevated", "urgent", "immediate"],
-      prompt: "How time-sensitive is the observed risk based only on the supplied state?"
+      prompt: "How time-sensitive is the observed risk based only on the supplied state? Give greater urgency to concrete security warnings, concentrated holdings, active authorities, abnormal flows, or rapid deterioration when present."
     }
   };
 }

@@ -3,7 +3,9 @@ const PROVIDER_FIELDS = Object.freeze([
   "rugStage", "rugStageName", "temporalScore", "temporalStage", "estimatedPullHours",
   "authority", "liquidity", "holders", "behavior", "wallet",
   "honeypot", "burst", "transferCount", "totalAmount",
-  "uniqueSenders", "uniqueReceivers", "watchedMatches", "windowMs", "direction"
+  "uniqueSenders", "uniqueReceivers", "watchedMatches", "windowMs", "direction",
+  "priceVelocity", "liquidityVelocity", "volumeVelocity", "sellUsd", "buyUsd", "sellerCount",
+  "signalCount"
 ]);
 
 export function normalizeIntelligence(provider, raw = {}) {

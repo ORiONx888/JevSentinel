@@ -150,7 +150,7 @@ async function validateJevKey(apiKey) {
   return client;
 }
 
-function createGroupRuntime(apiKey) {
+function createGroupRuntime(apiKey, logger = null) {
   const client = new TypeSafeClient({ apiKey, logLevel: "error" });
   const telemetry = {
     records: [],
@@ -203,7 +203,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
       if (!entry?.chatId || !entry?.apiKey) continue;
       groups.set(String(entry.chatId), {
         apiKey: entry.apiKey,
-        runtime: createGroupRuntime(entry.apiKey),
+        runtime: createGroupRuntime(entry.apiKey, logger),
         activatedAt: entry.activatedAt ?? new Date().toISOString(),
         enabled: entry.enabled !== false,
       });
@@ -229,7 +229,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
     let client;
     try {
       client = await validateJevKey(apiKey);
-      groups.set(String(chatId), { apiKey, runtime: createGroupRuntime(apiKey), activatedAt: new Date().toISOString(), enabled: true });
+      groups.set(String(chatId), { apiKey, runtime: createGroupRuntime(apiKey, logger), activatedAt: new Date().toISOString(), enabled: true });
       persistGroupsNow();
     } catch {
       await sendMessage(chatId, "❌ <b>JEV key could not be verified.</b>\n\nThe key was not retained. Please send a valid key.");
