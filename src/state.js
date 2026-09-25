@@ -34,6 +34,26 @@ export function buildDecisionQuestions() {
       type: "noul",
       prompt: "Does the independently gathered token evidence justify escalating this token from monitoring to active risk attention? The source alert card is only a trigger. Do not use its scores, safety claims, rug labels, holder percentages, dev claims, volume figures, or other card-derived evidence as evidence for this decision."
     },
+    coordinatedBehavior: {
+      type: "noul",
+      prompt: "Is there sufficient independent evidence that creator-linked, insider-linked, or otherwise connected wallets are acting in a coordinated manner that increases rug-pull risk? Consider funding relationships, timing, clustered transfers, synchronized selling, and evidence quality. Do not infer coordination from proximity alone."
+    },
+    progression: {
+      type: "choice",
+      options: {
+        noProgression: "No meaningful suspicious progression is established.",
+        preparation: "Evidence suggests preparation, accumulation, funding, or positioning before extraction.",
+        distribution: "Evidence suggests holders or linked wallets are distributing positions or transferring exposure.",
+        extraction: "Evidence suggests active extraction through coordinated selling, liquidity movement, or related severe deterioration.",
+        unclear: "The sequence is incomplete, conflicting, or too weak to classify."
+      },
+      prompt: "Which stage best describes the independently observed behavior sequence across the current and prior snapshots? Do not force a stage when the timeline is incomplete."
+    },
+    deterioration: {
+      type: "score",
+      levels: ["stable", "watch", "elevated", "severe"],
+      prompt: "How severe is the current deterioration compared with prior snapshots? Consider changes in liquidity, price, selling pressure, seller acceleration, holder redistribution, failed sells, and other independently observed signals."
+    },
     dominantRisk: {
       type: "choice",
       options: {
@@ -44,7 +64,7 @@ export function buildDecisionQuestions() {
         temporal: "The speed or progression of deterioration dominates.",
         none: "No single risk mechanism clearly dominates."
       },
-      prompt: "Which single risk mechanism best explains the independently gathered evidence? Use the normalized evidence groups only."
+      prompt: "Which single risk mechanism best explains the independently gathered evidence? Use the normalized evidence groups and temporal history only."
     },
     evidenceQuality: {
       type: "score",
@@ -53,12 +73,12 @@ export function buildDecisionQuestions() {
     },
     falsePositive: {
       type: "noul",
-      prompt: "Is the combined independently gathered evidence more consistent with normal market activity than genuine deterioration?"
+      prompt: "Is the combined independently gathered evidence more consistent with normal market activity than genuine deterioration? Consider alternative explanations and conflicting signals."
     },
     urgency: {
       type: "score",
       levels: ["monitor", "elevated", "urgent", "immediate"],
-      prompt: "How time-sensitive is the observed risk based only on the normalized evidence? Give greater urgency to concrete security warnings, concentrated holdings, active authorities, abnormal flows, or rapid deterioration when present."
+      prompt: "How time-sensitive is the observed risk based only on the normalized evidence and its progression? Give greater urgency to concrete security warnings, concentrated holdings, active authorities, abnormal flows, rapid deterioration, confirmed liquidity removal, or repeated failed sells when present."
     }
   };
 }
