@@ -35,3 +35,53 @@ test("missing evidence is explicit, not interpreted as safe", () => {
   assert.ok(evidence.evidenceQuality.missingGroups.length >= 5);
   assert.notEqual(evidence.evidenceQuality.status, "strong");
 });
+
+test("exposes single-actor retrace context without calling it safe", () => {
+  const evidence = buildEvidenceState({
+    "token-research": {
+      available: true,
+      fields: {
+        flowDynamics: {
+          uniqueSellers: 1,
+          dominantSellerShare: 0.82,
+          coordinatedSellers: false
+        },
+        marketDynamics: {
+          volume5mUsd: 25000,
+          uniqueBuyers: 40,
+          recoveryAttempt: true
+        },
+        liquidityStructure: { liquidityChangePct: -2 }
+      }
+    },
+    "transfer-flow": { available: true, fields: {} }
+  });
+
+  assert.equal(evidence.alternativeExplanation.uniqueSellerCount, 1);
+  assert.equal(evidence.alternativeExplanation.dominantSellerShare, 0.82);
+  assert.equal(evidence.alternativeExplanation.coordinatedSellerEvidence, false);
+  assert.equal(evidence.alternativeExplanation.severeEvidencePresent, false);
+  assert.match(evidence.alternativeExplanation.interpretationRule, /not safety proof/i);
+});
+
+test("preserves severe coordinated evidence despite popularity context", () => {
+  const evidence = buildEvidenceState({
+    "token-research": {
+      available: true,
+      fields: {
+        flowDynamics: {
+          uniqueSellers: 6,
+          coordinatedSellers: true,
+          uniqueBuyers: 100
+        },
+        marketDynamics: { volume5mUsd: 90000 },
+        liquidityStructure: { liquidityRemoved: true },
+        tokenIntegrity: { riskFlags: ["coordinated liquidity removal"] }
+      }
+    },
+    "transfer-flow": { available: true, fields: {} }
+  });
+
+  assert.equal(evidence.alternativeExplanation.severeEvidencePresent, true);
+  assert.equal(evidence.alternativeExplanation.popularityContext.uniqueBuyers, 100);
+});
