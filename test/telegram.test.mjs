@@ -27,8 +27,8 @@ test("risk alert identifies token, source and links", () => {
   assert.match(text, /\$TEST/);
   assert.match(text, /CW/);
   assert.match(text, /ABC123/);
-  assert.match(text, /gmgn\\.ai/);
-  assert.match(text, /pump\\.fun/);
+  assert.match(text, /gmgn\.ai/);
+  assert.match(text, /pump\.fun/);
   assert.match(text, /42/);
 });
 
@@ -39,10 +39,10 @@ test("setup/status/help messages are available", () => {
   assert.match(buildStatusMessage({ configured: true, mode: "LOG-ONLY", cards: ["CONVICTION PULSE CW2"] }), /CONFIGURED/);
   assert.match(buildHelpMessage(), /JevSentinel Help/);
   const help = buildHelpMessage();
-  assert.match(help, /\\/jevon/);
-  assert.match(help, /\\/jevoff/);
-  assert.match(help, /\\/jevstatus/);
-  assert.match(help, /\\/jevhelp/);
+  assert.match(help, /\/jevon/);
+  assert.match(help, /\/jevoff/);
+  assert.match(help, /\/jevstatus/);
+  assert.match(help, /\/jevhelp/);
   assert.match(help, /CONVICTION PULSE CW2/);
   assert.match(help, /LOG-ONLY/);
   assert.match(help, /No trading or auto-sell/);
