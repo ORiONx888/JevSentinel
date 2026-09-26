@@ -203,16 +203,83 @@ function urgencyInfo(assessment) {
   };
 }
 
-function answerSummary(assessment) {
+export function objectiveRiskGate(assessment = {}, state = null) {
+  const evidence = state?.evidence ?? {};
+  const tokenIntegrity = evidence.tokenIntegrity ?? {};
+  const authority = tokenIntegrity.authority ?? {};
+  const holders = evidence.holderStructure ?? {};
+  const flow = evidence.flowDynamics ?? {};
+  const market = evidence.marketDynamics ?? {};
+  const liquidity = evidence.liquidityStructure ?? {};
+  const temporal = state?.temporal ?? {};
+  const latest = temporal.latest ?? {};
+  const previous = temporal.previous ?? {};
+  const deltas = temporal.deltas ?? {};
+  const flags = Array.isArray(tokenIntegrity.riskFlags) ? tokenIntegrity.riskFlags.map(String) : [];
+  const reasons = [];
+  let action = "HOLD";
+
+  const add = (nextAction, reason) => {
+    if (nextAction === "SELL" || (nextAction === "CAUTION" && action === "HOLD")) action = nextAction;
+    reasons.push(reason);
+  };
+
+  const price5m = Number(latest.priceChange5mPct ?? market.priceChange5mPct);
+  const sells5m = Number(latest.sellCount5m ?? market.sellCount5m);
+  const buys5m = Number(latest.buyCount5m ?? market.buyCount5m);
+  const liquidityUsd = Number(latest.liquidity ?? market.liquidityUsd ?? liquidity.usd);
+  const buyShare = Number(latest.buySellRatio5m ?? market.buySellRatio5m);
+  const top10 = Number(holders.top10ConcentrationPct);
+  const liquidityDrop = Number.isFinite(previous.liquidity) && previous.liquidity > 0 && Number.isFinite(latest.liquidity)
+    ? (previous.liquidity - latest.liquidity) / previous.liquidity
+    : 0;
+
+  if (liquidity.liquidityRemoved === true || flow.coordinatedSellerEvidence === true || flags.some((flag) => /liquidity.*(remov|withdraw)|coordinated.*extract/i.test(flag))) {
+    add("SELL", "🚨 Hard risk gate: extraction/liquidity-removal evidence");
+  }
+  if (Number.isFinite(liquidityDrop) && liquidityDrop >= 0.30) {
+    add("SELL", `🚨 Hard risk gate: liquidity down ${Math.round(liquidityDrop * 100)}% between live snapshots`);
+  }
+  if (Number.isFinite(price5m) && price5m <= -40 && Number.isFinite(sells5m) && sells5m >= 10) {
+    add("SELL", `🚨 Hard risk gate: ${price5m.toFixed(1)}% 5m price deterioration with heavy selling`);
+  }
+
+  if (authority.mintAuthorityActive === true) add("CAUTION", "⚠️ Hard risk gate: mint authority remains active");
+  if (authority.freezeAuthorityActive === true) add("CAUTION", "⚠️ Hard risk gate: freeze authority remains active");
+  if (top10 >= 40) add("CAUTION", `⚠️ Hard risk gate: top-10 concentration ${top10.toFixed(1)}%`);
+  if (liquidityUsd > 0 && liquidityUsd < 10_000) add("CAUTION", `⚠️ Hard risk gate: liquidity only ${formatUsd(liquidityUsd)}`);
+  if (flags.includes("sell-pressure") || (Number.isFinite(sells5m) && Number.isFinite(buys5m) && sells5m >= 10 && sells5m > buys5m * 2)) {
+    add("CAUTION", "⚠️ Hard risk gate: sustained sell pressure");
+  }
+  if (Number.isFinite(price5m) && price5m <= -20) add("CAUTION", `⚠️ Hard risk gate: 5m price deterioration ${price5m.toFixed(1)}%`);
+  if (Number.isFinite(buyShare) && buyShare <= 0.25 && Number.isFinite(sells5m) && sells5m >= 10) {
+    add("CAUTION", `⚠️ Hard risk gate: buy share only ${formatPct(buyShare)}`);
+  }
+  if (Number.isFinite(temporal.deltas?.coordinatedSellers) && Number(temporal.deltas.coordinatedSellers) >= 1) {
+    add("CAUTION", "⚠️ Hard risk gate: coordinated seller count increased");
+  }
+
+  return { action, reasons: [...new Set(reasons)].slice(0, 4) };
+}
+
+function answerSummary(assessment, state = null) {
   const answers = assessment?.answers ?? {};
   const escalation = answers.escalation?.noul;
   const urgency = urgencyInfo(assessment);
   const dominant = answerValue(answers.dominantRisk);
-  if (escalation === true) {
+  const gate = objectiveRiskGate(assessment, state);
+  const effectiveAction = gate.action === "SELL" || gate.action === "CAUTION" ? gate.action : null;
+  if (escalation === true || effectiveAction) {
     return {
-      classification: "RISK ATTENTION ESCALATED",
-      summary: "JEV escalated this EARLY ENTRY EXPERIMENT token for active risk attention.",
-      signals: [`Urgency: ${urgency.label}${urgency.level ? ` (${urgency.level})` : ""}`, ...(dominant ? [`Dominant risk: ${dominant}`] : [])],
+      classification: effectiveAction === "SELL" ? "RISK ACTION — SELL" : effectiveAction === "CAUTION" ? "RISK ACTION — CAUTION" : "RISK ATTENTION ESCALATED",
+      summary: effectiveAction
+        ? `Objective risk gates override HOLD because independent evidence crossed a hard safety threshold.`
+        : "JEV escalated this EARLY ENTRY EXPERIMENT token for active risk attention.",
+      signals: [
+        `Urgency: ${urgency.label}${urgency.level ? ` (${urgency.level})` : ""}`,
+        ...(dominant ? [`Dominant risk: ${dominant}`] : []),
+        ...gate.reasons
+      ],
     };
   }
   return {
@@ -397,14 +464,14 @@ export function liveActionState(assessment, state = null) {
   const temporal = state?.temporal ?? {};
   const acceleration = temporal.acceleration ?? {};
 
+  let modelAction = "HOLD";
   if (
     progression === "extraction" ||
     deterioration === "severe" ||
     retrace === "possibleCoordinatedExtraction" ||
     (urgency.level === "immediate" && escalation)
-  ) return "SELL";
-
-  if (
+  ) modelAction = "SELL";
+  else if (
     progression === "distribution" ||
     deterioration === "elevated" ||
     urgency.level === "urgent" ||
@@ -413,16 +480,18 @@ export function liveActionState(assessment, state = null) {
     acceleration.selling === "increasing" ||
     acceleration.liquidity === "deteriorating" ||
     escalation
-  ) return "CAUTION";
-
-  if (
+  ) modelAction = "CAUTION";
+  else if (
     falsePositive === true &&
     retrace === "likelyNormalRetrace" &&
     (acceleration.price === "improving" || acceleration.buyPressure === "increasing") &&
     acceleration.selling !== "increasing"
-  ) return "ADD";
+  ) modelAction = "ADD";
 
-  return "HOLD";
+  const gateAction = objectiveRiskGate(assessment, state).action;
+  if (gateAction === "SELL") return "SELL";
+  if (gateAction === "CAUTION" && (modelAction === "HOLD" || modelAction === "ADD")) return "CAUTION";
+  return modelAction;
 }
 
 function actionDisplay(action) {
@@ -442,6 +511,9 @@ export function liveEventSignals(assessment, state, previousAnswers = null) {
   const events = [];
 
   // Show the decision/evidence change that caused a live card to fire.
+  const gate = objectiveRiskGate(assessment, state);
+  if (gate.reasons.length) events.push(...gate.reasons);
+
   if (previousAnswers) {
     const previousUrgency = urgencyInfo({ answers: { urgency: previousAnswers.urgency } });
     const currentUrgency = urgencyInfo(assessment);
@@ -677,7 +749,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
       const history = runtime.history.get(observation.mint) ?? [];
       const result = await runtime.sentinel.assess(observation, history);
       runtime.history.set(observation.mint, [...history, result.state].slice(-5));
-      const summary = answerSummary(result.assessment);
+      const summary = answerSummary(result.assessment, result.state);
       logger.log?.("[jevsentinel-telegram] EARLY ENTRY JEV assessment finished", JSON.stringify({
         chatId,
         messageId: Number(message.message_id ?? 0),
@@ -704,7 +776,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
           signalTime: observation.signalTime,
         }, priorStates),
         onAssessment: async (liveResult) => {
-          const liveSummary = answerSummary(liveResult.assessment);
+          const liveSummary = answerSummary(liveResult.assessment, liveResult.state);
           const previousAnswers = runtime.lastDecisions.get(observation.mint) ?? null;
           const currentAnswers = liveResult.assessment?.answers ?? {};
           const previousAction = runtime.lastActions.get(observation.mint) ?? null;
