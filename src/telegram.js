@@ -164,7 +164,7 @@ function createGroupRuntime(apiKey, logger = null) {
     telemetry,
     logger,
   });
-  return { client, sentinel, telemetry, history: new Map(), lastDecisions: new Map(), liveMonitor: createLiveMonitor({ intervalMs: 10_000, maxSnapshots: 12, logger }) };
+  return { client, sentinel, telemetry, history: new Map(), lastDecisions: new Map(), lastActions: new Map(), liveMonitor: createLiveMonitor({ intervalMs: 10_000, maxSnapshots: 12, logger }) };
 }
 
 function answerValue(answer) {
@@ -324,6 +324,10 @@ export function isMaterialLiveEvent(assessment, state, previousAnswers = null) {
   const acceleration = temporal.acceleration ?? {};
 
   if (!previousAnswers) return true;
+
+  const previousAction = arguments.length > 3 ? arguments[3] : null;
+  const currentAction = liveActionState(assessment, state);
+  if (previousAction && previousAction !== currentAction) return true;
 
   const previousUrgency = previousAnswers.urgency ?? {};
   const currentUrgency = answers.urgency ?? {};
@@ -637,6 +641,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
       }), { reply_to_message_id: message.message_id, reply_markup: alertKeyboard(observation.mint) });
 
       runtime.lastDecisions.set(observation.mint, result.assessment?.answers ?? {});
+      runtime.lastActions.set(observation.mint, liveActionState(result.assessment, result.state));
       runtime.liveMonitor.start({
         mint: observation.mint,
         initialState: result.state,
@@ -649,8 +654,10 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
           const liveSummary = answerSummary(liveResult.assessment);
           const previousAnswers = runtime.lastDecisions.get(observation.mint) ?? null;
           const currentAnswers = liveResult.assessment?.answers ?? {};
-          const materialEvent = isMaterialLiveEvent(liveResult.assessment, liveResult.state, previousAnswers);
+          const previousAction = runtime.lastActions.get(observation.mint) ?? null;
+          const materialEvent = isMaterialLiveEvent(liveResult.assessment, liveResult.state, previousAnswers, previousAction);
           runtime.lastDecisions.set(observation.mint, currentAnswers);
+          runtime.lastActions.set(observation.mint, liveActionState(liveResult.assessment, liveResult.state));
           runtime.history.set(observation.mint, [
             ...(runtime.history.get(observation.mint) ?? []),
             liveResult.state
