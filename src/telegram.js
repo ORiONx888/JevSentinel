@@ -166,7 +166,10 @@ function createGroupRuntime(apiKey, logger = null) {
     telemetry,
     logger,
   });
-  const LIVE_MONITOR_INTERVAL_MS = 10_000;\n  // Seeded with the initial assessment, 31 snapshots = 30 follow-up ticks × 10s ≈ 5 minutes.\n  const LIVE_MONITOR_MAX_SNAPSHOTS = 31;\n  return { client, sentinel, telemetry, history: new Map(), lastDecisions: new Map(), lastActions: new Map(), liveMonitor: createLiveMonitor({ intervalMs: LIVE_MONITOR_INTERVAL_MS, maxSnapshots: LIVE_MONITOR_MAX_SNAPSHOTS, logger }) };
+  const LIVE_MONITOR_INTERVAL_MS = 10_000;
+  // Seeded with the initial assessment, 31 snapshots = 30 follow-up ticks × 10s ≈ 5 minutes.
+  const LIVE_MONITOR_MAX_SNAPSHOTS = 31;
+  return { client, sentinel, telemetry, history: new Map(), lastDecisions: new Map(), lastActions: new Map(), liveMonitor: createLiveMonitor({ intervalMs: LIVE_MONITOR_INTERVAL_MS, maxSnapshots: LIVE_MONITOR_MAX_SNAPSHOTS, logger }) };
 }
 
 function answerValue(answer) {
