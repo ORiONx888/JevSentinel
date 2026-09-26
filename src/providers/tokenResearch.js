@@ -25,10 +25,15 @@ export function createTokenResearchProvider({
     while (activeScans >= maxConcurrent) await sleep(50);
     activeScans += 1;
     try {
-      const [chain, market] = await Promise.all([
-        fetchChainState(mint, fetchImpl, rpcUrl, timeoutMs),
-        fetchDexState(mint, fetchImpl, dexUrl, timeoutMs)
-      ]);
+      // Market data is the live temporal feed. Fetch it first so slow chain
+      // research can never suppress the fast price/liquidity/volume signal.
+      const market = await fetchDexState(mint, fetchImpl, dexUrl, timeoutMs);
+      let chain = {};
+      try {
+        chain = await withTimeout(fetchChainState(mint, fetchImpl, rpcUrl, timeoutMs), Math.min(timeoutMs, 1000));
+      } catch {
+        chain = {};
+      }
       const riskFlags = deriveRiskFlags(chain, market);
       const result = {
         tokenIntegrity: chain.tokenIntegrity,
@@ -294,6 +299,16 @@ async function getJson(fetchImpl, url, timeoutMs, options = {}) {
 function finite(value) {
   const n = Number(value);
   return Number.isFinite(n) ? n : null;
+}
+
+async function withTimeout(promise, timeoutMs) {
+  let timer;
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => {
+      timer = setTimeout(() => reject(new Error(`operation timeout after ${timeoutMs}ms`)), timeoutMs);
+    })
+  ]).finally(() => clearTimeout(timer));
 }
 
 function sleep(ms) {
