@@ -34,6 +34,8 @@ export async function telegramCall(method, params = {}, { token, fetchImpl = fet
   }
 }
 
+// Deployment marker: EARLY ENTRY EXPERIMENT intake is the SG JevSentinel source.
+
 export function tokenLinks(mint) {
   const value = String(mint ?? "").trim();
   if (!value) return [];
