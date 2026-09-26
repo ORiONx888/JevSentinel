@@ -18,7 +18,10 @@ export function extractSymbol(text = "") {
   const value = String(text ?? "");
   const match = value.match(/\$([A-Z][A-Z0-9_]{1,14})\b/);
   if (match?.[1]) return match[1];
-  const header = value.match(/JEV\s+EARLIER\s+ENTRY\s*[—-]\s*([A-Za-z0-9_.$-]{1,24})/i);
+
+  // Production Telegram cards may wrap the header and symbol in HTML tags.
+  const normalized = value.replace(/<[^>]*>/g, " ");
+  const header = normalized.match(/JEV\s+EARLIER\s+ENTRY\s*[—-]\s*\$?([A-Za-z0-9_.$-]{1,24})/i);
   return header?.[1]?.replace(/^\$/, "") ?? "UNKNOWN";
 }
 
