@@ -359,6 +359,10 @@ function relativeChange(previous, latest) {
   return Math.abs((latest - previous) / Math.abs(previous));
 }
 
+export function stoppedTokenKey(chatId, mint) {
+  return `${String(chatId)}:${String(mint ?? "").trim()}`;
+}
+
 export function alertKeyboard(mint) {
   return {
     inline_keyboard: [[
@@ -479,7 +483,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
   const groups = new Map();
   const processed = new Set();
   const focusedMints = new Map();
-  const stoppedMints = new Map();
+  const stoppedTokens = new Set();
   const groupStore = persistGroups ? createGroupStore({
     filePath: storePath,
     encryptionSecret: process.env.JEV_GROUP_STORE_KEY ?? token,
@@ -607,9 +611,9 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
     );
 
     const runtime = existing.runtime;
-    const stopped = stoppedMints.get(chatId);
+    const tokenStopKey = stoppedTokenKey(chatId, observation.mint);
     const focused = focusedMints.get(chatId);
-    if (stopped?.has(observation.mint)) return;
+    if (stoppedTokens.has(tokenStopKey)) return;
     if (focused && focused !== observation.mint) return;
     const key = `${chatId}:${message.message_id}`;
     if (processed.has(key)) return;
@@ -661,7 +665,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
             ...(runtime.history.get(observation.mint) ?? []),
             liveResult.state
           ].slice(-12));
-          if (stoppedMints.get(chatId)?.has(observation.mint)) return;
+          if (stoppedTokens.has(stoppedTokenKey(chatId, observation.mint))) return;
           if (focusedMints.get(chatId) && focusedMints.get(chatId) !== observation.mint) return;
           if (!materialEvent) return;
           await sendMessage(message.chat.id, buildLiveRiskAlert({
@@ -727,9 +731,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
       return;
     }
 
-    const stopped = stoppedMints.get(chatId) ?? new Set();
-    stopped.add(mint);
-    stoppedMints.set(chatId, stopped);
+    stoppedTokens.add(stoppedTokenKey(chatId, mint));
     if (focusedMints.get(chatId) === mint) focusedMints.delete(chatId);
     group.runtime.liveMonitor.stop(mint);
     await call("answerCallbackQuery", { callback_query_id: callbackQuery.id, text: "Token alerts stopped." }, { token });
