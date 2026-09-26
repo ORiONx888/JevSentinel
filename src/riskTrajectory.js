@@ -1,6 +1,7 @@
 const ACTION_ORDER = Object.freeze({ HOLD: 0, BUY: 1, CAUTION: 2, SELL: 3 });
 
 export function buildRiskTrajectory({ state = {}, assessment = null, history = [] } = {}) {
+  state = state ?? {};
   const evidence = state.evidence ?? {};
   const temporal = state.temporal ?? {};
   const market = evidence.marketDynamics ?? {};
@@ -158,6 +159,7 @@ function confidenceFor({ riskScore, activeDimensions, sampleCount, evidenceQuali
   let confidence = 0.45;
   confidence += Math.min(activeDimensions * 0.08, 0.24);
   confidence += Math.min(sampleCount * 0.02, 0.16);
+  if (sampleCount >= 3) confidence += 0.08;
   if (evidenceQuality === "strong") confidence += 0.15;
   else if (evidenceQuality === "usable") confidence += 0.08;
   else if (evidenceQuality === "insufficient") confidence -= 0.12;
