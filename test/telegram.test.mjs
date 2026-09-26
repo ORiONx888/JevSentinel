@@ -184,14 +184,14 @@ test("live alert falls back to a short monitoring line when evidence is unchange
       },
     },
   });
-  assert.match(text, /\$TEST: Urgency 0\.75 🟢/);
+  assert.match(text, /\$TEST — 🟢 HOLD/);
   assert.match(text, /Collecting live comparison data/);
   assert.ok(text.split("\\n").length <= 8);
 });
 
 test("live alert distinguishes missing temporal baseline from a completed comparison", () => {
   const baseline = buildLiveRiskAlert({ mint: "ABC123", symbol: "TEST", assessment: { answers: { urgency: { score: 0.57 } } } });
-  assert.match(baseline, /Urgency 0\.57 🔵/);
+  assert.match(baseline, /\$TEST — 🟢 HOLD/);
   assert.match(baseline, /Collecting live comparison data/);
   assert.doesNotMatch(baseline, /No material change detected/);
 
