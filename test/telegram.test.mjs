@@ -296,7 +296,7 @@ test("live action state maps existing JEV evidence into buyer-facing states", ()
       falsePositive: { noul: true },
       retraceAlternative: { choice: "likelyNormalRetrace" },
     },
-  }, { temporal: { acceleration: { price: "improving", buyPressure: "increasing", selling: "decreasing" } } }), "ADD");
+  }, { temporal: { acceleration: { price: "improving", buyPressure: "increasing", selling: "decreasing" } } }), "BUY");
 });
 
 test("live event signals explain the decision-driving change", () => {
