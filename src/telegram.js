@@ -315,7 +315,7 @@ function formatUsd(value) {
   return `$${n.toFixed(0)}`;
 }
 
-export function isMaterialLiveEvent(assessment, state, previousAnswers = null) {
+export function isMaterialLiveEvent(assessment, state, previousAnswers = null, previousAction = null) {
   const answers = assessment?.answers ?? {};
   const temporal = state?.temporal ?? {};
   const latest = temporal.latest ?? {};
@@ -325,7 +325,6 @@ export function isMaterialLiveEvent(assessment, state, previousAnswers = null) {
 
   if (!previousAnswers) return true;
 
-  const previousAction = arguments.length > 3 ? arguments[3] : null;
   const currentAction = liveActionState(assessment, state);
   if (previousAction && previousAction !== currentAction) return true;
 
