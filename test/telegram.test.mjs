@@ -11,6 +11,7 @@ import {
   buildStartMessage,
   buildStatusMessage,
   createTelegramBot,
+  stoppedTokenKey,
   tokenLinks,
 } from "../src/telegram.js";
 
@@ -252,6 +253,13 @@ test("live emission requires a material event instead of any temporal delta", ()
     previousAnswers
   );
   assert.equal(event, true);
+});
+
+test("STOP state is isolated to the exact chat + token and cannot match another token", () => {
+  const stopped = stoppedTokenKey("-7", "TOKEN_A");
+  assert.equal(stopped, "-7:TOKEN_A");
+  assert.notEqual(stopped, stoppedTokenKey("-7", "TOKEN_B"));
+  assert.notEqual(stopped, stoppedTokenKey("-8", "TOKEN_A"));
 });
 
 test("callback controls acknowledge focus and stop actions", async () => {
