@@ -7,6 +7,7 @@ import {
   alertKeyboard,
   isMaterialLiveEvent,
   liveActionState,
+  objectiveRiskGate,
   liveEventSignals,
   buildStartMessage,
   buildStatusMessage,
@@ -286,6 +287,54 @@ test("callback controls acknowledge focus and stop actions", async () => {
 });
 
 
+
+
+
+test("objective risk gate prevents HOLD when independent hard-risk evidence is present", () => {
+  const state = {
+    evidence: {
+      tokenIntegrity: {
+        authority: { mintAuthorityActive: true, freezeAuthorityActive: true },
+        riskFlags: ["sell-pressure"],
+      },
+      holderStructure: { top10ConcentrationPct: 48 },
+      marketDynamics: { priceChange5mPct: -27, sellCount5m: 24, buyCount5m: 7, buySellRatio5m: 0.226 },
+      liquidityStructure: { liquidityUsd: 7000 },
+    },
+    temporal: {
+      latest: { priceChange5mPct: -27, sellCount5m: 24, buyCount5m: 7, buySellRatio5m: 0.226, liquidity: 7000 },
+      previous: { liquidity: 10000 },
+      deltas: { coordinatedSellers: 0 },
+      acceleration: { selling: "increasing", liquidity: "deteriorating", price: "deteriorating" },
+    },
+  };
+  const assessment = { answers: { urgency: { score: 1.52, choice: "monitor" } } };
+  const gate = objectiveRiskGate(assessment, state);
+  assert.equal(gate.action, "CAUTION");
+  assert.ok(gate.reasons.some((reason) => /mint authority/i.test(reason)));
+  assert.equal(liveActionState(assessment, state), "CAUTION");
+});
+
+test("objective risk gate escalates a severe liquidity collapse plus crash to SELL", () => {
+  const state = {
+    evidence: {
+      tokenIntegrity: { riskFlags: [] },
+      holderStructure: {},
+      marketDynamics: { priceChange5mPct: -52, sellCount5m: 31, buyCount5m: 4 },
+      liquidityStructure: { liquidityUsd: 12000 },
+    },
+    temporal: {
+      latest: { priceChange5mPct: -52, sellCount5m: 31, buyCount5m: 4, liquidity: 12000 },
+      previous: { liquidity: 30000 },
+      deltas: { coordinatedSellers: 1 },
+      acceleration: { selling: "increasing", liquidity: "deteriorating", price: "deteriorating" },
+    },
+  };
+  const gate = objectiveRiskGate({ answers: { urgency: { score: 1.1, choice: "monitor" } } }, state);
+  assert.equal(gate.action, "SELL");
+  assert.ok(gate.reasons.some((reason) => /liquidity down 60%/i.test(reason)));
+  assert.equal(liveActionState({ answers: { urgency: { score: 1.1, choice: "monitor" } } }, state), "SELL");
+});
 
 test("live action state maps existing JEV evidence into buyer-facing states", () => {
   assert.equal(liveActionState({ answers: { progression: { choice: "extraction" }, deterioration: { value: "severe" } } }), "SELL");
