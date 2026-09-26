@@ -5,7 +5,7 @@ export function createLiveMonitor({
 } = {}) {
   const jobs = new Map();
 
-  function start({ mint, run, onAssessment, initialState = null }) {
+  function start({ mint, run, onAssessment, initialState = null, maxSnapshotsOverride = maxSnapshots }) {
     if (!mint || typeof run !== "function") throw new TypeError("mint and run are required");
     stop(mint);
 
@@ -23,12 +23,12 @@ export function createLiveMonitor({
       try {
         const result = await run(job.snapshots);
         if (result?.state) {
-          job.snapshots = [...job.snapshots, result.state].slice(-maxSnapshots);
+          job.snapshots = [...job.snapshots, result.state].slice(-maxSnapshotsOverride);
         }
         if (result && typeof onAssessment === "function") {
           await onAssessment(result, job.snapshots);
         }
-        if (job.snapshots.length >= maxSnapshots) {
+        if (job.snapshots.length >= maxSnapshotsOverride) {
           job.stopped = true;
           jobs.delete(mint);
           return;
