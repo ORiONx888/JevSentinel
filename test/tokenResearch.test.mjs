@@ -73,3 +73,38 @@ test("token research tolerates missing market pair", async () => {
   assert.equal(result.liquidityUsd, null);
   assert.equal(result.authority.mintAuthorityActive, false);
 });
+
+
+test("fast market data survives slow chain research", async () => {
+  const fetchImpl = async (url, options = {}) => {
+    if (url.includes("dex.test")) {
+      return response({
+        pairs: [{
+          liquidity: { usd: 25000 },
+          priceUsd: "0.001",
+          priceChange: { m5: -3.5, h1: -8 },
+          volume: { m5: 12000, h1: 50000 },
+          txns: { m5: { buys: 40, sells: 25 } },
+          pairCreatedAt: Date.now() - 3600000,
+          pairAddress: "PAIR",
+          dexId: "raydium"
+        }]
+      });
+    }
+    await new Promise((resolve) => setTimeout(resolve, 80));
+    return response({ result: { value: [] } });
+  };
+
+  const provider = createTokenResearchProvider({
+    fetchImpl,
+    rpcUrl: "https://rpc.test",
+    dexUrl: "https://dex.test/tokens",
+    timeoutMs: 100,
+  });
+
+  const result = await provider.scan({ mint: "SlowChainMint" });
+  assert.equal(result.priceChange5mPct, -3.5);
+  assert.equal(result.sellCount5m, 25);
+  assert.equal(result.buySellRatio5m, 40 / 65);
+  assert.equal(result.liquidityUsd, 25000);
+});
