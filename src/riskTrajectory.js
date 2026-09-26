@@ -77,7 +77,7 @@ export function buildRiskTrajectory({ state = {}, assessment = null, history = [
   const confidence = confidenceFor({ riskScore, activeDimensions, sampleCount, evidenceQuality });
 
   const stage = stageFor(riskScore, dimensions, temporal);
-  const action = actionFor({ riskScore, dimensions, answers, confidence, history });
+  const action = actionFor({ riskScore, dimensions, answers, confidence, history, temporal });
 
   return {
     version: 1,
@@ -116,7 +116,7 @@ function modelRiskSignals(answers) {
   return signals;
 }
 
-function actionFor({ riskScore, dimensions, answers, confidence, history }) {
+function actionFor({ riskScore, dimensions, answers, confidence, history, temporal }) {
   const severeObjective = dimensions.liquidity.score >= 4 || dimensions.market.score >= 4 || dimensions.flow.score >= 5;
   if (severeObjective || riskScore >= 9) return "SELL";
   if (riskScore >= 4) return "CAUTION";
@@ -127,6 +127,9 @@ function actionFor({ riskScore, dimensions, answers, confidence, history }) {
   const falsePositive = answers.falsePositive?.noul === true;
   const buyPressure = answers.urgency?.choice === "monitor"
     && (answers.deterioration?.choice === "stable" || answers.deterioration?.value === "stable");
+  const positiveRecovery = temporal.acceleration?.price === "improving"
+    && temporal.acceleration?.buyPressure === "increasing"
+    && temporal.acceleration?.selling !== "increasing";
 
   if (
     riskScore === 0 &&
@@ -135,7 +138,7 @@ function actionFor({ riskScore, dimensions, answers, confidence, history }) {
     (progression === "noProgression" || progression == null) &&
     (deterioration === "stable" || deterioration == null) &&
     (retrace === "likelyNormalRetrace" || retrace == null) &&
-    buyPressure
+    (buyPressure || positiveRecovery)
   ) return "BUY";
 
   // A prior SELL is not sticky: recovery must be re-earned from fresh evidence.
