@@ -206,12 +206,12 @@ function answerSummary(assessment) {
   if (escalation === true) {
     return {
       classification: "RISK ATTENTION ESCALATED",
-      summary: "JEV escalated this CW2 token for active risk attention.",
+      summary: "JEV escalated this EARLY ENTRY EXPERIMENT token for active risk attention.",
       signals: [`Urgency: ${urgency.label}${urgency.level ? ` (${urgency.level})` : ""}`, ...(dominant ? [`Dominant risk: ${dominant}`] : [])],
     };
   }
   return {
-    classification: "CW2 JEV ASSESSMENT — MONITORING",
+    classification: "EARLY ENTRY EXPERIMENT JEV ASSESSMENT — MONITORING",
     summary: "JEV is continuing to monitor this token.",
     signals: [`Urgency: ${urgency.label}${urgency.level ? ` (${urgency.level})` : ""}`],
   };
