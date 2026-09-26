@@ -96,6 +96,12 @@ test("trajectory exposes independent dimensions and evidence quality", () => {
         marketDynamics: {},
         liquidityStructure: { liquidityUsd: 8_000 },
       },
+      temporal: {
+        sampleCount: 3,
+        latest: { liquidity: 8_000 },
+        previous: { liquidity: 8_000 },
+        acceleration: { selling: "stable", liquidity: "stable", sellers: "stable", coordination: "stable" },
+      },
     }),
     assessment: { answers: { evidenceQuality: { choice: "usable" } } },
   });
