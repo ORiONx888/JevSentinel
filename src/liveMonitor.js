@@ -1,5 +1,5 @@
 export function createLiveMonitor({
-  intervalMs = 30_000,
+  intervalMs = 10_000,
   maxSnapshots = 12,
   logger = null
 } = {}) {
