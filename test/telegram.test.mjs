@@ -313,6 +313,27 @@ test("live event signals explain the decision-driving change", () => {
   assert.match(signals.join("\n"), /Price deteriorating/);
 });
 
+test("live mini-card shows the actual urgency change instead of a generic fallback", () => {
+  const text = buildLiveRiskAlert({
+    mint: "ABC123",
+    symbol: "FORK",
+    previousAnswers: { urgency: { score: 1.2, choice: "monitor" } },
+    assessment: { answers: { urgency: { score: 1.5, choice: "monitor" } } },
+    state: {
+      temporal: {
+        sampleCount: 2,
+        latest: { price: 0.000002, sellCount5m: 15 },
+        previous: { price: 0.000001, sellCount5m: 12 },
+        deltas: { price: 0.000001, sellCount5m: 3 },
+        acceleration: {},
+      },
+    },
+  });
+  assert.match(text, /Urgency 1\.20 → 1\.50/);
+  assert.match(text, /Live data:.*sells 12→15/);
+  assert.doesNotMatch(text, /Live comparison shows no clear deterioration/);
+});
+
 test("action state change is material even without a JEV answer change", () => {
   const event = isMaterialLiveEvent(
     { answers: { urgency: { choice: "monitor" } } },
