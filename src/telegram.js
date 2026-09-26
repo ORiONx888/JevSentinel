@@ -485,6 +485,18 @@ export function liveEventSignals(assessment, state, previousAnswers = null) {
   if (retrace === "likelyNormalRetrace") events.push("🔄 Normal retrace remains the leading explanation");
   else if (retrace === "mixedEvidence") events.push("🟡 Evidence remains mixed");
 
+  // Even when no acceleration threshold fires, expose the underlying live
+  // comparison when a mini-card was emitted for another material reason.
+  if (temporal.sampleCount >= 2) {
+    const marketChanges = [];
+    if (Number.isFinite(deltas.price)) marketChanges.push("price " + formatUsd(deltas.price));
+    if (Number.isFinite(deltas.volume)) marketChanges.push("vol " + formatUsd(deltas.volume));
+    if (Number.isFinite(deltas.sellCount5m) && deltas.sellCount5m !== 0) marketChanges.push("sells " + formatNumber(previous.sellCount5m) + "→" + formatNumber(latest.sellCount5m));
+    if (Number.isFinite(deltas.buySellRatio5m) && deltas.buySellRatio5m !== 0) marketChanges.push("buy share " + formatPct(previous.buySellRatio5m) + "→" + formatPct(latest.buySellRatio5m));
+    if (Number.isFinite(deltas.liquidity) && deltas.liquidity !== 0) marketChanges.push("liq " + formatUsd(deltas.liquidity));
+    if (marketChanges.length) events.push("📊 Live data: " + marketChanges.join(" • "));
+  }
+
   return [...new Set(events)].slice(0, 4);
 }
 
@@ -712,6 +724,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
             assessment: liveResult.assessment,
             state: liveResult.state,
             sourceMessageId: message.message_id,
+            previousAnswers,
           }), { reply_to_message_id: message.message_id, reply_markup: liveAlertKeyboard(observation.mint) });
         }
       };
