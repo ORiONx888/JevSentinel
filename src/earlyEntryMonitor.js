@@ -1,1 +1,41 @@
-const SOLANA_ADDRESS = /[1-9A-HJ-NP-Za-km-z]{32,44}/g;\n\nexport const EARLY_ENTRY_CARD_PATTERN = /JEV\\s+EARLIER\\s+ENTRY/i;\n\nexport function isEarlyEntryCard(text = "") {\n  return EARLY_ENTRY_CARD_PATTERN.test(String(text));\n}\n\nexport function extractSolanaMint(text = "") {\n  const value = String(text ?? "");\n  const labelled = value.match(/(?:CA|CONTRACT|MINT)\\s*[:=]\\s*([1-9A-HJ-NP-Za-km-z]{32,44})/i);\n  if (labelled) return labelled[1];\n  const candidates = value.match(SOLANA_ADDRESS) ?? [];\n  return candidates.find((candidate) => !/^[0-9]+$/.test(candidate)) ?? null;\n}\n\nexport function extractSymbol(text = "") {\n  const value = String(text ?? "");\n  const match = value.match(/\\$([A-Z][A-Z0-9_]{1,14})\\b/);\n  if (match?.[1]) return match[1];\n  const header = value.match(/JEV\\s+EARLIER\\s+ENTRY\\s*[—-]\\s*([A-Za-z0-9_.$-]{1,24})/i);\n  return header?.[1]?.replace(/^\\$/, "") ?? "UNKNOWN";\n}\n\nexport function buildEarlyEntryObservation({ text, messageId, chatId, observedAt = new Date().toISOString() }) {\n  if (!isEarlyEntryCard(text)) return null;\n  const mint = extractSolanaMint(text);\n  if (!mint) return null;\n  return {\n    mint,\n    symbol: extractSymbol(text),\n    sourceCard: "EARLY ENTRY EXPERIMENT",\n    signalTime: observedAt,\n    observedAt,\n    metadata: {\n      telegramChatId: String(chatId),\n      telegramMessageId: Number(messageId),\n      sourceLabel: "JEV EARLIER ENTRY",\n    },\n  };\n}\n
+const SOLANA_ADDRESS = /[1-9A-HJ-NP-Za-km-z]{32,44}/g;
+
+export const EARLY_ENTRY_CARD_PATTERN = /JEV\s+EARLIER\s+ENTRY/i;
+
+export function isEarlyEntryCard(text = "") {
+  return EARLY_ENTRY_CARD_PATTERN.test(String(text));
+}
+
+export function extractSolanaMint(text = "") {
+  const value = String(text ?? "");
+  const labelled = value.match(/(?:CA|CONTRACT|MINT)\s*[:=]\s*([1-9A-HJ-NP-Za-km-z]{32,44})/i);
+  if (labelled) return labelled[1];
+  const candidates = value.match(SOLANA_ADDRESS) ?? [];
+  return candidates.find((candidate) => !/^[0-9]+$/.test(candidate)) ?? null;
+}
+
+export function extractSymbol(text = "") {
+  const value = String(text ?? "");
+  const match = value.match(/\$([A-Z][A-Z0-9_]{1,14})\b/);
+  if (match?.[1]) return match[1];
+  const header = value.match(/JEV\s+EARLIER\s+ENTRY\s*[—-]\s*([A-Za-z0-9_.$-]{1,24})/i);
+  return header?.[1]?.replace(/^\$/, "") ?? "UNKNOWN";
+}
+
+export function buildEarlyEntryObservation({ text, messageId, chatId, observedAt = new Date().toISOString() }) {
+  if (!isEarlyEntryCard(text)) return null;
+  const mint = extractSolanaMint(text);
+  if (!mint) return null;
+  return {
+    mint,
+    symbol: extractSymbol(text),
+    sourceCard: "EARLY ENTRY EXPERIMENT",
+    signalTime: observedAt,
+    observedAt,
+    metadata: {
+      telegramChatId: String(chatId),
+      telegramMessageId: Number(messageId),
+      sourceLabel: "JEV EARLIER ENTRY",
+    },
+  };
+}
