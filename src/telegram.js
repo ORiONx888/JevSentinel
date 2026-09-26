@@ -315,6 +315,56 @@ function formatUsd(value) {
   return `$${n.toFixed(0)}`;
 }
 
+export function isMaterialLiveEvent(assessment, state, previousAnswers = null) {
+  const answers = assessment?.answers ?? {};
+  const temporal = state?.temporal ?? {};
+  const latest = temporal.latest ?? {};
+  const previous = temporal.previous ?? {};
+  const deltas = temporal.deltas ?? {};
+  const acceleration = temporal.acceleration ?? {};
+
+  if (!previousAnswers) return true;
+
+  const previousUrgency = previousAnswers.urgency ?? {};
+  const currentUrgency = answers.urgency ?? {};
+  if ((previousUrgency.choice ?? null) !== (currentUrgency.choice ?? null)) return true;
+
+  if ((previousAnswers.escalation?.noul ?? null) !== (answers.escalation?.noul ?? null)) return true;
+
+  for (const key of ["progression", "deterioration", "retraceAlternative", "dominantRisk", "coordinatedBehavior"]) {
+    const before = answerValue(previousAnswers[key]);
+    const after = answerValue(answers[key]);
+    if (before !== after && (before != null || after != null)) return true;
+  }
+
+  if (acceleration.selling === "increasing" && (
+    Number(deltas.sellCount5m) >= 5 ||
+    (relativeChange(previous.sellCount5m, latest.sellCount5m) ?? 0) >= 0.35
+  )) return true;
+  if (Number.isFinite(deltas.buySellRatio5m) && Math.abs(deltas.buySellRatio5m) >= 0.10) return true;
+  if (Number.isFinite(deltas.priceChange5mPct) && Math.abs(deltas.priceChange5mPct) >= 1.0) return true;
+  if (Number.isFinite(deltas.liquidity) && (relativeChange(previous.liquidity, latest.liquidity) ?? 0) >= 0.05) return true;
+  if (Number.isFinite(deltas.volume) && (relativeChange(previous.volume, latest.volume) ?? 0) >= 0.25) return true;
+  if (Number.isFinite(deltas.uniqueSellers) && Math.abs(deltas.uniqueSellers) >= 3) return true;
+  if (Number.isFinite(deltas.coordinatedSellers) && Math.abs(deltas.coordinatedSellers) >= 1) return true;
+
+  return false;
+}
+
+function relativeChange(previous, latest) {
+  if (!Number.isFinite(previous) || !Number.isFinite(latest) || previous === 0) return null;
+  return Math.abs((latest - previous) / Math.abs(previous));
+}
+
+export function alertKeyboard(mint) {
+  return {
+    inline_keyboard: [[
+      { text: "🎯 FOCUS", callback_data: `jev:focus:${mint}` },
+      { text: "⏹ STOP", callback_data: `jev:stop:${mint}` },
+    ]],
+  };
+}
+
 export function buildLiveRiskAlert({
   mint,
   symbol = "UNKNOWN",
@@ -341,6 +391,8 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
   let botId = null;
   const groups = new Map();
   const processed = new Set();
+  const focusedMints = new Map();
+  const stoppedMints = new Map();
   const groupStore = persistGroups ? createGroupStore({
     filePath: storePath,
     encryptionSecret: process.env.JEV_GROUP_STORE_KEY ?? token,
@@ -468,6 +520,10 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
     );
 
     const runtime = existing.runtime;
+    const stopped = stoppedMints.get(chatId);
+    const focused = focusedMints.get(chatId);
+    if (stopped?.has(observation.mint)) return;
+    if (focused && focused !== observation.mint) return;
     const key = `${chatId}:${message.message_id}`;
     if (processed.has(key)) return;
     processed.add(key);
@@ -494,7 +550,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
         summary: summary.summary,
         signals: summary.signals,
         sourceMessageId: message.message_id,
-      }), { reply_to_message_id: message.message_id });
+      }), { reply_to_message_id: message.message_id, reply_markup: alertKeyboard(observation.mint) });
 
       runtime.lastDecisions.set(observation.mint, result.assessment?.answers ?? {});
       runtime.liveMonitor.start({
@@ -509,21 +565,22 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
           const liveSummary = answerSummary(liveResult.assessment);
           const previousAnswers = runtime.lastDecisions.get(observation.mint) ?? null;
           const currentAnswers = liveResult.assessment?.answers ?? {};
-          const changed = JSON.stringify(previousAnswers) !== JSON.stringify(currentAnswers);
-          const temporalChanged = Object.keys(liveResult.state?.temporal?.deltas ?? {}).length > 0;
+          const materialEvent = isMaterialLiveEvent(liveResult.assessment, liveResult.state, previousAnswers);
           runtime.lastDecisions.set(observation.mint, currentAnswers);
           runtime.history.set(observation.mint, [
             ...(runtime.history.get(observation.mint) ?? []),
             liveResult.state
           ].slice(-12));
-          if (!changed && !temporalChanged && liveResult.assessment?.answers?.escalation?.noul !== true) return;
+          if (stoppedMints.get(chatId)?.has(observation.mint)) return;
+          if (focusedMints.get(chatId) && focusedMints.get(chatId) !== observation.mint) return;
+          if (!materialEvent) return;
           await sendMessage(message.chat.id, buildLiveRiskAlert({
             mint: observation.mint,
             symbol: observation.symbol,
             assessment: liveResult.assessment,
             state: liveResult.state,
             sourceMessageId: message.message_id,
-          }), { reply_to_message_id: message.message_id });
+          }), { reply_to_message_id: message.message_id, reply_markup: alertKeyboard(observation.mint) });
         }
       });
       logger.log?.("[jevsentinel-telegram] CW2 assessment completed; live monitoring started");
@@ -561,7 +618,39 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
     return true;
   }
 
+  async function handleCallbackQuery(callbackQuery) {
+    const data = String(callbackQuery?.data ?? "");
+    const message = callbackQuery?.message;
+    const [, action, mint] = data.split(":");
+    if (!message || !mint || !["focus", "stop"].includes(action)) return;
+
+    const chatId = String(message.chat.id);
+    const group = groups.get(chatId);
+    if (!group) {
+      await call("answerCallbackQuery", { callback_query_id: callbackQuery.id, text: "JevSentinel is not active in this group." }, { token });
+      return;
+    }
+
+    if (action === "focus") {
+      focusedMints.set(chatId, mint);
+      await call("answerCallbackQuery", { callback_query_id: callbackQuery.id, text: "Focus locked to this token." }, { token });
+      return;
+    }
+
+    const stopped = stoppedMints.get(chatId) ?? new Set();
+    stopped.add(mint);
+    stoppedMints.set(chatId, stopped);
+    if (focusedMints.get(chatId) === mint) focusedMints.delete(chatId);
+    group.runtime.liveMonitor.stop(mint);
+    await call("answerCallbackQuery", { callback_query_id: callbackQuery.id, text: "Token alerts stopped." }, { token });
+  }
+
   async function handleUpdate(update) {
+    const callbackQuery = update?.callback_query;
+    if (callbackQuery) {
+      await handleCallbackQuery(callbackQuery);
+      return;
+    }
     const message = update?.message;
     const textValue = message?.text?.trim();
     if (!message) return;
@@ -635,7 +724,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
   }
 
   async function pollOnce() {
-    const updates = await call("getUpdates", { offset, timeout: 25, allowed_updates: ["message"] }, { token, timeoutMs: 35_000 });
+    const updates = await call("getUpdates", { offset, timeout: 25, allowed_updates: ["message", "callback_query"] }, { token, timeoutMs: 35_000 });
     if (updates.length) {
       logger.log?.("[jevsentinel-telegram] updates received", JSON.stringify({
         count: updates.length,
