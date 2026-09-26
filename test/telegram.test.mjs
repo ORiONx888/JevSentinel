@@ -92,6 +92,7 @@ test("startup reports Telegram bot-to-bot readiness", async () => {
   await bot.start();
   assert.ok(logs.includes("[jevsentinel-telegram] Telegram bot capabilities"));
   assert.ok(logs.includes("[jevsentinel-telegram] bot-to-bot prerequisite: enable Bot-to-Bot Communication Mode in @BotFather and ensure JevSentinel can receive group messages (admin or privacy mode disabled)"));
+});
 
 
 test("live risk alert is compact, token-first, and preserves token links", () => {
