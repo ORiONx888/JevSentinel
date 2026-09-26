@@ -164,7 +164,7 @@ function createGroupRuntime(apiKey, logger = null) {
     telemetry,
     logger,
   });
-  return { client, sentinel, telemetry, history: new Map(), lastDecisions: new Map(), liveMonitor: createLiveMonitor({ intervalMs: 30_000, maxSnapshots: 12, logger }) };
+  return { client, sentinel, telemetry, history: new Map(), lastDecisions: new Map(), liveMonitor: createLiveMonitor({ intervalMs: 10_000, maxSnapshots: 12, logger }) };
 }
 
 function answerValue(answer) {
@@ -365,6 +365,86 @@ export function alertKeyboard(mint) {
   };
 }
 
+export function liveActionState(assessment, state = null) {
+  const answers = assessment?.answers ?? {};
+  const urgency = urgencyInfo(assessment);
+  const progression = answerValue(answers.progression);
+  const deterioration = answerValue(answers.deterioration);
+  const retrace = answerValue(answers.retraceAlternative);
+  const escalation = answers.escalation?.noul === true;
+  const falsePositive = answers.falsePositive?.noul === true;
+  const temporal = state?.temporal ?? {};
+  const acceleration = temporal.acceleration ?? {};
+
+  if (
+    progression === "extraction" ||
+    deterioration === "severe" ||
+    retrace === "possibleCoordinatedExtraction" ||
+    (urgency.level === "immediate" && escalation)
+  ) return "SELL";
+
+  if (
+    progression === "distribution" ||
+    deterioration === "elevated" ||
+    urgency.level === "urgent" ||
+    retrace === "mixedEvidence" ||
+    retrace === "possibleSingleActorDump" ||
+    acceleration.selling === "increasing" ||
+    acceleration.liquidity === "deteriorating" ||
+    escalation
+  ) return "CAUTION";
+
+  if (
+    falsePositive === true &&
+    retrace === "likelyNormalRetrace" &&
+    (acceleration.price === "improving" || acceleration.buyPressure === "increasing") &&
+    acceleration.selling !== "increasing"
+  ) return "ADD";
+
+  return "HOLD";
+}
+
+function actionDisplay(action) {
+  return action === "SELL" ? "🔴 SELL"
+    : action === "CAUTION" ? "🟡 CAUTION"
+      : action === "ADD" ? "🟢 ADD"
+        : "🟢 HOLD";
+}
+
+export function liveEventSignals(assessment, state) {
+  const answers = assessment?.answers ?? {};
+  const temporal = state?.temporal ?? {};
+  const latest = temporal.latest ?? {};
+  const previous = temporal.previous ?? {};
+  const deltas = temporal.deltas ?? {};
+  const acceleration = temporal.acceleration ?? {};
+  const events = [];
+
+  if (acceleration.selling === "increasing") events.push(formatDelta("🔻 Sells/5m", previous.sellCount5m, latest.sellCount5m, deltas.sellCount5m));
+  if (acceleration.buyPressure === "decreasing") events.push("⚖️ Buy share weakening");
+  if (acceleration.price === "deteriorating") events.push(`📉 Price deteriorating ${formatSignedPct(latest.priceChange5mPct)}`);
+  if (acceleration.price === "improving") events.push(`📈 Price improving ${formatSignedPct(latest.priceChange5mPct)}`);
+  if (acceleration.liquidity === "deteriorating") events.push("💧 Liquidity leaving");
+  if (acceleration.liquidity === "improving") events.push("💧 Liquidity improving");
+  if (acceleration.sellers === "increasing") events.push(formatDelta("👥 Sellers increasing", previous.uniqueSellers, latest.uniqueSellers, deltas.uniqueSellers));
+  if (acceleration.coordination === "increasing" || answers.coordinatedBehavior?.noul === true) events.push("🔴 Coordinated seller activity detected");
+
+  const progression = answerValue(answers.progression);
+  if (progression === "extraction") events.push("🚨 Extraction pattern developing");
+  else if (progression === "distribution") events.push("⚠️ Distribution pattern developing");
+  else if (progression === "preparation") events.push("👁️ Positioning activity detected");
+
+  const deterioration = answerValue(answers.deterioration);
+  if (deterioration === "severe") events.push("📉 Severe deterioration");
+  else if (deterioration === "elevated") events.push("📉 Deterioration increasing");
+
+  const retrace = answerValue(answers.retraceAlternative);
+  if (retrace === "likelyNormalRetrace") events.push("🔄 Normal retrace remains the leading explanation");
+  else if (retrace === "mixedEvidence") events.push("🟡 Evidence remains mixed");
+
+  return [...new Set(events)].slice(0, 4);
+}
+
 export function buildLiveRiskAlert({
   mint,
   symbol = "UNKNOWN",
@@ -373,11 +453,15 @@ export function buildLiveRiskAlert({
   sourceMessageId = null,
 }) {
   const urgency = urgencyInfo(assessment);
+  const action = liveActionState(assessment, state);
+  const events = liveEventSignals(assessment, state);
   const context = liveContext(assessment, state);
   const lines = [
-    "<b>$" + escapeHtml(symbol) + ": Urgency " + escapeHtml(urgency.label) + " " + urgency.dot + "</b>",
+    "<b>$" + escapeHtml(symbol) + " — " + escapeHtml(actionDisplay(action)) + "</b>",
+    `Urgency: ${escapeHtml(urgency.label)} ${urgency.dot}`,
     "",
-    ...context.map((line) => escapeHtml(line)),
+    "<b>What changed</b>",
+    ...(events.length ? events : context.slice(0, 3)).map((line) => escapeHtml(line)),
     "",
     tokenLinks(mint).map((x) => `<a href="${x.url}">${x.label}</a>`).join("  "),
   ];
