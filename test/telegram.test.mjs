@@ -327,7 +327,7 @@ test("action state change is material even without a JEV answer change", () => {
 test("EARLY ENTRY EXPERIMENT observation parser accepts the production card format", async () => {
   const { buildEarlyEntryObservation, isEarlyEntryCard } = await import("../src/earlyEntryMonitor.js");
   const text = [
-    "⚡ <b>JEV EARLIER ENTRY</b> — <b>TEST</b>",
+    "⚡🏆 <b>EARLY ENTRY EXPERIMENT</b> 🏆⚡",
     "🔑 CA: <code>So11111111111111111111111111111111111111112</code>",
     "🤖 JEV: <b>WATCH</b> (0.25)",
     "🧠 Buys: 188 SOL",
