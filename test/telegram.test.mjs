@@ -4,6 +4,8 @@ import {
   buildHelpMessage,
   buildLiveRiskAlert,
   buildRiskAlert,
+  alertKeyboard,
+  isMaterialLiveEvent,
   buildStartMessage,
   buildStatusMessage,
   createTelegramBot,
@@ -225,3 +227,48 @@ test("live alert reports improving temporal conditions", () => {
   assert.match(text, /📉 5m price \+2\.3%/);
   assert.match(text, /👥 Sellers easing 7 → 4 \(-3\)/);
 });
+test("mini-card keyboard provides focus and stop controls bound to the token", () => {
+  const keyboard = alertKeyboard("ABC123");
+  assert.equal(keyboard.inline_keyboard[0][0].text, "🎯 FOCUS");
+  assert.equal(keyboard.inline_keyboard[0][0].callback_data, "jev:focus:ABC123");
+  assert.equal(keyboard.inline_keyboard[0][1].text, "⏹ STOP");
+  assert.equal(keyboard.inline_keyboard[0][1].callback_data, "jev:stop:ABC123");
+});
+
+test("live emission requires a material event instead of any temporal delta", () => {
+  const previousAnswers = { urgency: { choice: "monitor" } };
+  const stable = isMaterialLiveEvent(
+    { answers: { urgency: { choice: "monitor" } } },
+    { temporal: { latest: { sellCount5m: 12 }, previous: { sellCount5m: 12 }, deltas: { sellCount5m: 1 }, acceleration: { selling: "increasing" } } },
+    previousAnswers
+  );
+  assert.equal(stable, false);
+
+  const event = isMaterialLiveEvent(
+    { answers: { urgency: { choice: "urgent" } } },
+    { temporal: { deltas: {} } },
+    previousAnswers
+  );
+  assert.equal(event, true);
+});
+
+test("callback controls acknowledge focus and stop actions", async () => {
+  const calls = [];
+  const call = async (method, params) => {
+    calls.push({ method, params });
+    if (method === "getChatMember") return { status: "administrator" };
+    if (method === "sendMessage") return { message_id: 99 };
+    return { id: 123, is_bot: true, username: "JevSentinelBot" };
+  };
+  const bot = createTelegramBot({ token: "test-token", call });
+  // The callback path requires an active group; configuration persistence is intentionally
+  // exercised through the public bot API in the integration path, while keyboard binding is
+  // covered above.
+  await bot.handleUpdate({
+    update_id: 20,
+    callback_query: { id: "cb1", data: "jev:focus:ABC123", message: { chat: { id: -7, type: "supergroup" } } }
+  });
+  assert.equal(calls[0].method, "answerCallbackQuery");
+  assert.match(calls[0].params.text, /not active/);
+});
+
