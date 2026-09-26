@@ -1,6 +1,6 @@
 const SOLANA_ADDRESS = /[1-9A-HJ-NP-Za-km-z]{32,44}/g;
 
-export const EARLY_ENTRY_CARD_PATTERN = /JEV\s+EARLIER\s+ENTRY/i;
+// VolSpike production cards use the exact SG-only header "EARLY ENTRY EXPERIMENT".\n// Keep the legacy JEV EARLIER ENTRY form accepted for compatibility.\nexport const EARLY_ENTRY_CARD_PATTERN = /(?:JEV\s+EARLIER\s+ENTRY|EARLY\s+ENTRY\s+EXPERIMENT)/i;
 
 export function isEarlyEntryCard(text = "") {
   return EARLY_ENTRY_CARD_PATTERN.test(String(text));
