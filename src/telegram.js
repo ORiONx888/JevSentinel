@@ -752,7 +752,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
         await call("answerCallbackQuery", { callback_query_id: callbackQuery.id, text: "Monitoring window has expired; no continuation is available." }, { token });
         return;
       }
-      group.runtime.liveMonitor.start({ ...config, initialState: null });
+      group.runtime.liveMonitor.start({ ...config, initialState: null, maxSnapshotsOverride: 30 });
       await call("answerCallbackQuery", { callback_query_id: callbackQuery.id, text: "Monitoring extended for another ~5 minutes." }, { token });
       return;
     }
