@@ -166,7 +166,10 @@ function createGroupRuntime(apiKey, logger = null) {
     telemetry,
     logger,
   });
-  return { client, sentinel, telemetry, history: new Map(), lastDecisions: new Map(), lastActions: new Map(), liveMonitor: createLiveMonitor({ intervalMs: 10_000, maxSnapshots: 12, logger }) };
+  const LIVE_MONITOR_INTERVAL_MS = 10_000;
+  // Seeded with the initial assessment, 31 snapshots = 30 follow-up ticks × 10s ≈ 5 minutes.
+  const LIVE_MONITOR_MAX_SNAPSHOTS = 31;
+  return { client, sentinel, telemetry, history: new Map(), lastDecisions: new Map(), lastActions: new Map(), liveMonitor: createLiveMonitor({ intervalMs: LIVE_MONITOR_INTERVAL_MS, maxSnapshots: LIVE_MONITOR_MAX_SNAPSHOTS, logger }) };
 }
 
 function answerValue(answer) {
@@ -374,6 +377,15 @@ export function alertKeyboard(mint) {
   };
 }
 
+export function liveAlertKeyboard(mint) {
+  return {
+    inline_keyboard: [[
+      { text: "⏱ +5 MIN", callback_data: `jev:extend:${mint}` },
+      { text: "⏹ STOP", callback_data: `jev:stop:${mint}` },
+    ]],
+  };
+}
+
 export function liveActionState(assessment, state = null) {
   const answers = assessment?.answers ?? {};
   const urgency = urgencyInfo(assessment);
@@ -486,6 +498,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
   const processed = new Set();
   const focusedMints = new Map();
   const stoppedTokens = new Set();
+  const liveMonitorConfigs = new Map();
   const groupStore = persistGroups ? createGroupStore({
     filePath: storePath,
     encryptionSecret: process.env.JEV_GROUP_STORE_KEY ?? token,
@@ -647,7 +660,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
 
       runtime.lastDecisions.set(observation.mint, result.assessment?.answers ?? {});
       runtime.lastActions.set(observation.mint, liveActionState(result.assessment, result.state));
-      runtime.liveMonitor.start({
+      const liveMonitorConfig = {
         mint: observation.mint,
         initialState: result.state,
         run: async (priorStates) => runtime.sentinel.assess({
@@ -676,9 +689,11 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
             assessment: liveResult.assessment,
             state: liveResult.state,
             sourceMessageId: message.message_id,
-          }), { reply_to_message_id: message.message_id, reply_markup: alertKeyboard(observation.mint) });
+          }), { reply_to_message_id: message.message_id, reply_markup: liveAlertKeyboard(observation.mint) });
         }
-      });
+      };
+      liveMonitorConfigs.set(`${chatId}:${observation.mint}`, liveMonitorConfig);
+      runtime.liveMonitor.start(liveMonitorConfig);
       logger.log?.("[jevsentinel-telegram] EARLY ENTRY assessment completed; live monitoring started");
     } catch (error) {
       logger.error?.("[jevsentinel-telegram] EARLY ENTRY assessment failed");
@@ -718,7 +733,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
     const data = String(callbackQuery?.data ?? "");
     const message = callbackQuery?.message;
     const [, action, mint] = data.split(":");
-    if (!message || !mint || !["focus", "stop"].includes(action)) return;
+    if (!message || !mint || !["focus", "extend", "stop"].includes(action)) return;
 
     const chatId = String(message.chat.id);
     const group = groups.get(chatId);
@@ -730,6 +745,18 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
     if (action === "focus") {
       focusedMints.set(chatId, mint);
       await call("answerCallbackQuery", { callback_query_id: callbackQuery.id, text: "Focus locked to this token." }, { token });
+      return;
+    }
+
+    if (action === "extend") {
+      stoppedTokens.delete(stoppedTokenKey(chatId, mint));
+      const config = liveMonitorConfigs.get(`${chatId}:${mint}`);
+      if (!config) {
+        await call("answerCallbackQuery", { callback_query_id: callbackQuery.id, text: "Monitoring window has expired; no continuation is available." }, { token });
+        return;
+      }
+      group.runtime.liveMonitor.start({ ...config, initialState: null, maxSnapshotsOverride: 30 });
+      await call("answerCallbackQuery", { callback_query_id: callbackQuery.id, text: "Monitoring extended for another ~5 minutes." }, { token });
       return;
     }
 
