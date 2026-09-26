@@ -432,7 +432,7 @@ function actionDisplay(action) {
         : "🟢 HOLD";
 }
 
-export function liveEventSignals(assessment, state) {
+export function liveEventSignals(assessment, state, previousAnswers = null) {
   const answers = assessment?.answers ?? {};
   const temporal = state?.temporal ?? {};
   const latest = temporal.latest ?? {};
@@ -440,6 +440,28 @@ export function liveEventSignals(assessment, state) {
   const deltas = temporal.deltas ?? {};
   const acceleration = temporal.acceleration ?? {};
   const events = [];
+
+  // Show the decision/evidence change that caused a live card to fire.
+  if (previousAnswers) {
+    const previousUrgency = urgencyInfo({ answers: { urgency: previousAnswers.urgency } });
+    const currentUrgency = urgencyInfo(assessment);
+    if (previousUrgency.label !== currentUrgency.label || previousUrgency.level !== currentUrgency.level) {
+      events.push("🔵 Urgency " + previousUrgency.label + " → " + currentUrgency.label);
+    }
+    for (const [key, label] of [
+      ["progression", "Progression"],
+      ["deterioration", "Deterioration"],
+      ["retraceAlternative", "Retrace assessment"],
+      ["dominantRisk", "Dominant risk"],
+      ["evidenceQuality", "Evidence quality"],
+    ]) {
+      const before = answerValue(previousAnswers[key]);
+      const after = answerValue(answers[key]);
+      if (before !== after && (before != null || after != null)) {
+        events.push("🧠 " + label + ": " + String(before ?? "unknown") + " → " + String(after ?? "unknown"));
+      }
+    }
+  }
 
   if (acceleration.selling === "increasing") events.push(formatDelta("🔻 Sells/5m", previous.sellCount5m, latest.sellCount5m, deltas.sellCount5m));
   if (acceleration.buyPressure === "decreasing") events.push("⚖️ Buy share weakening");
@@ -463,6 +485,18 @@ export function liveEventSignals(assessment, state) {
   if (retrace === "likelyNormalRetrace") events.push("🔄 Normal retrace remains the leading explanation");
   else if (retrace === "mixedEvidence") events.push("🟡 Evidence remains mixed");
 
+  // Even when no acceleration threshold fires, expose the underlying live
+  // comparison when a mini-card was emitted for another material reason.
+  if (temporal.sampleCount >= 2) {
+    const marketChanges = [];
+    if (Number.isFinite(deltas.price)) marketChanges.push("price " + formatUsd(deltas.price));
+    if (Number.isFinite(deltas.volume)) marketChanges.push("vol " + formatUsd(deltas.volume));
+    if (Number.isFinite(deltas.sellCount5m) && deltas.sellCount5m !== 0) marketChanges.push("sells " + formatNumber(previous.sellCount5m) + "→" + formatNumber(latest.sellCount5m));
+    if (Number.isFinite(deltas.buySellRatio5m) && deltas.buySellRatio5m !== 0) marketChanges.push("buy share " + formatPct(previous.buySellRatio5m) + "→" + formatPct(latest.buySellRatio5m));
+    if (Number.isFinite(deltas.liquidity) && deltas.liquidity !== 0) marketChanges.push("liq " + formatUsd(deltas.liquidity));
+    if (marketChanges.length) events.push("📊 Live data: " + marketChanges.join(" • "));
+  }
+
   return [...new Set(events)].slice(0, 4);
 }
 
@@ -472,10 +506,11 @@ export function buildLiveRiskAlert({
   assessment = {},
   state = null,
   sourceMessageId = null,
+  previousAnswers = null,
 }) {
   const urgency = urgencyInfo(assessment);
   const action = liveActionState(assessment, state);
-  const events = liveEventSignals(assessment, state);
+  const events = liveEventSignals(assessment, state, previousAnswers);
   const context = liveContext(assessment, state);
   const lines = [
     "<b>$" + escapeHtml(symbol) + " — " + escapeHtml(actionDisplay(action)) + "</b>",
@@ -689,6 +724,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
             assessment: liveResult.assessment,
             state: liveResult.state,
             sourceMessageId: message.message_id,
+            previousAnswers,
           }), { reply_to_message_id: message.message_id, reply_markup: liveAlertKeyboard(observation.mint) });
         }
       };
