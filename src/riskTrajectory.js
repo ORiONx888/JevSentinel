@@ -120,7 +120,7 @@ function modelRiskSignals(answers) {
 function actionFor({ riskScore, dimensions, answers, confidence, history, temporal }) {
   const severeObjective = dimensions.liquidity.score >= 4 || dimensions.market.score >= 4 || dimensions.flow.score >= 5;
   if (severeObjective || riskScore >= 9) return "SELL";
-  if (riskScore >= 4) return "CAUTION";
+  if (riskScore >= 2) return "CAUTION";
 
   const progression = valueOf(answers.progression);
   const deterioration = valueOf(answers.deterioration);
