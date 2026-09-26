@@ -6,6 +6,7 @@ import { createTokenResearchProvider } from "./providers/tokenResearch.js";
 import { buildEarlyEntryObservation } from "./earlyEntryMonitor.js";
 import { createGroupStore } from "./groupStore.js";
 import { createLiveMonitor } from "./liveMonitor.js";
+import { buildRiskTrajectory } from "./riskTrajectory.js";
 
 const API_ROOT = "https://api.telegram.org";
 const GROUP_KEY_PATTERN = /^[A-Za-z0-9._-]{20,300}$/;
@@ -387,48 +388,14 @@ export function liveAlertKeyboard(mint) {
 }
 
 export function liveActionState(assessment, state = null) {
-  const answers = assessment?.answers ?? {};
-  const urgency = urgencyInfo(assessment);
-  const progression = answerValue(answers.progression);
-  const deterioration = answerValue(answers.deterioration);
-  const retrace = answerValue(answers.retraceAlternative);
-  const escalation = answers.escalation?.noul === true;
-  const falsePositive = answers.falsePositive?.noul === true;
-  const temporal = state?.temporal ?? {};
-  const acceleration = temporal.acceleration ?? {};
-
-  if (
-    progression === "extraction" ||
-    deterioration === "severe" ||
-    retrace === "possibleCoordinatedExtraction" ||
-    (urgency.level === "immediate" && escalation)
-  ) return "SELL";
-
-  if (
-    progression === "distribution" ||
-    deterioration === "elevated" ||
-    urgency.level === "urgent" ||
-    retrace === "mixedEvidence" ||
-    retrace === "possibleSingleActorDump" ||
-    acceleration.selling === "increasing" ||
-    acceleration.liquidity === "deteriorating" ||
-    escalation
-  ) return "CAUTION";
-
-  if (
-    falsePositive === true &&
-    retrace === "likelyNormalRetrace" &&
-    (acceleration.price === "improving" || acceleration.buyPressure === "increasing") &&
-    acceleration.selling !== "increasing"
-  ) return "ADD";
-
-  return "HOLD";
+  if (state?.trajectory?.action) return state.trajectory.action;
+  return buildRiskTrajectory({ state, assessment }).action;
 }
 
 function actionDisplay(action) {
   return action === "SELL" ? "🔴 SELL"
     : action === "CAUTION" ? "🟡 CAUTION"
-      : action === "ADD" ? "🟢 ADD"
+      : action === "BUY" ? "🟢 BUY"
         : "🟢 HOLD";
 }
 
@@ -510,14 +477,16 @@ export function buildLiveRiskAlert({
 }) {
   const urgency = urgencyInfo(assessment);
   const action = liveActionState(assessment, state);
+  const trajectory = state?.trajectory ?? buildRiskTrajectory({ state, assessment });
   const events = liveEventSignals(assessment, state, previousAnswers);
   const context = liveContext(assessment, state);
+  const trajectoryLines = trajectory.reasons?.slice(0, 2) ?? [];
   const lines = [
     "<b>$" + escapeHtml(symbol) + " — " + escapeHtml(actionDisplay(action)) + "</b>",
     `Urgency: ${escapeHtml(urgency.label)} ${urgency.dot}`,
     "",
     "<b>What changed</b>",
-    ...(events.length ? events : context.slice(0, 3)).map((line) => escapeHtml(line)),
+    ...(events.length ? events : (trajectoryLines.length ? trajectoryLines : context.slice(0, 3))).map((line) => escapeHtml(line)),
     "",
     tokenLinks(mint).map((x) => `<a href="${x.url}">${x.label}</a>`).join("  "),
   ];
@@ -678,6 +647,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
       const result = await runtime.sentinel.assess(observation, history);
       runtime.history.set(observation.mint, [...history, result.state].slice(-5));
       const summary = answerSummary(result.assessment);
+      result.state.trajectory = result.state.trajectory ?? buildRiskTrajectory({ state: result.state, assessment: result.assessment, history });
       logger.log?.("[jevsentinel-telegram] EARLY ENTRY JEV assessment finished", JSON.stringify({
         chatId,
         messageId: Number(message.message_id ?? 0),
@@ -931,5 +901,5 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
 }
 
 function isLikelyCard(text) {
-  return /JEV\s+EARLIER\s+ENTRY/i.test(String(text ?? ""));
+  return /(?:JEV\s+EARLIER\s+ENTRY|EARLY\s+ENTRY\s+EXPERIMENT)/i.test(String(text ?? ""));
 }

@@ -2,6 +2,7 @@ import { buildJevState } from "./state.js";
 import { buildTemporalState } from "./temporal.js";
 import { collectIntelligence } from "./intelligence.js";
 import { buildEvidenceState } from "./evidence.js";
+import { buildRiskTrajectory } from "./riskTrajectory.js";
 import { createTelemetryRecord } from "./telemetry.js";
 
 export function createJevSentinel({ providers = [], evaluator, telemetry, logger = null } = {}) {
@@ -19,6 +20,11 @@ export function createJevSentinel({ providers = [], evaluator, telemetry, logger
       state.temporal = temporal;
       state.evidence = evidence;
 
+      // Give the JEV model the deterministic trajectory context as part of its
+      // decision input. The post-model pass below then folds JEV's answers back
+      // into the same trajectory engine for the final live action state.
+      state.trajectory = buildRiskTrajectory({ state, history });
+
       logger?.log?.("[jevsentinel] temporal state", JSON.stringify({
         priorSnapshotCount: priorSnapshots.length,
         currentSnapshot,
@@ -26,9 +32,27 @@ export function createJevSentinel({ providers = [], evaluator, telemetry, logger
         deltas: temporal.deltas,
         acceleration: temporal.acceleration
       }));
+      logger?.log?.("[jevsentinel] trajectory state", JSON.stringify({
+        action: state.trajectory.action,
+        stage: state.trajectory.stage,
+        riskScore: state.trajectory.riskScore,
+        confidence: state.trajectory.confidence,
+        reasons: state.trajectory.reasons
+      }));
       logger?.log?.("[jevsentinel] decision input", JSON.stringify(buildDecisionInputSummary(state, intelligence)));
+
       const assessment = await evaluator.evaluate(state);
       state.verdict = assessment;
+      state.trajectory = buildRiskTrajectory({ state, assessment, history });
+
+      logger?.log?.("[jevsentinel] live action state", JSON.stringify({
+        action: state.trajectory.action,
+        stage: state.trajectory.stage,
+        riskScore: state.trajectory.riskScore,
+        confidence: state.trajectory.confidence,
+        reasons: state.trajectory.reasons
+      }));
+
       const record = createTelemetryRecord({ observation, state, intelligence, assessment });
       telemetry.append(record);
 
@@ -65,12 +89,7 @@ function intelligenceToSnapshot(intelligence) {
 
 function stateToSnapshot(state) {
   if (!state) return null;
-  // Prefer the already-normalized temporal snapshot. This preserves the exact
-  // provider-derived market/flow fields across live-monitor ticks instead of
-  // reconstructing history from the reduced evidence groups.
-  if (state.temporal?.latest?.observedAt) {
-    return { ...state.temporal.latest };
-  }
+  if (state.temporal?.latest?.observedAt) return { ...state.temporal.latest };
   const evidence = state.evidence ?? {};
   const market = evidence.marketDynamics ?? {};
   const liquidity = evidence.liquidityStructure ?? {};
@@ -90,7 +109,6 @@ function stateToSnapshot(state) {
     uniqueBuyers: finite(flow.uniqueBuyers ?? wallet.uniqueBuyers),
     sellerAcceleration: finite(flow.sellerAcceleration),
     coordinatedSellers: finite(flow.coordinatedSellers),
-    volume: finite(market.volume5mUsd),
     sellUsd: finite(flow.sellUsd),
     buyUsd: finite(flow.buyUsd),
     sellerCount: finite(flow.uniqueSellers ?? wallet.uniqueSellers)
