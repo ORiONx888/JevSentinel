@@ -3,7 +3,7 @@ import { createJevEvaluator } from "./jev.js";
 import { createJevSentinel } from "./engine.js";
 import { createTransferFlowProvider } from "./providers/transferFlow.js";
 import { createTokenResearchProvider } from "./providers/tokenResearch.js";
-import { buildCw2Observation } from "./cw2Monitor.js";
+import { buildEarlyEntryObservation } from "./earlyEntryMonitor.js";
 import { createGroupStore } from "./groupStore.js";
 import { createLiveMonitor } from "./liveMonitor.js";
 
@@ -84,7 +84,7 @@ export function buildStartMessage({ group = false } = {}) {
       "Send your JEV API key as the next message in this group.",
       "It will be captured immediately and the key message will be deleted.",
       "",
-      "Only <b>CONVICTION PULSE CW2</b> cards are monitored in this test.",
+      "Only <b>EARLY ENTRY EXPERIMENT</b> cards are monitored in this test.",
       "The key itself is never written to ordinary logs.",
     ].join("\n");
   }
@@ -95,12 +95,12 @@ export function buildStartMessage({ group = false } = {}) {
     "",
     "<b>Commands</b>",
     "/jevstatus — bot and JEV status",
-    "/jevon — turn CW2 monitoring on",
-    "/jevoff — turn CW2 monitoring off",
+    "/jevon — turn EARLY ENTRY EXPERIMENT monitoring on",
+    "/jevoff — turn EARLY ENTRY EXPERIMENT monitoring off",
     "/jevtest — send a safe test risk alert",
     "/jevhelp — show help",
     "",
-    "For the current test, add JevSentinel to the target group and activate CW2 monitoring there.",
+    "For the current test, add JevSentinel to the target group and activate EARLY ENTRY EXPERIMENT monitoring there.",
   ].join("\n");
 }
 
@@ -125,12 +125,12 @@ export function buildHelpMessage() {
     "<b>Commands</b>",
     "/jevhelp — show this help and available commands",
     "/jevstatus — show whether JEV is configured and monitoring is ON/OFF",
-    "/jevon — turn CW2 monitoring ON (group admins only)",
-    "/jevoff — turn CW2 monitoring OFF (group admins only)",
+    "/jevon — turn EARLY ENTRY EXPERIMENT monitoring ON (group admins only)",
+    "/jevoff — turn EARLY ENTRY EXPERIMENT monitoring OFF (group admins only)",
     "/jevtest — send a delivery test (private chat)",
     "",
     "<b>What is monitored</b>",
-    "CONVICTION PULSE CW2 cards only.",
+    "EARLY ENTRY EXPERIMENT cards only.",
     "Other VolSpike cards are ignored during this test.",
     "",
     "<b>Mode</b>",
@@ -539,7 +539,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
       return false;
     }
 
-    await sendMessage(chatId, "🛡️ <b>JEV verified — monitoring ACTIVE.</b>\n\nMonitoring: <b>CONVICTION PULSE CW2 only</b>\nMode: <b>LOG-ONLY</b>");
+    await sendMessage(chatId, "🛡️ <b>JEV verified — monitoring ACTIVE.</b>\n\nMonitoring: <b>EARLY ENTRY EXPERIMENT only</b>\nMode: <b>LOG-ONLY</b>");
     return Boolean(client && message);
   }
 
@@ -555,7 +555,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
         configured: Boolean(existing),
         enabled: existing ? existing.enabled !== false : false,
         hasText: Boolean(textValue),
-        isCw2: isLikelyCard(textValue),
+        isEarlyEntry: isLikelyCard(textValue),
         textLength: textValue.length,
       }),
     );
@@ -583,7 +583,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
       return;
     }
 
-    const observation = buildCw2Observation({
+    const observation = buildEarlyEntryObservation({
       text: textValue,
       messageId: message.message_id,
       chatId: message.chat.id,
@@ -594,14 +594,14 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
         JSON.stringify({
           chatId,
           messageId: Number(message.message_id ?? 0),
-          isCw2: isLikelyCard(textValue),
+          isEarlyEntry: isLikelyCard(textValue),
         }),
       );
       return;
     }
 
     logger.log?.(
-      "[jevsentinel-telegram] CW2 detected",
+      "[jevsentinel-telegram] EARLY ENTRY EXPERIMENT detected",
       JSON.stringify({
         chatId,
         messageId: Number(message.message_id ?? 0),
@@ -620,7 +620,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
     processed.add(key);
 
     try {
-      logger.log?.("[jevsentinel-telegram] CW2 JEV assessment starting", JSON.stringify({
+      logger.log?.("[jevsentinel-telegram] EARLY ENTRY JEV assessment starting", JSON.stringify({
         chatId,
         messageId: Number(message.message_id ?? 0),
       }));
@@ -628,7 +628,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
       const result = await runtime.sentinel.assess(observation, history);
       runtime.history.set(observation.mint, [...history, result.state].slice(-5));
       const summary = answerSummary(result.assessment);
-      logger.log?.("[jevsentinel-telegram] CW2 JEV assessment finished", JSON.stringify({
+      logger.log?.("[jevsentinel-telegram] EARLY ENTRY JEV assessment finished", JSON.stringify({
         chatId,
         messageId: Number(message.message_id ?? 0),
         escalation: result.assessment?.answers?.escalation?.noul === true,
@@ -636,7 +636,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
       await sendMessage(message.chat.id, buildRiskAlert({
         mint: observation.mint,
         symbol: observation.symbol,
-        sourceCard: "CONVICTION PULSE CW2",
+        sourceCard: "EARLY ENTRY EXPERIMENT",
         classification: summary.classification,
         summary: summary.summary,
         signals: summary.signals,
@@ -677,10 +677,10 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
           }), { reply_to_message_id: message.message_id, reply_markup: alertKeyboard(observation.mint) });
         }
       });
-      logger.log?.("[jevsentinel-telegram] CW2 assessment completed; live monitoring started");
+      logger.log?.("[jevsentinel-telegram] EARLY ENTRY assessment completed; live monitoring started");
     } catch (error) {
-      logger.error?.("[jevsentinel-telegram] CW2 assessment failed");
-      await sendMessage(message.chat.id, "⚠️ <b>JevSentinel could not complete the CW2 assessment.</b> No trading action was taken.", { reply_to_message_id: message.message_id });
+      logger.error?.("[jevsentinel-telegram] EARLY ENTRY assessment failed");
+      await sendMessage(message.chat.id, "⚠️ <b>JevSentinel could not complete the EARLY ENTRY assessment.</b> No trading action was taken.", { reply_to_message_id: message.message_id });
     }
   }
 
@@ -707,8 +707,8 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
     group.enabled = enabled;
     persistGroupsNow();
     await sendMessage(chatId, enabled
-      ? "🟢 <b>JevSentinel monitoring ON.</b>\n\nMonitoring: <b>CONVICTION PULSE CW2 only</b>"
-      : "⚪ <b>JevSentinel monitoring OFF.</b>\n\nNo CW2 cards will be processed until /jevon is used.");
+      ? "🟢 <b>JevSentinel monitoring ON.</b>\n\nMonitoring: <b>EARLY ENTRY EXPERIMENT only</b>"
+      : "⚪ <b>JevSentinel monitoring OFF.</b>\n\nNo EARLY ENTRY EXPERIMENT cards will be processed until /jevon is used.");
     return true;
   }
 
@@ -767,7 +767,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
           connected: true,
           configured: Boolean(group),
           mode: group ? (group.enabled === false ? "OFF" : "LOG-ONLY") : "OFF",
-          cards: group ? ["CONVICTION PULSE CW2"] : [],
+          cards: group ? ["EARLY ENTRY EXPERIMENT"] : [],
         }));
         return;
       }
