@@ -68,6 +68,9 @@ test("bot handles start, status and test without a real Telegram call", async ()
   assert.equal(calls[2].method, "sendMessage");
   assert.equal(calls[2].params.reply_to_message_id, 12);
   assert.equal(calls[3].params.reply_to_message_id, 13);
+  // Verify the test alert text contains TEST and is formatted as a risk alert
+  assert.match(calls[2].params.text, /\$TEST/);
+  assert.match(calls[3].params.text, /\$TEST/);
 });
 
 
@@ -88,7 +91,7 @@ test("startup reports Telegram bot-to-bot readiness", async () => {
   });
   await bot.start();
   assert.ok(logs.includes("[jevsentinel-telegram] Telegram bot capabilities"));
-  assert.ok(logs.includes("[jevsentinel-telegram] bot-to-bot prerequisite: enable Bot-to-Bot Communication Mode in @BotFather and ensure JevSentinel can receive group messages (admin or privacy mode disabled)"));
+  assert.ok(logs.includes("[jevsentinel-telegram] bot-to-bot prerequisite: enable Bot-to-Bot Communication Mode in @BotFather and ensure JevSentinel can receive group messages (admin or privacy mo[...]
 });
 
 
