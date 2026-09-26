@@ -41,14 +41,14 @@ test("setup/status/help messages are available", () => {
   assert.match(buildStartMessage(), /JevSentinel/);
   assert.match(buildStatusMessage(), /JevSentinel Status/);
   assert.match(buildStatusMessage({ configured: false, mode: "OFF" }), /NOT CONFIGURED/);
-  assert.match(buildStatusMessage({ configured: true, mode: "LOG-ONLY", cards: ["CONVICTION PULSE CW2"] }), /CONFIGURED/);
+  assert.match(buildStatusMessage({ configured: true, mode: "LOG-ONLY", cards: ["EARLY ENTRY EXPERIMENT"] }), /CONFIGURED/);
   assert.match(buildHelpMessage(), /JevSentinel Help/);
   const help = buildHelpMessage();
   assert.match(help, /\/jevon/);
   assert.match(help, /\/jevoff/);
   assert.match(help, /\/jevstatus/);
   assert.match(help, /\/jevhelp/);
-  assert.match(help, /CONVICTION PULSE CW2/);
+  assert.match(help, /EARLY ENTRY EXPERIMENT/);
   assert.match(help, /LOG-ONLY/);
   assert.match(help, /No trading or auto-sell/);
 });
@@ -318,4 +318,27 @@ test("action state change is material even without a JEV answer change", () => {
     "CAUTION"
   );
   assert.equal(event, true);
+});
+
+
+test("EARLY ENTRY EXPERIMENT observation parser accepts the production card format", async () => {
+  const { buildEarlyEntryObservation, isEarlyEntryCard } = await import("../src/earlyEntryMonitor.js");
+  const text = [
+    "⚡ <b>JEV EARLIER ENTRY</b> — <b>TEST</b>",
+    "🔑 CA: <code>So11111111111111111111111111111111111111112</code>",
+    "🤖 JEV: <b>WATCH</b> (0.25)",
+    "🧠 Buys: 188 SOL",
+  ].join("\\n");
+  assert.equal(isEarlyEntryCard(text), true);
+  const observation = buildEarlyEntryObservation({ text, messageId: 77, chatId: -7 });
+  assert.equal(observation?.mint, "So11111111111111111111111111111111111111112");
+  assert.equal(observation?.symbol, "TEST");
+  assert.equal(observation?.sourceCard, "EARLY ENTRY EXPERIMENT");
+});
+
+test("CW2 cards are no longer recognized as JevSentinel intake", async () => {
+  const { isEarlyEntryCard, buildEarlyEntryObservation } = await import("../src/earlyEntryMonitor.js");
+  const text = "CONVICTION PULSE CW2 $TEST CA: So11111111111111111111111111111111111111112";
+  assert.equal(isEarlyEntryCard(text), false);
+  assert.equal(buildEarlyEntryObservation({ text, messageId: 1, chatId: -7 }), null);
 });
