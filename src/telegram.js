@@ -590,7 +590,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
     });
     if (!observation) {
       logger.log?.(
-        "[jevsentinel-telegram] non-CW2 group message ignored",
+        "[jevsentinel-telegram] non-EARLY ENTRY group message ignored",
         JSON.stringify({
           chatId,
           messageId: Number(message.message_id ?? 0),
@@ -866,5 +866,5 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
 }
 
 function isLikelyCard(text) {
-  return /CONVICTION\s+PULSE\s+CW2/i.test(String(text ?? ""));
+  return /JEV\s+EARLIER\s+ENTRY/i.test(String(text ?? ""));
 }
