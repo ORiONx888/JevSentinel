@@ -151,7 +151,7 @@ test("live alert uses temporal acceleration for changing market context", () => 
     },
   });
   assert.match(text, /Sells\/5m 12 → 27 \(\+15\)/);
-  assert.match(text, /📉 5m price -4\.2%/);
+  assert.match(text, /📉 Price deteriorating -4\.2%/);
   assert.match(text, /Liquidity deterioration increasing|💧 Liquidity declining/);
   assert.doesNotMatch(text, /No material change detected/);
 });
@@ -226,7 +226,7 @@ test("live alert reports improving temporal conditions", () => {
     },
   });
   assert.match(text, /💧 Liquidity improving/);
-  assert.match(text, /📉 5m price \+2\.3%/);
+  assert.match(text, /📈 Price improving \+2\.3%/);
   assert.match(text, /👥 Sellers easing 7 → 4 \(-3\)/);
 });
 test("mini-card keyboard provides focus and stop controls bound to the token", () => {
