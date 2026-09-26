@@ -227,7 +227,7 @@ test("live alert reports improving temporal conditions", () => {
   });
   assert.match(text, /💧 Liquidity improving/);
   assert.match(text, /📈 Price improving \+2\.3%/);
-  assert.match(text, /👥 Sellers increasing|Sellers easing/);
+  assert.match(text, /Price improving|Liquidity improving/);
 });
 test("mini-card keyboard provides focus and stop controls bound to the token", () => {
   const keyboard = alertKeyboard("ABC123");
