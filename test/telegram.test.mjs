@@ -6,6 +6,8 @@ import {
   buildRiskAlert,
   alertKeyboard,
   isMaterialLiveEvent,
+  liveActionState,
+  liveEventSignals,
   buildStartMessage,
   buildStatusMessage,
   createTelegramBot,
@@ -109,7 +111,7 @@ test("live risk alert is compact, token-first, and preserves token links", () =>
     },
     sourceMessageId: 42,
   });
-  assert.match(text, /\$PUPPY: Urgency 1\.84 🔴/);
+  assert.match(text, /\$PUPPY — /);
   assert.match(text, /Coordinated seller activity detected/);
   assert.match(text, /Distribution pattern developing/);
   assert.doesNotMatch(text, /Live CA-derived reassessment/);
@@ -272,3 +274,40 @@ test("callback controls acknowledge focus and stop actions", async () => {
   assert.match(calls[0].params.text, /not active/);
 });
 
+
+
+test("live action state maps existing JEV evidence into buyer-facing states", () => {
+  assert.equal(liveActionState({ answers: { progression: { choice: "extraction" }, deterioration: { value: "severe" } } }), "SELL");
+  assert.equal(liveActionState({ answers: { progression: { choice: "distribution" } } }), "CAUTION");
+  assert.equal(liveActionState({ answers: { urgency: { choice: "monitor" } } }), "HOLD");
+  assert.equal(liveActionState({
+    answers: {
+      falsePositive: { noul: true },
+      retraceAlternative: { choice: "likelyNormalRetrace" },
+    },
+  }, { temporal: { acceleration: { price: "improving", buyPressure: "increasing", selling: "decreasing" } } }), "ADD");
+});
+
+test("live event signals explain the decision-driving change", () => {
+  const signals = liveEventSignals(
+    { answers: { progression: { choice: "distribution" } } },
+    { temporal: {
+      latest: { sellCount5m: 27, priceChange5mPct: -4.2 },
+      previous: { sellCount5m: 12 },
+      deltas: { sellCount5m: 15 },
+      acceleration: { selling: "increasing", price: "deteriorating" },
+    } }
+  );
+  assert.match(signals.join("\n"), /Sells\/5m 12 → 27 \(\+15\)/);
+  assert.match(signals.join("\n"), /Price deteriorating/);
+});
+
+test("action state change is material even without a JEV answer change", () => {
+  const event = isMaterialLiveEvent(
+    { answers: { urgency: { choice: "monitor" } } },
+    { temporal: { deltas: {} } },
+    { urgency: { choice: "monitor" } },
+    "CAUTION"
+  );
+  assert.equal(event, true);
+});
