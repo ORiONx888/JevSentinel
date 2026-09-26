@@ -1,6 +1,8 @@
 const SOLANA_ADDRESS = /[1-9A-HJ-NP-Za-km-z]{32,44}/g;
 
-// VolSpike production cards use the exact SG-only header "EARLY ENTRY EXPERIMENT".\n// Keep the legacy JEV EARLIER ENTRY form accepted for compatibility.\nexport const EARLY_ENTRY_CARD_PATTERN = /(?:JEV\s+EARLIER\s+ENTRY|EARLY\s+ENTRY\s+EXPERIMENT)/i;
+// VolSpike production cards use the exact SG-only header "EARLY ENTRY EXPERIMENT".
+// Keep the legacy JEV EARLIER ENTRY form accepted for compatibility.
+export const EARLY_ENTRY_CARD_PATTERN = /(?:JEV\s+EARLIER\s+ENTRY|EARLY\s+ENTRY\s+EXPERIMENT)/i;
 
 export function isEarlyEntryCard(text = "") {
   return EARLY_ENTRY_CARD_PATTERN.test(String(text));
@@ -19,7 +21,6 @@ export function extractSymbol(text = "") {
   const match = value.match(/\$([A-Z][A-Z0-9_]{1,14})\b/);
   if (match?.[1]) return match[1];
 
-  // Production Telegram cards may wrap the header and symbol in HTML tags.
   const normalized = value.replace(/<[^>]*>/g, " ");
   const header = normalized.match(/JEV\s+EARLIER\s+ENTRY\s*[—-]\s*\$?([A-Za-z0-9_.$-]{1,24})/i);
   return header?.[1]?.replace(/^\$/, "") ?? "UNKNOWN";
