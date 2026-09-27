@@ -234,12 +234,20 @@ def main():
     # bins in the aggregate report.
     rows = []
     import itertools
+    import numpy as np
     names = list(predicates)
+    for name in names:
+        cases[name] = cases.apply(lambda row, n=name: hit(row, n), axis=1).astype(bool)
+    target_df = cases[cases.target == 1]
+    control_df = cases[cases.target == 0]
+    target_count = len(target_df)
+    control_count = len(control_df)
     for k in (2, 3):
         for combo in itertools.combinations(names, k):
-            th = sum(all(hit(r, f) for f in combo) for _, r in target_df.iterrows())
-            ch = sum(all(hit(r, f) for f in combo) for _, r in control_df.iterrows())
-            if th < MIN_TARGETS or len(control_df) < MIN_CONTROLS:
+            mask = np.logical_and.reduce([cases[f].to_numpy(dtype=bool) for f in combo])
+            th = int((mask & (cases.target.to_numpy() == 1)).sum())
+            ch = int((mask & (cases.target.to_numpy() == 0)).sum())
+            if th < MIN_TARGETS or control_count < MIN_CONTROLS:
                 continue
             precision = th / (th + ch) if th + ch else 0
             recall = th / len(target_df) if len(target_df) else 0
