@@ -26,19 +26,20 @@ jobs:
             [ -n "$VOL" ] || continue
             echo "--- checking $VOL ---"
             set +e
-            RUN_OUTPUT="$(flyctl machine run --detach --region ord --volume "$VOL:/data" ubuntu:24.04 -- tail -f /dev/null 2>&1)"
-            RUN_RC=$?
+            CREATE_OUTPUT="$(flyctl machine create ubuntu:24.04 --app jevsentinel --region ord --volume "$VOL:/data" --name "scan-${VOL#vol_}" --json 2>&1)"
+            CREATE_RC=$?
             set -e
-            echo "$RUN_OUTPUT"
-            if [ "$RUN_RC" -ne 0 ]; then
-              echo "Unable to mount $VOL for inspection"
+            echo "$CREATE_OUTPUT"
+            if [ "$CREATE_RC" -ne 0 ]; then
+              echo "Unable to create inspection machine for $VOL"
               continue
             fi
-            TMP_MACHINE="$(printf '%s' "$RUN_OUTPUT" | jq -r '.id // .ID // empty')"
+            TMP_MACHINE="$(printf '%s' "$CREATE_OUTPUT" | jq -r '.id // .ID // empty')"
             if [ -z "$TMP_MACHINE" ]; then
               echo "Could not determine temporary machine ID for $VOL"
               continue
             fi
+            flyctl machine start "$TMP_MACHINE" --app jevsentinel >/dev/null 2>&1 || true
             sleep 3
             set +e
             CHECK_OUTPUT="$(flyctl ssh console --app jevsentinel --machine "$TMP_MACHINE" -C 'ls -l /data/groups.enc' 2>&1)"
