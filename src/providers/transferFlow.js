@@ -39,6 +39,8 @@ export function createTransferFlowProvider({
       const watched = new Set(observation.wallets?.watched ?? []);
       const watchedMatches = recent.filter((e) => watched.has(e.owner) || watched.has(e.sender) || watched.has(e.receiver)).length;
       const sellerCounts = countBy(recent.filter((e) => e.direction === "out" || e.type === "sell").map((e) => e.owner || e.sender).filter(Boolean));
+      const repeatedSellerCount = [...sellerCounts.values()].filter((count) => count >= 2).length;
+      const repeatedSellerSharePct = sellers.size ? (repeatedSellerCount / sellers.size) * 100 : null;
 
       const result = {
         burst: recent.length >= 3,
@@ -52,7 +54,9 @@ export function createTransferFlowProvider({
         windowMs,
         direction: classifyDirection(recent, watched),
         sellerAcceleration: sellerCounts.size ? Math.max(...sellerCounts.values()) : 0,
-        coordinatedSellers: [...sellerCounts.values()].filter((count) => count >= 2).length,
+        coordinatedSellers: repeatedSellerCount,
+        repeatedSellerCount,
+        repeatedSellerSharePct,
         events: recent.slice(-50)
       };
       if (cacheKey) cache.set(cacheKey, { at: Date.now(), value: result });
