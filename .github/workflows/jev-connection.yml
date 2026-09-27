@@ -125,15 +125,16 @@ jobs:
               set -e
             }
             trap cleanup_recovery EXIT
+            echo "Latest snapshot selected: $SNAPSHOT_ID"
             set +e
-            CREATE_VOL_OUTPUT="$(flyctl volumes create "audit_r_${VOL#vol_}" --app "$APP" --region "$REGION" --size "$VOL_SIZE" --snapshot-id "$SNAPSHOT_ID" --yes 2>&1)"
+            CREATE_VOL_OUTPUT="$(flyctl volumes fork "$VOL" --app "$APP" --region "$REGION" --name "audit_r_${VOL#vol_}" --json 2>&1)"
             CREATE_VOL_RC=$?
             set -e
             echo "$CREATE_VOL_OUTPUT"
-            test "$CREATE_VOL_RC" = "0" || { echo "FAIL: snapshot restore volume creation failed for $VOL (rc=$CREATE_VOL_RC)"; exit 1; }
-            RECOVERY_VOL="$(printf '%s\n' "$CREATE_VOL_OUTPUT" | sed -n 's/.*ID: \([^[:space:]]*\).*/\1/p' | tail -n1)"
+            test "$CREATE_VOL_RC" = "0" || { echo "FAIL: isolated orphan fork failed for $VOL (rc=$CREATE_VOL_RC)"; exit 1; }
+            RECOVERY_VOL="$(printf '%s\n' "$CREATE_VOL_OUTPUT" | jq -r '.id // empty' 2>/dev/null || true)"
             [ -n "$RECOVERY_VOL" ] || RECOVERY_VOL="$(flyctl volumes list --app "$APP" --json | jq -r --arg n "audit_r_${VOL#vol_}" '[.[] | select(.name==$n)] | .[-1].id // empty')"
-            test -n "$RECOVERY_VOL" || { echo "FAIL: could not identify recovery volume"; exit 1; }
+            test -n "$RECOVERY_VOL" || { echo "FAIL: could not identify recovery fork"; exit 1; }
             set +e
             CREATE_OUTPUT="$(flyctl machine run alpine:3.20 "sleep 3600" --app "$APP" --region "$REGION" --volume "$RECOVERY_VOL:/data" --name "audit_r_${VOL#vol_}" --detach --rm --restart no 2>&1)"
             CREATE_RC=$?
