@@ -17,3 +17,4 @@ export { createNativeRiskProvider, createTransferFlowProvider, createTokenResear
 export { createLiveMonitor } from "./liveMonitor.js";
 
 export { buildShadowPrediction } from "./shadowPrediction.js";
+export { buildObservedOutcome } from "./outcomeCollector.js";
