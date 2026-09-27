@@ -26,10 +26,27 @@ jobs:
             [ -n "$VOL" ] || continue
             echo "--- checking $VOL ---"
             set +e
-            flyctl machine run --yes --rm --region ord --volume "$VOL:/data" ubuntu:24.04 -- ls -l /data/groups.enc
-            RC=$?
+            RUN_OUTPUT="$(flyctl machine run --detach --region ord --volume "$VOL:/data" ubuntu:24.04 -- tail -f /dev/null 2>&1)"
+            RUN_RC=$?
             set -e
-            if [ "$RC" -eq 0 ]; then
+            echo "$RUN_OUTPUT"
+            if [ "$RUN_RC" -ne 0 ]; then
+              echo "Unable to mount $VOL for inspection"
+              continue
+            fi
+            TMP_MACHINE="$(printf '%s' "$RUN_OUTPUT" | jq -r '.id // .ID // empty')"
+            if [ -z "$TMP_MACHINE" ]; then
+              echo "Could not determine temporary machine ID for $VOL"
+              continue
+            fi
+            sleep 3
+            set +e
+            CHECK_OUTPUT="$(flyctl ssh console --app jevsentinel --machine "$TMP_MACHINE" -C 'ls -l /data/groups.enc' 2>&1)"
+            CHECK_RC=$?
+            set -e
+            echo "$CHECK_OUTPUT"
+            if [ "$CHECK_RC" -eq 0 ]; then
               echo "FOUND_GROUP_STORE=$VOL"
             fi
+            flyctl machine destroy "$TMP_MACHINE" --app jevsentinel --yes || true
           done
