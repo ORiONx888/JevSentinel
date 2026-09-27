@@ -1,34 +1,23 @@
-name: Emergency Cleanup JEV Duplicate Machines
+name: Verify JEV Recovery
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
-  cleanup:
+  verify:
     runs-on: ubuntu-latest
     steps:
       - name: Setup flyctl
         uses: superfly/flyctl-actions/setup-flyctl@master
-      - name: Remove every JEV machine except the known-good instance
+      - name: Verify single live machine and persisted group state
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
         run: |
           set -euo pipefail
-          KEEP="857100a4049168"
-          IDS="$(flyctl machine list --app jevsentinel
-          echo '=== KNOWN GOOD MACHINE ==='
-          flyctl machine status 857100a4049168 --app jevsentinel
-          echo '=== GROUP STORE ==='
-          flyctl ssh console --app jevsentinel --machine 857100a4049168 -C 'ls -l /data/groups.enc && node --input-type=module -e "import(\"./src/groupStore.js\").then(({createGroupStore})=>{const g=createGroupStore().load();console.log(JSON.stringify(g))})"' || true
-          echo '=== RECENT LOGS ==='
-          flyctl logs --app jevsentinel --machine 857100a4049168 --no-tail | tail -n 100 || true --json | jq -r --arg keep "$KEEP" '.[] | select(.id != $keep) | .id')"
-          printf '%s
-' "$IDS" | while read -r id; do
-            [ -n "$id" ] || continue
-            echo "Destroying $id"
-            (flyctl machine destroy "$id" --app jevsentinel --force || true) &
-          done
-          wait
-          sleep 5
-          echo "=== FINAL ==="
           flyctl machine list --app jevsentinel
+          flyctl machine status 857100a4049168 --app jevsentinel
+          flyctl ssh console --app jevsentinel --machine 857100a4049168 -C 'ls -l /data/groups.enc'
+          flyctl ssh console --app jevsentinel --machine 857100a4049168 -C "node --input-type=module -e 'import("./src/groupStore.js").then(({createGroupStore})=>{const g=createGroupStore().load();console.log(JSON.stringify({groupCount:g.length,enabled:g.filter(x=>x.enabled!==false).length,groups:g.map(x=>({enabled:x.enabled,mode:x.mode,chatId:x.chatId}))}))})'"
+          flyctl logs --app jevsentinel --machine 857100a4049168 --no-tail | tail -n 150
