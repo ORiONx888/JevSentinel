@@ -7,5 +7,5 @@ test("JEV questions are independent and include explicit pattern contradiction/r
   assert.equal(q.patternResemblance.type, "noul");
   assert.equal(q.patternContradiction.type, "noul");
   assert.match(q.progression.prompt, /Do not force/i);
-  assert.match(q.retraceAlternative.prompt, /insufficient evidence/i);
+  assert.equal(q.retraceAlternative.options.insufficientEvidence !== undefined, true);
 });
