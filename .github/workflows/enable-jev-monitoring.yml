@@ -1,9 +1,7 @@
 name: Enable JEV Persisted Monitoring
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   enable:
