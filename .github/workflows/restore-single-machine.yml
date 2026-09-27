@@ -24,6 +24,7 @@ jobs:
             [ -n "$id" ] || continue
             echo "Force destroying duplicate JEV polling machine $id"
             flyctl machine destroy "$id" --app jevsentinel --force || true
+            sleep 1
           done
           echo "=== FINAL MACHINE SET ==="
           flyctl machine list --app jevsentinel
