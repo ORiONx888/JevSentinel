@@ -153,12 +153,12 @@ jobs:
             [ -n "$RECOVERY_MACHINE" ] || RECOVERY_MACHINE="$(flyctl machine list --app "$APP" --json | jq -r --arg n "audit_r_${VOL#vol_}" '[.[] | select(.name==$n)] | .[-1].id // empty')"
             test -n "$RECOVERY_MACHINE" || { echo "FAIL: could not identify recovery machine"; exit 1; }
             for i in $(seq 1 36); do
-              STATE="$(flyctl machine status "$RECOVERY_MACHINE" --app "$APP" --json 2>/dev/null | jq -r '.state // empty' || true)"
-              echo "Recovery machine state: $STATE"
-              [ "$STATE" = "started" ] && break
+              RECOVERY_STATE="$(flyctl machine status "$RECOVERY_MACHINE" --app "$APP" 2>/dev/null | grep -E '^[[:space:]]*State:' | head -n1 | sed 's/.*State:[[:space:]]*//' || true)"
+              echo "Recovery machine state: $RECOVERY_STATE"
+              [ "$RECOVERY_STATE" = "started" ] && break
               sleep 5
             done
-            test "$STATE" = "started" || { echo "FAIL: recovery machine did not start"; exit 1; }
+            test "$RECOVERY_STATE" = "started" || { echo "FAIL: recovery machine did not become ready"; exit 1; }
             set +e
             FILES="$(flyctl machine exec "$RECOVERY_MACHINE" sh -lc 'find /data -mindepth 1 -maxdepth 3 -type f ! -path "/data/lost+found/*" -printf "%p\t%s bytes\n" | sort' --app "$APP" --timeout 60 2>&1)"
             RC=$?
