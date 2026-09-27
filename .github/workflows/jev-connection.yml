@@ -40,6 +40,7 @@ jobs:
       - name: Verify production storage and audit orphan volumes
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         run: |
           set -euo pipefail
           APP="jevsentinel"
@@ -71,6 +72,8 @@ jobs:
           echo "Production groups.enc SHA256=$PROD_GROUPS_HASH"
           flyctl ssh console --app "$APP" --machine "$PROD_MACHINE" -C 'node --input-type=module -e "import(\"./src/groupStore.js\").then(({createGroupStore})=>{const g=createGroupStore().load();if(g.length!==1||g.filter(x=>x.enabled!==false).length!==1)process.exit(1);console.log(JSON.stringify({groupCount:g.length,enabled:g.filter(x=>x.enabled!==false).length}))})"'
 
+          echo "=== ALL JEV VOLUMES ==="
+          printf '%s' "$VOLUMES" | jq -r '.[] | [.id,.state,.name,.region,(.attached_machine_id // "-"),.created_at] | @tsv'
           echo "=== PRODUCTION VOLUME ==="
           printf '%s' "$VOLUMES" | jq -r --arg id "$PROD_VOLUME" '.[] | select(.id==$id) | [.id,.state,.region,.attached_machine_id,.created_at] | @tsv'
           echo "=== ORPHAN VOLUMES ==="
@@ -106,6 +109,14 @@ jobs:
               echo "Orphan groups.enc SHA256=$ORPHAN_GROUPS_HASH"
               if [ -n "$ORPHAN_GROUPS_HASH" ] && [ "$ORPHAN_GROUPS_HASH" = "$PROD_GROUPS_HASH" ]; then
                 echo "MATCHES_PRODUCTION_GROUPS_ENC=$VOL"
+              fi
+              rm -f ./orphan-groups.enc
+              if flyctl ssh sftp get /data/groups.enc ./orphan-groups.enc --app "$APP" --machine "$MACHINE_ID" >/dev/null 2>&1; then
+                ORPHAN_SUMMARY="$(node --input-type=module -e 'import {readFileSync,createDecipheriv,createHash} from "node:crypto"; const payload=JSON.parse(readFileSync("./orphan-groups.enc","utf8")); const key=createHash("sha256").update("JevSentinel/group-store/v1:").update(String(process.env.TELEGRAM_BOT_TOKEN).trim()).digest(); const d=createDecipheriv("aes-256-gcm",key,Buffer.from(payload.iv,"base64")); d.setAuthTag(Buffer.from(payload.tag,"base64")); const groups=JSON.parse(Buffer.concat([d.update(Buffer.from(payload.data,"base64")),d.final()]).toString("utf8")).groups; console.log(JSON.stringify({groupCount:groups.length,enabled:groups.filter(g=>g.enabled!==false).length,plaintextSha256:createHash("sha256").update(JSON.stringify(groups)).digest("hex")}));')"
+                echo "ORPHAN_GROUP_STATE=$ORPHAN_SUMMARY"
+                rm -f ./orphan-groups.enc
+              else
+                echo "ORPHAN_GROUP_STATE=unreadable"
               fi
             fi
             flyctl machine destroy "$MACHINE_ID" --app "$APP" --force || true
