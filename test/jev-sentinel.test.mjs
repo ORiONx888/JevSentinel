@@ -122,7 +122,7 @@ test("live history preserves changing market and flow telemetry for prediction",
   assert.equal(second.state.temporal.previous.sellCount5m, 12);
   assert.equal(second.state.temporal.latest.sellCount5m, 22);
   assert.equal(second.state.temporal.latest.uniqueSellers, 9);
-  assert.equal(second.state.temporal.deltas.price, 0.2);
+  assert.ok(Math.abs(second.state.temporal.deltas.price - 0.2) < 1e-9);
   assert.equal(second.state.temporal.deltas.liquidity, -100);
   assert.equal(second.state.temporal.deltas.volume, 2000);
   assert.equal(second.state.temporal.acceleration.liquidity, "deteriorating");
