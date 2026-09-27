@@ -35,3 +35,30 @@ test("live monitor is bounded and seeds its first snapshot", async () => {
   assert.equal(calls, 1);
   assert.equal(monitor.size(), 0);
 });
+
+
+test("live monitor finalizes exactly once when the observation window completes", async () => {
+  const completions = [];
+  let calls = 0;
+  const monitor = createLiveMonitor({ intervalMs: 1, maxSnapshots: 2 });
+  const finished = new Promise((resolve) => {
+    monitor.start({
+      mint: "mint-complete",
+      initialState: { temporal: { latest: { price: 1, observedAt: "2026-09-27T00:00:00Z" } } },
+      run: async () => {
+        calls += 1;
+        return { state: { temporal: { latest: { price: 2, observedAt: "2026-09-27T00:00:01Z" } } } };
+      },
+      onComplete: async (snapshots) => {
+        completions.push(snapshots);
+        resolve();
+      }
+    });
+  });
+
+  await finished;
+  assert.equal(calls, 1);
+  assert.equal(completions.length, 1);
+  assert.equal(completions[0].length, 2);
+  assert.equal(monitor.size(), 0);
+});
