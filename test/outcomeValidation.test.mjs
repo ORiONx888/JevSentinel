@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {
   buildChronologicalHoldout,
   buildOutcomeValidation,
+  buildPredictionOutcomeLinkage,
   normalizeOutcome,
   validateFeatureGroups,
   validateOutcomeForTelemetry
@@ -105,4 +106,21 @@ test("insufficient data does not fabricate a holdout", () => {
   ]);
   assert.equal(result.status, "insufficient-data");
   assert.equal(result.testCount, 0);
+});
+
+
+test("links shadow predictions to later resolved outcomes without promotion", () => {
+  const result = buildPredictionOutcomeLinkage([
+    { id: "1", prediction: { action: "BUY", confidence: 0.82 }, outcome: { label: "positive" } },
+    { id: "2", prediction: { action: "BUY", confidence: 0.72 }, outcome: { label: "pump_then_collapse" } },
+    { id: "3", prediction: { action: "SELL", confidence: 0.78 }, outcome: { label: "negative" } },
+    { id: "4", prediction: { action: "HOLD", confidence: 0.62 }, outcome: { label: "unresolved" } }
+  ]);
+  assert.equal(result.predictionCount, 4);
+  assert.equal(result.resolvedPredictionCount, 3);
+  assert.equal(result.byAction.BUY.outcomes.positive, 1);
+  assert.equal(result.byAction.BUY.outcomes.pump_then_collapse, 1);
+  assert.equal(result.byAction.SELL.outcomes.negative, 1);
+  assert.equal(result.byAction.HOLD.unresolvedCount, 1);
+  assert.equal(result.promotion, "disabled");
 });
