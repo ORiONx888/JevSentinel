@@ -1,0 +1,35 @@
+name: Scan JevSentinel Volumes For Group State
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: Scan detached ord volumes without modifying them
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        run: |
+          set -u
+          VOLUMES="$(flyctl volumes list --app jevsentinel --json)"
+          echo "=== DETACHED ORD VOLUMES ==="
+          printf '%s' "$VOLUMES" | jq -r '.[] | select(.region=="ord" and .attached_machine_id==null and .state=="created") | [.id,.created_at] | @tsv' | sort -k2
+
+          echo "=== GROUP STORE SCAN ==="
+          printf '%s' "$VOLUMES" | jq -r '.[] | select(.region=="ord" and .attached_machine_id==null and .state=="created") | .id' | while read -r VOL; do
+            [ -n "$VOL" ] || continue
+            echo "--- checking $VOL ---"
+            set +e
+            flyctl machine run --rm --region ord --volume "$VOL:/data" ubuntu:24.04 -- ls -l /data/groups.enc
+            RC=$?
+            set -e
+            if [ "$RC" -eq 0 ]; then
+              echo "FOUND_GROUP_STORE=$VOL"
+            fi
+          done
