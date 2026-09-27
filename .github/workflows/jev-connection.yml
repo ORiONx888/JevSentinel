@@ -34,6 +34,7 @@ jobs:
 
   storage-integrity:
     runs-on: ubuntu-latest
+    timeout-minutes: 8
     steps:
       - name: Setup flyctl
         uses: superfly/flyctl-actions/setup-flyctl@master
@@ -50,14 +51,14 @@ jobs:
           while IFS= read -r AUDIT_MACHINE; do
             [ -n "$AUDIT_MACHINE" ] || continue
             echo "Destroying stale audit machine $AUDIT_MACHINE"
-            flyctl machine destroy "$AUDIT_MACHINE" --app "$APP" --force || true
+            timeout 20s flyctl machine destroy "$AUDIT_MACHINE" --app "$APP" --force || true
           done <<< "$AUDIT_MACHINES"
 
           STALE_AUDIT_VOLUMES="$(flyctl volumes list --app "$APP" --json | jq -r '.[] | select(.name | startswith("audit")) | .id')"
           while IFS= read -r AUDIT_VOLUME; do
             [ -n "$AUDIT_VOLUME" ] || continue
             echo "Destroying stale audit volume $AUDIT_VOLUME"
-            flyctl volumes destroy "$AUDIT_VOLUME" --app "$APP" --yes || true
+            timeout 20s flyctl volumes destroy "$AUDIT_VOLUME" --app "$APP" --yes || true
           done <<< "$STALE_AUDIT_VOLUMES"
 
           MACHINES="$(flyctl machine list --app "$APP" --json)"
