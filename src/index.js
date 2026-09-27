@@ -9,6 +9,7 @@ export {
   normalizeOutcome,
   validateOutcomeForTelemetry,
   buildOutcomeValidation,
+  buildPredictionOutcomeLinkage,
   validateFeatureGroups,
   buildChronologicalHoldout
 } from "./outcomeValidation.js";
