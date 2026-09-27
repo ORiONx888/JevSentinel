@@ -8,6 +8,8 @@ export function createJevEvaluator({ client = new TypeSafeClient(), model = "jev
       const questions = {
         escalation: noul(definitions.escalation.prompt),
         coordinatedBehavior: noul(definitions.coordinatedBehavior.prompt),
+        patternResemblance: noul(definitions.patternResemblance.prompt),
+        patternContradiction: noul(definitions.patternContradiction.prompt),
         progression: choice(definitions.progression.prompt, definitions.progression.options),
         deterioration: score(definitions.deterioration.prompt, definitions.deterioration.levels),
         dominantRisk: choice(definitions.dominantRisk.prompt, definitions.dominantRisk.options),
