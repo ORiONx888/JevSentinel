@@ -137,12 +137,12 @@ jobs:
             [ -n "$RECOVERY_VOL" ] || RECOVERY_VOL="$(flyctl volumes list --app "$APP" --json | jq -r --arg n "audit_r_${VOL#vol_}" '[.[] | select(.name==$n)] | .[-1].id // empty')"
             test -n "$RECOVERY_VOL" || { echo "FAIL: could not identify recovery fork"; exit 1; }
             for i in $(seq 1 24); do
-              RECOVERY_STATE="$(flyctl volumes show "$RECOVERY_VOL" --app "$APP" --json 2>/dev/null | jq -r '.state // empty' || true)"
+              RECOVERY_STATE="$(flyctl machine status "$RECOVERY_MACHINE" --app "$APP" 2>/dev/null | awk '/State/ {print $2; exit}' || true)"
               echo "Recovery volume state: $RECOVERY_STATE"
-              [ "$RECOVERY_STATE" = "created" ] && break
+              [ "$RECOVERY_STATE" = "started" ] && break
               sleep 5
             done
-            test "$RECOVERY_STATE" = "created" || { echo "FAIL: recovery fork did not become ready"; exit 1; }
+            test "$RECOVERY_STATE" = "started" || { echo "FAIL: recovery machine did not become ready"; exit 1; }
             set +e
             CREATE_OUTPUT="$(timeout 45s flyctl machine run alpine:3.20 "sleep 3600" --app "$APP" --region "ord" --volume "$RECOVERY_VOL:/data" --name "audit_r_${VOL#vol_}" --detach --restart no 2>&1)"
             CREATE_RC=$?
