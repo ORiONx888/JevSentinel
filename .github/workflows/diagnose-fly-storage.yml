@@ -1,9 +1,7 @@
 name: Diagnose JevSentinel Fly Storage
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   diagnose:
