@@ -1,9 +1,7 @@
 name: Verify JEV Recovery
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   verify:
