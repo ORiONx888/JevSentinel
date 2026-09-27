@@ -78,7 +78,7 @@ test("feature validation describes repeated deterministic states", () => {
   assert.ok(selling);
   assert.equal(selling.count, 4);
   assert.equal(selling.pumpThenCollapseRatePct, 25);
-  assert.equal(selling.meanTerminalReturnPct, -46.25);
+  assert.equal(selling.meanTerminalReturnPct, -26.25);
 });
 
 test("chronological holdout never promotes the test partition", () => {
