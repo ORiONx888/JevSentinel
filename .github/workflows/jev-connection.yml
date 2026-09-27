@@ -46,12 +46,19 @@ jobs:
           MACHINES="$(flyctl machine list --app "$APP" --json)"
 
           echo "=== CLEAN UP STALE AUDIT MACHINES ==="
-          AUDIT_MACHINES="$(printf '%s' "$MACHINES" | jq -r '.[] | select(.name | startswith("audit-")) | .id')"
+          AUDIT_MACHINES="$(printf '%s' "$MACHINES" | jq -r '.[] | select(.name | startswith("audit")) | .id')"
           while IFS= read -r AUDIT_MACHINE; do
             [ -n "$AUDIT_MACHINE" ] || continue
             echo "Destroying stale audit machine $AUDIT_MACHINE"
             flyctl machine destroy "$AUDIT_MACHINE" --app "$APP" --force || true
           done <<< "$AUDIT_MACHINES"
+
+          STALE_AUDIT_VOLUMES="$(flyctl volumes list --app "$APP" --json | jq -r '.[] | select(.name | startswith("audit")) | .id')"
+          while IFS= read -r AUDIT_VOLUME; do
+            [ -n "$AUDIT_VOLUME" ] || continue
+            echo "Destroying stale audit volume $AUDIT_VOLUME"
+            flyctl volumes destroy "$AUDIT_VOLUME" --app "$APP" --yes || true
+          done <<< "$STALE_AUDIT_VOLUMES"
 
           MACHINES="$(flyctl machine list --app "$APP" --json)"
           VOLUMES="$(flyctl volumes list --app "$APP" --json)"
