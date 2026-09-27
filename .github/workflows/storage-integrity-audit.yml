@@ -124,3 +124,5 @@ jobs:
 
           echo "PASS: all detached created jevsentinel_data volumes inspected and are empty."
           echo "No volume was deleted by this audit."
+
+# Integrity audit is intentionally read-only for production state and refuses non-empty orphan cleanup.
