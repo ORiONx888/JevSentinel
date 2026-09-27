@@ -31,3 +31,73 @@ jobs:
           node --input-type=module -e 'const t=process.env.TELEGRAM_BOT_TOKEN; const r=await fetch("https://api.telegram.org/bot"+t+"/getMe"); const j=await r.json(); if(!r.ok||!j.ok) throw new Error("Telegram bot token verification failed"); console.log("Telegram bot connected: @"+j.result.username);'
       - name: Run official JEV SDK test
         run: npm run jev:test
+
+  storage-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Verify production storage and audit orphan volumes
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        run: |
+          set -euo pipefail
+          APP="jevsentinel"
+          MACHINES="$(flyctl machine list --app "$APP" --json)"
+          VOLUMES="$(flyctl volumes list --app "$APP" --json)"
+
+          MACHINE_COUNT="$(printf '%s' "$MACHINES" | jq 'length')"
+          test "$MACHINE_COUNT" = "1" || { echo "FAIL: expected exactly 1 production machine, found $MACHINE_COUNT"; exit 1; }
+          PROD_MACHINE="$(printf '%s' "$MACHINES" | jq -r '.[0].id')"
+          PROD_STATE="$(printf '%s' "$MACHINES" | jq -r '.[0].state')"
+          test "$PROD_STATE" = "started" || { echo "FAIL: production machine $PROD_MACHINE is $PROD_STATE"; exit 1; }
+
+          ATTACHED_COUNT="$(printf '%s' "$VOLUMES" | jq '[.[] | select(.name=="jevsentinel_data" and .state=="created" and .attached_machine_id != null)] | length')"
+          test "$ATTACHED_COUNT" = "1" || { echo "FAIL: expected exactly 1 attached created jevsentinel_data volume, found $ATTACHED_COUNT"; exit 1; }
+          PROD_VOLUME="$(printf '%s' "$VOLUMES" | jq -r '[.[] | select(.name=="jevsentinel_data" and .state=="created" and .attached_machine_id != null)][0].id')"
+          PROD_VOLUME_MACHINE="$(printf '%s' "$VOLUMES" | jq -r '[.[] | select(.name=="jevsentinel_data" and .state=="created" and .attached_machine_id != null)][0].attached_machine_id')"
+          test "$PROD_VOLUME_MACHINE" = "$PROD_MACHINE" || { echo "FAIL: production volume is attached to $PROD_VOLUME_MACHINE, not $PROD_MACHINE"; exit 1; }
+
+          flyctl ssh console --app "$APP" --machine "$PROD_MACHINE" -C 'test -s /data/groups.enc'
+          flyctl ssh console --app "$APP" --machine "$PROD_MACHINE" -C 'node --input-type=module -e "import(\"./src/groupStore.js\").then(({createGroupStore})=>{const g=createGroupStore().load();if(g.length!==1||g.filter(x=>x.enabled!==false).length!==1)process.exit(1);console.log(JSON.stringify({groupCount:g.length,enabled:g.filter(x=>x.enabled!==false).length}))})"'
+
+          echo "=== PRODUCTION VOLUME ==="
+          printf '%s' "$VOLUMES" | jq -r --arg id "$PROD_VOLUME" '.[] | select(.id==$id) | [.id,.state,.region,.attached_machine_id,.created_at] | @tsv'
+          echo "=== ORPHAN VOLUMES ==="
+          ORPHANS="$(printf '%s' "$VOLUMES" | jq -r --arg prod "$PROD_VOLUME" '.[] | select(.id != $prod and .name=="jevsentinel_data" and .state=="created" and .attached_machine_id==null) | [.id,.region,.created_at] | @tsv')"
+
+          if [ -z "$ORPHANS" ]; then
+            echo "No detached created jevsentinel_data volumes."
+            exit 0
+          fi
+
+          NONEMPTY=0
+          while IFS=$'\t' read -r VOL REGION CREATED; do
+            [ -n "$VOL" ] || continue
+            echo "--- auditing $VOL region=$REGION created=$CREATED ---"
+            flyctl volumes snapshots list "$VOL" --app "$APP" || true
+            CREATE_OUTPUT="$(flyctl machine create ubuntu:24.04 --app "$APP" --region "$REGION" --volume "$VOL:/data" --name "audit-${VOL#vol_}" --detach 2>&1)"
+            echo "$CREATE_OUTPUT"
+            MACHINE_ID="$(printf '%s\n' "$CREATE_OUTPUT" | sed -n 's/.*Machine ID: \([a-z0-9]*\).*/\1/p' | tail -n1)"
+            if [ -z "$MACHINE_ID" ]; then
+              MACHINE_ID="$(flyctl machine list --app "$APP" --json | jq -r --arg n "audit-${VOL#vol_}" '[.[] | select(.name==$n)] | .[-1].id // empty')"
+            fi
+            test -n "$MACHINE_ID" || { echo "FAIL: could not identify audit machine for $VOL"; exit 1; }
+            sleep 5
+            set +e
+            FILES="$(flyctl ssh console --app "$APP" --machine "$MACHINE_ID" -C 'find /data -mindepth 1 -maxdepth 2 -type f ! -path "/data/lost+found/*" -printf "%p %s bytes\\n" | sort' 2>&1)"
+            RC=$?
+            set -e
+            echo "$FILES"
+            flyctl machine destroy "$MACHINE_ID" --app "$APP" --force || true
+            test "$RC" = "0" || { echo "FAIL: could not inspect $VOL"; exit 1; }
+            if [ -n "$FILES" ]; then
+              echo "NONEMPTY_ORPHAN=$VOL"
+              NONEMPTY=$((NONEMPTY + 1))
+            else
+              echo "EMPTY_ORPHAN=$VOL"
+            fi
+          done <<< "$ORPHANS"
+
+          test "$NONEMPTY" = "0" || { echo "FAIL: orphan volume(s) contain recoverable files; nothing deleted."; exit 1; }
+          echo "PASS: all detached created jevsentinel_data volumes are empty. No volumes deleted."
