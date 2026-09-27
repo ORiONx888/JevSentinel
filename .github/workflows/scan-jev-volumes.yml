@@ -26,7 +26,7 @@ jobs:
             [ -n "$VOL" ] || continue
             echo "--- checking $VOL ---"
             set +e
-            flyctl machine run --rm --region ord --volume "$VOL:/data" ubuntu:24.04 -- ls -l /data/groups.enc
+            flyctl machine run --yes --rm --region ord --volume "$VOL:/data" ubuntu:24.04 -- ls -l /data/groups.enc
             RC=$?
             set -e
             if [ "$RC" -eq 0 ]; then
