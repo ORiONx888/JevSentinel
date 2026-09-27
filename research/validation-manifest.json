@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "status": "evidence-complete-withheld-feature-validation",
+  "candidateCorpus": {"tokens":44460,"collapseLike":9833,"controls":34627},
+  "confirmedBenchmark": {"rugTokens":117,"legitimateTokens":65,"source":"SolRugDetector 2026"},
+  "orthogonalControls": {
+    "silentKillerV1_3": {"rugEvents":27,"controls":91},
+    "redCohortV1_1_1": {"cohorts":1012,"buyerEvents":1578333,"launches":166098}
+  },
+  "reason": "The confirmed-rug publication exposes benchmark counts and taxonomy but not the per-token feature table needed to compute candidate-pattern match rates. No unverified rates are generated.",
+  "productionThresholds": "not established; shadow-only until labelled held-out feature data exists"
+}
