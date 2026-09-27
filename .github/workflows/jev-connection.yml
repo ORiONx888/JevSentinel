@@ -59,11 +59,12 @@ jobs:
           test "$PROD_VOLUME_MACHINE" = "$PROD_MACHINE" || { echo "FAIL: production volume is attached to $PROD_VOLUME_MACHINE, not $PROD_MACHINE"; exit 1; }
 
           set +e
-          GROUPS_CHECK="$(flyctl ssh console --app "$APP" --machine "$PROD_MACHINE" -C 'test -s /data/groups.enc && stat -c "groups.enc size=%s bytes" /data/groups.enc' 2>&1)"
+          GROUPS_CHECK="$(flyctl ssh console --app "$APP" --machine "$PROD_MACHINE" -C 'test -s /data/groups.enc' 2>&1)"
           GROUPS_RC=$?
           set -e
           echo "$GROUPS_CHECK"
           test "$GROUPS_RC" = "0" || { echo "FAIL: production groups.enc check failed"; exit 1; }
+          flyctl ssh console --app "$APP" --machine "$PROD_MACHINE" -C 'stat -c "groups.enc size=%s bytes" /data/groups.enc'
 
           set +e
           GROUPSTORE_CHECK="$(flyctl ssh console --app "$APP" --machine "$PROD_MACHINE" -C 'pwd; test -f ./src/groupStore.js; node --input-type=module -e "import(\"./src/groupStore.js\").then(({createGroupStore})=>{const g=createGroupStore().load();console.log(JSON.stringify({groupCount:g.length,enabled:g.filter(x=>x.enabled!==false).length}));if(g.length!==1||g.filter(x=>x.enabled!==false).length!==1)process.exit(1)})"' 2>&1)"
