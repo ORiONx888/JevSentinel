@@ -26,7 +26,7 @@ jobs:
             [ -n "$VOL" ] || continue
             echo "--- checking $VOL ---"
             set +e
-            CREATE_OUTPUT="$(flyctl machine create ubuntu:24.04 --app jevsentinel --region ord --volume "$VOL:/data" --name "scan-${VOL#vol_}" --json 2>&1)"
+            CREATE_OUTPUT="$(flyctl machine create ubuntu:24.04 --app jevsentinel --region ord --volume "$VOL:/data" --name "scan-${VOL#vol_}" --detach 2>&1)"
             CREATE_RC=$?
             set -e
             echo "$CREATE_OUTPUT"
@@ -34,7 +34,7 @@ jobs:
               echo "Unable to create inspection machine for $VOL"
               continue
             fi
-            TMP_MACHINE="$(printf '%s' "$CREATE_OUTPUT" | jq -r '.id // .ID // empty')"
+            TMP_MACHINE="$(printf '%s\n' "$CREATE_OUTPUT" | sed -n 's/.*Machine ID: \([a-z0-9]*\).*/\1/p' | tail -n1)"
             if [ -z "$TMP_MACHINE" ]; then
               echo "Could not determine temporary machine ID for $VOL"
               continue
