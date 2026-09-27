@@ -62,9 +62,6 @@ jobs:
           PROD_STATE="$(printf '%s' "$MACHINES" | jq -r '.[0].state')"
           test "$PROD_STATE" = "started" || { echo "FAIL: production machine $PROD_MACHINE is $PROD_STATE"; exit 1; }
           PROD_CONFIG="$(flyctl machine status "$PROD_MACHINE" --app "$APP" --display-config | sed -r 's/\x1B\[[0-9;]*[mK]//g')"
-          PROD_IMAGE="$(printf '%s' "$PROD_CONFIG" | jq -r '.config.image')"
-          test -n "$PROD_IMAGE" && test "$PROD_IMAGE" != "null"
-
           ATTACHED_COUNT="$(printf '%s' "$VOLUMES" | jq '[.[] | select(.name=="jevsentinel_data" and .state=="created" and .attached_machine_id != null)] | length')"
           test "$ATTACHED_COUNT" = "1" || { echo "FAIL: expected exactly 1 attached created jevsentinel_data volume, found $ATTACHED_COUNT"; exit 1; }
           PROD_VOLUME="$(printf '%s' "$VOLUMES" | jq -r '[.[] | select(.name=="jevsentinel_data" and .state=="created" and .attached_machine_id != null)][0].id')"
@@ -104,7 +101,7 @@ jobs:
             echo "--- auditing $VOL region=$REGION created=$CREATED ---"
             flyctl volumes snapshots list "$VOL" --app "$APP" || true
             set +e
-            CREATE_OUTPUT="$(flyctl machine run "$PROD_IMAGE" "sleep infinity" --app "$APP" --region "$REGION" --volume "$VOL:/data" --name "audit-${VOL#vol_}" --detach 2>&1)"
+            CREATE_OUTPUT="$(flyctl machine run alpine:3.20 "sleep 3600" --app "$APP" --region "$REGION" --volume "$VOL:/data" --name "audit-${VOL#vol_}" --detach 2>&1)"
             CREATE_RC=$?
             set -e
             echo "$CREATE_OUTPUT"
@@ -121,7 +118,7 @@ jobs:
             test -n "$MACHINE_ID" || { echo "FAIL: could not identify audit machine for $VOL"; exit 1; }
             sleep 5
             set +e
-            FILES="$(flyctl machine exec "$MACHINE_ID" 'find /data -mindepth 1 -maxdepth 2 -type f ! -path "/data/lost+found/*" -printf "%p %s bytes\\n" | sort' --app "$APP" --no-container --timeout 20 2>&1)"
+            FILES="$(flyctl machine exec "$MACHINE_ID" /bin/sh -c 'find /data -mindepth 1 -maxdepth 2 -type f ! -path "/data/lost+found/*" -printf "%p %s bytes\\n" | sort' --app "$APP" --timeout 20 2>&1)"
             RC=$?
             set -e
             echo "$FILES"
