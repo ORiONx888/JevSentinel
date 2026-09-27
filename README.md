@@ -17,3 +17,5 @@ JevSentinel is a standalone intelligence layer built around JEV. It accepts aler
 No third-party risk-scanner subscription or risk-provider API key is required. JevSentinel's intelligence is computed from the observation data supplied by the integrating alert system.
 
 The only required service credential for JEV evaluation is the user's own TypeSafe API key, supplied at runtime via `TYPESAFE_API_KEY`.
+
+<!-- Deployment marker: GitHub main is intentionally triggering the Fly.io deployment workflow. -->
