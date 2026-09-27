@@ -1,0 +1,27 @@
+name: Diagnose JevSentinel Fly Storage
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: Inspect Fly volumes and snapshots
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        run: |
+          set -e
+          echo "=== MACHINES ==="
+          flyctl machine list --app jevsentinel
+          echo "=== VOLUMES ==="
+          flyctl volumes list --app jevsentinel
+          echo "=== VOLUME JSON ==="
+          flyctl volumes list --app jevsentinel --json
+          echo "=== SNAPSHOTS: jevsentinel_data ==="
+          flyctl volumes snapshots list jevsentinel_data --app jevsentinel || true
