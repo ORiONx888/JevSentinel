@@ -10,6 +10,7 @@ export function createTelemetryRecord({ observation, state, intelligence, assess
     state,
     intelligence,
     assessment,
+    patternShadow: state.patternShadow ?? null,
     outcome: null
   };
 }
