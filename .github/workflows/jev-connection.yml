@@ -119,18 +119,18 @@ jobs:
             }
             trap cleanup_recovery EXIT
             set +e
-            CREATE_VOL_OUTPUT="$(flyctl volumes create "audit_recovery_${VOL#vol_}" --app "$APP" --region "$REGION" --size "$VOL_SIZE" --snapshot-id "$SNAPSHOT_ID" --yes 2>&1)"
+            CREATE_VOL_OUTPUT="$(flyctl volumes create "audit_r_${VOL#vol_}" --app "$APP" --region "$REGION" --size "$VOL_SIZE" --snapshot-id "$SNAPSHOT_ID" --yes 2>&1)"
             CREATE_VOL_RC=$?
             set -e
             echo "$CREATE_VOL_OUTPUT"
             test "$CREATE_VOL_RC" = "0" || { echo "FAIL: snapshot restore volume creation failed for $VOL (rc=$CREATE_VOL_RC)"; exit 1; }
             RECOVERY_VOL="$(printf '%s\n' "$CREATE_VOL_OUTPUT" | sed -n 's/.*ID: \([^[:space:]]*\).*/\1/p' | tail -n1)"
-            [ -n "$RECOVERY_VOL" ] || RECOVERY_VOL="$(flyctl volumes list --app "$APP" --json | jq -r --arg n "audit_recovery_${VOL#vol_}" '[.[] | select(.name==$n)] | .[-1].id // empty')"
+            [ -n "$RECOVERY_VOL" ] || RECOVERY_VOL="$(flyctl volumes list --app "$APP" --json | jq -r --arg n "audit_r_${VOL#vol_}" '[.[] | select(.name==$n)] | .[-1].id // empty')"
             test -n "$RECOVERY_VOL" || { echo "FAIL: could not identify recovery volume"; exit 1; }
-            CREATE_OUTPUT="$(flyctl machine run alpine:3.20 "sleep 3600" --app "$APP" --region "$REGION" --volume "$RECOVERY_VOL:/data" --name "audit_recovery_${VOL#vol_}" --detach 2>&1)"
+            CREATE_OUTPUT="$(flyctl machine run alpine:3.20 "sleep 3600" --app "$APP" --region "$REGION" --volume "$RECOVERY_VOL:/data" --name "audit_r_${VOL#vol_}" --detach 2>&1)"
             echo "$CREATE_OUTPUT"
             RECOVERY_MACHINE="$(printf '%s\n' "$CREATE_OUTPUT" | sed -n 's/.*Machine ID: \([a-z0-9]*\).*/\1/p' | tail -n1)"
-            [ -n "$RECOVERY_MACHINE" ] || RECOVERY_MACHINE="$(flyctl machine list --app "$APP" --json | jq -r --arg n "audit_recovery_${VOL#vol_}" '[.[] | select(.name==$n)] | .[-1].id // empty')"
+            [ -n "$RECOVERY_MACHINE" ] || RECOVERY_MACHINE="$(flyctl machine list --app "$APP" --json | jq -r --arg n "audit_r_${VOL#vol_}" '[.[] | select(.name==$n)] | .[-1].id // empty')"
             test -n "$RECOVERY_MACHINE" || { echo "FAIL: could not identify recovery machine"; exit 1; }
             sleep 5
             set +e
