@@ -93,7 +93,7 @@ jobs:
             trap 'flyctl machine destroy "$MACHINE_ID" --app "$APP" --force >/dev/null 2>&1 || true' EXIT
             sleep 5
             set +e
-            FILES="$(flyctl ssh console --app "$APP" --machine "$MACHINE_ID" -C 'find /data -mindepth 1 -maxdepth 2 -type f ! -path "/data/lost+found/*" -printf "%p %s bytes\\n" | sort' 2>&1)"
+            FILES="$(flyctl ssh console --app "$APP" --machine "$MACHINE_ID" -C 'find /data -mindepth 1 -maxdepth 2 -type f ! -path "/data/lost+found/*" -print' 2>&1)"
             RC=$?
             set -e
             echo "$FILES"
