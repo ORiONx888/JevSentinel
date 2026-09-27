@@ -18,5 +18,9 @@ test("builds objective window metrics without inventing an outcome label", () =>
   assert.equal(outcome.maxDrawdownPct, -50);
   assert.equal(outcome.entryLiquidityUsd, 10000);
   assert.equal(outcome.terminalLiquidityUsd, 5000);
+  assert.equal(outcome.liquidityChangeUsd, -5000);
+  assert.equal(outcome.liquidityChangePct, -50);
+  assert.equal(outcome.completedAt !== undefined, true);
+  assert.equal(outcome.resolvedAt, undefined);
   assert.equal(outcome.source, "live-monitor-window");
 });
