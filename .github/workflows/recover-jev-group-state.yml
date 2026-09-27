@@ -42,11 +42,12 @@ jobs:
           CURRENT_MACHINE="$(flyctl machine list --app jevsentinel --json | jq -r '.[0].id // empty')"
           test -n "$CURRENT_MACHINE" || { echo "No current JevSentinel machine found."; exit 1; }
           echo "Current machine: $CURRENT_MACHINE"
-          NEW_OUTPUT="$(flyctl machine clone "$CURRENT_MACHINE" --app jevsentinel --attach-volume "${{ steps.fork.outputs.FORK_ID }}:/data" --json)"
-          echo "$NEW_OUTPUT"
-          NEW_MACHINE="$(printf '%s' "$NEW_OUTPUT" | jq -r '.id // .ID // empty')"
+          CLONE_OUTPUT="$(flyctl machine clone "$CURRENT_MACHINE" --app jevsentinel --attach-volume "${{ steps.fork.outputs.FORK_ID }}:/data" --detach 2>&1)"
+          echo "$CLONE_OUTPUT"
+          NEW_MACHINE="$(printf '%s\n' "$CLONE_OUTPUT" | sed -n 's/.*Machine \([a-z0-9]*\) has been created.*/\1/p' | tail -n1)"
           test -n "$NEW_MACHINE" || { echo "Could not determine recovered machine ID."; exit 1; }
           echo "NEW_MACHINE=$NEW_MACHINE" >> "$GITHUB_OUTPUT"
+          sleep 5
 
       - name: Verify recovered group store before removing old machine
         env:
