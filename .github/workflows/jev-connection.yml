@@ -76,8 +76,17 @@ jobs:
             [ -n "$VOL" ] || continue
             echo "--- auditing $VOL region=$REGION created=$CREATED ---"
             flyctl volumes snapshots list "$VOL" --app "$APP" || true
+            set +e
             CREATE_OUTPUT="$(flyctl machine create ubuntu:24.04 --app "$APP" --region "$REGION" --volume "$VOL:/data" --name "audit-${VOL#vol_}" --detach 2>&1)"
+            CREATE_RC=$?
+            set -e
             echo "$CREATE_OUTPUT"
+            if [ "$CREATE_RC" -ne 0 ]; then
+              echo "FAIL: Fly could not create the temporary audit machine for $VOL (rc=$CREATE_RC)."
+              echo "=== CURRENT MACHINES AFTER CREATE FAILURE ==="
+              flyctl machine list --app "$APP" --json | jq -r '.[] | [.id,.name,.state,.region] | @tsv'
+              exit 1
+            fi
             MACHINE_ID="$(printf '%s\n' "$CREATE_OUTPUT" | sed -n 's/.*Machine ID: \([a-z0-9]*\).*/\1/p' | tail -n1)"
             if [ -z "$MACHINE_ID" ]; then
               MACHINE_ID="$(flyctl machine list --app "$APP" --json | jq -r --arg n "audit-${VOL#vol_}" '[.[] | select(.name==$n)] | .[-1].id // empty')"
