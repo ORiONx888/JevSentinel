@@ -1,0 +1,30 @@
+name: Emergency Cleanup JEV Duplicate Machines
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Remove every JEV machine except the known-good instance
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        run: |
+          set -euo pipefail
+          KEEP="857100a4049168"
+          IDS="$(flyctl machine list --app jevsentinel --json | jq -r --arg keep "$KEEP" '.[] | select(.id != $keep) | .id')"
+          printf '%s
+' "$IDS" | while read -r id; do
+            [ -n "$id" ] || continue
+            echo "Destroying $id"
+            (flyctl machine destroy "$id" --app jevsentinel --force || true) &
+          done
+          wait
+          sleep 5
+          echo "=== FINAL ==="
+          flyctl machine list --app jevsentinel
