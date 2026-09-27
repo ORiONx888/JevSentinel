@@ -1,5 +1,9 @@
 name: JEV Sentinel CI
 
+concurrency:
+  group: jevsentinel-ci-${{ github.ref }}
+  cancel-in-progress: true
+
 on:
   push:
     branches: [main]
@@ -91,7 +95,7 @@ jobs:
             CREATED="$(printf '%s' "$VOLUMES" | jq -r --arg id "$VOL" '.[] | select(.id==$id) | .created_at')"
             echo "--- auditing $VOL region=$REGION created=$CREATED ---"
             flyctl volumes snapshots list "$VOL" --app "$APP" || true
-            CREATE_OUTPUT="$(flyctl machine run ubuntu:24.04 sleep 3600 --app "$APP" --region "$REGION" --volume "$VOL:/data" --name "audit-${VOL#vol_}" --detach 2>&1)"
+            CREATE_OUTPUT="$(timeout 45s flyctl machine run ubuntu:24.04 sleep 3600 --app "$APP" --region "$REGION" --volume "$VOL:/data" --name "audit-${VOL#vol_}" --detach 2>&1)"
             echo "$CREATE_OUTPUT"
             MACHINE_ID="$(printf '%s\n' "$CREATE_OUTPUT" | sed -n 's/.*Machine ID: \([a-z0-9]*\).*/\1/p' | tail -n1)"
             if [ -z "$MACHINE_ID" ]; then
@@ -101,7 +105,7 @@ jobs:
             trap 'flyctl machine destroy "$MACHINE_ID" --app "$APP" --force >/dev/null 2>&1 || true' EXIT
             sleep 5
             set +e
-            FILES="$(flyctl ssh console --app "$APP" --machine "$MACHINE_ID" -C 'find /data -type f ! -path "/data/lost+found/*" -print' 2>&1)"
+            FILES="$(timeout 30s flyctl ssh console --app "$APP" --machine "$MACHINE_ID" -C 'find /data -type f ! -path "/data/lost+found/*" -print' 2>&1)"
             RC=$?
             set -e
             echo "$FILES"
