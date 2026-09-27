@@ -1,0 +1,24 @@
+name: Check JEV Live Machine Group State
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Check groups.enc on every current machine
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        run: |
+          set +e
+          flyctl machine list --app jevsentinel
+          flyctl machine list --app jevsentinel --json | jq -r '.[].id' | while read -r id; do
+            [ -n "$id" ] || continue
+            echo "=== MACHINE $id ==="
+            flyctl ssh console --app jevsentinel --machine "$id" -C 'ls -l /data/groups.enc' 2>&1
+          done
