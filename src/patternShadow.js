@@ -35,25 +35,29 @@ function extractShadowFeatures(evidence, temporal) {
   const wallet = evidence.walletBehaviour ?? {};
   const holders = evidence.holderStructure ?? {};
   const latest = temporal.latest ?? {};
-  const at60 = temporal.windowed?.["60"] ?? temporal.points?.["60"] ?? {};
 
-  const buy5m = finite(latest.buyCount5m ?? flow.buyCount5m);
-  const sell5m = finite(latest.sellCount5m ?? flow.sellCount5m);
-  const buy60 = finite(latest.buyCount1h ?? flow.buyCount1h ?? flow.buys1h);
-  const sell60 = finite(latest.sellCount1h ?? flow.sellCount1h ?? flow.sells1h);
+  // The historical sell_buy_300 candidate is a 300-second (5-minute)
+  // horizon. Never substitute 1-hour counters for this feature.
+  const buy300 = finiteOrNull(latest.buyCount5m ?? flow.buyCount5m);
+  const sell300 = finiteOrNull(latest.sellCount5m ?? flow.sellCount5m);
 
-  const repeatedSellerShare = finite(flow.repeatedSellerSharePct ?? wallet.repeatedSellerSharePct);
-  const bundlerHolders = finite(wallet.bundlerHolderCount ?? wallet.bundlerHolders);
-  const sniperHolders = finite(wallet.sniperHolderCount ?? wallet.sniperHolders);
+  // The live evidence contract does not currently provide a true 60-second
+  // rolling counter. Keep this missing rather than deriving a 60s value from
+  // the 5m counter; missing evidence must never become a match.
+  const buy60 = finiteOrNull(latest.buyCount1m ?? flow.buyCount1m);
+  const sell60 = finiteOrNull(latest.sellCount1m ?? flow.sellCount1m);
+
+  const repeatedSellerShare = finiteOrNull(flow.repeatedSellerSharePct ?? wallet.repeatedSellerSharePct);
+  const bundlerHolders = finiteOrNull(wallet.bundlerHolderCount ?? wallet.bundlerHolders);
+  const sniperHolders = finiteOrNull(wallet.sniperHolderCount ?? wallet.sniperHolders);
 
   return {
-    sellBuy300: ratio(sell60, buy60),
-    sellBuy60: ratio(sell5m, buy5m),
+    sellBuy300: ratio(sell300, buy300),
+    sellBuy60: ratio(sell60, buy60),
     repeatedSellerShare,
     bundlerHolders,
     sniperHolders,
-    top10ConcentrationPct: finite(holders.top10ConcentrationPct),
-    at60
+    top10ConcentrationPct: finiteOrNull(holders.top10ConcentrationPct)
   };
 }
 
@@ -72,7 +76,7 @@ function ratio(a, b) {
   return a !== null && b !== null && b !== 0 ? a / b : null;
 }
 
-function finite(value) {
+function finiteOrNull(value) {
   const n = Number(value);
   return Number.isFinite(n) ? n : null;
 }
