@@ -50,4 +50,5 @@ jobs:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
         run: |
           set -euo pipefail
-          flyctl ssh console --app jevsentinel -C "set -e; ls -lh /data/research/solana-memecoin-dataset; du -sh /data/research/solana-memecoin-dataset"
+          flyctl ssh console --app jevsentinel -C "ls -lh /data/research/solana-memecoin-dataset"
+          flyctl ssh console --app jevsentinel -C "du -sh /data/research/solana-memecoin-dataset"
