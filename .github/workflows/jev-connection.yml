@@ -144,7 +144,7 @@ jobs:
             done
             test "$RECOVERY_STATE" = "created" || { echo "FAIL: recovery fork did not become ready"; exit 1; }
             set +e
-            CREATE_OUTPUT="$(flyctl machine run alpine:3.20 "sleep 3600" --app "$APP" --region "ord" --volume "$RECOVERY_VOL:/data" --name "audit_r_${VOL#vol_}" --detach --rm --restart no --wait-timeout 30s 2>&1)"
+            CREATE_OUTPUT="$(timeout 45s flyctl machine run alpine:3.20 "sleep 3600" --app "$APP" --region "ord" --volume "$RECOVERY_VOL:/data" --name "audit_r_${VOL#vol_}" --detach --restart no 2>&1)"
             CREATE_RC=$?
             set -e
             echo "$CREATE_OUTPUT"
