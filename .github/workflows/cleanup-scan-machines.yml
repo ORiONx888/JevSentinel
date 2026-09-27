@@ -1,9 +1,7 @@
 name: Cleanup JEV Scan Machines
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   cleanup:
