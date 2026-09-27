@@ -128,7 +128,7 @@ jobs:
             trap cleanup_recovery EXIT
             echo "Latest snapshot selected: $SNAPSHOT_ID"
             set +e
-            CREATE_VOL_OUTPUT="$(timeout 60s flyctl volumes fork "$VOL" --app "$APP" --region "$REGION" --name "audit_r_${VOL#vol_}" --json 2>&1)"
+            CREATE_VOL_OUTPUT="$(timeout 60s flyctl volumes fork "$VOL" --app "$APP" --region "ord" --name "audit_r_${VOL#vol_}" --json 2>&1)"
             CREATE_VOL_RC=$?
             set -e
             echo "$CREATE_VOL_OUTPUT"
@@ -144,7 +144,7 @@ jobs:
             done
             test "$RECOVERY_STATE" = "created" || { echo "FAIL: recovery fork did not become ready"; exit 1; }
             set +e
-            CREATE_OUTPUT="$(flyctl machine run alpine:3.20 "sleep 3600" --app "$APP" --region "$REGION" --volume "$RECOVERY_VOL:/data" --name "audit_r_${VOL#vol_}" --detach --rm --restart no 2>&1)"
+            CREATE_OUTPUT="$(flyctl machine run alpine:3.20 "sleep 3600" --app "$APP" --region "ord" --volume "$RECOVERY_VOL:/data" --name "audit_r_${VOL#vol_}" --detach --rm --restart no 2>&1)"
             CREATE_RC=$?
             set -e
             echo "$CREATE_OUTPUT"
