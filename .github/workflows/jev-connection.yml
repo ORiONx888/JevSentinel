@@ -106,6 +106,7 @@ jobs:
               MACHINE_ID="$(flyctl machine list --app "$APP" --json | jq -r --arg n "audit-${VOL#vol_}" '[.[] | select(.name==$n)] | .[-1].id // empty')"
             fi
             test -n "$MACHINE_ID" || { echo "FAIL: could not identify audit machine for $VOL"; exit 1; }
+            flyctl machine start "$MACHINE_ID" --app "$APP"
             sleep 5
             set +e
             FILES="$(flyctl ssh console --app "$APP" --machine "$MACHINE_ID" -C 'find /data -mindepth 1 -maxdepth 2 -type f ! -path "/data/lost+found/*" -printf "%p %s bytes\\n" | sort' 2>&1)"
