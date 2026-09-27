@@ -66,6 +66,9 @@ jobs:
           test "$PROD_VOLUME_MACHINE" = "$PROD_MACHINE" || { echo "FAIL: production volume is attached to $PROD_VOLUME_MACHINE, not $PROD_MACHINE"; exit 1; }
 
           flyctl ssh console --app "$APP" --machine "$PROD_MACHINE" -C 'test -s /data/groups.enc'
+          PROD_GROUPS_HASH="$(flyctl ssh console --app "$APP" --machine "$PROD_MACHINE" -C 'sha256sum /data/groups.enc' | awk '{print $1}' | tail -n1)"
+          test -n "$PROD_GROUPS_HASH" || { echo "FAIL: could not hash production groups.enc"; exit 1; }
+          echo "Production groups.enc SHA256=$PROD_GROUPS_HASH"
           flyctl ssh console --app "$APP" --machine "$PROD_MACHINE" -C 'node --input-type=module -e "import(\"./src/groupStore.js\").then(({createGroupStore})=>{const g=createGroupStore().load();if(g.length!==1||g.filter(x=>x.enabled!==false).length!==1)process.exit(1);console.log(JSON.stringify({groupCount:g.length,enabled:g.filter(x=>x.enabled!==false).length}))})"'
 
           echo "=== PRODUCTION VOLUME ==="
@@ -93,13 +96,25 @@ jobs:
             trap 'flyctl machine destroy "$MACHINE_ID" --app "$APP" --force >/dev/null 2>&1 || true' EXIT
             sleep 5
             set +e
-            FILES="$(flyctl ssh console --app "$APP" --machine "$MACHINE_ID" -C 'find /data -mindepth 1 -maxdepth 2 -type f ! -path "/data/lost+found/*" -print' 2>&1)"
+            FILES="$(flyctl ssh console --app "$APP" --machine "$MACHINE_ID" -C 'find /data -type f ! -path "/data/lost+found/*" -print' 2>&1)"
             RC=$?
             set -e
             echo "$FILES"
+            ORPHAN_GROUPS_HASH=""
+            if [ "$RC" -eq 0 ]; then
+              ORPHAN_GROUPS_HASH="$(flyctl ssh console --app "$APP" --machine "$MACHINE_ID" -C 'sha256sum /data/groups.enc' 2>/dev/null | awk '{print $1}' | tail -n1 || true)"
+              echo "Orphan groups.enc SHA256=$ORPHAN_GROUPS_HASH"
+              if [ -n "$ORPHAN_GROUPS_HASH" ] && [ "$ORPHAN_GROUPS_HASH" = "$PROD_GROUPS_HASH" ]; then
+                echo "MATCHES_PRODUCTION_GROUPS_ENC=$VOL"
+              fi
+            fi
             flyctl machine destroy "$MACHINE_ID" --app "$APP" --force || true
             trap - EXIT
-            test "$RC" = "0" || { echo "FAIL: could not inspect $VOL"; exit 1; }
+            if [ "$RC" -ne 0 ]; then
+              echo "FAIL: could not inspect $VOL"
+              NONEMPTY=$((NONEMPTY + 1))
+              continue
+            fi
             if [ -n "$FILES" ]; then
               echo "NONEMPTY_ORPHAN=$VOL"
               NONEMPTY=$((NONEMPTY + 1))
