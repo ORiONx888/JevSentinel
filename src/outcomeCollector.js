@@ -30,7 +30,7 @@ export function buildObservedOutcome({ snapshots = [], source = "live-monitor-wi
   return {
     label: "unresolved",
     source,
-    resolvedAt: new Date().toISOString(),
+    completedAt: new Date().toISOString(),
     sampleCount: states.length,
     entryPrice,
     terminalPrice,
@@ -38,7 +38,17 @@ export function buildObservedOutcome({ snapshots = [], source = "live-monitor-wi
     terminalReturnPct: finiteOrNull(terminalReturnPct),
     maxDrawdownPct: finiteOrNull(maxDrawdownPct),
     entryLiquidityUsd,
-    terminalLiquidityUsd
+    terminalLiquidityUsd,
+    liquidityChangeUsd: finiteOrNull(
+      Number.isFinite(entryLiquidityUsd) && Number.isFinite(terminalLiquidityUsd)
+        ? terminalLiquidityUsd - entryLiquidityUsd
+        : null
+    ),
+    liquidityChangePct: finiteOrNull(
+      Number.isFinite(entryLiquidityUsd) && entryLiquidityUsd > 0 && Number.isFinite(terminalLiquidityUsd)
+        ? (terminalLiquidityUsd / entryLiquidityUsd - 1) * 100
+        : null
+    )
   };
 }
 
