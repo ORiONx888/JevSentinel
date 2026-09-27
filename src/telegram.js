@@ -7,6 +7,8 @@ import { buildEarlyEntryObservation } from "./earlyEntryMonitor.js";
 import { createGroupStore } from "./groupStore.js";
 import { createLiveMonitor } from "./liveMonitor.js";
 import { buildRiskTrajectory } from "./riskTrajectory.js";
+import { MemoryTelemetry } from "./telemetry.js";
+import { buildObservedOutcome } from "./outcomeCollector.js";
 
 const API_ROOT = "https://api.telegram.org";
 const GROUP_KEY_PATTERN = /^[A-Za-z0-9._-]{20,300}$/;
@@ -156,10 +158,7 @@ async function validateJevKey(apiKey) {
 
 function createGroupRuntime(apiKey, logger = null) {
   const client = new TypeSafeClient({ apiKey, logLevel: "error" });
-  const telemetry = {
-    records: [],
-    append(record) { this.records.push(record); },
-  };
+  const telemetry = new MemoryTelemetry();
   const evaluator = createJevEvaluator({ client });
   const sentinel = createJevSentinel({
     providers: [createTokenResearchProvider(), createTransferFlowProvider()],
@@ -170,7 +169,7 @@ function createGroupRuntime(apiKey, logger = null) {
   const LIVE_MONITOR_INTERVAL_MS = 10_000;
   // Seeded with the initial assessment, 31 snapshots = 30 follow-up ticks × 10s ≈ 5 minutes.
   const LIVE_MONITOR_MAX_SNAPSHOTS = 31;
-  return { client, sentinel, telemetry, history: new Map(), lastDecisions: new Map(), lastActions: new Map(), liveMonitor: createLiveMonitor({ intervalMs: LIVE_MONITOR_INTERVAL_MS, maxSnapshots: LIVE_MONITOR_MAX_SNAPSHOTS, logger }) };
+  return { client, sentinel, telemetry, history: new Map(), predictionIds: new Map(), lastDecisions: new Map(), lastActions: new Map(), liveMonitor: createLiveMonitor({ intervalMs: LIVE_MONITOR_INTERVAL_MS, maxSnapshots: LIVE_MONITOR_MAX_SNAPSHOTS, logger }) };
 }
 
 function answerValue(answer) {
@@ -646,6 +645,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
       const history = runtime.history.get(observation.mint) ?? [];
       const result = await runtime.sentinel.assess(observation, history);
       runtime.history.set(observation.mint, [...history, result.state].slice(-5));
+      runtime.predictionIds.set(observation.mint, [result.id]);
       const summary = answerSummary(result.assessment);
       result.state.trajectory = result.state.trajectory ?? buildRiskTrajectory({ state: result.state, assessment: result.assessment, history });
       logger.log?.("[jevsentinel-telegram] EARLY ENTRY JEV assessment finished", JSON.stringify({
@@ -685,6 +685,10 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
             ...(runtime.history.get(observation.mint) ?? []),
             liveResult.state
           ].slice(-12));
+          runtime.predictionIds.set(observation.mint, [
+            ...(runtime.predictionIds.get(observation.mint) ?? []),
+            liveResult.id
+          ].slice(-31));
           if (stoppedTokens.has(stoppedTokenKey(chatId, observation.mint))) return;
           if (focusedMints.get(chatId) && focusedMints.get(chatId) !== observation.mint) return;
           if (!materialEvent) return;
@@ -696,6 +700,20 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
             sourceMessageId: message.message_id,
             previousAnswers,
           }), { reply_to_message_id: message.message_id, reply_markup: liveAlertKeyboard(observation.mint) });
+        },
+        onComplete: async (snapshots) => {
+          const outcome = buildObservedOutcome({ snapshots });
+          const predictionIds = runtime.predictionIds.get(observation.mint) ?? [];
+          for (const predictionId of predictionIds) {
+            try { runtime.telemetry.updateOutcome(predictionId, outcome); } catch { /* record may have rolled out of memory */ }
+          }
+          logger.log?.("[jevsentinel] shadow outcome observed", JSON.stringify({
+            mint: observation.mint,
+            predictionCount: predictionIds.length,
+            outcome,
+            validation: "label-unresolved; objective metrics only"
+          }));
+          runtime.predictionIds.delete(observation.mint);
         }
       };
       liveMonitorConfigs.set(`${chatId}:${observation.mint}`, liveMonitorConfig);
