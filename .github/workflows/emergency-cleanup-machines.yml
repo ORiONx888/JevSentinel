@@ -1,9 +1,7 @@
 name: Emergency Cleanup JEV Duplicate Machines
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   cleanup:
