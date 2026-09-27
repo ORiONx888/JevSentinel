@@ -85,8 +85,10 @@ jobs:
           fi
 
           NONEMPTY=0
-          while IFS=$'\t' read -r VOL REGION CREATED; do
-            [ -n "$VOL" ] || continue
+          ORPHAN_IDS="$(printf '%s' "$VOLUMES" | jq -r --arg prod "$PROD_VOLUME" '.[] | select(.id != $prod and .name=="jevsentinel_data" and .state=="created" and .attached_machine_id==null) | .id')"
+          for VOL in $ORPHAN_IDS; do
+            REGION="$(printf '%s' "$VOLUMES" | jq -r --arg id "$VOL" '.[] | select(.id==$id) | .region')"
+            CREATED="$(printf '%s' "$VOLUMES" | jq -r --arg id "$VOL" '.[] | select(.id==$id) | .created_at')"
             echo "--- auditing $VOL region=$REGION created=$CREATED ---"
             flyctl volumes snapshots list "$VOL" --app "$APP" || true
             CREATE_OUTPUT="$(flyctl machine run ubuntu:24.04 sleep 3600 --app "$APP" --region "$REGION" --volume "$VOL:/data" --name "audit-${VOL#vol_}" --detach 2>&1)"
@@ -124,15 +126,13 @@ jobs:
             if [ "$RC" -ne 0 ]; then
               echo "FAIL: could not inspect $VOL"
               NONEMPTY=$((NONEMPTY + 1))
-              continue
-            fi
-            if [ -n "$FILES" ]; then
+            elif [ -n "$FILES" ]; then
               echo "NONEMPTY_ORPHAN=$VOL"
               NONEMPTY=$((NONEMPTY + 1))
             else
               echo "EMPTY_ORPHAN=$VOL"
             fi
-          done <<< "$ORPHANS"
+          done
 
           test "$NONEMPTY" = "0" || { echo "FAIL: orphan volume(s) contain recoverable files; nothing deleted."; exit 1; }
           echo "PASS: all detached created jevsentinel_data volumes are empty. No volumes deleted."
