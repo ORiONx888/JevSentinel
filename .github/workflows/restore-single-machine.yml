@@ -1,0 +1,30 @@
+name: Restore Single JEV Polling Machine
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Keep only the known-good JEV machine
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        run: |
+          set -euo pipefail
+          KEEP="857100a4049168"
+          echo "Keeping $KEEP"
+          flyctl machine list --app jevsentinel
+          flyctl machine list --app jevsentinel --json | jq -r --arg keep "$KEEP" '.[] | select(.id != $keep) | .id' | while read -r id; do
+            [ -n "$id" ] || continue
+            echo "Force destroying duplicate JEV polling machine $id"
+            flyctl machine destroy "$id" --app jevsentinel --force || true
+          done
+          echo "=== FINAL MACHINE SET ==="
+          flyctl machine list --app jevsentinel
+          echo "=== FINAL VOLUMES ==="
+          flyctl volumes list --app jevsentinel
