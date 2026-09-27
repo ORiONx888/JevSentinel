@@ -1,0 +1,19 @@
+name: Inspect JEV Runtime Logs
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Inspect current machine logs
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        run: |
+          set -euo pipefail
+          flyctl logs --app jevsentinel --machine 857100a4049168 --no-tail | grep -E 'persistent group configuration restored|group message received|group message ignored|early-entry|EARLY ENTRY|polling|Telegram|error' | tail -n 100 || true
