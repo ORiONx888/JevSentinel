@@ -35,8 +35,13 @@ jobs:
         run: |
           python research/pattern-engine/mine_dataset.py             --data-dir /tmp/jev-dataset             --out-dir research/pattern-engine/output
 
+      - name: Setup Node 24 for full test suite
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
       - name: Install Node dependencies for full test suite
-        run: npm ci
+        run: npm install
 
       - name: Validate generated artifacts
         run: |
