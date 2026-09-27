@@ -76,14 +76,13 @@ jobs:
             [ -n "$VOL" ] || continue
             echo "--- auditing $VOL region=$REGION created=$CREATED ---"
             flyctl volumes snapshots list "$VOL" --app "$APP" || true
-            CREATE_OUTPUT="$(flyctl machine create ubuntu:24.04 --app "$APP" --region "$REGION" --volume "$VOL:/data" --name "audit-${VOL#vol_}" --detach 2>&1)"
+            CREATE_OUTPUT="$(flyctl machine run ubuntu:24.04 sleep 3600 --app "$APP" --region "$REGION" --volume "$VOL:/data" --name "audit-${VOL#vol_}" --detach 2>&1)"
             echo "$CREATE_OUTPUT"
             MACHINE_ID="$(printf '%s\n' "$CREATE_OUTPUT" | sed -n 's/.*Machine ID: \([a-z0-9]*\).*/\1/p' | tail -n1)"
             if [ -z "$MACHINE_ID" ]; then
               MACHINE_ID="$(flyctl machine list --app "$APP" --json | jq -r --arg n "audit-${VOL#vol_}" '[.[] | select(.name==$n)] | .[-1].id // empty')"
             fi
             test -n "$MACHINE_ID" || { echo "FAIL: could not identify audit machine for $VOL"; exit 1; }
-            flyctl machine start "$MACHINE_ID" --app "$APP" >/dev/null
             sleep 5
             set +e
             FILES="$(flyctl ssh console --app "$APP" --machine "$MACHINE_ID" -C 'find /data -mindepth 1 -maxdepth 2 -type f ! -path "/data/lost+found/*" -printf "%p %s bytes\\n" | sort' 2>&1)"
