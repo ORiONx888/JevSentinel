@@ -16,4 +16,4 @@ jobs:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
         run: |
           set -euo pipefail
-          flyctl ssh console --app jevsentinel --machine 857100a4049168 -C "node --input-type=module -e \"import('./src/groupStore.js').then(({createGroupStore})=>{const s=createGroupStore();const g=s.load();s.save(g.map(x=>({...x,enabled:true})));console.log(JSON.stringify({updated:g.length,enabled:g.filter(x=>x.enabled!==false).length}));})\""
+          flyctl ssh console --app jevsentinel --machine 857100a4049168 -C "node --input-type=module -e \"import('./src/groupStore.js').then(({createGroupStore})=>{const s=createGroupStore();const g=s.load();s.save(g.map(x=>({...x,enabled:true})));const after=s.load();console.log(JSON.stringify({updated:g.length,enabled:after.filter(x=>x.enabled!==false).length}));})\""
