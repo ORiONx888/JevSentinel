@@ -96,41 +96,65 @@ jobs:
           fi
 
           NONEMPTY=0
+          RECOVERED=0
           while IFS=$'\t' read -r VOL REGION CREATED; do
             [ -n "$VOL" ] || continue
-            echo "--- auditing $VOL region=$REGION created=$CREATED ---"
-            flyctl volumes snapshots list "$VOL" --app "$APP" || true
-            set +e
-            CREATE_OUTPUT="$(flyctl machine run alpine:3.20 "sleep 3600" --app "$APP" --region "$REGION" --volume "$VOL:/data" --name "audit-${VOL#vol_}" --detach 2>&1)"
-            CREATE_RC=$?
-            set -e
-            echo "$CREATE_OUTPUT"
-            if [ "$CREATE_RC" -ne 0 ]; then
-              echo "FAIL: Fly could not create the temporary audit machine for $VOL (rc=$CREATE_RC)."
-              echo "=== CURRENT MACHINES AFTER CREATE FAILURE ==="
-              flyctl machine list --app "$APP" --json | jq -r '.[] | [.id,.name,.state,.region] | @tsv'
+            echo "--- reconciling $VOL region=$REGION created=$CREATED ---"
+            SNAPSHOTS="$(flyctl volumes snapshots list "$VOL" --app "$APP" --json 2>/dev/null || true)"
+            echo "$SNAPSHOTS" | jq -r '.[]? | [.id,.created_at,.size] | @tsv' || true
+            SNAPSHOT_ID="$(echo "$SNAPSHOTS" | jq -r 'sort_by(.created_at) | last.id // empty')"
+            if [ -z "$SNAPSHOT_ID" ]; then
+              echo "FAIL: orphan $VOL has no usable snapshot; it cannot be reconciled safely."
               exit 1
             fi
-            MACHINE_ID="$(printf '%s\n' "$CREATE_OUTPUT" | sed -n 's/.*Machine ID: \([a-z0-9]*\).*/\1/p' | tail -n1)"
-            if [ -z "$MACHINE_ID" ]; then
-              MACHINE_ID="$(flyctl machine list --app "$APP" --json | jq -r --arg n "audit-${VOL#vol_}" '[.[] | select(.name==$n)] | .[-1].id // empty')"
-            fi
-            test -n "$MACHINE_ID" || { echo "FAIL: could not identify audit machine for $VOL"; exit 1; }
+            VOL_SIZE="$(printf '%s' "$VOLUMES" | jq -r --arg id "$VOL" '.[] | select(.id==$id) | .size_gb')"
+            test -n "$VOL_SIZE" && test "$VOL_SIZE" != "null" || { echo "FAIL: could not determine size for $VOL"; exit 1; }
+            RECOVERY_VOL=""
+            RECOVERY_MACHINE=""
+            cleanup_recovery() {
+              set +e
+              [ -z "$RECOVERY_MACHINE" ] || flyctl machine destroy "$RECOVERY_MACHINE" --app "$APP" --force >/dev/null 2>&1 || true
+              [ -z "$RECOVERY_VOL" ] || flyctl volumes destroy "$RECOVERY_VOL" --app "$APP" --yes >/dev/null 2>&1 || true
+              set -e
+            }
+            trap cleanup_recovery EXIT
+            CREATE_VOL_OUTPUT="$(flyctl volumes create "audit-recovery-${VOL#vol_}" --app "$APP" --region "$REGION" --size "$VOL_SIZE" --snapshot-id "$SNAPSHOT_ID" --yes 2>&1)"
+            echo "$CREATE_VOL_OUTPUT"
+            RECOVERY_VOL="$(printf '%s\n' "$CREATE_VOL_OUTPUT" | sed -n 's/.*ID: \([^[:space:]]*\).*/\1/p' | tail -n1)"
+            [ -n "$RECOVERY_VOL" ] || RECOVERY_VOL="$(flyctl volumes list --app "$APP" --json | jq -r --arg n "audit-recovery-${VOL#vol_}" '[.[] | select(.name==$n)] | .[-1].id // empty')"
+            test -n "$RECOVERY_VOL" || { echo "FAIL: could not identify recovery volume"; exit 1; }
+            CREATE_OUTPUT="$(flyctl machine run alpine:3.20 "sleep 3600" --app "$APP" --region "$REGION" --volume "$RECOVERY_VOL:/data" --name "audit-recovery-${VOL#vol_}" --detach 2>&1)"
+            echo "$CREATE_OUTPUT"
+            RECOVERY_MACHINE="$(printf '%s\n' "$CREATE_OUTPUT" | sed -n 's/.*Machine ID: \([a-z0-9]*\).*/\1/p' | tail -n1)"
+            [ -n "$RECOVERY_MACHINE" ] || RECOVERY_MACHINE="$(flyctl machine list --app "$APP" --json | jq -r --arg n "audit-recovery-${VOL#vol_}" '[.[] | select(.name==$n)] | .[-1].id // empty')"
+            test -n "$RECOVERY_MACHINE" || { echo "FAIL: could not identify recovery machine"; exit 1; }
             sleep 5
             set +e
-            FILES="$(flyctl machine exec "$MACHINE_ID" find /data -mindepth 1 -maxdepth 2 -type f ! -path '/data/lost+found/*' -print --app "$APP" --timeout 20 2>&1)"
+            FILES="$(flyctl machine exec "$RECOVERY_MACHINE" sh -lc 'find /data -mindepth 1 -maxdepth 3 -type f ! -path "/data/lost+found/*" -printf "%p\t%s bytes\n" | sort' --app "$APP" --timeout 60 2>&1)"
             RC=$?
             set -e
             echo "$FILES"
-            flyctl machine destroy "$MACHINE_ID" --app "$APP" --force || true
-            test "$RC" = "0" || { echo "FAIL: could not inspect $VOL"; exit 1; }
+            test "$RC" = "0" || { echo "FAIL: recovery inspection failed for $VOL"; exit 1; }
             if [ -n "$FILES" ]; then
-              echo "NONEMPTY_ORPHAN=$VOL"
+              echo "RECOVERED_ORPHAN=$VOL"
+              echo "RECOVERED_FILES_BEGIN"
+              echo "$FILES"
+              echo "RECOVERED_FILES_END"
               NONEMPTY=$((NONEMPTY + 1))
             else
-              echo "EMPTY_ORPHAN=$VOL"
+              echo "EMPTY_RECOVERED_SNAPSHOT=$VOL"
             fi
+            RECOVERED=$((RECOVERED + 1))
+            trap - EXIT
+            set +e
+            flyctl machine destroy "$RECOVERY_MACHINE" --app "$APP" --force >/dev/null 2>&1 || true
+            flyctl volumes destroy "$RECOVERY_VOL" --app "$APP" --yes >/dev/null 2>&1 || true
+            set -e
+            RECOVERY_MACHINE=""
+            RECOVERY_VOL=""
           done <<< "$ORPHANS"
+          EXPECTED_ORPHANS="$(printf '%s\n' "$ORPHANS" | grep -c .)"
+          test "$RECOVERED" = "$EXPECTED_ORPHANS" || { echo "FAIL: not every orphan was reconciled"; exit 1; }
+          test "$NONEMPTY" = "0" || { echo "FAIL: orphan volume(s) contain recoverable files; originals preserved."; exit 1; }
+          echo "PASS: every detached created jevsentinel_data volume was snapshot-reconciled and contained no recoverable files. Original volumes preserved."
 
-          test "$NONEMPTY" = "0" || { echo "FAIL: orphan volume(s) contain recoverable files; nothing deleted."; exit 1; }
-          echo "PASS: all detached created jevsentinel_data volumes are empty. No volumes deleted."
