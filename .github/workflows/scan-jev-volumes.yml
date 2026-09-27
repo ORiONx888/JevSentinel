@@ -1,9 +1,7 @@
 name: Scan JevSentinel Volumes For Group State
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   scan:
