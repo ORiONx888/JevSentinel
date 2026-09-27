@@ -124,3 +124,13 @@ test("links shadow predictions to later resolved outcomes without promotion", ()
   assert.equal(result.byAction.HOLD.unresolvedCount, 1);
   assert.equal(result.promotion, "disabled");
 });
+
+
+test("prediction linkage ignores unresolved objective outcomes for learning", () => {
+  const result = buildPredictionOutcomeLinkage([
+    { id: "1", prediction: { action: "BUY", confidence: 0.8 }, outcome: { label: "unresolved", terminalReturnPct: 42 } }
+  ]);
+  assert.equal(result.resolvedPredictionCount, 0);
+  assert.equal(result.byAction.BUY.unresolvedCount, 1);
+  assert.equal(result.promotion, "disabled");
+});
