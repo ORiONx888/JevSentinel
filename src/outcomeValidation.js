@@ -80,6 +80,7 @@ export function buildOutcomeValidation(records = []) {
 
   const featureValidation = validateFeatureGroups(resolved);
   const holdout = buildChronologicalHoldout(resolved);
+  const predictionValidation = buildPredictionOutcomeLinkage(rows);
 
   return {
     status: VALIDATION_STATUS,
@@ -90,6 +91,49 @@ export function buildOutcomeValidation(records = []) {
     patterns,
     featureValidation,
     holdout,
+    predictionValidation,
+    promotion: "disabled"
+  };
+}
+
+/**
+ * Links each recorded shadow prediction to the resolved outcome on the same
+ * telemetry record. This is descriptive/offline only: it never changes a
+ * prediction, creates a live threshold, or promotes an action.
+ */
+export function buildPredictionOutcomeLinkage(records = []) {
+  const rows = records.map((record) => ({
+    ...record,
+    outcome: record?.outcome ? normalizeOutcome(record.outcome) : null,
+    prediction: record?.prediction ?? record?.state?.shadowPrediction ?? null
+  }));
+
+  const predicted = rows.filter((record) => record.prediction?.action);
+  const resolved = predicted.filter((record) => record.outcome?.label !== "unresolved" && record.outcome?.label);
+  const actions = ["BUY", "HOLD", "CAUTION", "SELL"];
+  const labels = [...LABELS];
+
+  const byAction = Object.fromEntries(actions.map((action) => {
+    const bucket = predicted.filter((record) => record.prediction.action === action);
+    const resolvedBucket = bucket.filter((record) => record.outcome?.label !== "unresolved" && record.outcome?.label);
+    return [action, {
+      predictionCount: bucket.length,
+      resolvedCount: resolvedBucket.length,
+      unresolvedCount: bucket.length - resolvedBucket.length,
+      outcomes: Object.fromEntries(labels.map((label) => [
+        label,
+        resolvedBucket.filter((record) => record.outcome.label === label).length
+      ])),
+      meanConfidence: round(mean(bucket.map((record) => finiteOrNull(record.prediction.confidence))))
+    }];
+  }));
+
+  return {
+    status: VALIDATION_STATUS,
+    predictionCount: predicted.length,
+    resolvedPredictionCount: resolved.length,
+    unresolvedPredictionCount: predicted.length - resolved.length,
+    byAction,
     promotion: "disabled"
   };
 }

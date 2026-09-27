@@ -15,6 +15,34 @@ test("normalizes an observation without inventing gates", () => {
   assert.equal(o.entryPrice, null);
 });
 
+test("records each shadow prediction with a stable telemetry linkage", async () => {
+  const provider = new IntelligenceProvider("external-market", async () => ({
+    priceUsd: 1,
+    liquidityUsd: 1000,
+    volume5mUsd: 5000,
+    buySellRatio5m: 1.2,
+  }));
+  const telemetry = new MemoryTelemetry();
+  const evaluator = {
+    evaluate: async () => ({
+      answers: {
+        progression: { choice: "noProgression" },
+        deterioration: { choice: "stable" },
+        retraceAlternative: { choice: "likelyNormalRetrace" },
+        urgency: { choice: "monitor" },
+        falsePositive: { noul: true },
+        evidenceQuality: { choice: "strong" },
+      }
+    })
+  };
+  const engine = createJevSentinel({ providers: [provider], evaluator, telemetry });
+  const result = await engine.assess(createObservation({ mint: "mint-prediction", sourceCard: "EARLY ENTRY EXPERIMENT" }));
+  const record = telemetry.get(result.id);
+  assert.equal(record.predictionId, record.id);
+  assert.equal(record.prediction.action, result.state.shadowPrediction.action);
+  assert.equal(record.prediction.shadow, true);
+});
+
 test("normalizes external intelligence into provider-neutral fields", async () => {
   const provider = new IntelligenceProvider("external-behavior", async () => ({
     score: 91,
@@ -64,18 +92,22 @@ test("outcome telemetry can be updated after the original assessment", () => {
 });
 
 
-test("live history preserves normalized temporal market and flow snapshots", async () => {
-  const provider = new IntelligenceProvider("external-market", async () => ({
-    priceUsd: 1,
-    liquidityUsd: 1000,
-    volume5mUsd: 5000,
-    priceChange5mPct: -2.5,
-    buyCount5m: 40,
-    sellCount5m: 12,
-    buySellRatio5m: 0.77,
-    uniqueSellers: 6,
-    uniqueBuyers: 11
-  }));
+test("live history preserves changing market and flow telemetry for prediction", async () => {
+  let tick = 0;
+  const provider = new IntelligenceProvider("external-market", async () => {
+    tick += 1;
+    return {
+      priceUsd: tick === 1 ? 1 : 1.2,
+      liquidityUsd: tick === 1 ? 1000 : 900,
+      volume5mUsd: tick === 1 ? 5000 : 7000,
+      priceChange5mPct: tick === 1 ? -2.5 : 1.5,
+      buyCount5m: tick === 1 ? 20 : 30,
+      sellCount5m: tick === 1 ? 12 : 22,
+      buySellRatio5m: tick === 1 ? 0.77 : 1.36,
+      uniqueSellers: tick === 1 ? 6 : 9,
+      uniqueBuyers: tick === 1 ? 11 : 15
+    };
+  });
   const telemetry = new MemoryTelemetry();
   const evaluator = { evaluate: async (state) => ({ answers: { ok: true }, state }) };
   const engine = createJevSentinel({ providers: [provider], evaluator, telemetry });
@@ -88,6 +120,13 @@ test("live history preserves normalized temporal market and flow snapshots", asy
   );
   assert.equal(second.state.temporal.sampleCount, 2);
   assert.equal(second.state.temporal.previous.sellCount5m, 12);
-  assert.equal(second.state.temporal.latest.sellCount5m, 12);
-  assert.equal(second.state.temporal.latest.uniqueSellers, 6);
+  assert.equal(second.state.temporal.latest.sellCount5m, 22);
+  assert.equal(second.state.temporal.latest.uniqueSellers, 9);
+  assert.ok(Math.abs(second.state.temporal.deltas.price - 0.2) < 1e-9);
+  assert.equal(second.state.temporal.deltas.liquidity, -100);
+  assert.equal(second.state.temporal.deltas.volume, 2000);
+  assert.equal(second.state.temporal.acceleration.liquidity, "deteriorating");
+  assert.equal(second.state.temporal.acceleration.buyPressure, "increasing");
+  assert.equal(second.state.temporal.acceleration.price, "improving");
+  assert.equal(second.state.shadowPrediction.shadow, true);
 });

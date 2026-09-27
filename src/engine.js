@@ -5,6 +5,7 @@ import { buildEvidenceState } from "./evidence.js";
 import { buildRiskTrajectory } from "./riskTrajectory.js";
 import { createTelemetryRecord } from "./telemetry.js";
 import { buildPatternShadow } from "./patternShadow.js";
+import { buildShadowPrediction } from "./shadowPrediction.js";
 
 export function createJevSentinel({ providers = [], evaluator, telemetry, logger = null } = {}) {
   if (!evaluator?.evaluate) throw new TypeError("evaluator.evaluate is required");
@@ -46,6 +47,13 @@ export function createJevSentinel({ providers = [], evaluator, telemetry, logger
       const assessment = await evaluator.evaluate(state);
       state.verdict = assessment;
       state.trajectory = buildRiskTrajectory({ state, assessment, history });
+      state.shadowPrediction = buildShadowPrediction({
+        state,
+        assessment,
+        trajectory: state.trajectory,
+        priorPrediction: history.at(-1)?.shadowPrediction ?? history.at(-1)?.state?.shadowPrediction ?? null,
+      });
+      logger?.log?.("[jevsentinel] shadow prediction", JSON.stringify(state.shadowPrediction));
 
       logger?.log?.("[jevsentinel] live action state", JSON.stringify({
         action: state.trajectory.action,

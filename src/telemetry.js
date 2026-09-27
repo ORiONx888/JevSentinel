@@ -1,6 +1,9 @@
 export function createTelemetryRecord({ observation, state, intelligence, assessment }) {
+  const id = crypto.randomUUID();
+  const prediction = state.shadowPrediction ?? null;
   return {
-    id: crypto.randomUUID(),
+    id,
+    predictionId: prediction ? id : null,
     createdAt: new Date().toISOString(),
     mint: observation.mint,
     symbol: observation.symbol,
@@ -10,6 +13,7 @@ export function createTelemetryRecord({ observation, state, intelligence, assess
     state,
     intelligence,
     assessment,
+    prediction,
     patternShadow: state.patternShadow ?? null,
     outcome: null
   };
