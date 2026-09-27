@@ -71,7 +71,9 @@ def main():
     ),
     c AS (
       SELECT
-        o.token_address, o.ts, o.low, o.close,
+        o.token_address,
+        CASE WHEN o.ts > 1000000000000 THEN to_timestamp(o.ts / 1000.0) ELSE to_timestamp(o.ts) END AS ts,
+        o.low, o.close,
         t.captured_at, t.price_at_capture,
         row_number() OVER (
           PARTITION BY o.token_address
@@ -79,8 +81,8 @@ def main():
         ) AS rn
       FROM read_parquet('{ohlcv.as_posix()}') o
       JOIN t ON t.token_address = o.token_address
-      WHERE o.ts >= t.captured_at
-        AND o.ts <= t.captured_at + INTERVAL '{LOOKAHEAD_HOURS} hours'
+      WHERE (CASE WHEN o.ts > 1000000000000 THEN to_timestamp(o.ts / 1000.0) ELSE to_timestamp(o.ts) END) >= t.captured_at
+        AND (CASE WHEN o.ts > 1000000000000 THEN to_timestamp(o.ts / 1000.0) ELSE to_timestamp(o.ts) END) <= t.captured_at + INTERVAL '{LOOKAHEAD_HOURS} hours'
         AND o.low IS NOT NULL
         AND o.low > 0
         AND o.low <= o.close * 10
@@ -98,6 +100,12 @@ def main():
 
     cases = db.execute(events_sql).fetchdf()
     cases["target"] = cases["event_ts"].notna().astype(int)
+    target_age = (cases.loc[cases.target == 1, "event_ts"] - cases.loc[cases.target == 1, "captured_at"]).dt.total_seconds()
+    placebo_age_sec = float(target_age.median()) if len(target_age) else 12 * 3600
+    placebo_age_sec = max(600.0, min(placebo_age_sec, LOOKAHEAD_HOURS * 3600.0))
+    cases["analysis_ts"] = cases["event_ts"]
+    import pandas as pd
+    cases.loc[cases.target == 0, "analysis_ts"] = cases.loc[cases.target == 0, "captured_at"] + pd.to_timedelta(placebo_age_sec, unit="s")
 
     # Only tokens with a reconstructable event and a meaningful capture time
     # can contribute to the target cohort. Controls are the non-event tokens.
@@ -106,36 +114,35 @@ def main():
     # Build pre-event trade-flow features from all trade shards, but only for
     # tokens in the candidate universe. This avoids loading 9.5M rows into
     # Python memory.
-    db.register("cases_df", cases[["token_address", "captured_at", "event_ts", "target"]])
+    db.register("cases_df", cases[["token_address", "captured_at", "event_ts", "analysis_ts", "target"]])
 
     flow_sql = f"""
     WITH c AS (
       SELECT * FROM cases_df
-      WHERE event_ts IS NOT NULL
-         OR target = 0
     ),
     tr AS (
-      SELECT wallet, token_address, side, amount_usd, ts
+      SELECT wallet, token_address, side, amount_usd,
+        CASE WHEN ts > 1000000000000 THEN to_timestamp(ts / 1000.0) ELSE to_timestamp(ts) END AS ts
       FROM read_parquet('{trades.as_posix()}')
       WHERE amount_usd IS NOT NULL AND amount_usd >= 0 AND ts IS NOT NULL
     ),
     bounded AS (
       SELECT
-        c.token_address, c.target, c.event_ts,
+        c.token_address, c.target, c.analysis_ts,
         tr.wallet, tr.side, tr.amount_usd, tr.ts,
-        CASE WHEN tr.ts >= c.event_ts - INTERVAL '300 seconds'
-               AND tr.ts < c.event_ts THEN 1 ELSE 0 END AS w300,
-        CASE WHEN tr.ts >= c.event_ts - INTERVAL '60 seconds'
-               AND tr.ts < c.event_ts THEN 1 ELSE 0 END AS w60,
-        CASE WHEN tr.ts >= c.event_ts - INTERVAL '30 seconds'
-               AND tr.ts < c.event_ts THEN 1 ELSE 0 END AS w30,
-        CASE WHEN tr.ts >= c.event_ts - INTERVAL '10 seconds'
-               AND tr.ts < c.event_ts THEN 1 ELSE 0 END AS w10
+        CASE WHEN tr.ts >= c.analysis_ts - INTERVAL '300 seconds'
+               AND tr.ts < c.analysis_ts THEN 1 ELSE 0 END AS w300,
+        CASE WHEN tr.ts >= c.analysis_ts - INTERVAL '60 seconds'
+               AND tr.ts < c.analysis_ts THEN 1 ELSE 0 END AS w60,
+        CASE WHEN tr.ts >= c.analysis_ts - INTERVAL '30 seconds'
+               AND tr.ts < c.analysis_ts THEN 1 ELSE 0 END AS w30,
+        CASE WHEN tr.ts >= c.analysis_ts - INTERVAL '10 seconds'
+               AND tr.ts < c.analysis_ts THEN 1 ELSE 0 END AS w10
       FROM c
       JOIN tr ON tr.token_address = c.token_address
-      WHERE c.event_ts IS NOT NULL
-        AND tr.ts >= c.event_ts - INTERVAL '300 seconds'
-        AND tr.ts < c.event_ts
+      WHERE c.analysis_ts IS NOT NULL
+        AND tr.ts >= c.analysis_ts - INTERVAL '300 seconds'
+        AND tr.ts < c.analysis_ts
     ),
     agg AS (
       SELECT
