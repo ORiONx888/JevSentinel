@@ -1,4 +1,5 @@
 import { createObservation } from "./schema.js";
+import { buildPatternShadow } from "./patternShadow.js";
 
 export function buildJevState(observation, intelligence = {}) {
   const o = createObservation(observation);
@@ -24,7 +25,8 @@ export function buildJevState(observation, intelligence = {}) {
     wallets: o.wallets,
     transfers: o.transfers,
     security: o.security,
-    intelligence: providerViews
+    intelligence: providerViews,
+    patternShadow: buildPatternShadow({ evidence: {}, temporal: {} })
   };
 }
 
@@ -33,6 +35,14 @@ export function buildDecisionQuestions() {
     escalation: {
       type: "noul",
       prompt: "Does the independently gathered token evidence justify escalating this token from monitoring to active risk attention? The source alert card is only a trigger. Do not use its scores, safety claims, rug labels, holder percentages, dev claims, volume figures, or other card-derived evidence as evidence for this decision."
+    },
+    patternResemblance: {
+      type: "noul",
+      prompt: "Do the independently observed current and prior snapshots materially resemble any historical candidate patterns supplied in patternShadow? Treat a match as resemblance evidence only, not proof of a rug. Do not infer a match when required evidence is missing."
+    },
+    patternContradiction: {
+      type: "noul",
+      prompt: "Is there independent evidence that materially contradicts the historical-pattern interpretation in patternShadow, such as recovery, stable liquidity, non-coordinated flow, or another coherent explanation? Do not treat missing evidence as contradiction."
     },
     coordinatedBehavior: {
       type: "noul",

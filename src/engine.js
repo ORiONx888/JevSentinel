@@ -4,6 +4,7 @@ import { collectIntelligence } from "./intelligence.js";
 import { buildEvidenceState } from "./evidence.js";
 import { buildRiskTrajectory } from "./riskTrajectory.js";
 import { createTelemetryRecord } from "./telemetry.js";
+import { buildPatternShadow } from "./patternShadow.js";
 
 export function createJevSentinel({ providers = [], evaluator, telemetry, logger = null } = {}) {
   if (!evaluator?.evaluate) throw new TypeError("evaluator.evaluate is required");
@@ -19,6 +20,7 @@ export function createJevSentinel({ providers = [], evaluator, telemetry, logger
       const state = buildJevState(observation, intelligence);
       state.temporal = temporal;
       state.evidence = evidence;
+      state.patternShadow = buildPatternShadow({ evidence, temporal });
 
       // Give the JEV model the deterministic trajectory context as part of its
       // decision input. The post-model pass below then folds JEV's answers back
