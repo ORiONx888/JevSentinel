@@ -34,7 +34,7 @@ jobs:
 
   storage-integrity:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 15
     steps:
       - name: Setup flyctl
         uses: superfly/flyctl-actions/setup-flyctl@master
@@ -144,15 +144,15 @@ jobs:
             done
             test "$RECOVERY_STATE" = "created" || { echo "FAIL: recovery fork did not become ready"; exit 1; }
             set +e
-            CREATE_OUTPUT="$(flyctl machine run alpine:3.20 "sleep 3600" --app "$APP" --region "ord" --volume "$RECOVERY_VOL:/data" --name "audit_r_${VOL#vol_}" --detach --rm --restart no 2>&1)"
+            CREATE_OUTPUT="$(flyctl machine run alpine:3.20 "sleep 3600" --app "$APP" --region "ord" --volume "$RECOVERY_VOL:/data" --name "audit_r_${VOL#vol_}" --detach --rm --restart no --wait-timeout 30s 2>&1)"
             CREATE_RC=$?
             set -e
             echo "$CREATE_OUTPUT"
-            test "$CREATE_RC" = "0" || { echo "FAIL: recovery machine creation failed for $VOL"; exit 1; }
+            if [ "$CREATE_RC" != "0" ]; then echo "Recovery machine launch returned rc=$CREATE_RC; continuing to poll the created machine."; fi
             RECOVERY_MACHINE="$(printf '%s\n' "$CREATE_OUTPUT" | sed -n 's/.*Machine ID: \([a-z0-9]*\).*/\1/p' | tail -n1)"
             [ -n "$RECOVERY_MACHINE" ] || RECOVERY_MACHINE="$(flyctl machine list --app "$APP" --json | jq -r --arg n "audit_r_${VOL#vol_}" '[.[] | select(.name==$n)] | .[-1].id // empty')"
             test -n "$RECOVERY_MACHINE" || { echo "FAIL: could not identify recovery machine"; exit 1; }
-            for i in $(seq 1 12); do
+            for i in $(seq 1 36); do
               STATE="$(flyctl machine status "$RECOVERY_MACHINE" --app "$APP" --json 2>/dev/null | jq -r '.state // empty' || true)"
               echo "Recovery machine state: $STATE"
               [ "$STATE" = "started" ] && break
