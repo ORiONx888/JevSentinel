@@ -61,7 +61,8 @@ jobs:
           PROD_MACHINE="$(printf '%s' "$MACHINES" | jq -r '.[0].id')"
           PROD_STATE="$(printf '%s' "$MACHINES" | jq -r '.[0].state')"
           test "$PROD_STATE" = "started" || { echo "FAIL: production machine $PROD_MACHINE is $PROD_STATE"; exit 1; }
-          PROD_IMAGE="$(flyctl machine status "$PROD_MACHINE" --app "$APP" --display-config | jq -r '.config.image')"
+          PROD_CONFIG="$(flyctl machine status "$PROD_MACHINE" --app "$APP" --display-config | sed -r 's/\x1B\[[0-9;]*[mK]//g')"
+          PROD_IMAGE="$(printf '%s' "$PROD_CONFIG" | jq -r '.config.image')"
           test -n "$PROD_IMAGE" && test "$PROD_IMAGE" != "null"
 
           ATTACHED_COUNT="$(printf '%s' "$VOLUMES" | jq '[.[] | select(.name=="jevsentinel_data" and .state=="created" and .attached_machine_id != null)] | length')"
