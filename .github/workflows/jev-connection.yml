@@ -34,7 +34,7 @@ jobs:
 
   storage-integrity:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - name: Setup flyctl
         uses: superfly/flyctl-actions/setup-flyctl@master
@@ -128,7 +128,7 @@ jobs:
             trap cleanup_recovery EXIT
             echo "Latest snapshot selected: $SNAPSHOT_ID"
             set +e
-            CREATE_VOL_OUTPUT="$(timeout 60s flyctl volumes fork "$VOL" --app "$APP" --region "ord" --name "audit_r_${VOL#vol_}" --json 2>&1)"
+            CREATE_VOL_OUTPUT="$(timeout 60s flyctl volumes fork "$VOL" --app "$APP" --region "$REGION" --name "audit_r_${VOL#vol_}" --json 2>&1)"
             CREATE_VOL_RC=$?
             set -e
             echo "$CREATE_VOL_OUTPUT"
@@ -145,21 +145,43 @@ jobs:
               sleep 5
             done
             test "$RECOVERY_STATE" = "created" || { echo "FAIL: recovery volume did not become ready"; exit 1; }
-            set +e
-            CREATE_OUTPUT="$(timeout 45s flyctl machine run alpine:3.20 "sleep 3600" --app "$APP" --region "ord" --volume "$RECOVERY_VOL:/data" --name "audit_r_${VOL#vol_}" --detach --restart no 2>&1)"
-            CREATE_RC=$?
-            set -e
-            echo "$CREATE_OUTPUT"
-            if [ "$CREATE_RC" != "0" ]; then echo "Recovery machine launch returned rc=$CREATE_RC; continuing to poll the created machine."; fi
-            RECOVERY_MACHINE="$(printf '%s\n' "$CREATE_OUTPUT" | sed -n 's/.*Machine ID: \([a-z0-9]*\).*/\1/p' | tail -n1)"
-            [ -n "$RECOVERY_MACHINE" ] || RECOVERY_MACHINE="$(flyctl machine list --app "$APP" --json | jq -r --arg n "audit_r_${VOL#vol_}" '[.[] | select(.name==$n)] | .[-1].id // empty')"
-            test -n "$RECOVERY_MACHINE" || { echo "FAIL: could not identify recovery machine"; exit 1; }
-            for i in $(seq 1 36); do
-              RECOVERY_STATE="$(flyctl machine status "$RECOVERY_MACHINE" --app "$APP" 2>/dev/null | grep -E '^[[:space:]]*State:' | head -n1 | sed 's/.*State:[[:space:]]*//' || true)"
-              echo "Recovery machine state: $RECOVERY_STATE"
-              [ "$RECOVERY_STATE" = "started" ] && break
-              sleep 5
+            # Create and start the inspection machine separately. This avoids treating a
+            # flyctl machine run client timeout as a machine-start failure, and lets us
+            # retry placement if Fly schedules the first temporary machine onto a bad host.
+            for ATTEMPT in 1 2; do
+              RECOVERY_MACHINE=""
+              MACHINE_NAME="audit_r_${VOL#vol_}_$ATTEMPT"
+              set +e
+              CREATE_OUTPUT="$(timeout 45s flyctl machine create alpine:3.20 "sleep 3600" --app "$APP" --region "$REGION" --volume "$RECOVERY_VOL:/data" --name "$MACHINE_NAME" --detach --restart no --autostart=false --autostop off --vm-cpu-kind shared --vm-cpus 1 --vm-memory 256 2>&1)"
+              CREATE_RC=$?
+              set -e
+              echo "$CREATE_OUTPUT"
+              RECOVERY_MACHINE="$(printf '%s\n' "$CREATE_OUTPUT" | sed -n 's/.*Machine ID: \([a-z0-9]*\).*/\1/p' | tail -n1)"
+              [ -n "$RECOVERY_MACHINE" ] || RECOVERY_MACHINE="$(flyctl machine list --app "$APP" --json | jq -r --arg n "$MACHINE_NAME" '[.[] | select(.name==$n)] | .[-1].id // empty')"
+              if [ "$CREATE_RC" != "0" ] || [ -z "$RECOVERY_MACHINE" ]; then
+                echo "Recovery machine create failed on attempt $ATTEMPT (rc=$CREATE_RC)."
+                continue
+              fi
+              set +e
+              START_OUTPUT="$(timeout 30s flyctl machine start "$RECOVERY_MACHINE" --app "$APP" 2>&1)"
+              START_RC=$?
+              set -e
+              echo "$START_OUTPUT"
+              for i in $(seq 1 12); do
+                RECOVERY_STATE="$(flyctl machine status "$RECOVERY_MACHINE" --app "$APP" 2>/dev/null | grep -E '^[[:space:]]*State:' | head -n1 | sed 's/.*State:[[:space:]]*//' || true)"
+                echo "Recovery machine state: $RECOVERY_STATE"
+                [ "$RECOVERY_STATE" = "started" ] && break
+                sleep 5
+              done
+              if [ "$START_RC" = "0" ] && [ "$RECOVERY_STATE" = "started" ]; then
+                break
+              fi
+              echo "Recovery machine did not start on attempt $ATTEMPT (start rc=$START_RC, state=$RECOVERY_STATE)."
+              flyctl machine status "$RECOVERY_MACHINE" --app "$APP" --display-config || true
+              timeout 20s flyctl machine destroy "$RECOVERY_MACHINE" --app "$APP" --force || true
+              RECOVERY_MACHINE=""
             done
+            test -n "$RECOVERY_MACHINE" || { echo "FAIL: recovery inspection machine could not be started after 2 placement attempts"; exit 1; }
             test "$RECOVERY_STATE" = "started" || { echo "FAIL: recovery machine did not become ready"; exit 1; }
             set +e
             FILES="$(flyctl machine exec "$RECOVERY_MACHINE" sh -lc 'find /data -mindepth 1 -maxdepth 3 -type f ! -path "/data/lost+found/*" -printf "%p\t%s bytes\n" | sort' --app "$APP" --timeout 60 2>&1)"
