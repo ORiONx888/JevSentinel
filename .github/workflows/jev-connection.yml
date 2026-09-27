@@ -44,10 +44,20 @@ jobs:
           set -euo pipefail
           APP="jevsentinel"
           MACHINES="$(flyctl machine list --app "$APP" --json)"
+
+          echo "=== CLEAN UP STALE AUDIT MACHINES ==="
+          AUDIT_MACHINES="$(printf '%s' "$MACHINES" | jq -r '.[] | select(.name | startswith("audit-")) | .id')"
+          while IFS= read -r AUDIT_MACHINE; do
+            [ -n "$AUDIT_MACHINE" ] || continue
+            echo "Destroying stale audit machine $AUDIT_MACHINE"
+            flyctl machine destroy "$AUDIT_MACHINE" --app "$APP" --force || true
+          done <<< "$AUDIT_MACHINES"
+
+          MACHINES="$(flyctl machine list --app "$APP" --json)"
           VOLUMES="$(flyctl volumes list --app "$APP" --json)"
 
           MACHINE_COUNT="$(printf '%s' "$MACHINES" | jq 'length')"
-          test "$MACHINE_COUNT" = "1" || { echo "FAIL: expected exactly 1 production machine, found $MACHINE_COUNT"; exit 1; }
+          test "$MACHINE_COUNT" = "1" || { echo "FAIL: expected exactly 1 production machine after audit cleanup, found $MACHINE_COUNT"; exit 1; }
           PROD_MACHINE="$(printf '%s' "$MACHINES" | jq -r '.[0].id')"
           PROD_STATE="$(printf '%s' "$MACHINES" | jq -r '.[0].state')"
           test "$PROD_STATE" = "started" || { echo "FAIL: production machine $PROD_MACHINE is $PROD_STATE"; exit 1; }
