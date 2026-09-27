@@ -1,9 +1,7 @@
 name: Finalize JevSentinel Recovery
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   finalize:
