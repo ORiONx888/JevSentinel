@@ -121,8 +121,7 @@ def main():
       SELECT * FROM cases_df
     ),
     tr AS (
-      SELECT wallet, token_address, side, amount_usd,
-        CASE WHEN ts > 1000000000000 THEN to_timestamp(ts / 1000.0) ELSE to_timestamp(ts) END AS ts
+      SELECT wallet, token_address, side, amount_usd, ts
       FROM read_parquet('{trades.as_posix()}')
       WHERE amount_usd IS NOT NULL AND amount_usd >= 0 AND ts IS NOT NULL
     ),
