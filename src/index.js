@@ -14,3 +14,5 @@ export {
 } from "./outcomeValidation.js";
 export { createNativeRiskProvider, createTransferFlowProvider, createTokenResearchProvider } from "./providers/index.js";
 export { createLiveMonitor } from "./liveMonitor.js";
+
+export { buildShadowPrediction } from "./shadowPrediction.js";
