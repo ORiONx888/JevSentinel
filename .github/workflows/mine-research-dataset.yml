@@ -35,6 +35,9 @@ jobs:
         run: |
           python research/pattern-engine/mine_dataset.py             --data-dir /tmp/jev-dataset             --out-dir research/pattern-engine/output
 
+      - name: Install Node dependencies for full test suite
+        run: npm ci
+
       - name: Validate generated artifacts
         run: |
           test -s research/pattern-engine/output/collapse-pattern-candidates.json
