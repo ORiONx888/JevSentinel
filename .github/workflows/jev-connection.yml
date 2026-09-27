@@ -101,3 +101,5 @@ jobs:
 
           test "$NONEMPTY" = "0" || { echo "FAIL: orphan volume(s) contain recoverable files; nothing deleted."; exit 1; }
           echo "PASS: all detached created jevsentinel_data volumes are empty. No volumes deleted."
+
+# Final recovery verification: storage invariants are enforced in CI.
