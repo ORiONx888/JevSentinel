@@ -118,7 +118,7 @@ jobs:
             test -n "$MACHINE_ID" || { echo "FAIL: could not identify audit machine for $VOL"; exit 1; }
             sleep 5
             set +e
-            FILES="$(flyctl machine exec "$MACHINE_ID" 'find /data -mindepth 1 -maxdepth 2 -type f ! -path "/data/lost+found/*" -printf "%p %s bytes\\n" | sort' --app "$APP" 2>&1)"
+            FILES="$(flyctl machine exec "$MACHINE_ID" 'find /data -mindepth 1 -maxdepth 2 -type f ! -path "/data/lost+found/*" -printf "%p %s bytes\\n" | sort' --app "$APP" --no-container --timeout 20 2>&1)"
             RC=$?
             set -e
             echo "$FILES"
