@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "status": "shadow-only-research",
+  "source": "ian05012/solana-memecoin-dataset",
+  "warning": "These are collapse-like retrospective candidates, not confirmed-rug signatures. They must not control live action.",
+  "patterns": [
+    {"id":"COLLAPSE-CAND-042","features":["sell_buy_300_ge_2","repeated_seller_share_25","bundler_holders_ge_10"],"targetMatches":306,"controlMatches":0},
+    {"id":"COLLAPSE-CAND-057","features":["sell_buy_60_ge_2","repeated_seller_share_25","bundler_holders_ge_10"],"targetMatches":155,"controlMatches":0},
+    {"id":"COLLAPSE-CAND-018","features":["repeated_seller_share_25","sniper_holders_ge_10"],"targetMatches":128,"controlMatches":0},
+    {"id":"COLLAPSE-CAND-017","features":["repeated_seller_share_25","bundler_holders_ge_10"],"targetMatches":2102,"controlMatches":3},
+    {"id":"COLLAPSE-CAND-002","features":["sell_buy_300_ge_2","repeated_seller_share_25"],"targetMatches":371,"controlMatches":5},
+    {"id":"COLLAPSE-CAND-008","features":["sell_buy_60_ge_2","repeated_seller_share_25"],"targetMatches":194,"controlMatches":13}
+  ]
+}
