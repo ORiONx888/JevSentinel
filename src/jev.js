@@ -1,7 +1,7 @@
 import { choice, noul, score, TypeSafeClient } from "@typesafe-ai/sdk";
 import { buildDecisionQuestions } from "./state.js";
 
-export function createJevEvaluator({ client = new TypeSafeClient(), model = "jev-latest" } = {}) {
+export function createJevEvaluator({ client = new TypeSafeClient(), model = process.env.JEV_MODEL ?? "jev-1.13.0" } = {}) {
   return {
     async evaluate(state) {
       const definitions = buildDecisionQuestions();
