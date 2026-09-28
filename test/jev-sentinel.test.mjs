@@ -161,3 +161,29 @@ test("live history preserves changing market and flow telemetry for prediction",
   assert.equal(second.state.temporal.acceleration.price, "improving");
   assert.equal(second.state.shadowPrediction.shadow, true);
 });
+
+test("passes social narrative evidence into the JEV state without turning it into a risk gate", async () => {
+  const provider = new IntelligenceProvider("social-narrative", async () => ({
+    socialNarrative: {
+      status: "available",
+      postCount: 12,
+      uniqueAuthors: 8,
+      sentimentDirection: "bullish",
+      sourceDiversity: 0.7,
+      credibilityScore: 0.6,
+      persistenceScore: 0.5,
+      contradictionRatio: 0.1,
+      durabilityScore: 0.54,
+      velocity: "accelerating",
+      narrativeTier: "emerging"
+    }
+  }));
+  const telemetry = new MemoryTelemetry();
+  const evaluator = { evaluate: async (state) => ({ answers: {}, state }) };
+  const engine = createJevSentinel({ providers: [provider], evaluator, telemetry });
+  const result = await engine.assess(createObservation({ mint: "mint-social", symbol: "SOCIAL", sourceCard: "CW2" }));
+  assert.equal(result.state.evidence.socialNarrative.postCount, 12);
+  assert.equal(result.state.evidence.socialNarrative.uniqueAuthors, 8);
+  assert.equal(result.state.evidence.socialNarrative.sentimentDirection, "bullish");
+  assert.equal(result.state.trajectory.action, "HOLD");
+});
