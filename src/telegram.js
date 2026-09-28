@@ -3,6 +3,7 @@ import { createJevEvaluator } from "./jev.js";
 import { createJevSentinel } from "./engine.js";
 import { createTransferFlowProvider } from "./providers/transferFlow.js";
 import { createTokenResearchProvider } from "./providers/tokenResearch.js";
+import { createSocialNarrativeProvider } from "./providers/socialNarrative.js";
 import { buildEarlyEntryObservation } from "./earlyEntryMonitor.js";
 import { buildCw2Observation } from "./cw2Monitor.js";
 import { createGroupStore } from "./groupStore.js";
@@ -185,7 +186,7 @@ function createGroupRuntime(apiKey, logger = null) {
   const telemetry = new MemoryTelemetry();
   const evaluator = createJevEvaluator({ client });
   const sentinel = createJevSentinel({
-    providers: [createTokenResearchProvider(), createTransferFlowProvider()],
+    providers: [createTokenResearchProvider(), createTransferFlowProvider(), createSocialNarrativeProvider()],
     evaluator,
     telemetry,
     logger,
