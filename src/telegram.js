@@ -779,9 +779,10 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
     }
     group.enabled = enabled;
     persistGroupsNow();
+    const card = group.monitorCard ?? "jee";
     await sendMessage(chatId, enabled
-      ? "🟢 <b>JevSentinel monitoring ON.</b>\n\nMonitoring: <b>EARLY ENTRY EXPERIMENT only</b>"
-      : "⚪ <b>JevSentinel monitoring OFF.</b>\n\nNo EARLY ENTRY EXPERIMENT cards will be processed until /jevon is used.");
+      ? `🟢 <b>JevSentinel monitoring ON.</b>\\n\\nMonitoring: <b>${monitorCardLabel(card)}</b>`
+      : `⚪ <b>JevSentinel monitoring OFF.</b>\\n\\nNo <b>${monitorCardLabel(card)}</b> cards will be processed until /jevon is used.`);
     return true;
   }
 
@@ -852,10 +853,10 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
         if (!group) { await sendMessage(chatId, "⚪ <b>JEV is not configured.</b> Send a valid JEV API key first."); return; }
         if (!(await isGroupAdmin(chatId, message.from?.id))) { await sendMessage(chatId, "⛔ <b>Only a group administrator can change JevSentinel monitoring.</b>"); return; }
         if (command?.action === "invalid") { await sendMessage(chatId, "❓ <b>Unknown monitor card.</b> Use <code>/monitor cw2</code> or <code>/monitor jee</code>."); return; }
-        if (command?.action === "status") { await sendMessage(chatId, `🎯 <b>Monitor:</b> ${monitorCardLabel(group.monitorCard ?? "jee")}\\n<b>Mode:</b> ${group.enabled === false ? "OFF" : "ON"}`); return; }
+        if (command?.action === "status") { await sendMessage(chatId, `🎯 <b>Monitor:</b> ${monitorCardLabel(group.monitorCard ?? "jee")}\n<b>Mode:</b> ${group.enabled === false ? "OFF" : "ON"}`); return; }
         group.monitorCard = command.card;
         persistGroupsNow();
-        await sendMessage(chatId, `🎯 <b>Monitor switched.</b>\\n\\nNow monitoring: <b>${monitorCardLabel(command.card)}</b>\\n\\nUse /jevon to turn it ON if currently OFF.`);
+        await sendMessage(chatId, `🎯 <b>Monitor switched.</b>\n\nNow monitoring: <b>${monitorCardLabel(command.card)}</b>\n\nUse /jevon to turn it ON if currently OFF.`);
         return;
       }
       if (textValue === "/jevstatus" || textValue.startsWith("/jevstatus@")) {
