@@ -21,3 +21,5 @@ primary_region = "yyz"
 [[mounts]]
   source = "jevsentinel_data"
   destination = "/data"
+
+# GitHub Actions Fly deployment trigger
