@@ -4,6 +4,7 @@ import { createJevSentinel } from "./engine.js";
 import { createTransferFlowProvider } from "./providers/transferFlow.js";
 import { createTokenResearchProvider } from "./providers/tokenResearch.js";
 import { buildEarlyEntryObservation } from "./earlyEntryMonitor.js";
+import { buildCw2Observation } from "./cw2Monitor.js";
 import { createGroupStore } from "./groupStore.js";
 import { createLiveMonitor } from "./liveMonitor.js";
 import { buildRiskTrajectory } from "./riskTrajectory.js";
@@ -37,7 +38,28 @@ export async function telegramCall(method, params = {}, { token, fetchImpl = fet
   }
 }
 
-// Deployment marker: EARLY ENTRY EXPERIMENT intake is the SG JevSentinel source.
+// Monitoring source is selected per group via /monitor and persisted with group configuration.
+const MONITOR_CARD_ALIASES = new Map([
+  ["cw2", "cw2"], ["cw", "cw2"], ["conviction", "cw2"],
+  ["jee", "jee"], ["early-entry", "jee"], ["earlyentry", "jee"], ["early-entry-experiment", "jee"],
+]);
+function normalizeMonitorCard(value) {
+  return MONITOR_CARD_ALIASES.get(String(value ?? "").trim().toLowerCase().replace(/^[\"']|[\"']$/g, "")) ?? null;
+}
+function monitorCardLabel(card) {
+  return card === "cw2" ? "CONVICTION PULSE CW2" : "EARLY ENTRY EXPERIMENT";
+}
+function monitorObservation(card, args) {
+  return card === "cw2" ? buildCw2Observation(args) : buildEarlyEntryObservation(args);
+}
+export function parseMonitorCommand(text) {
+  const match = String(text ?? "").trim().match(/^\/monitor(?:@[A-Za-z0-9_]+)?(?:\s+(.+))?$/i);
+  if (!match) return null;
+  const argument = String(match[1] ?? "").trim();
+  if (!argument || argument.toLowerCase() === "status") return { action: "status" };
+  const card = normalizeMonitorCard(argument);
+  return card ? { action: "set", card } : { action: "invalid", value: argument };
+}
 
 export function tokenLinks(mint) {
   const value = String(mint ?? "").trim();
@@ -100,8 +122,11 @@ export function buildStartMessage({ group = false } = {}) {
     "",
     "<b>Commands</b>",
     "/jevstatus — bot and JEV status",
-    "/jevon — turn EARLY ENTRY EXPERIMENT monitoring on",
-    "/jevoff — turn EARLY ENTRY EXPERIMENT monitoring off",
+    "/jevon — turn monitoring ON",
+    "/jevoff — turn monitoring OFF",
+    "/monitor cw2 — monitor CONVICTION PULSE CW2",
+    "/monitor jee — monitor EARLY ENTRY EXPERIMENT",
+    "/monitor status — show the selected card",
     "/jevtest — send a safe test risk alert",
     "/jevhelp — show help",
     "",
@@ -135,8 +160,7 @@ export function buildHelpMessage() {
     "/jevtest — send a delivery test (private chat)",
     "",
     "<b>What is monitored</b>",
-    "EARLY ENTRY EXPERIMENT cards only.",
-    "Other VolSpike cards are ignored during this test.",
+    "The selected card is monitored. Use /monitor cw2 or /monitor jee to switch it.",
     "",
     "<b>Mode</b>",
     "LOG-ONLY — JEVSentinel analyzes risk and sends an alert. No trading or auto-sell actions are performed.",
@@ -514,6 +538,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
       apiKey: group.apiKey,
       activatedAt: group.activatedAt,
       enabled: group.enabled !== false,
+      monitorCard: group.monitorCard ?? "jee",
     })));
   }
 
@@ -527,6 +552,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
         runtime: createGroupRuntime(entry.apiKey, logger),
         activatedAt: entry.activatedAt ?? new Date().toISOString(),
         enabled: entry.enabled !== false,
+        monitorCard: normalizeMonitorCard(entry.monitorCard) ?? "jee",
       });
     }
     logger.log?.("[jevsentinel-telegram] persistent group configuration restored", JSON.stringify({ count: groups.size }));
@@ -574,6 +600,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
         enabled: existing ? existing.enabled !== false : false,
         hasText: Boolean(textValue),
         isEarlyEntry: isLikelyCard(textValue),
+        monitorCard: existing?.monitorCard ?? null,
         textLength: textValue.length,
       }),
     );
@@ -601,7 +628,8 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
       return;
     }
 
-    const observation = buildEarlyEntryObservation({
+    const monitorCard = existing.monitorCard ?? "jee";
+    const observation = monitorObservation(monitorCard, {
       text: textValue,
       messageId: message.message_id,
       chatId: message.chat.id,
@@ -613,6 +641,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
           chatId,
           messageId: Number(message.message_id ?? 0),
           isEarlyEntry: isLikelyCard(textValue),
+          monitorCard,
         }),
       );
       return;
@@ -625,6 +654,8 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
         messageId: Number(message.message_id ?? 0),
         mintExtracted: Boolean(observation.mint),
         symbol: observation.symbol,
+        monitorCard,
+        monitorLabel: monitorCardLabel(monitorCard),
       }),
     );
 
@@ -648,7 +679,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
       runtime.predictionIds.set(observation.mint, [result.id]);
       const summary = answerSummary(result.assessment);
       result.state.trajectory = result.state.trajectory ?? buildRiskTrajectory({ state: result.state, assessment: result.assessment, history });
-      logger.log?.("[jevsentinel-telegram] EARLY ENTRY JEV assessment finished", JSON.stringify({
+      logger.log?.("[jevsentinel-telegram] JEV assessment finished", JSON.stringify({
         chatId,
         messageId: Number(message.message_id ?? 0),
         escalation: result.assessment?.answers?.escalation?.noul === true,
@@ -656,7 +687,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
       await sendMessage(message.chat.id, buildRiskAlert({
         mint: observation.mint,
         symbol: observation.symbol,
-        sourceCard: "EARLY ENTRY EXPERIMENT",
+        sourceCard: monitorCardLabel(monitorCard),
         classification: summary.classification,
         summary: summary.summary,
         signals: summary.signals,
@@ -718,7 +749,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
       };
       liveMonitorConfigs.set(`${chatId}:${observation.mint}`, liveMonitorConfig);
       runtime.liveMonitor.start(liveMonitorConfig);
-      logger.log?.("[jevsentinel-telegram] EARLY ENTRY assessment completed; live monitoring started");
+      logger.log?.("[jevsentinel-telegram] assessment completed; live monitoring started", JSON.stringify({ monitorCard }));
     } catch (error) {
       logger.error?.("[jevsentinel-telegram] EARLY ENTRY assessment failed");
       await sendMessage(message.chat.id, "⚠️ <b>JevSentinel could not complete the EARLY ENTRY assessment.</b> No trading action was taken.", { reply_to_message_id: message.message_id });
@@ -814,13 +845,25 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
         await sendMessage(chatId, buildStartMessage({ group: true }));
         return;
       }
+      if (textValue === "/monitor" || textValue.startsWith("/monitor@") || textValue.startsWith("/monitor ")) {
+        const command = parseMonitorCommand(textValue);
+        const group = groups.get(String(chatId));
+        if (!group) { await sendMessage(chatId, "⚪ <b>JEV is not configured.</b> Send a valid JEV API key first."); return; }
+        if (!(await isGroupAdmin(chatId, message.from?.id))) { await sendMessage(chatId, "⛔ <b>Only a group administrator can change JevSentinel monitoring.</b>"); return; }
+        if (command?.action === "invalid") { await sendMessage(chatId, "❓ <b>Unknown monitor card.</b> Use <code>/monitor cw2</code> or <code>/monitor jee</code>."); return; }
+        if (command?.action === "status") { await sendMessage(chatId, `🎯 <b>Monitor:</b> ${monitorCardLabel(group.monitorCard ?? "jee")}\\n<b>Mode:</b> ${group.enabled === false ? "OFF" : "ON"}`); return; }
+        group.monitorCard = command.card;
+        persistGroupsNow();
+        await sendMessage(chatId, `🎯 <b>Monitor switched.</b>\\n\\nNow monitoring: <b>${monitorCardLabel(command.card)}</b>\\n\\nUse /jevon to turn it ON if currently OFF.`);
+        return;
+      }
       if (textValue === "/jevstatus" || textValue.startsWith("/jevstatus@")) {
         const group = groups.get(String(chatId));
         await sendMessage(chatId, buildStatusMessage({
           connected: true,
           configured: Boolean(group),
           mode: group ? (group.enabled === false ? "OFF" : "LOG-ONLY") : "OFF",
-          cards: group ? ["EARLY ENTRY EXPERIMENT"] : [],
+          cards: group ? [monitorCardLabel(group.monitorCard ?? "jee")] : [],
         }));
         return;
       }
