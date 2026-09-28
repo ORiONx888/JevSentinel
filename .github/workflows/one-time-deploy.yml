@@ -6,7 +6,7 @@ on:
 
 jobs:
   deploy:
-    if: contains(github.event.head_commit.message, '[deploy-js-live]')
+    if: (contains(github.event.head_commit.message, '[deploy-js-live]') || contains(github.event.head_commit.message, '[reload-js-monitor]'))
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
