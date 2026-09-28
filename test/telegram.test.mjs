@@ -336,7 +336,7 @@ test("live mini-card shows the actual urgency change instead of a generic fallba
       },
     },
   });
-  assert.match(text, /Urgency 1\.20 → 1\.50/);
+  assert.match(text, /Urgency changed 1\.20 → 1\.50/);
   assert.match(text, /Live data:.*sells 12→15/);
   assert.doesNotMatch(text, /Live comparison shows no clear deterioration/);
 });
