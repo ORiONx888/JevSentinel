@@ -583,7 +583,8 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
       return false;
     }
 
-    await sendMessage(chatId, "🛡️ <b>JEV verified — monitoring ACTIVE.</b>\n\nMonitoring: <b>EARLY ENTRY EXPERIMENT only</b>\nMode: <b>LOG-ONLY</b>");
+    const card = groups.get(String(chatId))?.monitorCard ?? "jee";
+    await sendMessage(chatId, `🛡️ <b>JEV verified — monitoring ACTIVE.</b>\n\nMonitoring: <b>${monitorCardLabel(card)}</b>\nMode: <b>LOG-ONLY</b>`);
     return Boolean(client && message);
   }
 
@@ -962,5 +963,5 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
 }
 
 function isLikelyCard(text) {
-  return /(?:JEV\s+EARLIER\s+ENTRY|EARLY\s+ENTRY\s+EXPERIMENT)/i.test(String(text ?? ""));
+  return /(?:JEV\s+EARLIER\s+ENTRY|EARLY\s+ENTRY\s+EXPERIMENT|CONVICTION\s+PULSE\s+CW2)/i.test(String(text ?? ""));
 }
