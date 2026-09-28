@@ -1,0 +1,1001 @@
+"Time","Line","id","labels","streams","streamId","detected_level"
+2026-09-28 10:46:04,[dexscreener] Polled 23 Solana pairs,9d3e6755de894826,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:46:04,"[dexscreener] Got 30 profiles, 17 Solana",e90bd3f001f3e717,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:46:04,[mevx] notifications=200 parseSkips=0 endpoints=2,f0d62932ba6d97ae,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:46:04,[gmgn-budget] earlier-entry=10520req/16b(bk) feed-kol=576req/0b conviction=308req/2b feed-discovery=288req/0b hot-netflow=61req/33b(bk) over ~142min since=2026-09-28T11:24:21.056Z dropped=6804,1c6893ac02e33446,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:46:04,[mevx] notifications=200 parseSkips=0 endpoints=2,bf3c084191c6f792,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:46:02,[hot] poll source=mevx candidates=124 passing=5 newest_age_min=4,1aebcd6c23bcff1,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:46:02,[mevx] notifications=200 parseSkips=0 endpoints=2,78c8c1344e7b8801,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:47,[hot] poll source=mevx candidates=124 passing=5 newest_age_min=4,6f922b2df29a193c,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:47,[mevx] notifications=200 parseSkips=0 endpoints=2,3181664a1ef783dd,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:34,[dexscreener] Polled 25 Solana pairs,4938ff5ecd745586,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:34,"[dexscreener] Got 30 profiles, 17 Solana",1b4255ade7dfa418,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:32,[hot] poll source=mevx candidates=125 passing=5 newest_age_min=3,e6ae360562626de2,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:32,[mevx] notifications=200 parseSkips=0 endpoints=2,cb332af995c8d6d2,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:26,"[microaudit:priority] tick done: 0 queued, 0 cooldown-skipped, 0 capped, 0 fetched, 0 stamped, 0 deferred, 0 stale-skipped",60f0a27fbdc04b71,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:23,[hot] poll source=mevx candidates=125 passing=5 newest_age_min=3,99daa90d61cc97c,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:23,[alerts] Sent alert to 42/75 subscribers,4f4a0842c96c0150,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:22,[alerts] Skipped blocked subscriber telegram_id=1344077137,43c88d34267b0d6c,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:21,[alerts] Skipped blocked subscriber telegram_id=6741131255,b65f29791fab105d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:21,[alerts] Skipped blocked subscriber telegram_id=6035244860,5715bbff7e1a71c5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:21,[alerts] Skipped blocked subscriber telegram_id=5613628105,48e374e12ee514ea,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:21,[alerts] Skipped blocked subscriber telegram_id=1907889596,cc63b0f88c0e00c1,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:19,[alerts] Skipped blocked subscriber telegram_id=5488385809,7aa265e4f186edb2,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:19,[alerts] Skipped blocked subscriber telegram_id=8952006958,92c5ed33d2194a0c,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:19,[alerts] Skipped blocked subscriber telegram_id=8592392184,2f3304b82499fd0d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:19,[alerts] Skipped blocked subscriber telegram_id=5961677927,5360414cba374ac0,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:19,[alerts] Skipped blocked subscriber telegram_id=8102814401,3e18ca913a946136,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:18,[alerts] Skipped blocked subscriber telegram_id=8710435057,36571c49e5b06862,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:17,[hot] poll source=mevx candidates=125 passing=5 newest_age_min=3,bf4b1420067ffb09,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:17,[mevx] notifications=200 parseSkips=0 endpoints=2,30ac8ee37f7682ae,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:17,[alerts] Skipped blocked subscriber telegram_id=5516053745,9eadbfbd6815f0fd,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:14,[alerts] Skipped blocked subscriber telegram_id=815372572,26ebbf666f85a801,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:13,[alerts] Skipped blocked subscriber telegram_id=8763247475,f7535a952be051c5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:13,[alerts] Skipped blocked subscriber telegram_id=1957647754,d8003f41f291fdd6,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:13,[alerts] Skipped blocked subscriber telegram_id=782379293,7890ea5350389dd4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:11,[gmgn-feed] kol poll: events=0 tx=0 mints=0 new=0 FAILED(fail-open),113f4f6474739c85,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:11,[gmgn-feed] discovery poll: saw=0 new=0 deduped=0 FAILED(fail-open),c44a1800024d46ab,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:11,[alerts] Skipped blocked subscriber telegram_id=6930906500,ec4cedba657fd742,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:11,[alerts] Skipped blocked subscriber telegram_id=7994531571,3712aeafeac30d3,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:11,[alerts] Skipped blocked subscriber telegram_id=5937846245,a0fc58fecd52cdba,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:11,[alerts] Skipped blocked subscriber telegram_id=1383860867,16d58022757ff5ff,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:11,[alerts] Skipped blocked subscriber telegram_id=5156454504,956abf740b50ba5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:11,[alerts] Skipped blocked subscriber telegram_id=7167665234,bc865f2410d7d893,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:11,[alerts] Skipped blocked subscriber telegram_id=1045068325,99848bc1f07176d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:11,[alerts] Skipped blocked subscriber telegram_id=8859065841,6cfc4924784e6bdf,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:10,[alerts] Skipped blocked subscriber telegram_id=40598501,e12238b5bb1e3e6d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:10,[alerts] Skipped blocked subscriber telegram_id=517043895,926c33fa14a212b5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:08,[alerts] Skipped blocked subscriber telegram_id=1570219895,befdd408ce498396,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:08,[alerts] Skipped blocked subscriber telegram_id=8593289816,72b4ee0c41961101,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:08,[alerts] Skipped blocked subscriber telegram_id=7539829436,2bf8bfddccd98378,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:08,[alerts] Skipped blocked subscriber telegram_id=5853920193,a84957b20cbd1777,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:08,[alerts] Skipped blocked subscriber telegram_id=7709322421,c43980b1f6db460a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:05,[alerts] Skipped blocked subscriber telegram_id=6250058659,28d8bc913c1d8056,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:04,[dexscreener] Polled 25 Solana pairs,7c4886ced1a3e2b0,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:04,"[dexscreener] Got 30 profiles, 17 Solana",e7aabc844378307a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:04,[mevx] notifications=200 parseSkips=0 endpoints=2,c18bb249f3e2b760,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:04,[gmgn-budget] earlier-entry=10520req/16b(bk) feed-kol=576req/0b conviction=308req/2b feed-discovery=288req/0b hot-netflow=61req/33b(bk) over ~141min since=2026-09-28T11:24:21.056Z dropped=6804,c5f7a78e75e7e2b4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:04,[mevx] notifications=200 parseSkips=0 endpoints=2,66813076d33f43b5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:03,[alerts] Skipped blocked subscriber telegram_id=8642435292,bd235dc91b322b9e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:03,[earlier-entry] GMGN kline HTTP 429 RATE_LIMIT_BANNED for FDcGUXTEGpn3dZDhW3PLnk3jvEyuLLWEXM8Jpg81pump — pausing until 2026-09-28T13:45:38.000Z (reset_at=1790603138),17036fc90c841f8e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:02,[hot-netflow] GMGN token_top_traders tag=smart_degen mint=3kUMbtdu4PLo HTTP 429 RATE_LIMIT_BANNED — backfill pausing until 2026-09-28T13:45:32.000Z (reset_at=1790603132),65469e918f7a8bc2,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:02,[narrative-hot] 3972061@token_alerts tag=UNTAGGED src=none stage=UNKNOWN share=n/a desc=n/a cluster=1 tags=none mindshare=n/a,282c0563a693f675,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:02,[mevx] notifications=200 parseSkips=0 endpoints=2,2646a281fd6bb88a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:02,"[earlier-entry] no as-of anchor candles for 4izEqGCX9KxD2xWZkJkMn8WRqNiBqkq2eX8PZqRDpump (firstSeen=1787687575575 t60=1787691175575, candles=7) — row stays pending",2cb945db796418e8,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:01,"[earlier-entry] no as-of anchor candles for H2qTatoCJMx1fXFWZpjYLAdc6it7TYmzeQTnY7Mjpump (firstSeen=1787688441901 t60=1787692041901, candles=25) — row stays pending",3842a9edb179ac37,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:45:00,"[earlier-entry] no as-of anchor candles for 4izEqGCX9KxD2xWZkJkMn8WRqNiBqkq2eX8PZqRDpump (firstSeen=1787687575575 t60=1787691175575, candles=7) — row stays pending",db95baa59e894eac,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:59,"[earlier-entry] no as-of anchor candles for FDcGUXTEGpn3dZDhW3PLnk3jvEyuLLWEXM8Jpg81pump (firstSeen=1787687437815 t60=1787691037815, candles=10) — row stays pending",56f7ae2b3c818f8d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:58,"[earlier-entry] no as-of anchor candles for 7gLfH99aqSjBaRXfhrzm2vEgrxKvvSgm2JctF5rgpump (firstSeen=1787688148054 t60=1787691748054, candles=33) — row stays pending",c65576dfd9019090,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:57,"[earlier-entry] no as-of anchor candles for 3idZz5MN5L9edMVFfyGq1SxPYjgUza6PMNnBvFdcpump (firstSeen=1787684410683 t60=1787688010683, candles=24) — row stays pending",972ffdc93d805603,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:57,"[earlier-entry] no as-of anchor candles for FWRkpgMqsAhY6aQrz7npK32VwTkwjCBF5n4Enybnpump (firstSeen=1787688319574 t60=1787691919574, candles=3) — row stays pending",fa8fd1c27fac85f5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:56,"[earlier-entry] no as-of anchor candles for pbiX8giTJnC2nKAMfxTStJrTtT9XbNz5zPx6y7mpump (firstSeen=1787687380536 t60=1787690980536, candles=9) — row stays pending",86070d5dabe6a1ea,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:55,"[earlier-entry] no as-of anchor candles for 4185dnL3PaVsKyikTEQApEhgRXbYbyxJGwYK6qQ2pump (firstSeen=1787687522215 t60=1787691122215, candles=6) — row stays pending",bff2f43a2f07fc19,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:54,"[earlier-entry] no as-of anchor candles for FWRkpgMqsAhY6aQrz7npK32VwTkwjCBF5n4Enybnpump (firstSeen=1787688319574 t60=1787691919574, candles=3) — row stays pending",842b43b494980065,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:53,"[earlier-entry] no as-of anchor candles for 4185dnL3PaVsKyikTEQApEhgRXbYbyxJGwYK6qQ2pump (firstSeen=1787687522215 t60=1787691122215, candles=6) — row stays pending",5dab92f4e2a2a08b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:52,"[earlier-entry] no as-of anchor candles for pbiX8giTJnC2nKAMfxTStJrTtT9XbNz5zPx6y7mpump (firstSeen=1787687380536 t60=1787690980536, candles=9) — row stays pending",17e49ff0d506c13b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:52,"[earlier-entry] no as-of anchor candles for 4izEqGCX9KxD2xWZkJkMn8WRqNiBqkq2eX8PZqRDpump (firstSeen=1787687575575 t60=1787691175575, candles=7) — row stays pending",9e3f4d5c9012b22e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:51,"[earlier-entry] no as-of anchor candles for DYDxcfzyx9hG7wHMNnt7LVeXbZ53YhDwozdKK5Zopump (firstSeen=1787684406374 t60=1787688006374, candles=3) — row stays pending",eca7477c874f6080,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:50,"[earlier-entry] no as-of anchor candles for 7gLfH99aqSjBaRXfhrzm2vEgrxKvvSgm2JctF5rgpump (firstSeen=1787688148054 t60=1787691748054, candles=33) — row stays pending",f3eb6de47de38591,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:49,"[earlier-entry] no as-of anchor candles for CebGgVwrWHkAhfWZi6jHgeduKRSDzijnGZVQ97k6pump (firstSeen=1787687278695 t60=1787690878695, candles=20) — row stays pending",925a51247025861a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:48,"[earlier-entry] no as-of anchor candles for FDcGUXTEGpn3dZDhW3PLnk3jvEyuLLWEXM8Jpg81pump (firstSeen=1787687437815 t60=1787691037815, candles=10) — row stays pending",ccccc990fdf3d7c5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:48,"[earlier-entry] no as-of anchor candles for 7gLfH99aqSjBaRXfhrzm2vEgrxKvvSgm2JctF5rgpump (firstSeen=1787688148054 t60=1787691748054, candles=33) — row stays pending",e8054e52a180a3c4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:47,[hot] poll source=mevx candidates=125 passing=4 newest_age_min=3,31cd5d27c0d7d1a1,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:47,[mevx] notifications=200 parseSkips=0 endpoints=2,9550987b6832e184,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:47,"[earlier-entry] no as-of anchor candles for FDcGUXTEGpn3dZDhW3PLnk3jvEyuLLWEXM8Jpg81pump (firstSeen=1787687437815 t60=1787691037815, candles=10) — row stays pending",68a65d6406f7f5e4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:46,"[earlier-entry] no as-of anchor candles for CebGgVwrWHkAhfWZi6jHgeduKRSDzijnGZVQ97k6pump (firstSeen=1787687278695 t60=1787690878695, candles=20) — row stays pending",e9283e1cfa8eeb13,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:45,"[earlier-entry] no as-of anchor candles for 4185dnL3PaVsKyikTEQApEhgRXbYbyxJGwYK6qQ2pump (firstSeen=1787687522215 t60=1787691122215, candles=6) — row stays pending",dbd424c08b816dd5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:44,"[earlier-entry] no as-of anchor candles for F5CPPs42UKS6LcJzSXwTEgh2e3oXxzCBTa1iMfftpump (firstSeen=1787684400726 t60=1787688000726, candles=6) — row stays pending",89c32471debbafb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:43,"[earlier-entry] no as-of anchor candles for 4izEqGCX9KxD2xWZkJkMn8WRqNiBqkq2eX8PZqRDpump (firstSeen=1787687575575 t60=1787691175575, candles=7) — row stays pending",6224359c4fa3d2ab,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:42,� — set CHANNEL_CHAT_ID=-1004298581354 to enable the publisher,1c8ff6b9073c0f9f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:42,J698fNgUeX9EeZJrWVLdeTUwemiwTUiWbwvLkVKWpump,99abffa8ca994de6,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:42,[channel] channel_post from chat id -1004298581354: $BUBBLE (Pump→Raydium) - Solana,81937aab39f6f9c6,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:42,[support] channel post: -1004298581354 $BUBBLE (Pump→Raydium) - Solana J698fNgUeX9EeZJrWVLdeTUwemiwTUiWbwvLkVKWpump 📈…,fa0aa0a4c9facee2,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:42,"[earlier-entry] no as-of anchor candles for En9sQtnHpByLEE7ykhFQ25PirV54rYegEJCjBV87pump (firstSeen=1787686994060 t60=1787690594060, candles=16) — row stays pending",220117dd50fad238,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:42,"[earlier-entry] no as-of anchor candles for pbiX8giTJnC2nKAMfxTStJrTtT9XbNz5zPx6y7mpump (firstSeen=1787687380536 t60=1787690980536, candles=9) — row stays pending",1fe70ce16543c2b3,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:41,"[earlier-entry] no as-of anchor candles for 4izEqGCX9KxD2xWZkJkMn8WRqNiBqkq2eX8PZqRDpump (firstSeen=1787687575575 t60=1787691175575, candles=7) — row stays pending",44d287e7738cd34b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:40,[channel] teaser fired BUBBLE 3x (3.3x live) → chat -1004298581354,84a781b6f562a884,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:40,"[earlier-entry] no as-of anchor candles for pbiX8giTJnC2nKAMfxTStJrTtT9XbNz5zPx6y7mpump (firstSeen=1787687380536 t60=1787690980536, candles=9) — row stays pending",8f9e180ffd47706e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:39,"[earlier-entry] no as-of anchor candles for En9sQtnHpByLEE7ykhFQ25PirV54rYegEJCjBV87pump (firstSeen=1787686994060 t60=1787690594060, candles=16) — row stays pending",982b973d7ac48f78,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:38,"[earlier-entry] no as-of anchor candles for FDcGUXTEGpn3dZDhW3PLnk3jvEyuLLWEXM8Jpg81pump (firstSeen=1787687437815 t60=1787691037815, candles=10) — row stays pending",96ea8b74bdfa0c43,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:38,� — set CHANNEL_CHAT_ID=-1004298581354 to enable the publisher,cb8f66b59c7dd064,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:38,27bUWAtMzFatz2HWTycLNVncombUr6hggLLbmtqfpump,26834288891269ea,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:38,[channel] channel_post from chat id -1004298581354: $BOILER (Pump→Raydium) - Solana,91d8d4355c2041a8,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:38,[support] channel post: -1004298581354 $BOILER (Pump→Raydium) - Solana 27bUWAtMzFatz2HWTycLNVncombUr6hggLLbmtqfpump 📈…,39eee1ae02256411,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:38,"[earlier-entry] no as-of anchor candles for A4ihj8g1RCjFT44vDjtkfYFT41yjmf1NbXtkdoiBnvwp (firstSeen=1787684375043 t60=1787687975043, candles=3) — row stays pending",a023ef40f68cb97b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:37,"[earlier-entry] no as-of anchor candles for 4185dnL3PaVsKyikTEQApEhgRXbYbyxJGwYK6qQ2pump (firstSeen=1787687522215 t60=1787691122215, candles=6) — row stays pending",2b71f5ae8ca4171b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:36,"[earlier-entry] no as-of anchor candles for 5N8vsaxFs7cVuw7fQyhTSYMPpdzMt8nGNr2f5kaHpump (firstSeen=1787686853336 t60=1787690453336, candles=11) — row stays pending",f515792b09c452f8,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:35,[channel] teaser fired BOILER 3x (3.5x live) → chat -1004298581354,b9cac5e240984171,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:35,"[earlier-entry] no as-of anchor candles for CebGgVwrWHkAhfWZi6jHgeduKRSDzijnGZVQ97k6pump (firstSeen=1787687278695 t60=1787690878695, candles=20) — row stays pending",4aac19889e3b1d53,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:34,"[earlier-entry] no as-of anchor candles for 4185dnL3PaVsKyikTEQApEhgRXbYbyxJGwYK6qQ2pump (firstSeen=1787687522215 t60=1787691122215, candles=6) — row stays pending",706ae32dcc36c234,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:34,[dexscreener] Polled 25 Solana pairs,9883a99f15b2093d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:34,"[dexscreener] Got 30 profiles, 17 Solana",346ef95ffc10f6cb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:34,"[earlier-entry] no as-of anchor candles for CebGgVwrWHkAhfWZi6jHgeduKRSDzijnGZVQ97k6pump (firstSeen=1787687278695 t60=1787690878695, candles=20) — row stays pending",4b735eb663da3d63,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:33,72QezUPcrYkm3rgupxhQnR5uhwuM1BGFvh9KqFW2pump  — set CHANNEL_CHAT_ID=-1004298581354 to enable the publisher,9034bee7a60ccabb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:33,[channel] channel_post from chat id -1004298581354: $BUTTERFLY (Pump→Raydium) - Solana,f210c857bc3d09d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:33,[support] channel post: -1004298581354 $BUTTERFLY (Pump→Raydium) - Solana 72QezUPcrYkm3rgupxhQnR5uhwuM1BGFvh9KqFW2pump…,578189752c03174a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:33,"[earlier-entry] no as-of anchor candles for 5N8vsaxFs7cVuw7fQyhTSYMPpdzMt8nGNr2f5kaHpump (firstSeen=1787686853336 t60=1787690453336, candles=11) — row stays pending",769cb1c8cd368147,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:32,"[earlier-entry] no as-of anchor candles for pbiX8giTJnC2nKAMfxTStJrTtT9XbNz5zPx6y7mpump (firstSeen=1787687380536 t60=1787690980536, candles=9) — row stays pending",875a8b07501bf35,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:32,[hot] poll source=mevx candidates=125 passing=4 newest_age_min=3,a22fabf10b2f02d2,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:32,[mevx] notifications=200 parseSkips=0 endpoints=2,69d996c716cf9851,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:31,"[earlier-entry] no as-of anchor candles for CW7HuFKJKGWYd932ziUtD4FddXLkofKCzaW3y5c4pump (firstSeen=1787684375041 t60=1787687975041, candles=12) — row stays pending",48e952baa9270c59,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:30,"[earlier-entry] no as-of anchor candles for FDcGUXTEGpn3dZDhW3PLnk3jvEyuLLWEXM8Jpg81pump (firstSeen=1787687437815 t60=1787691037815, candles=10) — row stays pending",1d0f4523ad710eb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:30,[channel] teaser fired BUTTERFLY 5x (5.4x live) → chat -1004298581354,629733d0fccc4101,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:29,"[earlier-entry] no as-of anchor candles for J1TNHqaAYuratcbSwgsPcTXi2jShxvZMsC2HBBZJpump (firstSeen=1787686693415 t60=1787690293415, candles=29) — row stays pending",cf1798e1781ed57,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:28,"[earlier-entry] no as-of anchor candles for En9sQtnHpByLEE7ykhFQ25PirV54rYegEJCjBV87pump (firstSeen=1787686994060 t60=1787690594060, candles=16) — row stays pending",433ec9f8d59b1d1d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:27,"[earlier-entry] no as-of anchor candles for FDcGUXTEGpn3dZDhW3PLnk3jvEyuLLWEXM8Jpg81pump (firstSeen=1787687437815 t60=1787691037815, candles=10) — row stays pending",7cd9bc157f3e64e7,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:27,"[earlier-entry] no as-of anchor candles for En9sQtnHpByLEE7ykhFQ25PirV54rYegEJCjBV87pump (firstSeen=1787686994060 t60=1787690594060, candles=16) — row stays pending",64165d143ac51e59,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:26,"[earlier-entry] no as-of anchor candles for J1TNHqaAYuratcbSwgsPcTXi2jShxvZMsC2HBBZJpump (firstSeen=1787686693415 t60=1787690293415, candles=29) — row stays pending",686b9c48b45344b2,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:26,"[microaudit:priority] tick done: 0 queued, 0 cooldown-skipped, 0 capped, 0 fetched, 0 stamped, 0 deferred, 0 stale-skipped",dded7c46931ffc1b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:25,"[earlier-entry] no as-of anchor candles for CebGgVwrWHkAhfWZi6jHgeduKRSDzijnGZVQ97k6pump (firstSeen=1787687278695 t60=1787690878695, candles=20) — row stays pending",6d514c421d745706,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:24,[earlier-entry] GMGN kline EMPTY history for 2rqRG1GH8iiXjNc5S3eBaJJQtsnuKxjp7cEGWwm5pump (window 1787684255034..1787688095034) — row stays pending,c69095b6f816baa3,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:23,"[earlier-entry] no as-of anchor candles for pbiX8giTJnC2nKAMfxTStJrTtT9XbNz5zPx6y7mpump (firstSeen=1787687380536 t60=1787690980536, candles=9) — row stays pending",362ed3914c33a630,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:23,"[earlier-entry] no as-of anchor candles for 98fAqajBY3ZthsUiHKXSat7tSt4PEutdbdUGy4pfpump (firstSeen=1787686439472 t60=1787690039472, candles=9) — row stays pending",85502decffba40df,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:22,[hot] poll source=mevx candidates=125 passing=4 newest_age_min=2,a1924dbaa77fbf6a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:22,[alerts] Sent alert to 42/75 subscribers,21bc500a463fd77a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:22,"[earlier-entry] no as-of anchor candles for 5N8vsaxFs7cVuw7fQyhTSYMPpdzMt8nGNr2f5kaHpump (firstSeen=1787686853336 t60=1787690453336, candles=11) — row stays pending",d31b4b3e73a13be8,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:21,[alerts] Skipped blocked subscriber telegram_id=1344077137,48f61ca83c5168c0,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:21,"[earlier-entry] no as-of anchor candles for pbiX8giTJnC2nKAMfxTStJrTtT9XbNz5zPx6y7mpump (firstSeen=1787687380536 t60=1787690980536, candles=9) — row stays pending",1716d94b7bb3ca80,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:21,"[perf] 27bUWAtMzFatz2HWTycLNVncombUr6hggLLbmtqfpump: 3.48x (new peak, was 2.03x)",2204bdbf17783064,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:21,"[perf] 72QezUPcrYkm3rgupxhQnR5uhwuM1BGFvh9KqFW2pump: 5.39x (new peak, was 3.73x)",740a3341a51a1725,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:21,"[perf] J698fNgUeX9EeZJrWVLdeTUwemiwTUiWbwvLkVKWpump: 3.29x (new peak, was 2.76x)",1057962078712113,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:20,"[earlier-entry] no as-of anchor candles for 5N8vsaxFs7cVuw7fQyhTSYMPpdzMt8nGNr2f5kaHpump (firstSeen=1787686853336 t60=1787690453336, candles=11) — row stays pending",de48e69334efc01f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:20,[alerts] Skipped blocked subscriber telegram_id=6741131255,3887906b07b5bc4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:20,[alerts] Skipped blocked subscriber telegram_id=6035244860,ff7e6e35b64b4799,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:20,[alerts] Skipped blocked subscriber telegram_id=5613628105,730e937b00adec68,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:20,[alerts] Skipped blocked subscriber telegram_id=1907889596,a2088993e81f9438,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:19,"[earlier-entry] no as-of anchor candles for 98fAqajBY3ZthsUiHKXSat7tSt4PEutdbdUGy4pfpump (firstSeen=1787686439472 t60=1787690039472, candles=9) — row stays pending",6aaac05780d9e938,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:18,"[earlier-entry] no as-of anchor candles for En9sQtnHpByLEE7ykhFQ25PirV54rYegEJCjBV87pump (firstSeen=1787686994060 t60=1787690594060, candles=16) — row stays pending",bcb1ed9c2e0d75dd,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:18,[alerts] Skipped blocked subscriber telegram_id=5488385809,62bc6f8fd6dddd73,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:18,[alerts] Skipped blocked subscriber telegram_id=8952006958,c2c56798a1cdeff6,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:18,[alerts] Skipped blocked subscriber telegram_id=8592392184,debdb84ed30d808e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:18,[alerts] Skipped blocked subscriber telegram_id=5961677927,ce4212698befaa58,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:18,[alerts] Skipped blocked subscriber telegram_id=8102814401,a7721d3b668f3d82,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:18,"[earlier-entry] no as-of anchor candles for Fy3n6AqYfwZrHosrdxKKvsxWh8CKaUste2DCpHTspump (firstSeen=1787684375032 t60=1787687975032, candles=7) — row stays pending",61717cfc7ac248d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:17,[alerts] Skipped blocked subscriber telegram_id=8710435057,8a1bcc1b30d3381a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:17,"[earlier-entry] no as-of anchor candles for CebGgVwrWHkAhfWZi6jHgeduKRSDzijnGZVQ97k6pump (firstSeen=1787687278695 t60=1787690878695, candles=20) — row stays pending",850d41e61ec19532,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:17,[hot] poll source=mevx candidates=125 passing=4 newest_age_min=2,d960febe118aa942,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:17,[mevx] notifications=200 parseSkips=0 endpoints=2,5e6f029946b71d90,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:16,"[earlier-entry] no as-of anchor candles for 7RCftn8rC3tXJ9W3hGyDYYkE2XznET9P7Je2549Jpump (firstSeen=1787686352258 t60=1787689952258, candles=38) — row stays pending",e5c99cccea497062,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:16,[alerts] Skipped blocked subscriber telegram_id=5516053745,b56789614dfecbf3,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:15,"[earlier-entry] no as-of anchor candles for J1TNHqaAYuratcbSwgsPcTXi2jShxvZMsC2HBBZJpump (firstSeen=1787686693415 t60=1787690293415, candles=29) — row stays pending",9e7e0d28c2c9128,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:14,"[earlier-entry] no as-of anchor candles for CebGgVwrWHkAhfWZi6jHgeduKRSDzijnGZVQ97k6pump (firstSeen=1787687278695 t60=1787690878695, candles=20) — row stays pending",f6af8a7595194eb9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:14,"[channel-gate] sweep done: 0 invited, 0 kicked, 5 already in, 36 outstanding-skipped, 0 errors (members=16, admins=2)",d9b69170abdeb4e4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:13,"[earlier-entry] no as-of anchor candles for J1TNHqaAYuratcbSwgsPcTXi2jShxvZMsC2HBBZJpump (firstSeen=1787686693415 t60=1787690293415, candles=29) — row stays pending",71fb51187cd10e4c,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:13,[alerts] Skipped blocked subscriber telegram_id=815372572,a8913b53a5ae98f9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:12,"[earlier-entry] no as-of anchor candles for 7RCftn8rC3tXJ9W3hGyDYYkE2XznET9P7Je2549Jpump (firstSeen=1787686352258 t60=1787689952258, candles=38) — row stays pending",75a07ea7e5fc874b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:12,[alerts] Skipped blocked subscriber telegram_id=8763247475,7c549a6cc9efa3f7,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:12,[alerts] Skipped blocked subscriber telegram_id=1957647754,629e22aa41c7a17f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:12,[alerts] Skipped blocked subscriber telegram_id=782379293,27d53e9c440b0ace,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:12,[gmgn-feed] kol poll: events=94 tx=50 mints=24 new=5,5482f3533f065de4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:12,"[microaudit] tick done: 0 mint(s), 0 fetched, 0 stamped, 0 deferred, 0 stale-skipped",53c688765a44bb6e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:12,"[earlier-entry] no as-of anchor candles for 5N8vsaxFs7cVuw7fQyhTSYMPpdzMt8nGNr2f5kaHpump (firstSeen=1787686853336 t60=1787690453336, candles=11) — row stays pending",707fa199b4a4265f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:11,[gmgn-feed] discovery poll: saw=60 new=28 deduped=32,bc87df8ef7f1deea,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:11,"[earlier-entry] no as-of anchor candles for USCSiKDUVap6hj33JvRDYq6bEmiBwVm3BvE6o5fNgRf (firstSeen=1787684375031 t60=1787687975031, candles=5) — row stays pending",13d5d7ea62a0e3ec,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:10,"[earlier-entry] no as-of anchor candles for En9sQtnHpByLEE7ykhFQ25PirV54rYegEJCjBV87pump (firstSeen=1787686994060 t60=1787690594060, candles=16) — row stays pending",b522c230faa1eece,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:10,[alerts] Skipped blocked subscriber telegram_id=6930906500,5f28ab75ce01399d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:10,[alerts] Skipped blocked subscriber telegram_id=7994531571,50790e6ebac1fa81,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:10,[alerts] Skipped blocked subscriber telegram_id=5937846245,c3c99a069c21adb8,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:10,[alerts] Skipped blocked subscriber telegram_id=1383860867,c79e7f5355479df5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:10,[alerts] Skipped blocked subscriber telegram_id=5156454504,96dbc3c23b023570,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:10,[alerts] Skipped blocked subscriber telegram_id=7167665234,aaf6a151cd31a7fb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:10,[alerts] Skipped blocked subscriber telegram_id=1045068325,26662ffa985cccf6,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:10,[alerts] Skipped blocked subscriber telegram_id=8859065841,51642a8ea7641714,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:09,[alerts] Skipped blocked subscriber telegram_id=40598501,6c27872a40af7393,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:09,[alerts] Skipped blocked subscriber telegram_id=517043895,4c020ccecc80ce3d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:09,"[earlier-entry] no as-of anchor candles for HsvQv85YpRn8xkrg4b2J5MmVCAyESMF5hX8G2BUEqzr7 (firstSeen=1787685017096 t60=1787688617096, candles=18) — row stays pending",181565ff0a8427f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:08,"[earlier-entry] no as-of anchor candles for 98fAqajBY3ZthsUiHKXSat7tSt4PEutdbdUGy4pfpump (firstSeen=1787686439472 t60=1787690039472, candles=9) — row stays pending",c806019f3608efd6,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:08,[alerts] Skipped blocked subscriber telegram_id=1570219895,22450bd32b10c65e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:08,[alerts] Skipped blocked subscriber telegram_id=8593289816,155fd89672cdb75a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:08,[alerts] Skipped blocked subscriber telegram_id=7539829436,d6c053e41697d89b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:08,[alerts] Skipped blocked subscriber telegram_id=5853920193,b8df180e8ab36436,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:08,[alerts] Skipped blocked subscriber telegram_id=7709322421,9be49b448a8551b8,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:08,"[earlier-entry] no as-of anchor candles for En9sQtnHpByLEE7ykhFQ25PirV54rYegEJCjBV87pump (firstSeen=1787686994060 t60=1787690594060, candles=16) — row stays pending",98efd0afa330add3,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:07,"[earlier-entry] no as-of anchor candles for 98fAqajBY3ZthsUiHKXSat7tSt4PEutdbdUGy4pfpump (firstSeen=1787686439472 t60=1787690039472, candles=9) — row stays pending",8fb7a20e8028977e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:06,"[earlier-entry] no as-of anchor candles for HsvQv85YpRn8xkrg4b2J5MmVCAyESMF5hX8G2BUEqzr7 (firstSeen=1787685017096 t60=1787688617096, candles=18) — row stays pending",afd49aa33e645462,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:05,"[earlier-entry] no as-of anchor candles for J1TNHqaAYuratcbSwgsPcTXi2jShxvZMsC2HBBZJpump (firstSeen=1787686693415 t60=1787690293415, candles=29) — row stays pending",5528fe7a1e2269bd,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:05,[alerts] Skipped blocked subscriber telegram_id=6250058659,b4157cd585eba2d9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:04,"[earlier-entry] no as-of anchor candles for FBCStPyNtdW5gnEmsmdFY1whJ7jxEuPggN6un416oJ77 (firstSeen=1787684375030 t60=1787687975030, candles=3) — row stays pending",c7ceb7dc2a3da4f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:04,[dexscreener] Polled 25 Solana pairs,87ee5e18836f06e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:04,"[dexscreener] Got 30 profiles, 17 Solana",ab43745cde4ae43d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:04,[mevx] notifications=200 parseSkips=0 endpoints=2,531b01e0fcf97f91,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:04,[gmgn-budget] earlier-entry=10449req/15b feed-kol=574req/0b conviction=307req/2b feed-discovery=287req/0b hot-netflow=60req/32b(bk) over ~142min since=2026-09-28T11:22:27.969Z dropped=6726,e07fe5140e60b519,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:04,[healthcheck] ping ok (HTTP 200),251dbbfdd4c0c777,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:04,[mevx] notifications=200 parseSkips=0 endpoints=2,6dd43c5267ddaff8,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:04,[disk] OK /data at 73% (1.1G free),a76d2158583a1c79,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:04,"[earlier-entry] no as-of anchor candles for 5N8vsaxFs7cVuw7fQyhTSYMPpdzMt8nGNr2f5kaHpump (firstSeen=1787686853336 t60=1787690453336, candles=11) — row stays pending",f20a8355ef11a7cf,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:03,"[earlier-entry] no as-of anchor candles for EB7QuhGEXp8wib68Km92tBqYanwUdrA3f7Sk6dMypump (firstSeen=1787684697580 t60=1787688297580, candles=7) — row stays pending",e7d992e8dfecee24,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:03,[alerts] Skipped blocked subscriber telegram_id=8642435292,976fee19787182b0,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:02,"[earlier-entry] no as-of anchor candles for 7RCftn8rC3tXJ9W3hGyDYYkE2XznET9P7Je2549Jpump (firstSeen=1787686352258 t60=1787689952258, candles=38) — row stays pending",4c2f408337ecf299,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:02,[narrative-hot] 3971587@token_alerts tag=UNTAGGED src=none stage=UNKNOWN share=n/a desc=n/a cluster=2 tags=none mindshare=n/a,f5e2a7f84c78538d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:02,"[copycat] HOT mevx name/symbol CLONE — mint=27bUWAtMzFatz2HWTycLNVncombUr6hggLLbmtqfpump name=""Boiler"" symbol=""BOILER"" matches earlier launch ""boiler"" (boiler) mint=3KnThqUCCQb5kTFBbZaX9NA6mLvxTpEX4ErGcHFipump first_seen=2026-09-28 13:37:32 on both (log-only, no gating)",96981163b5ffdbe7,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:02,[mevx] notifications=200 parseSkips=0 endpoints=2,94a4450a61c8a9d1,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:01,"[earlier-entry] no as-of anchor candles for 5N8vsaxFs7cVuw7fQyhTSYMPpdzMt8nGNr2f5kaHpump (firstSeen=1787686853336 t60=1787690453336, candles=11) — row stays pending",17d37406b867070f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:00,"[earlier-entry] no as-of anchor candles for 7RCftn8rC3tXJ9W3hGyDYYkE2XznET9P7Je2549Jpump (firstSeen=1787686352258 t60=1787689952258, candles=38) — row stays pending",ff6c25961a51a8ec,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:44:00,"[earlier-entry] no as-of anchor candles for EB7QuhGEXp8wib68Km92tBqYanwUdrA3f7Sk6dMypump (firstSeen=1787684697580 t60=1787688297580, candles=7) — row stays pending",54f10f9fa934c7d8,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:59,"[earlier-entry] no as-of anchor candles for 98fAqajBY3ZthsUiHKXSat7tSt4PEutdbdUGy4pfpump (firstSeen=1787686439472 t60=1787690039472, candles=9) — row stays pending",e97ec64fc84daabe,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:58,"[earlier-entry] no as-of anchor candles for J1TNHqaAYuratcbSwgsPcTXi2jShxvZMsC2HBBZJpump (firstSeen=1787686693415 t60=1787690293415, candles=29) — row stays pending",9fe3ad6dc8a11b24,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:57,"[earlier-entry] no as-of anchor candles for FxvtBMd5ngXRsbZd61HGf3LHvcKk6z59EMV3H25ppump (firstSeen=1787684410683 t60=1787688010683, candles=5) — row stays pending",ed73e85fba957a8d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:56,"[earlier-entry] no as-of anchor candles for HsvQv85YpRn8xkrg4b2J5MmVCAyESMF5hX8G2BUEqzr7 (firstSeen=1787685017096 t60=1787688617096, candles=18) — row stays pending",2f24b8441e060851,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:55,"[earlier-entry] no as-of anchor candles for J1TNHqaAYuratcbSwgsPcTXi2jShxvZMsC2HBBZJpump (firstSeen=1787686693415 t60=1787690293415, candles=29) — row stays pending",655c2077bfa0c0b4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:54,"[earlier-entry] no as-of anchor candles for HsvQv85YpRn8xkrg4b2J5MmVCAyESMF5hX8G2BUEqzr7 (firstSeen=1787685017096 t60=1787688617096, candles=18) — row stays pending",debc9c8505d48971,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:54,"[earlier-entry] no as-of anchor candles for FxvtBMd5ngXRsbZd61HGf3LHvcKk6z59EMV3H25ppump (firstSeen=1787684410683 t60=1787688010683, candles=5) — row stays pending",c1be844b769c03aa,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:53,"[earlier-entry] no as-of anchor candles for 7RCftn8rC3tXJ9W3hGyDYYkE2XznET9P7Je2549Jpump (firstSeen=1787686352258 t60=1787689952258, candles=38) — row stays pending",774f1df7a1d071cd,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:53,[hot] poll source=mevx candidates=126 passing=4 newest_age_min=2,f93d564ccf7e519d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:53,[alerts] Sent alert to 42/75 subscribers,b440fe521d23ea3d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:52,"[earlier-entry] no as-of anchor candles for 98fAqajBY3ZthsUiHKXSat7tSt4PEutdbdUGy4pfpump (firstSeen=1787686439472 t60=1787690039472, candles=9) — row stays pending",80911867f8fda233,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:52,[alerts] Skipped blocked subscriber telegram_id=1344077137,3d5e3587f0eb6d6a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:51,"[earlier-entry] no as-of anchor candles for 3idZz5MN5L9edMVFfyGq1SxPYjgUza6PMNnBvFdcpump (firstSeen=1787684410683 t60=1787688010683, candles=24) — row stays pending",9582c99eefd553c9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:51,[alerts] Skipped blocked subscriber telegram_id=6741131255,13cedd0817999868,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:50,"[earlier-entry] no as-of anchor candles for EB7QuhGEXp8wib68Km92tBqYanwUdrA3f7Sk6dMypump (firstSeen=1787684697580 t60=1787688297580, candles=7) — row stays pending",81460bac747d8e4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:50,[alerts] Skipped blocked subscriber telegram_id=6035244860,b1db7454fdcd5861,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:50,[alerts] Skipped blocked subscriber telegram_id=5613628105,ad7d41c2a7d2922c,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:50,[alerts] Skipped blocked subscriber telegram_id=1907889596,db84e0d123d75c91,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:50,"[earlier-entry] no as-of anchor candles for 98fAqajBY3ZthsUiHKXSat7tSt4PEutdbdUGy4pfpump (firstSeen=1787686439472 t60=1787690039472, candles=9) — row stays pending",93b18d835fca29c1,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:49,"[earlier-entry] no as-of anchor candles for EB7QuhGEXp8wib68Km92tBqYanwUdrA3f7Sk6dMypump (firstSeen=1787684697580 t60=1787688297580, candles=7) — row stays pending",ba3a2288b4e6ea6f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:48,[alerts] Skipped blocked subscriber telegram_id=5488385809,b7d673f7631a51a6,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:48,[alerts] Skipped blocked subscriber telegram_id=8952006958,9b13d9beabe2d2d7,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:48,[alerts] Skipped blocked subscriber telegram_id=8592392184,837d7a42db6e3cff,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:48,[alerts] Skipped blocked subscriber telegram_id=5961677927,a7d03c6b37c3b8a7,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:48,[alerts] Skipped blocked subscriber telegram_id=8102814401,19bd2dbb31aa708c,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:48,"[earlier-entry] no as-of anchor candles for 3idZz5MN5L9edMVFfyGq1SxPYjgUza6PMNnBvFdcpump (firstSeen=1787684410683 t60=1787688010683, candles=24) — row stays pending",e498bc0c9b86541b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:48,[alerts] Skipped blocked subscriber telegram_id=8710435057,9614896fbdc5cff6,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:47,"[earlier-entry] no as-of anchor candles for HsvQv85YpRn8xkrg4b2J5MmVCAyESMF5hX8G2BUEqzr7 (firstSeen=1787685017096 t60=1787688617096, candles=18) — row stays pending",e4ae722e0393711b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:47,[hot] poll source=mevx candidates=126 passing=4 newest_age_min=2,3d3a3637a6c09639,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:47,[mevx] notifications=200 parseSkips=0 endpoints=2,d1b2fa288e8f06ba,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:46,[alerts] Skipped blocked subscriber telegram_id=5516053745,a277131b19af4149,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:46,"[earlier-entry] no as-of anchor candles for 7RCftn8rC3tXJ9W3hGyDYYkE2XznET9P7Je2549Jpump (firstSeen=1787686352258 t60=1787689952258, candles=38) — row stays pending",c9ff755579f2b374,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:45,"[earlier-entry] no as-of anchor candles for DYDxcfzyx9hG7wHMNnt7LVeXbZ53YhDwozdKK5Zopump (firstSeen=1787684406374 t60=1787688006374, candles=3) — row stays pending",bad2d247b87b69f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:45,"[earlier-entry] no as-of anchor candles for FxvtBMd5ngXRsbZd61HGf3LHvcKk6z59EMV3H25ppump (firstSeen=1787684410683 t60=1787688010683, candles=5) — row stays pending",e3d2065b09813297,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:44,[alerts] Skipped blocked subscriber telegram_id=815372572,64ffc7c91ad01c2b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:43,"[earlier-entry] no as-of anchor candles for 7RCftn8rC3tXJ9W3hGyDYYkE2XznET9P7Je2549Jpump (firstSeen=1787686352258 t60=1787689952258, candles=38) — row stays pending",a2a45f8d35a33ada,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:43,[alerts] Skipped blocked subscriber telegram_id=8763247475,5844e3b86eefd100,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:43,[alerts] Skipped blocked subscriber telegram_id=1957647754,4c0bb84385643c8d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:43,[alerts] Skipped blocked subscriber telegram_id=782379293,155f26beb195edad,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:42,"[earlier-entry] no as-of anchor candles for FxvtBMd5ngXRsbZd61HGf3LHvcKk6z59EMV3H25ppump (firstSeen=1787684410683 t60=1787688010683, candles=5) — row stays pending",54038d199e6f6933,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:42,"[earlier-entry] no as-of anchor candles for DYDxcfzyx9hG7wHMNnt7LVeXbZ53YhDwozdKK5Zopump (firstSeen=1787684406374 t60=1787688006374, candles=3) — row stays pending",ba802ffd43c338f3,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:41,"[earlier-entry] no as-of anchor candles for EB7QuhGEXp8wib68Km92tBqYanwUdrA3f7Sk6dMypump (firstSeen=1787684697580 t60=1787688297580, candles=7) — row stays pending",d8d125e1025e30d7,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:41,[alerts] Skipped blocked subscriber telegram_id=6930906500,9c5c2e9aede34ac1,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:41,[alerts] Skipped blocked subscriber telegram_id=7994531571,837506a380977633,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:41,[alerts] Skipped blocked subscriber telegram_id=5937846245,d50af215c725cb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:41,[alerts] Skipped blocked subscriber telegram_id=1383860867,69034cc12da76e7a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:41,[alerts] Skipped blocked subscriber telegram_id=5156454504,a4f79dd74ed5a5a1,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:41,[alerts] Skipped blocked subscriber telegram_id=7167665234,befffe8236e824d0,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:41,[alerts] Skipped blocked subscriber telegram_id=1045068325,25dced82d46b6be8,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:41,[alerts] Skipped blocked subscriber telegram_id=8859065841,5bcf9bc103145702,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:40,[alerts] Skipped blocked subscriber telegram_id=40598501,d3076bbb28ada49c,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:40,[alerts] Skipped blocked subscriber telegram_id=517043895,720f29e0746260a3,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:40,"[earlier-entry] no as-of anchor candles for HsvQv85YpRn8xkrg4b2J5MmVCAyESMF5hX8G2BUEqzr7 (firstSeen=1787685017096 t60=1787688617096, candles=18) — row stays pending",d930c013d18d11c0,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:39,"[earlier-entry] no as-of anchor candles for F5CPPs42UKS6LcJzSXwTEgh2e3oXxzCBTa1iMfftpump (firstSeen=1787684400726 t60=1787688000726, candles=6) — row stays pending",aa865a5a3f709ffd,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:39,[alerts] Skipped blocked subscriber telegram_id=1570219895,7e4a9fd6ef97ae07,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:39,[alerts] Skipped blocked subscriber telegram_id=8593289816,2939104f482f2174,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:39,[alerts] Skipped blocked subscriber telegram_id=7539829436,6626a0ef2f4e9d24,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:39,[alerts] Skipped blocked subscriber telegram_id=5853920193,d18046b402265b5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:39,[alerts] Skipped blocked subscriber telegram_id=7709322421,e3c0ed9a269e053e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:38,"[earlier-entry] no as-of anchor candles for 3idZz5MN5L9edMVFfyGq1SxPYjgUza6PMNnBvFdcpump (firstSeen=1787684410683 t60=1787688010683, candles=24) — row stays pending",826c8509aa207233,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:38,"[earlier-entry] no as-of anchor candles for HsvQv85YpRn8xkrg4b2J5MmVCAyESMF5hX8G2BUEqzr7 (firstSeen=1787685017096 t60=1787688617096, candles=18) — row stays pending",d36d5f2585de2dba,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:37,"[earlier-entry] no as-of anchor candles for 3idZz5MN5L9edMVFfyGq1SxPYjgUza6PMNnBvFdcpump (firstSeen=1787684410683 t60=1787688010683, candles=24) — row stays pending",f90cddd329b9e56,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:36,"[earlier-entry] no as-of anchor candles for F5CPPs42UKS6LcJzSXwTEgh2e3oXxzCBTa1iMfftpump (firstSeen=1787684400726 t60=1787688000726, candles=6) — row stays pending",4288123cb21a45a2,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:36,[alerts] Skipped blocked subscriber telegram_id=6250058659,15cf9b750a4c5d57,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:35,"[earlier-entry] no as-of anchor candles for FxvtBMd5ngXRsbZd61HGf3LHvcKk6z59EMV3H25ppump (firstSeen=1787684410683 t60=1787688010683, candles=5) — row stays pending",e0ff7951544b5e9b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:34,"[earlier-entry] no as-of anchor candles for EB7QuhGEXp8wib68Km92tBqYanwUdrA3f7Sk6dMypump (firstSeen=1787684697580 t60=1787688297580, candles=7) — row stays pending",15e01f24246937a5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:34,[dexscreener] Polled 25 Solana pairs,de3f95cd9e482bbe,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:34,"[dexscreener] Got 30 profiles, 17 Solana",6f60bb4e404954a6,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:34,[alerts] Skipped blocked subscriber telegram_id=8642435292,fa29859564764c2d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:34,"[earlier-entry] no as-of anchor candles for A4ihj8g1RCjFT44vDjtkfYFT41yjmf1NbXtkdoiBnvwp (firstSeen=1787684375043 t60=1787687975043, candles=3) — row stays pending",4d76c4bceaa71273,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:33,"[earlier-entry] no as-of anchor candles for DYDxcfzyx9hG7wHMNnt7LVeXbZ53YhDwozdKK5Zopump (firstSeen=1787684406374 t60=1787688006374, candles=3) — row stays pending",169cc4257cbd880b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:32,[narrative-hot] 3971984@token_alerts tag=event src=none stage=UNKNOWN share=0.018790849673202614 desc=n/a cluster=1 tags=event mindshare=n/a,8308f9e5a5d50e5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:32,"[earlier-entry] no as-of anchor candles for EB7QuhGEXp8wib68Km92tBqYanwUdrA3f7Sk6dMypump (firstSeen=1787684697580 t60=1787688297580, candles=7) — row stays pending",fbc492278e568375,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:32,[mevx] notifications=200 parseSkips=0 endpoints=2,29e435bdedb72ce9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:31,"[earlier-entry] no as-of anchor candles for DYDxcfzyx9hG7wHMNnt7LVeXbZ53YhDwozdKK5Zopump (firstSeen=1787684406374 t60=1787688006374, candles=3) — row stays pending",7e5de93cd60b5e4d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:30,"[earlier-entry] no as-of anchor candles for A4ihj8g1RCjFT44vDjtkfYFT41yjmf1NbXtkdoiBnvwp (firstSeen=1787684375043 t60=1787687975043, candles=3) — row stays pending",6a611c240de7089e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:29,"[earlier-entry] no as-of anchor candles for 3idZz5MN5L9edMVFfyGq1SxPYjgUza6PMNnBvFdcpump (firstSeen=1787684410683 t60=1787688010683, candles=24) — row stays pending",48a9e6fbbe6bcdfc,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:28,"[earlier-entry] no as-of anchor candles for FxvtBMd5ngXRsbZd61HGf3LHvcKk6z59EMV3H25ppump (firstSeen=1787684410683 t60=1787688010683, candles=5) — row stays pending",53a1f7ef65260da6,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:27,"[earlier-entry] no as-of anchor candles for CW7HuFKJKGWYd932ziUtD4FddXLkofKCzaW3y5c4pump (firstSeen=1787684375041 t60=1787687975041, candles=12) — row stays pending",7c47b7b4c379bef3,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:27,"[earlier-entry] no as-of anchor candles for F5CPPs42UKS6LcJzSXwTEgh2e3oXxzCBTa1iMfftpump (firstSeen=1787684400726 t60=1787688000726, candles=6) — row stays pending",d18ec7738bba7c1,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:26,"[earlier-entry] no as-of anchor candles for FxvtBMd5ngXRsbZd61HGf3LHvcKk6z59EMV3H25ppump (firstSeen=1787684410683 t60=1787688010683, candles=5) — row stays pending",7da70a3d455e01d5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:26,"[microaudit:priority] tick done: 0 queued, 0 cooldown-skipped, 0 capped, 0 fetched, 0 stamped, 0 deferred, 0 stale-skipped",85f140f3a69f28b6,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:25,"[earlier-entry] no as-of anchor candles for F5CPPs42UKS6LcJzSXwTEgh2e3oXxzCBTa1iMfftpump (firstSeen=1787684400726 t60=1787688000726, candles=6) — row stays pending",4f94cfdfdf8d42f9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:24,"[earlier-entry] no as-of anchor candles for CW7HuFKJKGWYd932ziUtD4FddXLkofKCzaW3y5c4pump (firstSeen=1787684375041 t60=1787687975041, candles=12) — row stays pending",b172ab0e63d771e0,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:23,"[earlier-entry] no as-of anchor candles for DYDxcfzyx9hG7wHMNnt7LVeXbZ53YhDwozdKK5Zopump (firstSeen=1787684406374 t60=1787688006374, candles=3) — row stays pending",5c331815f2980aa7,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:22,"[earlier-entry] no as-of anchor candles for 3idZz5MN5L9edMVFfyGq1SxPYjgUza6PMNnBvFdcpump (firstSeen=1787684410683 t60=1787688010683, candles=24) — row stays pending",65112067140b266b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:22,[earlier-entry] GMGN kline EMPTY history for 2rqRG1GH8iiXjNc5S3eBaJJQtsnuKxjp7cEGWwm5pump (window 1787684255034..1787688095034) — row stays pending,3a302a1543774cc3,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:21,"[earlier-entry] no as-of anchor candles for A4ihj8g1RCjFT44vDjtkfYFT41yjmf1NbXtkdoiBnvwp (firstSeen=1787684375043 t60=1787687975043, candles=3) — row stays pending",d29b6c214c67ea63,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:20,"[earlier-entry] no as-of anchor candles for 3idZz5MN5L9edMVFfyGq1SxPYjgUza6PMNnBvFdcpump (firstSeen=1787684410683 t60=1787688010683, candles=24) — row stays pending",8439d5decf00bb60,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:19,"[earlier-entry] no as-of anchor candles for A4ihj8g1RCjFT44vDjtkfYFT41yjmf1NbXtkdoiBnvwp (firstSeen=1787684375043 t60=1787687975043, candles=3) — row stays pending",b04aadd20ef9ae4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:18,[earlier-entry] GMGN kline EMPTY history for 2rqRG1GH8iiXjNc5S3eBaJJQtsnuKxjp7cEGWwm5pump (window 1787684255034..1787688095034) — row stays pending,c16ef82030992b45,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:18,"[earlier-entry] no as-of anchor candles for F5CPPs42UKS6LcJzSXwTEgh2e3oXxzCBTa1iMfftpump (firstSeen=1787684400726 t60=1787688000726, candles=6) — row stays pending",373e96c7a8eefa7c,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:17,"[earlier-entry] no as-of anchor candles for DYDxcfzyx9hG7wHMNnt7LVeXbZ53YhDwozdKK5Zopump (firstSeen=1787684406374 t60=1787688006374, candles=3) — row stays pending",f6110b3fbf1920fb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:17,[hot] poll source=mevx candidates=126 passing=3 newest_age_min=4,e15b772c8ca534f3,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:17,[mevx] notifications=200 parseSkips=0 endpoints=2,c6b5e5f9b3a4a4e2,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:16,"[earlier-entry] no as-of anchor candles for Fy3n6AqYfwZrHosrdxKKvsxWh8CKaUste2DCpHTspump (firstSeen=1787684375032 t60=1787687975032, candles=7) — row stays pending",fc629f4d43ef3616,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:15,"[earlier-entry] no as-of anchor candles for CW7HuFKJKGWYd932ziUtD4FddXLkofKCzaW3y5c4pump (firstSeen=1787684375041 t60=1787687975041, candles=12) — row stays pending",fee8e2fb1769aace,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:14,"[earlier-entry] no as-of anchor candles for DYDxcfzyx9hG7wHMNnt7LVeXbZ53YhDwozdKK5Zopump (firstSeen=1787684406374 t60=1787688006374, candles=3) — row stays pending",7c8dea256d2c4660,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:13,"[earlier-entry] no as-of anchor candles for CW7HuFKJKGWYd932ziUtD4FddXLkofKCzaW3y5c4pump (firstSeen=1787684375041 t60=1787687975041, candles=12) — row stays pending",511067692b83cdc3,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:13,"[earlier-entry] no as-of anchor candles for Fy3n6AqYfwZrHosrdxKKvsxWh8CKaUste2DCpHTspump (firstSeen=1787684375032 t60=1787687975032, candles=7) — row stays pending",e0652f08056d70cb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:12,"[earlier-entry] no as-of anchor candles for A4ihj8g1RCjFT44vDjtkfYFT41yjmf1NbXtkdoiBnvwp (firstSeen=1787684375043 t60=1787687975043, candles=3) — row stays pending",7f3f7e55fb206b2f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:12,[gmgn-feed] kol poll: events=91 tx=43 mints=23 new=6,346aae073b5ac2b4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:11,"[earlier-entry] no as-of anchor candles for F5CPPs42UKS6LcJzSXwTEgh2e3oXxzCBTa1iMfftpump (firstSeen=1787684400726 t60=1787688000726, candles=6) — row stays pending",3fc83f96db18ea4f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:11,[gmgn-feed] discovery poll: saw=60 new=26 deduped=34,ecfa0970ac171509,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:10,"[earlier-entry] no as-of anchor candles for USCSiKDUVap6hj33JvRDYq6bEmiBwVm3BvE6o5fNgRf (firstSeen=1787684375031 t60=1787687975031, candles=5) — row stays pending",65901d55607de39f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:09,[earlier-entry] GMGN kline EMPTY history for 2rqRG1GH8iiXjNc5S3eBaJJQtsnuKxjp7cEGWwm5pump (window 1787684255034..1787688095034) — row stays pending,e56db75aaea6e4cc,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:08,"[earlier-entry] no as-of anchor candles for F5CPPs42UKS6LcJzSXwTEgh2e3oXxzCBTa1iMfftpump (firstSeen=1787684400726 t60=1787688000726, candles=6) — row stays pending",14aba05eedea448b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:08,[earlier-entry] GMGN kline EMPTY history for 2rqRG1GH8iiXjNc5S3eBaJJQtsnuKxjp7cEGWwm5pump (window 1787684255034..1787688095034) — row stays pending,5cac1c7fb107d484,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:07,"[earlier-entry] no as-of anchor candles for USCSiKDUVap6hj33JvRDYq6bEmiBwVm3BvE6o5fNgRf (firstSeen=1787684375031 t60=1787687975031, candles=5) — row stays pending",8b3c9f87f46a3d1f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:06,"[earlier-entry] no as-of anchor candles for CW7HuFKJKGWYd932ziUtD4FddXLkofKCzaW3y5c4pump (firstSeen=1787684375041 t60=1787687975041, candles=12) — row stays pending",a703ca0b34225bb3,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:05,"[earlier-entry] no as-of anchor candles for A4ihj8g1RCjFT44vDjtkfYFT41yjmf1NbXtkdoiBnvwp (firstSeen=1787684375043 t60=1787687975043, candles=3) — row stays pending",60d2a6f12d80c19a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:04,"[earlier-entry] no as-of anchor candles for FBCStPyNtdW5gnEmsmdFY1whJ7jxEuPggN6un416oJ77 (firstSeen=1787684375030 t60=1787687975030, candles=3) — row stays pending",7032a22323262d14,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:04,[dexscreener] Polled 25 Solana pairs,eddfb796a1b1ab6e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:04,"[dexscreener] Got 30 profiles, 17 Solana",c1bcdc657a425b55,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:04,[mevx] notifications=200 parseSkips=0 endpoints=2,fb01a4bb2da6feea,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:04,[gmgn-budget] earlier-entry=10376req/15b feed-kol=572req/0b conviction=306req/2b feed-discovery=286req/0b hot-netflow=60req/32b(bk) over ~142min since=2026-09-28T11:21:02.021Z dropped=6649,5103df8587648012,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:04,[mevx] notifications=200 parseSkips=0 endpoints=2,d2d09cc8b96d0d0,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:03,"[earlier-entry] no as-of anchor candles for Fy3n6AqYfwZrHosrdxKKvsxWh8CKaUste2DCpHTspump (firstSeen=1787684375032 t60=1787687975032, candles=7) — row stays pending",a16a582ddb9a7cb9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:03,"[earlier-entry] no as-of anchor candles for A4ihj8g1RCjFT44vDjtkfYFT41yjmf1NbXtkdoiBnvwp (firstSeen=1787684375043 t60=1787687975043, candles=3) — row stays pending",6786993b01007c59,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:02,"[earlier-entry] no as-of anchor candles for FBCStPyNtdW5gnEmsmdFY1whJ7jxEuPggN6un416oJ77 (firstSeen=1787684375030 t60=1787687975030, candles=3) — row stays pending",943075ffcd580a66,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:02,[hot] poll source=mevx candidates=126 passing=3 newest_age_min=4,b4912303d3f7c027,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:02,[mevx] notifications=200 parseSkips=0 endpoints=2,2ba06ac3bfb445f4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:01,"[earlier-entry] no as-of anchor candles for Fy3n6AqYfwZrHosrdxKKvsxWh8CKaUste2DCpHTspump (firstSeen=1787684375032 t60=1787687975032, candles=7) — row stays pending",37d447833a31d80f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:43:00,[earlier-entry] GMGN kline EMPTY history for 2rqRG1GH8iiXjNc5S3eBaJJQtsnuKxjp7cEGWwm5pump (window 1787684255034..1787688095034) — row stays pending,352a95d7af789ac9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:42:59,"[earlier-entry] no as-of anchor candles for CW7HuFKJKGWYd932ziUtD4FddXLkofKCzaW3y5c4pump (firstSeen=1787684375041 t60=1787687975041, candles=12) — row stays pending",511d4a5f724cd890,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:42:59,"[earlier-entry] no as-of anchor candles for USCSiKDUVap6hj33JvRDYq6bEmiBwVm3BvE6o5fNgRf (firstSeen=1787684375031 t60=1787687975031, candles=5) — row stays pending",5961b20a282282b4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:42:47,[hot] poll source=mevx candidates=126 passing=3 newest_age_min=3,9d243bc73c2cd321,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:42:47,[mevx] notifications=200 parseSkips=0 endpoints=2,1a7585edb538f548,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:42:34,[dexscreener] Polled 24 Solana pairs,f524bd58a00cda2a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:42:34,"[dexscreener] Got 30 profiles, 17 Solana",403f22f3c51623b1,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:42:32,[hot] poll source=mevx candidates=126 passing=3 newest_age_min=3,4b7cc33dc5ce78a9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:42:32,[mevx] notifications=200 parseSkips=0 endpoints=2,e506ed4c2a70a6d0,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:42:26,"[microaudit:priority] tick done: 0 queued, 0 cooldown-skipped, 0 capped, 0 fetched, 0 stamped, 0 deferred, 0 stale-skipped",ef1776e022eb12f6,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:42:17,[hot] poll source=mevx candidates=126 passing=3 newest_age_min=3,8e633039b151263f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:42:17,[mevx] notifications=200 parseSkips=0 endpoints=2,1dcf33a98af278be,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:42:12,[gmgn-feed] kol poll: events=93 tx=61 mints=29 new=3,f4d0c0416df05bb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:42:11,[gmgn-feed] discovery poll: saw=60 new=46 deduped=14,96471c870adbbf24,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:42:04,[dexscreener] Polled 24 Solana pairs,74acc85834f367b2,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:42:04,"[dexscreener] Got 30 profiles, 17 Solana",96a0bf9384a1a93e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:42:04,[mevx] notifications=200 parseSkips=0 endpoints=2,e277e44dd462be9a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:42:04,[gmgn-budget] earlier-entry=10362req/15b(bk) feed-kol=570req/0b conviction=306req/2b feed-discovery=285req/0b hot-netflow=60req/32b(bk) over ~142min since=2026-09-28T11:20:20.870Z dropped=6632,60a16f03d4fb753,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:42:04,[mevx] notifications=200 parseSkips=0 endpoints=2,c3a87d4de2c41d90,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:42:02,[hot] poll source=mevx candidates=126 passing=3 newest_age_min=3,8d15078c49aa19f9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:42:02,[mevx] notifications=200 parseSkips=0 endpoints=2,c6e767f1861446c2,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:42:00,[earlier-entry] GMGN kline EMPTY history for 2rqRG1GH8iiXjNc5S3eBaJJQtsnuKxjp7cEGWwm5pump (window 1787684255034..1787688095034) — row stays pending,44aad12157ffa9d0,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:41:59,"[earlier-entry] no as-of anchor candles for USCSiKDUVap6hj33JvRDYq6bEmiBwVm3BvE6o5fNgRf (firstSeen=1787684375031 t60=1787687975031, candles=5) — row stays pending",37b42a43bc1f629c,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:41:47,[hot] poll source=mevx candidates=126 passing=3 newest_age_min=2,35087c1b90a6ce0c,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:41:47,[mevx] notifications=200 parseSkips=0 endpoints=2,fed03cf0d0cb97ad,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:41:34,[dexscreener] Polled 26 Solana pairs,e882dbd93f4188b8,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:41:34,"[dexscreener] Got 30 profiles, 18 Solana",b767b96e429f4995,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:41:32,[hot] poll source=mevx candidates=126 passing=3 newest_age_min=2,367b505b0f84a283,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:41:32,[mevx] notifications=200 parseSkips=0 endpoints=2,462ca6eec067fc0c,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:41:30,"[earlier-entry] no as-of anchor candles for CW7HuFKJKGWYd932ziUtD4FddXLkofKCzaW3y5c4pump (firstSeen=1787684375041 t60=1787687975041, candles=12) — row stays pending",792ff020cf67ffef,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:41:29,"[earlier-entry] no as-of anchor candles for Fy3n6AqYfwZrHosrdxKKvsxWh8CKaUste2DCpHTspump (firstSeen=1787684375032 t60=1787687975032, candles=7) — row stays pending",6f6aa06edbdf6bc0,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:41:29,"[earlier-entry] no as-of anchor candles for FBCStPyNtdW5gnEmsmdFY1whJ7jxEuPggN6un416oJ77 (firstSeen=1787684375030 t60=1787687975030, candles=3) — row stays pending",7c0dd210e82f46b4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:41:26,"[microaudit:priority] tick done: 0 queued, 0 cooldown-skipped, 0 capped, 0 fetched, 0 stamped, 0 deferred, 0 stale-skipped",9ee86486f0e11019,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:41:17,[hot] poll source=mevx candidates=126 passing=3 newest_age_min=2,73078ecad9f0253,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:41:17,[mevx] notifications=200 parseSkips=0 endpoints=2,9061c75df6010b8e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:41:11,[gmgn-feed] kol poll: events=97 tx=50 mints=24 new=4,36857ae4d183cef5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:41:11,[gmgn-feed] discovery poll: saw=60 new=28 deduped=32,5e282860eb25ee11,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:41:04,[dexscreener] Polled 26 Solana pairs,f684112cc7e170a1,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:41:04,"[dexscreener] Got 30 profiles, 18 Solana",647ad58dca00dea9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:41:04,[mevx] notifications=200 parseSkips=0 endpoints=2,658d4dca30e3dfe5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:41:04,[gmgn-budget] earlier-entry=10357req/15b(bk) feed-kol=568req/0b conviction=306req/2b feed-discovery=284req/0b hot-netflow=59req/32b(bk) over ~141min since=2026-09-28T11:20:13.694Z dropped=6623,695c1bc4d6925a38,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:41:04,[mevx] notifications=200 parseSkips=0 endpoints=2,18d9fcfa1f0a8577,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:41:02,[hot] poll source=mevx candidates=126 passing=3 newest_age_min=2,ef36f1a3b7f9d08a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:41:02,[mevx] notifications=200 parseSkips=0 endpoints=2,5cbeb542df8b0d14,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:52,🟡 Urgency changed 0.13 →,e7e66dffc93abf5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:52,What changed,17e69eb3917b1de7,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:52,Urgency: 0.77 🟡,f8dad3885dff9085,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:52,[bot] inbound from 8806712852: $BUTTERFLY — 🟡 CAUTION,6ba6ba1ee4fd6119,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:47,[hot-netflow] GMGN token/info mint=27bUWAtMzFat HTTP 429 RATE_LIMIT_BANNED — backfill pausing until 2026-09-28T13:41:07.000Z (reset_at=1790602867),ca698ff25cdce07,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:47,[hot] poll source=mevx candidates=126 passing=3 newest_age_min=1,5b47f29f015b0ce9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:47,[mevx] notifications=200 parseSkips=0 endpoints=2,8491c5322d92e676,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:37,📊 Live data: vol $187.1K (Δ,a9c21a25fa3d62cd,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:37,What changed,d88f479924501fcb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:37,Urgency: 0.13 🟢,a3ac5f1e96ce7def,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:37,[bot] inbound from 8806712852: $BUTTERFLY — 🟢 HOLD,eb7f17097454fadb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:34,[dexscreener] Polled 26 Solana pairs,3f99b939c17ac3d5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:34,"[dexscreener] Got 30 profiles, 18 Solana",ea86ae9e7c2ac68,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:34,🟢 Urgency changed 0.23 → 0.,3200200267b08cfe,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:34,What changed,309a44fe48315a7e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:34,Urgency: 0.13 🟢,ede415abb695cd2c,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:34,[bot] inbound from 8806712852: $BUTTERFLY — 🟢 HOLD,ab75dcc4654b580a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:32,[hot-netflow] GMGN token_top_traders tag=renowned mint=3KnThqUCCQb5 HTTP 429 RATE_LIMIT_BANNED — backfill pausing until 2026-09-28T13:41:02.000Z (reset_at=1790602862),cfc43b20497ca879,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:32,[hot] poll source=mevx candidates=125 passing=3 newest_age_min=2,c300f157bfcc2f07,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:32,[mevx] notifications=200 parseSkips=0 endpoints=2,fbe832085f8710fc,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:30,🟢 Urgency changed 0.11 → 0.,9d86173621c36aea,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:30,What changed,46131417513d7bb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:30,Urgency: 0.23 🟢,8872336ef792bd90,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:30,[bot] inbound from 8806712852: $BUTTERFLY — 🟢 HOLD,77ce645b725c5803,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:29,"[earlier-entry] no as-of anchor candles for Fy3n6AqYfwZrHosrdxKKvsxWh8CKaUste2DCpHTspump (firstSeen=1787684375032 t60=1787687975032, candles=7) — row stays pending",17616cdabea0555d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:29,"[earlier-entry] no as-of anchor candles for FBCStPyNtdW5gnEmsmdFY1whJ7jxEuPggN6un416oJ77 (firstSeen=1787684375030 t60=1787687975030, candles=3) — row stays pending",2a8a98270be6eb34,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:26,"[microaudit:priority] tick done: 0 queued, 0 cooldown-skipped, 0 capped, 0 fetched, 0 stamped, 0 deferred, 0 stale-skipped",ced28e049c3f6024,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:26,🟢 Urgency changed 0.26 → 0.,2070f1066c2cc0fe,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:26,What changed,ef723ee632dbfc93,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:26,Urgency: 0.11 🟢,89c5254ccd149e49,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:26,[bot] inbound from 8806712852: $BUTTERFLY — 🟢 HOLD,60f4198d1a0ff324,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:22,🟢 Urgency changed 0.10 → 0.,19b916c27630d125,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:22,What changed,a9cb7b25138cdbb6,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:22,Urgency: 0.26 🟢,8b1768678e1a0e62,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:22,[bot] inbound from 8806712852: $BUTTERFLY — 🟢 HOLD,26daebf0d7507bb5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:17,[hot] poll source=mevx candidates=125 passing=3 newest_age_min=1,957e4938fda8f765,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:17,[mevx] notifications=200 parseSkips=0 endpoints=2,cded2ff8d68beed,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:11,[gmgn-feed] kol poll: events=98 tx=91 mints=39 new=10,394ab31af503c5f2,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:11,[gmgn-feed] discovery poll: saw=60 new=60 deduped=0,eda26529f2a67a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:08,🟢 Urgency changed 0.30 → 0.,158449999cf39809,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:08,What changed,553ca8a383592127,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:08,Urgency: 0.10 🟢,ffeb266abdbf8f1,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:08,[bot] inbound from 8806712852: $BUTTERFLY — 🟢 HOLD,6cc5ca12ac1c58fd,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:04,[mevx] notifications=200 parseSkips=0 endpoints=2,1721c5aa71682dc6,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:04,[dexscreener] Polled 26 Solana pairs,5f3917aa03e5916b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:04,"[dexscreener] Got 30 profiles, 18 Solana",c0656b73b53f3c2a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:04,[mevx] notifications=200 parseSkips=0 endpoints=2,6b3519277ad0c912,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:04,[gmgn-budget] earlier-entry=10355req/15b(bk) feed-kol=566req/0b conviction=306req/2b feed-discovery=283req/0b hot-netflow=57req/30b(bk) over ~140min since=2026-09-28T11:20:08.523Z dropped=6614,15b06d5c8158a7b4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:04,"[exit] tp_2 card for $BOILER (2.0x live, peak 2.0x) → 0 subscriber(s)",8c97f46cf8c45b54,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:04,"[exit] tp_3 card for $BUTTERFLY (3.7x live, peak 3.7x) → 0 subscriber(s)",ead77aa0d293fd7b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:04,[exit] TP2 skipped for BUTTERFLY — jumped straight to TP3 (3.7x live),42458e5dac18eaf7,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:03,🟢 Urgency changed 0.12 → 0.,7b366587bb06dfb1,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:03,What changed,ef0dc8d5b832ef2b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:03,Urgency: 0.30 🟢,dcf762767b971569,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:03,[bot] inbound from 8806712852: $BUTTERFLY — 🟢 HOLD,9211ce889b0b0b7c,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:02,[hot] poll source=mevx candidates=125 passing=3 newest_age_min=1,aa5194a4b6ffce1f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:02,[mevx] notifications=200 parseSkips=0 endpoints=2,3ccf86c6b4829e8,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:40:00,[earlier-entry] GMGN kline EMPTY history for 2rqRG1GH8iiXjNc5S3eBaJJQtsnuKxjp7cEGWwm5pump (window 1787684255034..1787688095034) — row stays pending,db7d29b4c9f5d07d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:59,"[earlier-entry] no as-of anchor candles for USCSiKDUVap6hj33JvRDYq6bEmiBwVm3BvE6o5fNgRf (firstSeen=1787684375031 t60=1787687975031, candles=5) — row stays pending",dc2e71096941fabd,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:58,🟢 Urgency changed 0.28 → 0.,833b9dedb1908cc4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:58,What changed,81f8283f8b00ac97,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:58,Urgency: 0.12 🟢,40a28bdcc0da1c81,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:58,[bot] inbound from 8806712852: $BUTTERFLY — 🟢 HOLD,1e7399c9d389ceb0,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:53,🟢 Urgency changed 0.15 → 0.,3fe03f1de565759a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:53,What changed,e9306b4d5cf94452,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:53,Urgency: 0.28 🟢,3c61168b993dbd91,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:53,[bot] inbound from 8806712852: $BUTTERFLY — 🟢 HOLD,55ff60911cf93595,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:49,🟢 Urgency changed 0.40 → 0.,765c95366f1be6b6,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:49,What changed,1efc637838c8ad7f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:49,Urgency: 0.15 🟢,66f45aa7703afa55,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:49,[bot] inbound from 8806712852: $BUTTERFLY — 🟢 HOLD,430d56910bf5873b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:47,[hot] poll source=mevx candidates=125 passing=3 newest_age_min=1,26ef8a55684d2e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:47,[mevx] notifications=200 parseSkips=0 endpoints=2,d865b3252c2c3e6d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:41,🟢 Urgency changed 0.14 → 0.,fecb235e6177287f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:41,What changed,145d695a192c6d22,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:41,Urgency: 0.40 🟢,78c7cddb01188d29,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:41,[bot] inbound from 8806712852: $BUTTERFLY — 🟢 HOLD,436d38ff54dcd23b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:37,🟢 Urgency changed 0.77 → 0.,2978ade8d9162aa3,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:37,What changed,34cbd38225fc64fd,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:37,Urgency: 0.14 🟢,d3929df13a6bf34a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:37,[bot] inbound from 8806712852: $BUTTERFLY — 🟢 HOLD,1d8f11bcaf1e585e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:34,[dexscreener] Polled 26 Solana pairs,c301420f92781563,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:34,"[dexscreener] Got 30 profiles, 18 Solana",866ec40097bab946,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:32,72QezUPcrYkm3rgupxhQnR5uhwuM1BGFvh9KqFW2pump  — set CHANNEL_CHAT_ID=-1004298581354 to enable the publisher,891600ee2147dde7,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:32,[channel] channel_post from chat id -1004298581354: $BUTTERFLY (Pump→Raydium) - Solana,af4edbe1636eeb8d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:32,[support] channel post: -1004298581354 $BUTTERFLY (Pump→Raydium) - Solana 72QezUPcrYkm3rgupxhQnR5uhwuM1BGFvh9KqFW2pump…,93cb0b1586980a74,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:32,[hot] poll source=mevx candidates=125 passing=3 newest_age_min=1,d916b8644878f473,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:32,[mevx] notifications=200 parseSkips=0 endpoints=2,82b77b3e7194ed4b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:30,[channel] teaser fired BUTTERFLY 3.5x (3.7x live) → chat -1004298581354,159f4ce451da122d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:29,"[channel] teaser baseline BOILER 2x (2.0x live at first observation) — pre-observation crossing, never fires",36e8c6fdf8704739,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:29,"[channel] teaser baseline BOILER 1.5x (2.0x live at first observation) — pre-observation crossing, never fires",2cccd03703e4744b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:26,"[microaudit:priority] tick done: 0 queued, 0 cooldown-skipped, 0 capped, 0 fetched, 0 stamped, 0 deferred, 0 stale-skipped",2436bd56582bfeac,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:21,"[perf] 27bUWAtMzFatz2HWTycLNVncombUr6hggLLbmtqfpump: 2.03x (new peak, was 0.00x)",dd46561f3193e189,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:20,"[perf] 72QezUPcrYkm3rgupxhQnR5uhwuM1BGFvh9KqFW2pump: 3.73x (new peak, was 0.65x)",575c277b833362d8,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:17,[hot-netflow] GMGN token_top_traders tag=renowned mint=27bUWAtMzFat HTTP 429 RATE_LIMIT_BANNED — backfill pausing until 2026-09-28T13:39:37.000Z (reset_at=1790602777),e28558890c104732,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:17,[hot] poll source=mevx candidates=125 passing=3 newest_age_min=4,7b9803cb2bafb31e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:17,[mevx] notifications=200 parseSkips=0 endpoints=2,3d43b85f4f71e2cd,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:13,"[channel-gate] sweep done: 0 invited, 0 kicked, 5 already in, 36 outstanding-skipped, 0 errors (members=16, admins=2)",afbe9f1bae785838,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:11,🟡 Urgency changed 0.16 →,610eae3e3cd1391b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:11,What changed,1b56ac92cbe9c1f6,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:11,Urgency: 0.77 🟡,11501d08c2c12071,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:11,[bot] inbound from 8806712852: $BUTTERFLY — 🟡 CAUTION,7ead2117a6affc6,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:11,[gmgn-feed] kol poll: events=0 tx=0 mints=0 new=0 FAILED(fail-open),a49bdc312a7c5c9f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:11,[gmgn-feed] discovery poll: saw=0 new=0 deduped=0 FAILED(fail-open),dc8fa53ed3bfabe7,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:07,🟢 Urgency changed 0.32 → 0.,b8fe9d2899097d15,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:07,What changed,bf56bebfa37eb179,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:07,Urgency: 0.16 🟢,fff685db27ceec24,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:07,[bot] inbound from 8806712852: $BUTTERFLY — 🟢 HOLD,d2719483dd738af1,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:04,[dexscreener] Polled 26 Solana pairs,921fc62f27bb25c2,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:04,"[dexscreener] Got 30 profiles, 18 Solana",833fce4a57d30c4b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:04,[mevx] notifications=200 parseSkips=0 endpoints=2,ac927d18a0c865bc,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:04,[gmgn-budget] earlier-entry=10353req/15b(bk) feed-kol=566req/0b conviction=306req/2b feed-discovery=283req/0b hot-netflow=56req/29b(bk) over ~139min since=2026-09-28T11:20:05.323Z dropped=6610,9425fe7ffcc7bff3,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:04,[healthcheck] ping ok (HTTP 200),585d374ef09dc336,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:04,[mevx] notifications=200 parseSkips=0 endpoints=2,32fa4ee241e91dcb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:03,🟢 Urgency changed 0.16 → 0.,fa53226202c6a23d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:03,What changed,6ed9eb82db0f23a9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:03,Urgency: 0.32 🟢,8236e43a543a091e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:03,[bot] inbound from 8806712852: $BUTTERFLY — 🟢 HOLD,29bac954d339b8c0,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:02,[hot-netflow] GMGN token_top_traders tag=smart_degen mint=3KnThqUCCQb5 HTTP 429 RATE_LIMIT_BANNED — backfill pausing until 2026-09-28T13:39:32.000Z (reset_at=1790602772),5c012d1bf5e46423,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:02,[hot] poll source=mevx candidates=125 passing=3 newest_age_min=3,384110db1cf870bb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:39:02,[mevx] notifications=200 parseSkips=0 endpoints=2,a1cb02e9fe1c05aa,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:59,🟢 Urgency changed 0.15 → 0.,1ab0942ce7b1802e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:59,What changed,fcb611c0af336d1c,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:59,Urgency: 0.16 🟢,6106b288924cf898,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:59,[bot] inbound from 8806712852: $BUTTERFLY — 🟢 HOLD,c28170c9328096eb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:59,"[earlier-entry] no as-of anchor candles for USCSiKDUVap6hj33JvRDYq6bEmiBwVm3BvE6o5fNgRf (firstSeen=1787684375031 t60=1787687975031, candles=5) — row stays pending",33792c33e14b0037,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:55,🟢 Urgency changed 0.16 → 0.,9df84bc07baf72ec,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:55,What changed,a2561397fd779cd7,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:55,Urgency: 0.15 🟢,c661ecd97a183453,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:55,[bot] inbound from 8806712852: $BUTTERFLY — 🟢 HOLD,c55fee7900d2c4c4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:51,🟢 Urgency changed 0.32 → 0.,6477cdf66d255d5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:51,What changed,742d06b8998617ca,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:51,Urgency: 0.16 🟢,895b08785da90a62,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:51,[bot] inbound from 8806712852: $BUTTERFLY — 🟢 HOLD,13ac7d5d609f7044,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:47,🟢 Urgency changed 0.40 → 0.,773a51095e5350be,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:47,What changed,9a05da2f2e6d3198,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:47,Urgency: 0.32 🟢,cc2fdf991e9c1154,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:47,[bot] inbound from 8806712852: $BUTTERFLY — 🟢 HOLD,72402d27ee227870,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:47,[hot] poll source=mevx candidates=125 passing=3 newest_age_min=3,913587ecbae494e8,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:47,[mevx] notifications=200 parseSkips=0 endpoints=2,291ec9e5f9b636b3,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:43,🟢 Urgency changed 0.28 → 0.,82be56f58d319c09,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:43,What changed,20a6447fc0bf0ae7,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:43,Urgency: 0.40 🟢,b2916abe09e0db7d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:43,[bot] inbound from 8806712852: $BUTTERFLY — 🟢 HOLD,cbd10ce410badd82,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:39,🟢 Urgency changed 0.41 → 0.,d22da89a1352cc8d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:39,What changed,b5fbbd9be6615a3d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:39,Urgency: 0.28 🟢,9354e88479078919,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:39,[bot] inbound from 8806712852: $BUTTERFLY — 🟢 HOLD,a4c1054a23c96fec,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:34,🟢 Urgency changed 2.23 → 0.,9a1d13d7b0d930c,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:34,What changed,f59cc44ceabd6f15,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:34,Urgency: 0.41 🟢,a50e6523cde44ca5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:34,[bot] inbound from 8806712852: $BUTTERFLY — 🟢 HOLD,38088afd09584fd7,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:34,[dexscreener] Polled 26 Solana pairs,9a97ab9eb660027,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:34,"[dexscreener] Got 30 profiles, 18 Solana",9ab3f0e7968b4096,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:32,[jev-shadow] cycle candidates=3 evaluated=1 unavailable=1 cards=0 errors=2,207a87a014785be5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:32,[jev-shadow] evaluated Viscacha jev=UNAVAILABLE conf=n/a specialists=none cw2=PASS score=87 align=UNAVAILABLE risk=UNCLASSIFIED sg=skip,b95215d37b0fea4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:32,"[jev-mint-spike-gate] BORDERLINE Viscacha score=3 reasons=rapid_early_spike,high_turnover",e4ef51b2154a588,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:32,[hot] poll source=mevx candidates=125 passing=3 newest_age_min=3,5049a74b7cc70514,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:32,[mevx] notifications=200 parseSkips=0 endpoints=2,3b886ff2a0d8749d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:29,"[earlier-entry] no as-of anchor candles for Fy3n6AqYfwZrHosrdxKKvsxWh8CKaUste2DCpHTspump (firstSeen=1787684375032 t60=1787687975032, candles=7) — row stays pending",4f6befd1fb26d895,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:29,"[earlier-entry] no as-of anchor candles for FBCStPyNtdW5gnEmsmdFY1whJ7jxEuPggN6un416oJ77 (firstSeen=1787684375030 t60=1787687975030, candles=3) — row stays pending",8b7a3dc3fc4fd35f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:26,"[microaudit:priority] tick done: 0 queued, 0 cooldown-skipped, 0 capped, 0 fetched, 0 stamped, 0 deferred, 0 stale-skipped",40a450356f2d278e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:17,[jev-shadow] cycle candidates=3 evaluated=1 unavailable=1 cards=0 errors=2,b11b6c601a9423a1,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:17,[jev-shadow] evaluated Viscacha jev=UNAVAILABLE conf=n/a specialists=none cw2=PASS score=75 align=UNAVAILABLE risk=UNCLASSIFIED sg=skip,a94f5eb55f5a9df4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:17,"[jev-mint-spike-gate] BORDERLINE Viscacha score=3 reasons=rapid_early_spike,high_turnover",9a78907f500da69a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:17,[hot] poll source=mevx candidates=125 passing=3 newest_age_min=3,2da4a9af2d183f3b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:17,[mevx] notifications=200 parseSkips=0 endpoints=2,a191c701e27c5b37,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:11,[gmgn-feed] kol poll: events=0 tx=0 mints=0 new=0 FAILED(fail-open),a20484a7969ad3ec,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:11,[gmgn-feed] discovery poll: saw=0 new=0 deduped=0 FAILED(fail-open),b4180b40914e5b07,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:08,🟠 Urgency changed 2.56 → 2.,377642bf45b41ca8,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:08,What changed,197ac2f71c492929,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:08,Urgency: 2.23 🟠,796aedb9966a028e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:08,[bot] inbound from 8806712852: $BUTTERFLY — 🔴 SELL,d43a1e27a7a63ce6,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:04,[dexscreener] Polled 26 Solana pairs,afdcdc3c076fa7a8,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:04,"[dexscreener] Got 30 profiles, 18 Solana",bc8ad3a8b2746dcd,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:04,[mevx] notifications=200 parseSkips=0 endpoints=2,49903c0722a8a410,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:04,[gmgn-budget] earlier-entry=10350req/15b(bk) feed-kol=566req/0b conviction=305req/2b feed-discovery=283req/0b hot-netflow=55req/28b(bk) over ~138min since=2026-09-28T11:20:00.390Z dropped=6604,a831c6b368aaf31e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:04,[conviction] live broadcast BOILER score=78 to subscribers,816e61a0e9f69030,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:04,[security-cov] 27bUWAtMzFat@2026-09-28 13:38:04 mint=n/a freeze=n/a lp=n/a poolGtMax=0,5f8d45b9a366361b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:04,[mevx] notifications=200 parseSkips=0 endpoints=2,4cb3e62e316e4e93,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:04,[jev-shadow] cycle candidates=2 evaluated=1 unavailable=1 cards=0 errors=1,bf6b22f63069cf99,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:04,[jev-shadow] evaluated Viscacha jev=UNAVAILABLE conf=n/a specialists=none cw2=PASS score=76 align=UNAVAILABLE risk=UNCLASSIFIED sg=skip,152dd24c8618dadd,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:04,"[jev-mint-spike-gate] BORDERLINE Viscacha score=3 reasons=rapid_early_spike,high_turnover",14b1b68857fd9acb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:02,[hot] poll source=mevx candidates=125 passing=3 newest_age_min=2,b31ac62d7c27a65f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:38:02,[mevx] notifications=200 parseSkips=0 endpoints=2,88b40176c968bc8f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:59,[earlier-entry] GMGN kline HTTP 429 RATE_LIMIT_BANNED for USCSiKDUVap6hj33JvRDYq6bEmiBwVm3BvE6o5fNgRf — pausing until 2026-09-28T13:38:23.000Z (reset_at=1790602703),a8d46790c7bc5901,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:54,[hot] poll source=mevx candidates=125 passing=3 newest_age_min=2,d16193f02049096d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:54,[alerts] Sent alert to 42/75 subscribers,70a6817bc2792dc3,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:53,[alerts] Skipped blocked subscriber telegram_id=1344077137,e401a29cda791823,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:52,[alerts] Skipped blocked subscriber telegram_id=6741131255,fb919148b60d1125,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:51,[alerts] Skipped blocked subscriber telegram_id=6035244860,d0d350743f76cdfb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:51,[alerts] Skipped blocked subscriber telegram_id=5613628105,12de1bb8d6f2c660,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:51,[alerts] Skipped blocked subscriber telegram_id=1907889596,cdcc8822f409c4fe,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:49,[alerts] Skipped blocked subscriber telegram_id=5488385809,814c430b308dacb5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:49,[alerts] Skipped blocked subscriber telegram_id=8952006958,aa129c8a1b5c1d29,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:49,[alerts] Skipped blocked subscriber telegram_id=8592392184,7fd6eb653e3f6f93,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:49,[alerts] Skipped blocked subscriber telegram_id=5961677927,ab9d3a1491604e76,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:49,[alerts] Skipped blocked subscriber telegram_id=8102814401,22a156cfe8288d40,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:49,[alerts] Skipped blocked subscriber telegram_id=8710435057,fbe451f79153a830,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:47,[hot-netflow] GMGN token_top_traders tag=smart_degen mint=27bUWAtMzFat HTTP 429 RATE_LIMIT_BANNED — backfill pausing until 2026-09-28T13:38:17.000Z (reset_at=1790602697),cd2bfcd4547a7bb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:47,[alerts] Skipped blocked subscriber telegram_id=5516053745,708ba0010f7cc9a4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:47,[hot] poll source=mevx candidates=125 passing=3 newest_age_min=2,ac3dc1b8b64cd51,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:47,[mevx] notifications=200 parseSkips=0 endpoints=2,c97a8aeaa144c285,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:46,[jev-shadow] cycle candidates=2 evaluated=1 unavailable=1 cards=0 errors=1,79f7b0fd0fbd41c7,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:46,[jev-shadow] evaluated Viscacha jev=UNAVAILABLE conf=n/a specialists=none cw2=PASS score=88 align=UNAVAILABLE risk=UNCLASSIFIED sg=skip,b21be19fc171c7fc,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:46,"[jev-mint-spike-gate] BORDERLINE Viscacha score=3 reasons=rapid_early_spike,high_turnover",f774a5210a1e293b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:45,[alerts] Skipped blocked subscriber telegram_id=815372572,72f44ec1874be2f2,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:43,[alerts] Skipped blocked subscriber telegram_id=8763247475,d2aa9734fbd9bee2,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:43,[alerts] Skipped blocked subscriber telegram_id=1957647754,b38b1383a8ad21c7,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:43,[alerts] Skipped blocked subscriber telegram_id=782379293,8c570fe1991eda34,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:41,🔴 Urgency changed 2.09 → 2.,dbb9f1195ef8de57,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:41,What changed,5de3eaaa2cbdad3d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:41,Urgency: 2.56 🔴,5bb14d37ede80015,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:41,[bot] inbound from 8806712852: $BUTTERFLY — 🔴 SELL,b9e332413f75ebaf,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:41,[alerts] Skipped blocked subscriber telegram_id=6930906500,12a34df434c65887,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:41,[alerts] Skipped blocked subscriber telegram_id=7994531571,2b0c24a4932d4b34,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:41,[alerts] Skipped blocked subscriber telegram_id=5937846245,d7f029ad3cbdb91a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:41,[alerts] Skipped blocked subscriber telegram_id=1383860867,a7d55b2f558b0fb4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:41,[alerts] Skipped blocked subscriber telegram_id=5156454504,96d3c24174581a88,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:41,[alerts] Skipped blocked subscriber telegram_id=7167665234,99547c930f476cc,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:41,[alerts] Skipped blocked subscriber telegram_id=1045068325,838cc2e2089ee1cf,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:41,[alerts] Skipped blocked subscriber telegram_id=8859065841,64e1d23869fa53c9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:40,[alerts] Skipped blocked subscriber telegram_id=40598501,3c08b7fd51182284,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:40,[alerts] Skipped blocked subscriber telegram_id=517043895,e42345de47be4e0c,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:39,[alerts] Skipped blocked subscriber telegram_id=1570219895,90020f84ba58a85a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:39,[alerts] Skipped blocked subscriber telegram_id=8593289816,71f372ad734da186,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:39,[alerts] Skipped blocked subscriber telegram_id=7539829436,ec87d8da40e7c080,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:39,[alerts] Skipped blocked subscriber telegram_id=5853920193,7ce84f8f7e1cdded,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:39,[alerts] Skipped blocked subscriber telegram_id=7709322421,1bdd01f83b5c1671,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:36,[alerts] Skipped blocked subscriber telegram_id=6250058659,1857d08e2fb11a53,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:34,[dexscreener] Polled 30 Solana pairs,a2dd27a0ff107c5a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:34,"[dexscreener] Got 30 profiles, 18 Solana",202c93cf0ec95cbd,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:34,[alerts] Skipped blocked subscriber telegram_id=8642435292,a20db6d854bfa1fe,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:32,[jev-shadow] cycle candidates=2 evaluated=1 unavailable=1 cards=0 errors=1,34a7abbf450a6642,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:32,[jev-shadow] evaluated Viscacha jev=UNAVAILABLE conf=n/a specialists=none cw2=PASS score=87 align=UNAVAILABLE risk=UNCLASSIFIED sg=skip,84ff18bd5870a436,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:32,[narrative-hot] 3971672@token_alerts tag=UNTAGGED src=none stage=UNKNOWN share=n/a desc=n/a cluster=2 tags=none mindshare=n/a,3daeeac4a93be502,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:32,"[copycat] HOT mevx name/symbol CLONE — mint=3KnThqUCCQb5kTFBbZaX9NA6mLvxTpEX4ErGcHFipump name=""Boiler"" symbol=""BOILER"" matches earlier launch ""boiler"" (boiler) mint=27bUWAtMzFatz2HWTycLNVncombUr6hggLLbmtqfpump first_seen=2026-09-28 13:36:17 on both (log-only, no gating)",f604a8ed50cc39ed,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:32,[mevx] notifications=200 parseSkips=0 endpoints=2,ecf76e35110edd57,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:29,"[earlier-entry] no as-of anchor candles for FBCStPyNtdW5gnEmsmdFY1whJ7jxEuPggN6un416oJ77 (firstSeen=1787684375030 t60=1787687975030, candles=3) — row stays pending",2d61e77b25c24e4f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:26,"[microaudit:priority] tick done: 0 queued, 0 cooldown-skipped, 0 capped, 0 fetched, 0 stamped, 0 deferred, 0 stale-skipped",45f3a050aef5b303,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:19,[jev-shadow] cycle candidates=2 evaluated=1 unavailable=1 cards=0 errors=1,5b8f0ea6fabd9f32,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:19,[jev-shadow] evaluated Viscacha jev=UNAVAILABLE conf=n/a specialists=none cw2=PASS score=87 align=UNAVAILABLE risk=UNCLASSIFIED sg=skip,a389769e5e01e3f2,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:17,[hot] poll source=mevx candidates=125 passing=3 newest_age_min=2,467f5ae54c742dc9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:17,[mevx] notifications=200 parseSkips=0 endpoints=2,e5ad095358f45b04,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:12,[gmgn-feed] kol poll: events=93 tx=47 mints=25 new=4,5e1a3f91143950fd,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:11,[gmgn-feed] discovery poll: saw=60 new=41 deduped=19,4157d91cda5ed0b1,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:04,[dexscreener] Polled 30 Solana pairs,f165b0d401e7c825,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:04,"[dexscreener] Got 30 profiles, 18 Solana",4161967e85a3f7d2,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:04,[mevx] notifications=200 parseSkips=0 endpoints=2,d1d91af6307bfeff,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:04,[gmgn-budget] earlier-entry=10348req/14b(bk) feed-kol=564req/0b conviction=301req/2b feed-discovery=282req/0b hot-netflow=54req/27b(bk) over ~138min since=2026-09-28T11:19:23.299Z dropped=6592,5ec7ea3383981f9d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:04,[mevx] notifications=200 parseSkips=0 endpoints=2,33bd0ada23f9e6bc,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:02,[hot] poll source=mevx candidates=125 passing=3 newest_age_min=1,4bfca10e5f5f828,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:37:02,[mevx] notifications=200 parseSkips=0 endpoints=2,bc46b51b4899293c,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:59,"[earlier-entry] no as-of anchor candles for USCSiKDUVap6hj33JvRDYq6bEmiBwVm3BvE6o5fNgRf (firstSeen=1787684375031 t60=1787687975031, candles=5) — row stays pending",acf6226f8c094405,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:47,[hot] poll source=mevx candidates=125 passing=3 newest_age_min=1,651fda4deccdcb3e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:47,[mevx] notifications=200 parseSkips=0 endpoints=2,49ca575c360ba374,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:34,[dexscreener] Polled 30 Solana pairs,31c16a503a09e2e4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:34,"[dexscreener] Got 30 profiles, 19 Solana",5baea354b4326eca,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:32,[hot] poll source=mevx candidates=125 passing=3 newest_age_min=1,95c859ff1e78f9fd,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:32,[mevx] notifications=200 parseSkips=0 endpoints=2,8c41be370ef61078,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:29,"[earlier-entry] no as-of anchor candles for FBCStPyNtdW5gnEmsmdFY1whJ7jxEuPggN6un416oJ77 (firstSeen=1787684375030 t60=1787687975030, candles=3) — row stays pending",6a1be0d5f85575ea,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:28,[hot] poll source=mevx candidates=125 passing=3 newest_age_min=1,d2c78b000fcec872,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:28,[alerts] Sent alert to 42/75 subscribers,968d71de057b075b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:27,[alerts] Skipped blocked subscriber telegram_id=1344077137,24ed472e2e65a144,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:26,[alerts] Skipped blocked subscriber telegram_id=6741131255,4f92b9e1b62efd53,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:26,[alerts] Skipped blocked subscriber telegram_id=6035244860,b57afc41eb681190,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:26,[alerts] Skipped blocked subscriber telegram_id=5613628105,543e710389a9e9ca,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:26,[alerts] Skipped blocked subscriber telegram_id=1907889596,1e40fa9b6344ee29,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:26,"[microaudit:priority] tick done: 0 queued, 0 cooldown-skipped, 0 capped, 0 fetched, 0 stamped, 0 deferred, 0 stale-skipped",d8520d7c27bbbce9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:26,[alerts] Sent alert to 42/75 subscribers,ab26363f005d9c6d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:25,[alerts] Skipped blocked subscriber telegram_id=5488385809,a897f2652f88d221,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:25,[alerts] Skipped blocked subscriber telegram_id=8952006958,6be1b5cc707a2e94,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:25,[alerts] Skipped blocked subscriber telegram_id=8592392184,aac4727a4715de8b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:25,[alerts] Skipped blocked subscriber telegram_id=5961677927,e0fcc77f39b22d9f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:25,[alerts] Skipped blocked subscriber telegram_id=8102814401,52c66e746040177e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:25,[alerts] Skipped blocked subscriber telegram_id=8710435057,9a730ebbe243fa08,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:24,[alerts] Skipped blocked subscriber telegram_id=1344077137,20c0085eac9189bc,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:24,[alerts] Skipped blocked subscriber telegram_id=5516053745,a5007bb7e864296a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:23,[alerts] Skipped blocked subscriber telegram_id=6741131255,bb2acaee538f73a0,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:23,[alerts] Skipped blocked subscriber telegram_id=815372572,e8383c5c26951647,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:23,[alerts] Skipped blocked subscriber telegram_id=6035244860,e6c931844db6527c,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:23,[alerts] Skipped blocked subscriber telegram_id=5613628105,9a14e9f090495b68,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:23,[alerts] Skipped blocked subscriber telegram_id=1907889596,b32c0462f38bc6e6,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:22,[alerts] Skipped blocked subscriber telegram_id=8763247475,b5f67fb3b09a5916,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:22,[alerts] Skipped blocked subscriber telegram_id=1957647754,fedefe992559b3b8,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:22,[alerts] Skipped blocked subscriber telegram_id=782379293,f2d8214932d10475,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:21,[alerts] Skipped blocked subscriber telegram_id=6930906500,68f1c5bbd3a66a21,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:21,[alerts] Skipped blocked subscriber telegram_id=7994531571,28213604df020b3,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:21,[alerts] Skipped blocked subscriber telegram_id=5937846245,d2ea36e38e204226,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:21,[alerts] Skipped blocked subscriber telegram_id=1383860867,a0356bee8bf2829e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:21,[alerts] Skipped blocked subscriber telegram_id=5156454504,4cc74efc019e8bda,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:21,[alerts] Skipped blocked subscriber telegram_id=7167665234,7e439c1614a0547b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:21,[alerts] Skipped blocked subscriber telegram_id=1045068325,8db5e06cc43f4a93,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:21,[alerts] Skipped blocked subscriber telegram_id=8859065841,a0c78d7c3d486021,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:21,[alerts] Skipped blocked subscriber telegram_id=40598501,c3aa453c3d4ebd73,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:21,[alerts] Skipped blocked subscriber telegram_id=517043895,c06c780fac810a81,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:21,[alerts] Skipped blocked subscriber telegram_id=5488385809,b678dcbfb4b18eea,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:21,[alerts] Skipped blocked subscriber telegram_id=8952006958,746af1b5984b2a4a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:21,[alerts] Skipped blocked subscriber telegram_id=8592392184,67ef7fd7a9b34c1b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:21,[alerts] Skipped blocked subscriber telegram_id=5961677927,d6f819175d451c44,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:21,[alerts] Skipped blocked subscriber telegram_id=8102814401,693121863f6cf67d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:20,[alerts] Skipped blocked subscriber telegram_id=8710435057,f222199d0bcbf0f0,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:20,[alerts] Skipped blocked subscriber telegram_id=1570219895,8b0a4f75417ab70a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:20,[alerts] Skipped blocked subscriber telegram_id=8593289816,8d369af7acea496d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:20,[alerts] Skipped blocked subscriber telegram_id=7539829436,90dd9e53ac697075,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:20,[alerts] Skipped blocked subscriber telegram_id=5853920193,8c89d5d7aab8d00c,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:20,[alerts] Skipped blocked subscriber telegram_id=7709322421,67aa4e667b01b138,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:19,[alerts] Skipped blocked subscriber telegram_id=5516053745,44cfb69d6812f97b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:18,[alerts] Skipped blocked subscriber telegram_id=6250058659,af76381bb23a00d8,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:18,[alerts] Skipped blocked subscriber telegram_id=8642435292,9f994225eaaada77,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:17,[narrative-hot] 3971587@token_alerts tag=UNTAGGED src=none stage=UNKNOWN share=n/a desc=n/a cluster=1 tags=none mindshare=n/a,c65068041f2295b5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:17,[mevx] notifications=200 parseSkips=0 endpoints=2,ed1d371dee56b4ab,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:16,[alerts] Skipped blocked subscriber telegram_id=815372572,5b09bd7e9e5ee3ba,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:15,[alerts] Skipped blocked subscriber telegram_id=8763247475,addaca5f4440ecea,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:15,[alerts] Skipped blocked subscriber telegram_id=1957647754,b3ac4afaa4c61b8d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:15,[alerts] Skipped blocked subscriber telegram_id=782379293,d2eada6c134594fa,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:14,[channel] teaser observation start OUTOFBAG at 1.0x live — crossings from here are live,60dcf92c61edd04,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:13,[alerts] Skipped blocked subscriber telegram_id=6930906500,e09dd8385c14f873,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:13,[alerts] Skipped blocked subscriber telegram_id=7994531571,392d62baf50bd192,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:13,[alerts] Skipped blocked subscriber telegram_id=5937846245,fe6b8910fbf55104,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:13,[alerts] Skipped blocked subscriber telegram_id=1383860867,616b3f5303c658d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:13,[alerts] Skipped blocked subscriber telegram_id=5156454504,14b26821582f3fde,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:13,[alerts] Skipped blocked subscriber telegram_id=7167665234,24610658266ce304,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:13,[alerts] Skipped blocked subscriber telegram_id=1045068325,407fff81fed1a2f9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:13,[alerts] Skipped blocked subscriber telegram_id=8859065841,e42186ee09883220,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:12,[alerts] Skipped blocked subscriber telegram_id=40598501,420467c113a5841,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:12,[alerts] Skipped blocked subscriber telegram_id=517043895,c9c2878abdc9a085,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:11,[gmgn-feed] kol poll: events=93 tx=40 mints=23 new=2,6dd35dfd6c28251a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:11,[alerts] Skipped blocked subscriber telegram_id=1570219895,e0f27170cd4e3616,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:11,[alerts] Skipped blocked subscriber telegram_id=8593289816,827ecf5143d3a15e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:11,[alerts] Skipped blocked subscriber telegram_id=7539829436,8cb9c1476e64a7eb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:11,[alerts] Skipped blocked subscriber telegram_id=5853920193,9cfc64bea51c9115,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:11,[alerts] Skipped blocked subscriber telegram_id=7709322421,7d69766450f74ecd,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:11,[gmgn-feed] discovery poll: saw=60 new=36 deduped=24,ea96a38973d0d0fb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:08,[alerts] Skipped blocked subscriber telegram_id=6250058659,71474cf65426013,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:06,[alerts] Skipped blocked subscriber telegram_id=8642435292,fb596ea3c62a80eb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:05,🟠 Urgency changed 2.57 → 2.,afbd04ac10d08bbc,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:05,What changed,28ccfdfca3757d90,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:05,Urgency: 2.09 🟠,dcba928ae94eb0a0,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:05,[bot] inbound from 8806712852: $BUTTERFLY — 🔴 SELL,5511d414e7d13e3,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:04,[dexscreener] 💥 Volume explosion: Cat Out Of The Bag — $101.31K (2.7x),81d578859eb8daa2,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:04,[dexscreener] Polled 30 Solana pairs,c7a7976bddf94fb2,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:04,"[dexscreener] Got 30 profiles, 19 Solana",bc8cfc7ecedd7dec,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:04,[mevx] notifications=200 parseSkips=0 endpoints=2,9a93b64fff9d5f8d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:04,[gmgn-budget] earlier-entry=10346req/14b(bk) feed-kol=562req/0b conviction=300req/2b feed-discovery=281req/0b hot-netflow=54req/27b(bk) over ~137min since=2026-09-28T11:19:18.545Z dropped=6586,1a8689b2dc2cb87a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:04,[mevx] notifications=200 parseSkips=0 endpoints=2,fa0f6c138ffb0a67,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:02,[hot] poll source=mevx candidates=124 passing=3 newest_age_min=4,3b518cf126164d3f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:02,[mevx] notifications=200 parseSkips=0 endpoints=2,328e802a14506cb5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:00,🔴 Urgency changed 2.13 → 2.,14d6c88acedf0293,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:00,What changed,8d20a1440117b986,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:00,Urgency: 2.57 🔴,3fddb02b79e14ab9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:36:00,[bot] inbound from 8806712852: $BUTTERFLY — 🔴 SELL,6a7254d138252438,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:47,[hot] poll source=mevx candidates=124 passing=3 newest_age_min=4,47eb53224a921d63,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:47,[mevx] notifications=200 parseSkips=0 endpoints=2,5f715eec8aec03ba,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:38,⚠️ Distribution pattern deve,cf6d36873378de81,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:38,What changed,40f422799f2c83f2,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:38,Urgency: 2.13 🟠,7d1ec05b747984b2,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:38,[bot] inbound from 8806712852: $BUTTERFLY — 🔴 SELL,dbd2c94c6b4bf6ec,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:34,[dexscreener] Polled 30 Solana pairs,5b3989c94c428535,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:34,"[dexscreener] Got 30 profiles, 18 Solana",918cab0fe0145b9b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:32,🟠 Urgency changed 2.14 → 2.,9a991f8e318d6a9a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:32,What changed,20c41a03998aff70,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:32,Urgency: 2.13 🟠,3c13a9904d923a0,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:32,[bot] inbound from 8806712852: $BUTTERFLY — 🔴 SELL,93ad7d9e32537c4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:32,[hot] poll source=mevx candidates=124 passing=3 newest_age_min=4,666ee52c87e6bccb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:32,[mevx] notifications=200 parseSkips=0 endpoints=2,1a53fd64e9a64e9e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:29,"[earlier-entry] no as-of anchor candles for FBCStPyNtdW5gnEmsmdFY1whJ7jxEuPggN6un416oJ77 (firstSeen=1787684375030 t60=1787687975030, candles=3) — row stays pending",9264d0ec8a2a5d8b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:26,"[microaudit:priority] tick done: 0 queued, 0 cooldown-skipped, 0 capped, 0 fetched, 0 stamped, 0 deferred, 0 stale-skipped",26923bf9bf7876ea,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:21,🟠 Urgency changed 2.06 → 2.,cbf3e1ef4d6ef3fb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:21,What changed,a60fab89cd478d68,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:21,Urgency: 2.14 🟠,4b1ffcc6d5ff299,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:21,[bot] inbound from 8806712852: $BUTTERFLY — 🔴 SELL,8d2e632b03722d04,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:17,[hot] poll source=mevx candidates=124 passing=3 newest_age_min=4,b97ab8e0023ca76a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:17,[mevx] notifications=200 parseSkips=0 endpoints=2,8e430349574251cb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:17,🟠 Urgency changed 2.12 → 2.,652dad4843ed6900,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:17,What changed,6ae134ff8b2bc232,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:17,Urgency: 2.06 🟠,3184682b69a8d723,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:17,[bot] inbound from 8806712852: $BUTTERFLY — 🔴 SELL,c9077083264bc176,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:11,[gmgn-feed] kol poll: events=94 tx=40 mints=27 new=5,996ac606e7c99e78,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:11,[gmgn-feed] discovery poll: saw=60 new=32 deduped=28,ecf33fdc4d62928,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:04,[dexscreener] 🚀 New launch: Catepad (CATEPAD),eac02757cfcf23b9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:04,[dexscreener] Polled 30 Solana pairs,2862f5b6d8c59960,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:04,"[dexscreener] Got 30 profiles, 18 Solana",a59c840208a7964d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:04,[mevx] notifications=200 parseSkips=0 endpoints=2,acebada099ab2bad,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:04,[gmgn-budget] earlier-entry=10345req/14b(bk) feed-kol=560req/0b conviction=300req/2b feed-discovery=280req/0b hot-netflow=54req/27b(bk) over ~136min since=2026-09-28T11:19:15.295Z dropped=6582,7f34eaaaa267a029,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:04,"[exit] drawdown card for $CMC (1.3x live, peak 2.8x) → 0 subscriber(s)",7bc08b99f1897733,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:04,"[exit] tp_3 card for $EVIRO (3.5x live, peak 3.5x) → 0 subscriber(s)",a0bd7056b439edd9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:04,[mevx] notifications=200 parseSkips=0 endpoints=2,de118daa7161ddbe,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:02,[hot] poll source=mevx candidates=124 passing=3 newest_age_min=3,60f7b8140e3ae39d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:02,[mevx] notifications=200 parseSkips=0 endpoints=2,46bcdb54f6af0ef0,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:02,🟠 Urgency changed 1.99 → 2.,4bf5f40812a0f601,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:02,What changed,e681e5ece7807ca5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:02,Urgency: 2.12 🟠,c7341b84975e4cc6,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:35:02,[bot] inbound from 8806712852: $BUTTERFLY — 🔴 SELL,a7dad262f9a7e4c4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:45,[hot] poll source=mevx candidates=124 passing=3 newest_age_min=3,f42be0f0e73fed4e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:45,[mevx] notifications=200 parseSkips=0 endpoints=2,acbb78a83f4e09ae,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:36,🟠 Urgency changed 2.02 → 1.,b5c609ad784be208,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:36,What changed,37675514b1153076,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:36,Urgency: 1.99 🟠,4aff1f558f03556b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:36,[bot] inbound from 8806712852: $BUTTERFLY — 🔴 SELL,a503820b76648b2a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:34,[dexscreener] Polled 30 Solana pairs,4ace409ce8563447,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:34,"[dexscreener] Got 30 profiles, 17 Solana",d329eb4780dce0e9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:33,📈 — set CHANNEL_CHAT_ID=-1004298581354 to enable the publisher,e37044ec06234f9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:33,FPZ5KNzvehoGcCzf7xDGyzZZDo11rGxkEzCHbQNopump,c6f5de32aa941fb5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:33,[channel] channel_post from chat id -1004298581354: $EVIRO (Pump→Raydium) - Solana,25cd633d42845e0a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:33,[support] channel post: -1004298581354 $EVIRO (Pump→Raydium) - Solana FPZ5KNzvehoGcCzf7xDGyzZZDo11rGxkEzCHbQNopump 📈 …,a257cd44480029f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:32,[hot] poll source=mevx candidates=124 passing=3 newest_age_min=3,5453f190d443c964,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:32,[mevx] notifications=200 parseSkips=0 endpoints=2,53966e040646db72,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:30,[channel] teaser fired EVIRO 3.5x (3.5x live) → chat -1004298581354,3a349871fa1c0c96,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:30,$BUTTERFLY,a1756b9aa287321,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:30,[bot] inbound from 8806712852: 🛡️ JevSentinel — EARLY ENTRY EXPERIMENT JEV ASSESSMENT — MONITORING,a2a7d1fb777ab36e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:29,[channel] teaser observation start BUTTERFLY at 0.7x live — crossings from here are live,7bb8c43fe102c11a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:29,"[channel] teaser skip XPAY (Fz2nZbXYjKFRnsCUGeTm2P7f85osn1PPvpQ6JTS3pump) — recorded-only (new_pair/new_launch/legacy), never broadcast to subscribers; not a teaser candidate",70665693a1a56142,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:29,"[channel] teaser skip OUTOFBAG (GdCu4yCzAqishkVj7ntM8UGoa33zY9X6wiFcCnM3pump) — recorded-only (new_pair/new_launch/legacy), never broadcast to subscribers; not a teaser candidate",8ad77e6991ac5c8d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:26,"[microaudit:priority] tick done: 0 queued, 0 cooldown-skipped, 0 capped, 0 fetched, 0 stamped, 0 deferred, 0 stale-skipped",70d435ea2d5e8677,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:20,"[perf] Fz2nZbXYjKFRnsCUGeTm2P7f85osn1PPvpQ6JTS3pump: 1.01x (new peak, was 0.00x)",b6a5a7e6fdaaafa4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:20,"[perf] GdCu4yCzAqishkVj7ntM8UGoa33zY9X6wiFcCnM3pump: 1.04x (new peak, was 0.00x)",16c9b85eb94fd3bc,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:20,"[perf] 72QezUPcrYkm3rgupxhQnR5uhwuM1BGFvh9KqFW2pump: 0.65x (new peak, was 0.00x)",ccc1893310430822,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:20,"[perf] FPZ5KNzvehoGcCzf7xDGyzZZDo11rGxkEzCHbQNopump: 3.50x (new peak, was 2.23x)",d2944bfa94d7454f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:18,[conviction2] instant post BUTTERFLY CW2=93 to -1004483915430,2b956c1cd8b1d113,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:18,[conviction] subscriber broadcast sent alertType=conviction mint=72QezUPcrYkm3rgupxhQnR5uhwuM1BGFvh9KqFW2pump to 42 subscribers,c2821e12100148db,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:18,[alerts] Sent alert to 42/75 subscribers,4360ff76a27b485a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:18,[alerts] Skipped blocked subscriber telegram_id=1344077137,95bacf4ae8600f73,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:17,[alerts] Skipped blocked subscriber telegram_id=6741131255,568fae69a6110373,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:17,[alerts] Skipped blocked subscriber telegram_id=6035244860,778472d03993280c,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:17,[alerts] Skipped blocked subscriber telegram_id=5613628105,724f8f4ef2a79292,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:17,[alerts] Skipped blocked subscriber telegram_id=1907889596,32b49008c80609e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:17,[hot] poll source=mevx candidates=124 passing=3 newest_age_min=3,722c271f6bad9010,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:17,[mevx] notifications=200 parseSkips=0 endpoints=2,b82e79362ebd523c,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:16,[alerts] Skipped blocked subscriber telegram_id=5488385809,da5b84c411cfeb58,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:16,[alerts] Skipped blocked subscriber telegram_id=8952006958,fbcf574258685ebd,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:16,[alerts] Skipped blocked subscriber telegram_id=8592392184,16ad3a5f89b888ae,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:16,[alerts] Skipped blocked subscriber telegram_id=5961677927,ff2001bd0ba9d257,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:16,[alerts] Skipped blocked subscriber telegram_id=8102814401,ce5af27a3fa3648a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:16,[alerts] Skipped blocked subscriber telegram_id=8710435057,452fcabd2636fc4e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:15,[alerts] Skipped blocked subscriber telegram_id=5516053745,28694352e0d1135,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:14,[alerts] Skipped blocked subscriber telegram_id=815372572,b648b7652be808ff,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:13,"[channel-gate] sweep done: 0 invited, 0 kicked, 5 already in, 36 outstanding-skipped, 0 errors (members=16, admins=2)",a425623072b5154f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:13,[alerts] Skipped blocked subscriber telegram_id=8763247475,4eee22d2e06c85c9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:13,[alerts] Skipped blocked subscriber telegram_id=1957647754,5f28b81e5fcc4256,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:13,[alerts] Skipped blocked subscriber telegram_id=782379293,cd372b2e06e9940b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:12,[alerts] Skipped blocked subscriber telegram_id=6930906500,5919772a03d72907,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:12,[alerts] Skipped blocked subscriber telegram_id=7994531571,a6aa1e7d350b650e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:12,[alerts] Skipped blocked subscriber telegram_id=5937846245,c821898c3abf53f8,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:12,[alerts] Skipped blocked subscriber telegram_id=1383860867,8b76316eddedab1a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:12,[alerts] Skipped blocked subscriber telegram_id=5156454504,4cac3bd90eca5362,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:12,[alerts] Skipped blocked subscriber telegram_id=7167665234,bdd4ff35e5072b62,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:12,[alerts] Skipped blocked subscriber telegram_id=1045068325,18f7b4d920865868,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:12,[alerts] Skipped blocked subscriber telegram_id=8859065841,a2a586c6e99a868,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:12,[alerts] Skipped blocked subscriber telegram_id=40598501,30566aa02ace6838,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:12,[alerts] Skipped blocked subscriber telegram_id=517043895,d814d9d3f76eb8f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:11,[gmgn-feed] kol poll: events=90 tx=52 mints=22 new=3,13a08444539f8d98,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:11,[alerts] Skipped blocked subscriber telegram_id=1570219895,869e1d2d748597d3,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:11,[alerts] Skipped blocked subscriber telegram_id=8593289816,6ca21a7dc193cc9d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:11,[alerts] Skipped blocked subscriber telegram_id=7539829436,184e1b90b57a6a1,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:11,[alerts] Skipped blocked subscriber telegram_id=5853920193,4ac17d32f2832248,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:11,[alerts] Skipped blocked subscriber telegram_id=7709322421,d15c5fe6c4088f7b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:11,[gmgn-feed] discovery poll: saw=60 new=34 deduped=26,ecc0185ba9b689aa,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:10,[alerts] Skipped blocked subscriber telegram_id=6250058659,83c79b5d10ba3d01,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:09,[alerts] Skipped blocked subscriber telegram_id=8642435292,5a6c25d2d79733b3,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:07,[narrative] 72QezUPcrYkm@conviction_picks tag=animal src=none stage=GENESIS share=0.08933002481389578 desc=n/a cluster=1 tags=animal mindshare=n/a,a33bb1eefbe32ab6,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:07,[security-cov] 72QezUPcrYkm@2026-09-28 13:34:04 mint=true freeze=true lp=n/a poolGtMax=0,f1a675849201d4a5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:06,[safety] block mint=72QezUPcrYkm3rgupxhQnR5uhwuM1BGFvh9KqFW2pump source=rugcheck lines=9,64890fc32db5036b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:05,[conviction] live broadcast BUTTERFLY score=80 to subscribers,3c8459195815d1cc,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:05,[security-cov] 72QezUPcrYkm@2026-09-28 13:34:04 mint=true freeze=true lp=n/a poolGtMax=0,829e14b489f6b966,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:04,[dexscreener] 🆕 New pair: XPay Day (XPAY),e5188e66336b21e4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:04,[dexscreener] 🚀 New launch: TRIED (TRIED),f9661c0aa66df4f3,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:04,[dexscreener] 🚀 New launch: XPay Day (XPAY),706f586d21be360,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:04,[dexscreener] Polled 30 Solana pairs,1c2798026e565880,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:04,"[dexscreener] Got 30 profiles, 17 Solana",cd7350ae07455b93,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:04,[healthcheck] ping ok (HTTP 200),afa9152288f1f9cb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:04,[mevx] notifications=200 parseSkips=0 endpoints=2,2af8d352422e3f82,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:04,[gmgn-budget] earlier-entry=10345req/14b(bk) feed-kol=558req/0b conviction=299req/2b feed-discovery=279req/0b hot-netflow=53req/27b(bk) over ~135min since=2026-09-28T11:19:12.001Z dropped=6577,111f80d0255eed92,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:04,[mevx] notifications=200 parseSkips=0 endpoints=2,bed8a58563f4444e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:02,[hot] poll source=mevx candidates=124 passing=3 newest_age_min=2,de01b4ea639ac5c5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:34:02,[mevx] notifications=200 parseSkips=0 endpoints=2,a5b1b42ed3393bc9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:47,[hot] poll source=mevx candidates=124 passing=3 newest_age_min=2,a1cdf19416ed51f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:47,[mevx] notifications=200 parseSkips=0 endpoints=2,3fb59b42dac23582,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:41,[dexscreener] Profiles fetch failed: 429,c61550681bc661f8,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:41,[dexscreener] Rate limit exhausted after retries,c26f33fe2af5caa1,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:37,"[dexscreener] Rate limited (429), retrying in 4000ms (attempt 3/3)...",1d812828108d314d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:35,"[dexscreener] Rate limited (429), retrying in 2000ms (attempt 2/3)...",ba52980f4ae87b91,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:34,"[dexscreener] Rate limited (429), retrying in 1000ms (attempt 1/3)...",df327b0f9d6264bc,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:32,[hot] poll source=mevx candidates=124 passing=3 newest_age_min=2,ebc90b5c8838e768,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:32,[mevx] notifications=200 parseSkips=0 endpoints=2,f3a68c206049ceb8,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:26,"[microaudit:priority] tick done: 0 queued, 0 cooldown-skipped, 0 capped, 0 fetched, 0 stamped, 0 deferred, 0 stale-skipped",e1f7ffa5c13b1479,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:18,[hot-netflow] GMGN token_top_traders tag=renowned mint=72QezUPcrYkm HTTP 429 RATE_LIMIT_BANNED — backfill pausing until 2026-09-28T13:33:53.000Z (reset_at=1790602433),e827dcb5792fb9fb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:18,[earlier-entry] GMGN kline HTTP 429 RATE_LIMIT_BANNED for FWRkpgMqsAhY6aQrz7npK32VwTkwjCBF5n4Enybnpump — pausing until 2026-09-28T13:33:48.000Z (reset_at=1790602428),93ddcff2cafaf187,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:17,"[earlier-entry] no as-of anchor candles for 7gLfH99aqSjBaRXfhrzm2vEgrxKvvSgm2JctF5rgpump (firstSeen=1787688148054 t60=1787691748054, candles=33) — row stays pending",ecbbec3f77776aef,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:17,[hot] poll source=mevx candidates=124 passing=3 newest_age_min=2,3cd73fcd5063027e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:17,[mevx] notifications=200 parseSkips=0 endpoints=2,d8397cd512173395,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:16,"[earlier-entry] no as-of anchor candles for 4izEqGCX9KxD2xWZkJkMn8WRqNiBqkq2eX8PZqRDpump (firstSeen=1787687575575 t60=1787691175575, candles=7) — row stays pending",94ebdb7b93111524,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:15,"[earlier-entry] no as-of anchor candles for 4185dnL3PaVsKyikTEQApEhgRXbYbyxJGwYK6qQ2pump (firstSeen=1787687522215 t60=1787691122215, candles=6) — row stays pending",124c613d5993ba6e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:14,"[earlier-entry] no as-of anchor candles for FDcGUXTEGpn3dZDhW3PLnk3jvEyuLLWEXM8Jpg81pump (firstSeen=1787687437815 t60=1787691037815, candles=10) — row stays pending",15468108bb5425a1,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:13,"[earlier-entry] no as-of anchor candles for pbiX8giTJnC2nKAMfxTStJrTtT9XbNz5zPx6y7mpump (firstSeen=1787687380536 t60=1787690980536, candles=9) — row stays pending",eb2c8ada9d1d1568,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:13,"[earlier-entry] no as-of anchor candles for CebGgVwrWHkAhfWZi6jHgeduKRSDzijnGZVQ97k6pump (firstSeen=1787687278695 t60=1787690878695, candles=20) — row stays pending",41376e9f0cfa9dae,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:12,"[earlier-entry] no as-of anchor candles for En9sQtnHpByLEE7ykhFQ25PirV54rYegEJCjBV87pump (firstSeen=1787686994060 t60=1787690594060, candles=16) — row stays pending",46e4fb07de36dc7b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:11,[gmgn-feed] kol poll: events=93 tx=57 mints=26 new=7,c032534eae6d9fe0,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:11,[dexscreener] Profiles fetch failed: 429,8f0bb5e77c0c3e45,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:11,[dexscreener] Rate limit exhausted after retries,a064f4f813119d24,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:11,[gmgn-feed] discovery poll: saw=60 new=57 deduped=3,d28a99ed7d11766e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:11,"[earlier-entry] no as-of anchor candles for 5N8vsaxFs7cVuw7fQyhTSYMPpdzMt8nGNr2f5kaHpump (firstSeen=1787686853336 t60=1787690453336, candles=11) — row stays pending",c8bc123d1f02d99,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:10,"[earlier-entry] no as-of anchor candles for J1TNHqaAYuratcbSwgsPcTXi2jShxvZMsC2HBBZJpump (firstSeen=1787686693415 t60=1787690293415, candles=29) — row stays pending",bbf3ce52d835bef1,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:09,"[earlier-entry] no as-of anchor candles for 98fAqajBY3ZthsUiHKXSat7tSt4PEutdbdUGy4pfpump (firstSeen=1787686439472 t60=1787690039472, candles=9) — row stays pending",728724eaea2162e0,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:08,"[earlier-entry] no as-of anchor candles for 7RCftn8rC3tXJ9W3hGyDYYkE2XznET9P7Je2549Jpump (firstSeen=1787686352258 t60=1787689952258, candles=38) — row stays pending",23e96be7ca9f374b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:08,"[earlier-entry] no as-of anchor candles for HsvQv85YpRn8xkrg4b2J5MmVCAyESMF5hX8G2BUEqzr7 (firstSeen=1787685017096 t60=1787688617096, candles=18) — row stays pending",7ee8078e30b12c22,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:07,"[dexscreener] Rate limited (429), retrying in 4000ms (attempt 3/3)...",8c2c629d29fcf944,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:07,"[earlier-entry] no as-of anchor candles for EB7QuhGEXp8wib68Km92tBqYanwUdrA3f7Sk6dMypump (firstSeen=1787684697580 t60=1787688297580, candles=7) — row stays pending",ead8a4608581f1f6,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:06,"[earlier-entry] no as-of anchor candles for FxvtBMd5ngXRsbZd61HGf3LHvcKk6z59EMV3H25ppump (firstSeen=1787684410683 t60=1787688010683, candles=5) — row stays pending",6302beb7fca2890d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:05,"[dexscreener] Rate limited (429), retrying in 2000ms (attempt 2/3)...",27a075ca1bc12c06,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:05,"[earlier-entry] no as-of anchor candles for 3idZz5MN5L9edMVFfyGq1SxPYjgUza6PMNnBvFdcpump (firstSeen=1787684410683 t60=1787688010683, candles=24) — row stays pending",90fb13764a83f07d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:04,"[earlier-entry] no as-of anchor candles for DYDxcfzyx9hG7wHMNnt7LVeXbZ53YhDwozdKK5Zopump (firstSeen=1787684406374 t60=1787688006374, candles=3) — row stays pending",992287ed58462774,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:04,"[dexscreener] Rate limited (429), retrying in 1000ms (attempt 1/3)...",30f2e1f5887277a5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:04,[mevx] notifications=200 parseSkips=0 endpoints=2,51061671990d22a9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:04,[gmgn-budget] earlier-entry=10329req/13b feed-kol=556req/0b conviction=299req/2b feed-discovery=278req/0b hot-netflow=52req/26b(bk) over ~135min since=2026-09-28T11:18:27.997Z dropped=6555,e3ecb8b0e4a46994,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:04,[mevx] notifications=200 parseSkips=0 endpoints=2,5b17e0a7246cafaa,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:04,"[earlier-entry] no as-of anchor candles for F5CPPs42UKS6LcJzSXwTEgh2e3oXxzCBTa1iMfftpump (firstSeen=1787684400726 t60=1787688000726, candles=6) — row stays pending",7f71d57c973475d9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:03,"[earlier-entry] no as-of anchor candles for A4ihj8g1RCjFT44vDjtkfYFT41yjmf1NbXtkdoiBnvwp (firstSeen=1787684375043 t60=1787687975043, candles=3) — row stays pending",5ff9d050796685bb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:02,"[earlier-entry] no as-of anchor candles for CW7HuFKJKGWYd932ziUtD4FddXLkofKCzaW3y5c4pump (firstSeen=1787684375041 t60=1787687975041, candles=12) — row stays pending",fb893491beec6497,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:02,[hot] poll source=mevx candidates=124 passing=3 newest_age_min=1,230d6a8ac26f2aab,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:02,[mevx] notifications=200 parseSkips=0 endpoints=2,19043e1036fca069,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:01,[earlier-entry] GMGN kline EMPTY history for 2rqRG1GH8iiXjNc5S3eBaJJQtsnuKxjp7cEGWwm5pump (window 1787684255034..1787688095034) — row stays pending,d37e43c8344d1562,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:33:00,"[earlier-entry] no as-of anchor candles for Fy3n6AqYfwZrHosrdxKKvsxWh8CKaUste2DCpHTspump (firstSeen=1787684375032 t60=1787687975032, candles=7) — row stays pending",2a734852153118e9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:32:59,"[earlier-entry] no as-of anchor candles for USCSiKDUVap6hj33JvRDYq6bEmiBwVm3BvE6o5fNgRf (firstSeen=1787684375031 t60=1787687975031, candles=5) — row stays pending",2b13a58c965731c7,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:32:59,"[earlier-entry] no as-of anchor candles for FBCStPyNtdW5gnEmsmdFY1whJ7jxEuPggN6un416oJ77 (firstSeen=1787684375030 t60=1787687975030, candles=3) — row stays pending",f53451469dc4552c,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:32:47,[hot] poll source=mevx candidates=124 passing=3 newest_age_min=1,c6885d982785e097,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:32:47,[mevx] notifications=200 parseSkips=0 endpoints=2,d37fe30201446140,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:32:34,[dexscreener] Polled 30 Solana pairs,faf5e562884ef0f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:32:34,"[dexscreener] Got 30 profiles, 17 Solana",ca659ebf419c0d40,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:32:32,[hot] poll source=mevx candidates=124 passing=3 newest_age_min=1,1d2e660c7a1b79db,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:32:32,[mevx] notifications=200 parseSkips=0 endpoints=2,1111dd5134326d49,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:32:26,"[microaudit:priority] tick done: 0 queued, 0 cooldown-skipped, 0 capped, 0 fetched, 0 stamped, 0 deferred, 0 stale-skipped",e4fd65d34779e25,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:32:17,[hot] poll source=mevx candidates=124 passing=3 newest_age_min=1,b8c0afb72b8f9a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:32:17,[mevx] notifications=200 parseSkips=0 endpoints=2,fdb77fbbfa63630a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:32:11,[gmgn-feed] kol poll: events=0 tx=0 mints=0 new=0 FAILED(fail-open),90e24244dd3c8198,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:32:11,[gmgn-feed] discovery poll: saw=0 new=0 deduped=0 FAILED(fail-open),61ca7ed0ec871e10,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:32:04,[dexscreener] 🆕 New pair: Cat Out Of The Bag (OUTOFBAG),fe720eb932f27472,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:32:04,[dexscreener] Skipped stale launch Cat Out Of The Bag (OUTOFBAG) age 39m,6f52eb9ff157d3fe,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:32:04,[dexscreener] Polled 30 Solana pairs,1f5114140e2db6a6,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:32:04,"[dexscreener] Got 30 profiles, 17 Solana",d323525b7bb771d9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:32:04,[mevx] notifications=200 parseSkips=0 endpoints=2,36ed514b35a39428,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:32:04,[gmgn-budget] earlier-entry=10321req/13b feed-kol=556req/0b conviction=299req/2b feed-discovery=278req/0b hot-netflow=52req/26b(bk) over ~134min since=2026-09-28T11:18:21.589Z dropped=6547,8a60a43e2564b8eb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:32:04,[mevx] notifications=200 parseSkips=0 endpoints=2,cf506a7bfc39a2d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:32:02,[hot] poll source=mevx candidates=125 passing=3 newest_age_min=0,fb014879319f0111,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:32:02,[mevx] notifications=200 parseSkips=0 endpoints=2,608e2e0fa543a66f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:59,[hot] poll source=mevx candidates=125 passing=3 newest_age_min=0,7a2282c489d588ce,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:59,[alerts] Sent alert to 42/75 subscribers,2ca2e8519716310e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:58,[alerts] Skipped blocked subscriber telegram_id=1344077137,4da6db7c7669b49d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:57,[alerts] Skipped blocked subscriber telegram_id=6741131255,47acd97611d0ac60,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:57,[alerts] Skipped blocked subscriber telegram_id=6035244860,1b7f110e8cbe31a4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:57,[alerts] Skipped blocked subscriber telegram_id=5613628105,f22e91ad244dd677,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:57,[alerts] Skipped blocked subscriber telegram_id=1907889596,56a65121f3a518bd,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:56,[alerts] Skipped blocked subscriber telegram_id=5488385809,c77748ea8eb340,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:56,[alerts] Skipped blocked subscriber telegram_id=8952006958,a9470bea50418428,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:56,[alerts] Skipped blocked subscriber telegram_id=8592392184,e4ac3a2774dd1b72,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:56,[alerts] Skipped blocked subscriber telegram_id=5961677927,716df581a02f460a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:56,[alerts] Skipped blocked subscriber telegram_id=8102814401,fe94ca8524af8b40,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:56,[alerts] Skipped blocked subscriber telegram_id=8710435057,dcffc17826277cd5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:55,[alerts] Skipped blocked subscriber telegram_id=5516053745,b7672b818e55ffb4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:54,[alerts] Skipped blocked subscriber telegram_id=815372572,7ce912ec14289d2b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:53,[alerts] Skipped blocked subscriber telegram_id=8763247475,40a94cd5596b4a7e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:53,[alerts] Skipped blocked subscriber telegram_id=1957647754,8a4438e6f17f2ea4,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:53,[alerts] Skipped blocked subscriber telegram_id=782379293,834e83b28973ece8,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:52,[alerts] Skipped blocked subscriber telegram_id=6930906500,9cd358fce40cc949,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:52,[alerts] Skipped blocked subscriber telegram_id=7994531571,5b295a313d013cf2,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:52,[alerts] Skipped blocked subscriber telegram_id=5937846245,1c702dde4b4a83a0,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:52,[alerts] Skipped blocked subscriber telegram_id=1383860867,ade44c8610479c3f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:52,[alerts] Skipped blocked subscriber telegram_id=5156454504,63ce7e0ae3a4a5cc,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:52,[alerts] Skipped blocked subscriber telegram_id=7167665234,4baabf479cc728f6,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:52,[alerts] Skipped blocked subscriber telegram_id=1045068325,3b93b5ea6fcd7cca,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:52,[alerts] Skipped blocked subscriber telegram_id=8859065841,6251c58c39f079b3,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:52,[alerts] Skipped blocked subscriber telegram_id=40598501,9c0a9534a893deb6,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:52,[alerts] Skipped blocked subscriber telegram_id=517043895,37eb462f0ffbc0db,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:51,[alerts] Skipped blocked subscriber telegram_id=1570219895,7091fa74e2b2a3a3,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:51,[alerts] Skipped blocked subscriber telegram_id=8593289816,6d18543327ea91,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:51,[alerts] Skipped blocked subscriber telegram_id=7539829436,b653fe1238bde6ba,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:51,[alerts] Skipped blocked subscriber telegram_id=5853920193,5018cb9fc6ef5e8c,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:51,[alerts] Skipped blocked subscriber telegram_id=7709322421,9f7707a9d67dcfdf,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:49,[alerts] Skipped blocked subscriber telegram_id=6250058659,8e601bb3a2887b54,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:48,[alerts] Skipped blocked subscriber telegram_id=8642435292,78195e40e173f6ee,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:48,[hot-netflow] GMGN token_top_traders tag=smart_degen mint=72QezUPcrYkm HTTP 429 RATE_LIMIT_BANNED — backfill pausing until 2026-09-28T13:32:17.000Z (reset_at=1790602337),23320cfa1db77bf2,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:47,[narrative-hot] 3971397@token_alerts tag=animal src=none stage=UNKNOWN share=0.09746109746109746 desc=n/a cluster=1 tags=animal mindshare=n/a,d117e2781b6914c0,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:47,[mevx] notifications=200 parseSkips=0 endpoints=2,4e7e5c352312e451,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:34,[dexscreener] Polled 30 Solana pairs,a370cd17c58d1aef,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:34,"[dexscreener] Got 30 profiles, 18 Solana",3eb64ee655fc4129,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:32,[hot] poll source=mevx candidates=124 passing=2 newest_age_min=14,1b14a3023690516e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:32,[mevx] notifications=200 parseSkips=0 endpoints=2,e56ad39cb4c15de,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:31,"[earlier-entry] no as-of anchor candles for G1fDSMMg6GsreL343Y8PGVzYht2CTfEtjZFuX3vRpump (firstSeen=1787694184135 t60=1787697784135, candles=36) — row stays pending",1fa463a7e47ec0c8,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:30,"[earlier-entry] no as-of anchor candles for EJUTDNaakydzbVJa7qisRuSFBpBAKWchuWvbwWXppump (firstSeen=1787694131175 t60=1787697731175, candles=8) — row stays pending",7788b1efb66d6012,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:29,"[earlier-entry] no as-of anchor candles for 5VsmPH57C3ApqVVV7D2B2yELj7moVJ8VWc1DNWTspump (firstSeen=1787693539578 t60=1787697139578, candles=22) — row stays pending",a5cb67c4d3011c22,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:28,"[earlier-entry] no as-of anchor candles for 87UDuAH5UxDxtHJ6TbuvZJut78JxcQU1X4h8HyKLpump (firstSeen=1787693012218 t60=1787696612218, candles=21) — row stays pending",3934c777d89068fe,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:27,[earlier-entry] GMGN kline EMPTY history for GZR59y93kd9mhSf1y9jj3MQaaDRTLjKHkAumj5wZpump (window 1787692284174..1787696124174) — row stays pending,7df2c1979f98fcf9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:27,"[earlier-entry] no as-of anchor candles for FASuHwpPmEMV5eR97eveRShvFynoqMi4uyTk9Qxvpump (firstSeen=1787692374995 t60=1787695974995, candles=13) — row stays pending",66785e07a4f942f9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:26,"[earlier-entry] no as-of anchor candles for ETTE5N3HsJd1m9BFtHsadZqRU1x8ZsxByehUugtZpump (firstSeen=1787692355448 t60=1787695955448, candles=2) — row stays pending",71fd267d26fd2f91,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:26,"[microaudit:priority] tick done: 0 queued, 0 cooldown-skipped, 0 capped, 0 fetched, 0 stamped, 0 deferred, 0 stale-skipped",191c5ba6fe67cc2b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:25,"[earlier-entry] no as-of anchor candles for 42SYB3Fyd7KV9GkHjVW36WxgzNJpu3EKNvUyp9sHpump (firstSeen=1787692355442 t60=1787695955442, candles=23) — row stays pending",c1009d85d3d5782f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:24,"[earlier-entry] no as-of anchor candles for 9FFDy5LsmrQJVGevooMomQtwZ6nByeD95CB43qy4pump (firstSeen=1787692355440 t60=1787695955440, candles=10) — row stays pending",77edcd2d9aedf9bb,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:23,"[earlier-entry] no as-of anchor candles for 672KyXWJE8infxtD3gNHAZGdDGuWSmgVCUKrScB6pump (firstSeen=1787692355435 t60=1787695955435, candles=7) — row stays pending",3d6d00be9782b49d,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:23,"[earlier-entry] no as-of anchor candles for 4qjPZWnR8usFJsMmgU4thuWuasvN7rV45VMthMbdpump (firstSeen=1787692355334 t60=1787695955334, candles=15) — row stays pending",615afcc1b21b7013,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:22,"[earlier-entry] no as-of anchor candles for TKLCx7SBsPLT2DvoHAGwW348RBL4jEDtDdFck7opump (firstSeen=1787692355333 t60=1787695955333, candles=14) — row stays pending",fee097e9ec5124d0,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:21,"[earlier-entry] no as-of anchor candles for 2fqG8LbiKNDYgFpZZZ6F9uke6GhRe7fqw9Pa4oJupump (firstSeen=1787689254230 t60=1787692854230, candles=1) — row stays pending",faa85ef94c1d8e0f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:20,"[earlier-entry] no as-of anchor candles for 4n7hKbjRQ8kikDXoZJj6QSpr2ZtTNJCJTf7NuCnipump (firstSeen=1787689034855 t60=1787692634855, candles=13) — row stays pending",c7f1c69bb2abfcf5,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:19,"[earlier-entry] no as-of anchor candles for Hr4TZjRcphKM21oh4BrQjH66kHhuBPDEzRTuMTXFpump (firstSeen=1787688442375 t60=1787692042375, candles=3) — row stays pending",e51e12264940cffa,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:19,"[earlier-entry] no as-of anchor candles for H2qTatoCJMx1fXFWZpjYLAdc6it7TYmzeQTnY7Mjpump (firstSeen=1787688441901 t60=1787692041901, candles=25) — row stays pending",4027646ec1a04b9a,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:18,"[earlier-entry] no as-of anchor candles for FWRkpgMqsAhY6aQrz7npK32VwTkwjCBF5n4Enybnpump (firstSeen=1787688319574 t60=1787691919574, candles=3) — row stays pending",e2fbbcbc3bf59b9e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:17,"[earlier-entry] no as-of anchor candles for 7gLfH99aqSjBaRXfhrzm2vEgrxKvvSgm2JctF5rgpump (firstSeen=1787688148054 t60=1787691748054, candles=33) — row stays pending",8f1cfbe07f55fbd9,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:17,[hot] poll source=mevx candidates=124 passing=2 newest_age_min=14,4153b6c48857caf2,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:17,[mevx] notifications=200 parseSkips=0 endpoints=2,c680dfa67819f2e1,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:16,"[earlier-entry] no as-of anchor candles for 4izEqGCX9KxD2xWZkJkMn8WRqNiBqkq2eX8PZqRDpump (firstSeen=1787687575575 t60=1787691175575, candles=7) — row stays pending",20aeaff379cec06f,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:15,"[earlier-entry] no as-of anchor candles for 4185dnL3PaVsKyikTEQApEhgRXbYbyxJGwYK6qQ2pump (firstSeen=1787687522215 t60=1787691122215, candles=6) — row stays pending",fba0b56fb2457334,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:14,"[earlier-entry] no as-of anchor candles for FDcGUXTEGpn3dZDhW3PLnk3jvEyuLLWEXM8Jpg81pump (firstSeen=1787687437815 t60=1787691037815, candles=10) — row stays pending",6d56798b3ad06db0,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:13,"[earlier-entry] no as-of anchor candles for pbiX8giTJnC2nKAMfxTStJrTtT9XbNz5zPx6y7mpump (firstSeen=1787687380536 t60=1787690980536, candles=9) — row stays pending",e13b2d77edabb075,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:12,"[earlier-entry] no as-of anchor candles for CebGgVwrWHkAhfWZi6jHgeduKRSDzijnGZVQ97k6pump (firstSeen=1787687278695 t60=1787690878695, candles=20) — row stays pending",cc24f83109a0c73b,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:12,[gmgn-feed] kol poll: events=97 tx=48 mints=22 new=3,5c20e28c17635572,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:12,"[earlier-entry] no as-of anchor candles for En9sQtnHpByLEE7ykhFQ25PirV54rYegEJCjBV87pump (firstSeen=1787686994060 t60=1787690594060, candles=16) — row stays pending",947fd008fbbba590,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:11,[dexscreener] Profiles fetch failed: 429,e859bdac58700a0,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:11,[dexscreener] Rate limit exhausted after retries,e14e43286589216,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:11,"[earlier-entry] no as-of anchor candles for 5N8vsaxFs7cVuw7fQyhTSYMPpdzMt8nGNr2f5kaHpump (firstSeen=1787686853336 t60=1787690453336, candles=11) — row stays pending",3e70c31401aba95e,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:11,[gmgn-feed] discovery poll: saw=60 new=35 deduped=25,84e1683bde343948,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
+2026-09-28 10:31:10,"[earlier-entry] no as-of anchor candles for J1TNHqaAYuratcbSwgsPcTXi2jShxvZMsC2HBBZJpump (firstSeen=1787686693415 t60=1787690293415, candles=29) — row stays pending",d3cfe7daf6c1abad,[object Object],,0000000000000000e4c27620c476a6b0403e273e52e5578f,info
