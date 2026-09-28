@@ -1,0 +1,803 @@
+{
+  "method": {
+    "dataset": "ian05012/solana-memecoin-dataset",
+    "target": "collapse-like",
+    "collapse_ratio": 0.2,
+    "lookahead_hours": 24,
+    "live_feature_rule": "only pre-event observations/features may become JEV inputs",
+    "forward_label_leakage": "not used as live features"
+  },
+  "corpus": {
+    "tokens": 44460,
+    "collapse_like": 9833,
+    "non_collapse": 34627
+  },
+  "patterns": [
+    {
+      "patternId": "COLLAPSE-CAND-042",
+      "features": [
+        "sell_buy_300_ge_2",
+        "repeated_seller_share_25",
+        "bundler_holders_ge_10"
+      ],
+      "targetMatches": 306,
+      "controlMatches": 0,
+      "targetRate": 0.03112,
+      "controlRate": 0.0,
+      "precisionAgainstNonCollapse": 1.0,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-057",
+      "features": [
+        "sell_buy_60_ge_2",
+        "repeated_seller_share_25",
+        "bundler_holders_ge_10"
+      ],
+      "targetMatches": 155,
+      "controlMatches": 0,
+      "targetRate": 0.015763,
+      "controlRate": 0.0,
+      "precisionAgainstNonCollapse": 1.0,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-018",
+      "features": [
+        "repeated_seller_share_25",
+        "sniper_holders_ge_10"
+      ],
+      "targetMatches": 128,
+      "controlMatches": 0,
+      "targetRate": 0.013017,
+      "controlRate": 0.0,
+      "precisionAgainstNonCollapse": 1.0,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-071",
+      "features": [
+        "repeated_seller_share_25",
+        "insider_ratio_ge_10",
+        "sniper_holders_ge_10"
+      ],
+      "targetMatches": 128,
+      "controlMatches": 0,
+      "targetRate": 0.013017,
+      "controlRate": 0.0,
+      "precisionAgainstNonCollapse": 1.0,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-080",
+      "features": [
+        "repeated_seller_share_25",
+        "sniper_holders_ge_10",
+        "lp_burned_lt_50"
+      ],
+      "targetMatches": 128,
+      "controlMatches": 0,
+      "targetRate": 0.013017,
+      "controlRate": 0.0,
+      "precisionAgainstNonCollapse": 1.0,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-075",
+      "features": [
+        "repeated_seller_share_25",
+        "bundler_holders_ge_10",
+        "sniper_holders_ge_10"
+      ],
+      "targetMatches": 126,
+      "controlMatches": 0,
+      "targetRate": 0.012814,
+      "controlRate": 0.0,
+      "precisionAgainstNonCollapse": 1.0,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-079",
+      "features": [
+        "repeated_seller_share_25",
+        "sniper_holders_ge_10",
+        "crew_cohesion_high"
+      ],
+      "targetMatches": 60,
+      "controlMatches": 0,
+      "targetRate": 0.006102,
+      "controlRate": 0.0,
+      "precisionAgainstNonCollapse": 1.0,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-019",
+      "features": [
+        "repeated_seller_share_25",
+        "smart_earliness_high"
+      ],
+      "targetMatches": 41,
+      "controlMatches": 0,
+      "targetRate": 0.00417,
+      "controlRate": 0.0,
+      "precisionAgainstNonCollapse": 1.0,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-072",
+      "features": [
+        "repeated_seller_share_25",
+        "insider_ratio_ge_10",
+        "smart_earliness_high"
+      ],
+      "targetMatches": 41,
+      "controlMatches": 0,
+      "targetRate": 0.00417,
+      "controlRate": 0.0,
+      "precisionAgainstNonCollapse": 1.0,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-081",
+      "features": [
+        "repeated_seller_share_25",
+        "smart_earliness_high",
+        "lp_burned_lt_50"
+      ],
+      "targetMatches": 41,
+      "controlMatches": 0,
+      "targetRate": 0.00417,
+      "controlRate": 0.0,
+      "precisionAgainstNonCollapse": 1.0,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-076",
+      "features": [
+        "repeated_seller_share_25",
+        "bundler_holders_ge_10",
+        "smart_earliness_high"
+      ],
+      "targetMatches": 35,
+      "controlMatches": 0,
+      "targetRate": 0.003559,
+      "controlRate": 0.0,
+      "precisionAgainstNonCollapse": 1.0,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-043",
+      "features": [
+        "sell_buy_300_ge_2",
+        "repeated_seller_share_25",
+        "sniper_holders_ge_10"
+      ],
+      "targetMatches": 27,
+      "controlMatches": 0,
+      "targetRate": 0.002746,
+      "controlRate": 0.0,
+      "precisionAgainstNonCollapse": 1.0,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-017",
+      "features": [
+        "repeated_seller_share_25",
+        "bundler_holders_ge_10"
+      ],
+      "targetMatches": 2102,
+      "controlMatches": 3,
+      "targetRate": 0.21377,
+      "controlRate": 8.7e-05,
+      "precisionAgainstNonCollapse": 0.998575,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-070",
+      "features": [
+        "repeated_seller_share_25",
+        "insider_ratio_ge_10",
+        "bundler_holders_ge_10"
+      ],
+      "targetMatches": 2102,
+      "controlMatches": 3,
+      "targetRate": 0.21377,
+      "controlRate": 8.7e-05,
+      "precisionAgainstNonCollapse": 0.998575,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-078",
+      "features": [
+        "repeated_seller_share_25",
+        "bundler_holders_ge_10",
+        "lp_burned_lt_50"
+      ],
+      "targetMatches": 2102,
+      "controlMatches": 3,
+      "targetRate": 0.21377,
+      "controlRate": 8.7e-05,
+      "precisionAgainstNonCollapse": 0.998575,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-077",
+      "features": [
+        "repeated_seller_share_25",
+        "bundler_holders_ge_10",
+        "crew_cohesion_high"
+      ],
+      "targetMatches": 638,
+      "controlMatches": 1,
+      "targetRate": 0.064884,
+      "controlRate": 2.9e-05,
+      "precisionAgainstNonCollapse": 0.998435,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-021",
+      "features": [
+        "repeated_seller_share_25",
+        "lp_burned_lt_50"
+      ],
+      "targetMatches": 2581,
+      "controlMatches": 16,
+      "targetRate": 0.262483,
+      "controlRate": 0.000462,
+      "precisionAgainstNonCollapse": 0.993839,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-016",
+      "features": [
+        "repeated_seller_share_25",
+        "insider_ratio_ge_10"
+      ],
+      "targetMatches": 2580,
+      "controlMatches": 16,
+      "targetRate": 0.262382,
+      "controlRate": 0.000462,
+      "precisionAgainstNonCollapse": 0.993837,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-074",
+      "features": [
+        "repeated_seller_share_25",
+        "insider_ratio_ge_10",
+        "lp_burned_lt_50"
+      ],
+      "targetMatches": 2580,
+      "controlMatches": 16,
+      "targetRate": 0.262382,
+      "controlRate": 0.000462,
+      "precisionAgainstNonCollapse": 0.993837,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-020",
+      "features": [
+        "repeated_seller_share_25",
+        "crew_cohesion_high"
+      ],
+      "targetMatches": 846,
+      "controlMatches": 7,
+      "targetRate": 0.086037,
+      "controlRate": 0.000202,
+      "precisionAgainstNonCollapse": 0.991794,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-073",
+      "features": [
+        "repeated_seller_share_25",
+        "insider_ratio_ge_10",
+        "crew_cohesion_high"
+      ],
+      "targetMatches": 846,
+      "controlMatches": 7,
+      "targetRate": 0.086037,
+      "controlRate": 0.000202,
+      "precisionAgainstNonCollapse": 0.991794,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-082",
+      "features": [
+        "repeated_seller_share_25",
+        "crew_cohesion_high",
+        "lp_burned_lt_50"
+      ],
+      "targetMatches": 846,
+      "controlMatches": 7,
+      "targetRate": 0.086037,
+      "controlRate": 0.000202,
+      "precisionAgainstNonCollapse": 0.991794,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-002",
+      "features": [
+        "sell_buy_300_ge_2",
+        "repeated_seller_share_25"
+      ],
+      "targetMatches": 371,
+      "controlMatches": 5,
+      "targetRate": 0.03773,
+      "controlRate": 0.000144,
+      "precisionAgainstNonCollapse": 0.986702,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-041",
+      "features": [
+        "sell_buy_300_ge_2",
+        "repeated_seller_share_25",
+        "insider_ratio_ge_10"
+      ],
+      "targetMatches": 371,
+      "controlMatches": 5,
+      "targetRate": 0.03773,
+      "controlRate": 0.000144,
+      "precisionAgainstNonCollapse": 0.986702,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-045",
+      "features": [
+        "sell_buy_300_ge_2",
+        "repeated_seller_share_25",
+        "lp_burned_lt_50"
+      ],
+      "targetMatches": 371,
+      "controlMatches": 5,
+      "targetRate": 0.03773,
+      "controlRate": 0.000144,
+      "precisionAgainstNonCollapse": 0.986702,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-044",
+      "features": [
+        "sell_buy_300_ge_2",
+        "repeated_seller_share_25",
+        "crew_cohesion_high"
+      ],
+      "targetMatches": 128,
+      "controlMatches": 5,
+      "targetRate": 0.013017,
+      "controlRate": 0.000144,
+      "precisionAgainstNonCollapse": 0.962406,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-008",
+      "features": [
+        "sell_buy_60_ge_2",
+        "repeated_seller_share_25"
+      ],
+      "targetMatches": 194,
+      "controlMatches": 13,
+      "targetRate": 0.019729,
+      "controlRate": 0.000375,
+      "precisionAgainstNonCollapse": 0.937198,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-056",
+      "features": [
+        "sell_buy_60_ge_2",
+        "repeated_seller_share_25",
+        "insider_ratio_ge_10"
+      ],
+      "targetMatches": 194,
+      "controlMatches": 13,
+      "targetRate": 0.019729,
+      "controlRate": 0.000375,
+      "precisionAgainstNonCollapse": 0.937198,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-059",
+      "features": [
+        "sell_buy_60_ge_2",
+        "repeated_seller_share_25",
+        "lp_burned_lt_50"
+      ],
+      "targetMatches": 194,
+      "controlMatches": 13,
+      "targetRate": 0.019729,
+      "controlRate": 0.000375,
+      "precisionAgainstNonCollapse": 0.937198,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-036",
+      "features": [
+        "sell_buy_300_ge_2",
+        "sell_buy_60_ge_2",
+        "repeated_seller_share_25"
+      ],
+      "targetMatches": 63,
+      "controlMatches": 5,
+      "targetRate": 0.006407,
+      "controlRate": 0.000144,
+      "precisionAgainstNonCollapse": 0.926471,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-058",
+      "features": [
+        "sell_buy_60_ge_2",
+        "repeated_seller_share_25",
+        "crew_cohesion_high"
+      ],
+      "targetMatches": 60,
+      "controlMatches": 6,
+      "targetRate": 0.006102,
+      "controlRate": 0.000173,
+      "precisionAgainstNonCollapse": 0.909091,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-001",
+      "features": [
+        "sell_buy_300_ge_2",
+        "sell_buy_60_ge_2"
+      ],
+      "targetMatches": 80,
+      "controlMatches": 35,
+      "targetRate": 0.008136,
+      "controlRate": 0.001011,
+      "precisionAgainstNonCollapse": 0.695652,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-037",
+      "features": [
+        "sell_buy_300_ge_2",
+        "sell_buy_60_ge_2",
+        "insider_ratio_ge_10"
+      ],
+      "targetMatches": 80,
+      "controlMatches": 35,
+      "targetRate": 0.008136,
+      "controlRate": 0.001011,
+      "precisionAgainstNonCollapse": 0.695652,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-040",
+      "features": [
+        "sell_buy_300_ge_2",
+        "sell_buy_60_ge_2",
+        "lp_burned_lt_50"
+      ],
+      "targetMatches": 80,
+      "controlMatches": 35,
+      "targetRate": 0.008136,
+      "controlRate": 0.001011,
+      "precisionAgainstNonCollapse": 0.695652,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-038",
+      "features": [
+        "sell_buy_300_ge_2",
+        "sell_buy_60_ge_2",
+        "bundler_holders_ge_10"
+      ],
+      "targetMatches": 52,
+      "controlMatches": 26,
+      "targetRate": 0.005288,
+      "controlRate": 0.000751,
+      "precisionAgainstNonCollapse": 0.666667,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-053",
+      "features": [
+        "sell_buy_300_ge_2",
+        "sniper_holders_ge_10",
+        "crew_cohesion_high"
+      ],
+      "targetMatches": 25,
+      "controlMatches": 14,
+      "targetRate": 0.002542,
+      "controlRate": 0.000404,
+      "precisionAgainstNonCollapse": 0.641026,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-064",
+      "features": [
+        "sell_buy_60_ge_2",
+        "bundler_holders_ge_10",
+        "sniper_holders_ge_10"
+      ],
+      "targetMatches": 21,
+      "controlMatches": 13,
+      "targetRate": 0.002136,
+      "controlRate": 0.000375,
+      "precisionAgainstNonCollapse": 0.617647,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-011",
+      "features": [
+        "sell_buy_60_ge_2",
+        "sniper_holders_ge_10"
+      ],
+      "targetMatches": 21,
+      "controlMatches": 14,
+      "targetRate": 0.002136,
+      "controlRate": 0.000404,
+      "precisionAgainstNonCollapse": 0.6,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-061",
+      "features": [
+        "sell_buy_60_ge_2",
+        "insider_ratio_ge_10",
+        "sniper_holders_ge_10"
+      ],
+      "targetMatches": 21,
+      "controlMatches": 14,
+      "targetRate": 0.002136,
+      "controlRate": 0.000404,
+      "precisionAgainstNonCollapse": 0.6,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-067",
+      "features": [
+        "sell_buy_60_ge_2",
+        "sniper_holders_ge_10",
+        "lp_burned_lt_50"
+      ],
+      "targetMatches": 21,
+      "controlMatches": 14,
+      "targetRate": 0.002136,
+      "controlRate": 0.000404,
+      "precisionAgainstNonCollapse": 0.6,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-007",
+      "features": [
+        "sell_buy_300_ge_2",
+        "lp_burned_lt_50"
+      ],
+      "targetMatches": 529,
+      "controlMatches": 370,
+      "targetRate": 0.053798,
+      "controlRate": 0.010685,
+      "precisionAgainstNonCollapse": 0.588432,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-003",
+      "features": [
+        "sell_buy_300_ge_2",
+        "insider_ratio_ge_10"
+      ],
+      "targetMatches": 528,
+      "controlMatches": 370,
+      "targetRate": 0.053697,
+      "controlRate": 0.010685,
+      "precisionAgainstNonCollapse": 0.587973,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-049",
+      "features": [
+        "sell_buy_300_ge_2",
+        "insider_ratio_ge_10",
+        "lp_burned_lt_50"
+      ],
+      "targetMatches": 528,
+      "controlMatches": 370,
+      "targetRate": 0.053697,
+      "controlRate": 0.010685,
+      "precisionAgainstNonCollapse": 0.587973,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-005",
+      "features": [
+        "sell_buy_300_ge_2",
+        "sniper_holders_ge_10"
+      ],
+      "targetMatches": 42,
+      "controlMatches": 30,
+      "targetRate": 0.004271,
+      "controlRate": 0.000866,
+      "precisionAgainstNonCollapse": 0.583333,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-047",
+      "features": [
+        "sell_buy_300_ge_2",
+        "insider_ratio_ge_10",
+        "sniper_holders_ge_10"
+      ],
+      "targetMatches": 42,
+      "controlMatches": 30,
+      "targetRate": 0.004271,
+      "controlRate": 0.000866,
+      "precisionAgainstNonCollapse": 0.583333,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-054",
+      "features": [
+        "sell_buy_300_ge_2",
+        "sniper_holders_ge_10",
+        "lp_burned_lt_50"
+      ],
+      "targetMatches": 42,
+      "controlMatches": 30,
+      "targetRate": 0.004271,
+      "controlRate": 0.000866,
+      "precisionAgainstNonCollapse": 0.583333,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-004",
+      "features": [
+        "sell_buy_300_ge_2",
+        "bundler_holders_ge_10"
+      ],
+      "targetMatches": 373,
+      "controlMatches": 290,
+      "targetRate": 0.037933,
+      "controlRate": 0.008375,
+      "precisionAgainstNonCollapse": 0.562594,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-046",
+      "features": [
+        "sell_buy_300_ge_2",
+        "insider_ratio_ge_10",
+        "bundler_holders_ge_10"
+      ],
+      "targetMatches": 373,
+      "controlMatches": 290,
+      "targetRate": 0.037933,
+      "controlRate": 0.008375,
+      "precisionAgainstNonCollapse": 0.562594,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-052",
+      "features": [
+        "sell_buy_300_ge_2",
+        "bundler_holders_ge_10",
+        "lp_burned_lt_50"
+      ],
+      "targetMatches": 373,
+      "controlMatches": 290,
+      "targetRate": 0.037933,
+      "controlRate": 0.008375,
+      "precisionAgainstNonCollapse": 0.562594,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    },
+    {
+      "patternId": "COLLAPSE-CAND-050",
+      "features": [
+        "sell_buy_300_ge_2",
+        "bundler_holders_ge_10",
+        "sniper_holders_ge_10"
+      ],
+      "targetMatches": 36,
+      "controlMatches": 28,
+      "targetRate": 0.003661,
+      "controlRate": 0.000809,
+      "precisionAgainstNonCollapse": 0.5625,
+      "confidence": "research-candidate",
+      "targetDefinition": "first post-detection 15m candle low <= 20% of detection price within 24h",
+      "note": "Collapse-like retrospective target, not confirmed rug label; validate against confirmed-rug corpora before live use."
+    }
+  ]
+}

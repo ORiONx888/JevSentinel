@@ -1,0 +1,54 @@
+name: Stage JEV research dataset on Fly
+
+on:
+  push:
+    branches:
+      - research/jev-rug-pattern-mining
+  workflow_dispatch:
+
+jobs:
+  stage-dataset:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: Download research dataset
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/jev-dataset
+          base="https://raw.githubusercontent.com/ian05012/solana-memecoin-dataset/main/data"
+          for f in ohlcv.parquet sequences.parquet tokens.parquet trades-000.parquet trades-001.parquet trades-002.parquet trades-003.parquet wallet_funding.parquet wallets.parquet; do
+            echo "Downloading $f"
+            curl -fL --retry 3 --retry-delay 2 "$base/$f" -o "/tmp/jev-dataset/$f"
+          done
+          du -h /tmp/jev-dataset/*
+          echo "Total:"
+          du -ch /tmp/jev-dataset/* | tail -n1
+
+      - name: Stage dataset on persistent Fly volume
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        run: |
+          set -euo pipefail
+          test -n "$FLY_API_TOKEN"
+          flyctl status --app jevsentinel
+          flyctl ssh console --app jevsentinel -C "mkdir -p /data/research/solana-memecoin-dataset"
+          for f in /tmp/jev-dataset/*.parquet; do
+            name="$(basename "$f")"
+            remote="/data/research/solana-memecoin-dataset/$name"
+            echo "Staging $name"
+            if flyctl ssh console --app jevsentinel -C "test -f '$remote'"; then
+              echo "Already present: $name"
+            else
+              flyctl sftp put "$f" "$remote" --app jevsentinel
+            fi
+          done
+
+      - name: Verify staged dataset
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        run: |
+          set -euo pipefail
+          flyctl ssh console --app jevsentinel -C "ls -lh /data/research/solana-memecoin-dataset"
+          flyctl ssh console --app jevsentinel -C "du -sh /data/research/solana-memecoin-dataset"

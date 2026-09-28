@@ -1,0 +1,63 @@
+name: Mine JEV historical collapse patterns
+
+on:
+  push:
+    branches:
+      - research/jev-rug-pattern-mining
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  mine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout research branch
+        uses: actions/checkout@v4
+
+      - name: Install mining dependencies
+        run: python -m pip install --upgrade pip duckdb pandas pyarrow
+
+      - name: Download GitHub research dataset
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/jev-dataset
+          base="https://raw.githubusercontent.com/ian05012/solana-memecoin-dataset/main/data"
+          for f in tokens.parquet ohlcv.parquet trades-000.parquet trades-001.parquet trades-002.parquet trades-003.parquet; do
+            echo "Downloading $f"
+            curl -L --fail --retry 3 --retry-delay 2 -o "/tmp/jev-dataset/$f" "$base/$f"
+          done
+          ls -lh /tmp/jev-dataset
+
+      - name: Run offline forensic miner
+        run: |
+          python research/pattern-engine/mine_dataset.py             --data-dir /tmp/jev-dataset             --out-dir research/pattern-engine/output
+
+      - name: Setup Node 24 for full test suite
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install Node dependencies for full test suite
+        run: npm install
+
+      - name: Validate generated artifacts
+        run: |
+          test -s research/pattern-engine/output/collapse-pattern-candidates.json
+          test -s research/pattern-engine/output/collapse-mining-report.md
+          python -m json.tool research/pattern-engine/output/collapse-pattern-candidates.json >/dev/null
+          npm test
+
+      - name: Commit research results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/pattern-engine/output
+          if git diff --cached --quiet; then
+            echo "No research-output changes to commit."
+          else
+            git commit -m "research: mine historical collapse candidates"
+            git push
+          fi
