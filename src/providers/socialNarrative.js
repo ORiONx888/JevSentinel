@@ -3,8 +3,8 @@ const CACHE_TTL_MS = 90_000;
 const HISTORY_TTL_MS = 15 * 60_000;
 const MAX_RESULTS = 50;
 const cache = new Map();
-const BULLISH = /\\b(accumulat|breakout|bullish|buy|buying|bid|bids|send|moon|pump|run|higher|strength|strong|rotation|gem|undervalued|launch|listing)\\b/i;
-const BEARISH = /\\b(rug|scam|dump|dumping|sell|selling|bearish|exit|avoid|fraud|dead|collapse|drain|exploit|hack|fud|weakness|weak)\\b/i;
+const BULLISH = /\b(accumulat|breakout|bullish|buy|buying|bid|bids|send|moon|pump|run|higher|strength|strong|rotation|gem|undervalued|launch|listing)\b/i;
+const BEARISH = /\b(rug|scam|dump|dumping|sell|selling|bearish|exit|avoid|fraud|dead|collapse|drain|exploit|hack|fud|weakness|weak)\b/i;
 
 export function createSocialNarrativeProvider({ fetchImpl = fetch, bearerToken = process.env.X_BEARER_TOKEN, now = () => Date.now(), cacheTtlMs = CACHE_TTL_MS } = {}) {
   return {
@@ -40,7 +40,11 @@ async function lookupSymbol({ symbol, fetchImpl, bearerToken, now }) {
   const body = await response.json();
   if (!response.ok) throw new Error("X recent search HTTP " + response.status);
   const users = new Map((body?.includes?.users ?? []).map((user) => [String(user.id), user]));
-  const posts = Array.isArray(body?.data) ? body.data : [];
+  const posts = (Array.isArray(body?.data) ? body.data : []).map((post) => ({
+    ...post,
+    authorFollowers: Number(users.get(String(post.author_id ?? ""))?.public_metrics?.followers_count ?? 0),
+    authorVerified: users.get(String(post.author_id ?? ""))?.verified === true,
+  }));
   const previous = cache.get(symbol)?.result?.socialPosts ?? [];
   const merged = mergePosts([...previous, ...posts], now - HISTORY_TTL_MS);
   return buildResult({ symbol, posts: merged, users, fetchedAt: new Date(now).toISOString(), query });
@@ -57,8 +61,7 @@ function buildResult({ symbol, posts, users, fetchedAt, query }) {
     const metrics = post.public_metrics ?? {};
     const engagement = Number(metrics.like_count ?? 0) + Number(metrics.retweet_count ?? 0) + Number(metrics.reply_count ?? 0) + Number(metrics.quote_count ?? 0);
     engagementTotal += Number.isFinite(engagement) ? engagement : 0;
-    const user = users.get(authorId);
-    const followers = Number(user?.public_metrics?.followers_count ?? 0);
+    const followers = Number(post.authorFollowers ?? 0);
     if (followers >= 10_000) influencerMentions += 1;
     authorCredibility.push(computeCredibility(followers, engagement));
   }
