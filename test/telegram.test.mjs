@@ -201,7 +201,7 @@ test("live alert distinguishes missing temporal baseline from a completed compar
   assert.doesNotMatch(baseline, /No material change detected/);
 
   const compared = buildLiveRiskAlert({ mint: "ABC123", symbol: "TEST", assessment: { answers: { urgency: { score: 0.57 } } }, state: { temporal: { sampleCount: 2, acceleration: {} } } });
-  assert.match(compared, /Live comparison shows no clear deterioration/);
+  assert.match(compared, /Live data: vol unavailable/);
 });
 
 test("live alert reports improving temporal conditions", () => {
@@ -318,6 +318,27 @@ test("live event signals explain the decision-driving change", () => {
   );
   assert.match(signals.join("\n"), /Sells\/5m 12 → 27 \(\+15\)/);
   assert.match(signals.join("\n"), /Price deteriorating/);
+});
+
+test("live mini-card reports absolute volume and liquidity, not a misleading zero delta", () => {
+  const text = buildLiveRiskAlert({
+    mint: "ABC123",
+    symbol: "MAMESUKE",
+    previousAnswers: { urgency: { score: 0.8, choice: "monitor" } },
+    assessment: { answers: { urgency: { score: 0.8, choice: "monitor" } } },
+    state: {
+      temporal: {
+        sampleCount: 2,
+        latest: { volume: 12847.5, liquidity: 24631.2, sellCount5m: 12 },
+        previous: { volume: 12847.5, liquidity: 24631.2, sellCount5m: 12 },
+        deltas: { volume: 0, liquidity: 0, sellCount5m: 0 },
+        acceleration: {},
+      },
+    },
+  });
+  assert.match(text, /Live data:.*vol \$12\.8K \(Δ \$0\)/);
+  assert.match(text, /liq \$24\.6K \(Δ \$0\)/);
+  assert.doesNotMatch(text, /Live data: vol \$0/);
 });
 
 test("live mini-card shows the actual urgency change instead of a generic fallback", () => {
