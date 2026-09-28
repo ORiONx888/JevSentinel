@@ -16,8 +16,15 @@ export function extractSolanaMint(text = "") {
 }
 
 export function extractSymbol(text = "") {
-  const match = String(text ?? "").match(/\$([A-Z][A-Z0-9_]{1,14})\b/);
-  return match?.[1] ?? "UNKNOWN";
+  const value = String(text ?? "");
+  const dollar = value.match(/\$([A-Za-z][A-Za-z0-9_]{0,14})\b/);
+  if (dollar?.[1]) return dollar[1].toUpperCase();
+
+  const labelled = value.match(/(?:TICKER|SYMBOL|TOKEN)\s*[:=]\s*\$?([A-Za-z][A-Za-z0-9_]{0,14})\b/i);
+  if (labelled?.[1]) return labelled[1].toUpperCase();
+
+  const header = value.match(/CONVICTION\s+PULSE\s+CW2\s*[—-]\s*\$?([A-Za-z][A-Za-z0-9_]{0,14})\b/i);
+  return header?.[1]?.toUpperCase() ?? "UNKNOWN";
 }
 
 export function buildCw2Observation({ text, messageId, chatId, observedAt = new Date().toISOString() }) {
