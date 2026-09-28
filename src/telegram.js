@@ -190,9 +190,9 @@ function createGroupRuntime(apiKey, logger = null) {
     telemetry,
     logger,
   });
-  const LIVE_MONITOR_INTERVAL_MS = 10_000;
-  // Seeded with the initial assessment, 31 snapshots = 30 follow-up ticks × 10s ≈ 5 minutes.
-  const LIVE_MONITOR_MAX_SNAPSHOTS = 31;
+  const LIVE_MONITOR_INTERVAL_MS = 3_000;
+  // Seeded with the initial assessment, 101 snapshots = 100 follow-up ticks × 3s ≈ 5 minutes.
+  const LIVE_MONITOR_MAX_SNAPSHOTS = 101;
   return { client, sentinel, telemetry, history: new Map(), predictionIds: new Map(), lastDecisions: new Map(), lastActions: new Map(), liveMonitor: createLiveMonitor({ intervalMs: LIVE_MONITOR_INTERVAL_MS, maxSnapshots: LIVE_MONITOR_MAX_SNAPSHOTS, logger }) };
 }
 
@@ -217,7 +217,7 @@ function urgencyInfo(assessment) {
     : level === "urgent" ? "🟠"
       : level === "elevated" ? "🟡"
         : level === "monitor" ? "🟢"
-          : numeric != null ? "🔵"
+          : numeric != null ? (numeric >= 2.25 ? "🔴" : numeric >= 1.5 ? "🟠" : numeric >= 0.75 ? "🟡" : "🟢")
             : "⚪";
   return {
     numeric,
@@ -422,6 +422,34 @@ function actionDisplay(action) {
         : "🟢 HOLD";
 }
 
+function describeAnswer(key, value) {
+  const descriptions = {
+    progression: {
+      extraction: "Selling/extraction activity is taking control",
+      distribution: "Supply is being distributed into the market",
+      preparation: "Positioning activity is developing",
+      noProgression: "No clear directional progression detected",
+    },
+    deterioration: {
+      severe: "Market conditions are deteriorating sharply",
+      elevated: "Market deterioration is increasing",
+      none: "No significant deterioration detected",
+    },
+    retraceAlternative: {
+      likelyNormalRetrace: "A normal pullback remains the leading explanation",
+      mixedEvidence: "Evidence is mixed between a pullback and further downside",
+      possibleSingleActorDump: "Single-actor selling remains a plausible explanation",
+      insufficientEvidence: "There is not enough evidence to classify the move",
+    },
+    dominantRisk: {
+      extraction: "Extraction/selling pressure",
+      distribution: "Distribution pressure",
+      liquidity: "Liquidity deterioration",
+    },
+  };
+  return descriptions[key]?.[value] ?? String(value ?? "unknown");
+}
+
 export function liveEventSignals(assessment, state, previousAnswers = null) {
   const answers = assessment?.answers ?? {};
   const temporal = state?.temporal ?? {};
@@ -436,19 +464,19 @@ export function liveEventSignals(assessment, state, previousAnswers = null) {
     const previousUrgency = urgencyInfo({ answers: { urgency: previousAnswers.urgency } });
     const currentUrgency = urgencyInfo(assessment);
     if (previousUrgency.label !== currentUrgency.label || previousUrgency.level !== currentUrgency.level) {
-      events.push("🔵 Urgency " + previousUrgency.label + " → " + currentUrgency.label);
+      events.push(currentUrgency.dot + " Urgency changed " + previousUrgency.label + " → " + currentUrgency.label);
     }
     for (const [key, label] of [
-      ["progression", "Progression"],
-      ["deterioration", "Deterioration"],
-      ["retraceAlternative", "Retrace assessment"],
-      ["dominantRisk", "Dominant risk"],
-      ["evidenceQuality", "Evidence quality"],
+      ["progression", "Market phase"],
+      ["deterioration", "Market condition"],
+      ["retraceAlternative", "Pullback assessment"],
+      ["dominantRisk", "Main risk"],
+      ["evidenceQuality", "Evidence strength"],
     ]) {
       const before = answerValue(previousAnswers[key]);
       const after = answerValue(answers[key]);
       if (before !== after && (before != null || after != null)) {
-        events.push("🧠 " + label + ": " + String(before ?? "unknown") + " → " + String(after ?? "unknown"));
+        events.push("🧠 " + label + ": " + describeAnswer(key, before) + " → " + describeAnswer(key, after));
       }
     }
   }
