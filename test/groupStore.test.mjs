@@ -14,6 +14,7 @@ test("group store encrypts and restores group credentials", () => {
       apiKey: "TEST_JEV_KEY_NOT_REAL",
       activatedAt: "2026-09-25T00:00:00.000Z",
       enabled: true,
+      monitorCard: "cw2",
     }];
     const store = createGroupStore({ filePath: path, encryptionSecret: "test-telegram-secret" });
     store.save(groups);
