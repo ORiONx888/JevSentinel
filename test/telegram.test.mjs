@@ -382,3 +382,32 @@ test("monitor command parses CW2, JEE, status, and rejects unknown cards", () =>
   assert.deepEqual(parseMonitorCommand("/monitor status"), { action: "status" });
   assert.equal(parseMonitorCommand("/monitor banana").action, "invalid");
 });
+
+
+test("numeric urgency uses traffic-light colors", () => {
+  const levels = [
+    [2.8, "🔴"],
+    [1.8, "🟠"],
+    [0.83, "🟡"],
+    [0.4, "🟢"],
+  ];
+  for (const [score, dot] of levels) {
+    const text = buildLiveRiskAlert({
+      mint: "ABC123",
+      symbol: "TEST",
+      assessment: { answers: { urgency: { score } } },
+    });
+    assert.match(text, new RegExp("Urgency: " + score.toFixed(2) + " " + dot));
+  }
+});
+
+test("live cards translate internal progression states into plain language", () => {
+  const text = buildLiveRiskAlert({
+    mint: "ABC123",
+    symbol: "TEST",
+    previousAnswers: { progression: { choice: "extraction" } },
+    assessment: { answers: { progression: { choice: "noProgression" }, urgency: { score: 0.4 } } },
+  });
+  assert.match(text, /Selling\/extraction activity is taking control → No clear directional progression detected/);
+  assert.doesNotMatch(text, /Progression: extraction → noProgression/);
+});
