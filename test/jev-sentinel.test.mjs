@@ -63,6 +63,37 @@ test("normalizes external intelligence into provider-neutral fields", async () =
   assert.equal(telemetry.all().length, 1);
 });
 
+test("preserves market telemetry when a later provider has null normalized fields", async () => {
+  const marketProvider = new IntelligenceProvider("token-research", async () => ({
+    priceUsd: 1.25,
+    liquidityUsd: 18000,
+    volume5mUsd: 42000,
+    priceChange5mPct: -48,
+    buyCount5m: 6,
+    sellCount5m: 41,
+    buySellRatio5m: 0.127,
+  }));
+  const flowProvider = new IntelligenceProvider("transfer-flow", async () => ({
+    uniqueSellers: 4,
+    uniqueBuyers: 2,
+    sellerAcceleration: 3,
+    coordinatedSellers: 2,
+  }));
+  const telemetry = new MemoryTelemetry();
+  const evaluator = { evaluate: async () => ({ answers: {} }) };
+  const engine = createJevSentinel({ providers: [marketProvider, flowProvider], evaluator, telemetry });
+  const result = await engine.assess(createObservation({ mint: "mint-provider-null-overwrite", sourceCard: "CW" }));
+
+  assert.equal(result.state.temporal.latest.price, 1.25);
+  assert.equal(result.state.temporal.latest.liquidity, 18000);
+  assert.equal(result.state.temporal.latest.volume, 42000);
+  assert.equal(result.state.temporal.latest.priceChange5mPct, -48);
+  assert.equal(result.state.temporal.latest.sellCount5m, 41);
+  assert.equal(result.state.temporal.latest.buySellRatio5m, 0.127);
+  assert.equal(result.state.temporal.latest.uniqueSellers, 4);
+  assert.equal(result.state.temporal.latest.coordinatedSellers, 2);
+});
+
 test("provider failure does not stop JEV evaluation", async () => {
   const provider = new IntelligenceProvider("external-flow", async () => { throw new Error("timeout"); });
   const telemetry = new MemoryTelemetry();
