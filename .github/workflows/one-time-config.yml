@@ -17,6 +17,13 @@ jobs:
         run: |
           MACHINE="$(flyctl machine list --app jevsentinel --json | jq -r '.[0].id')"
           flyctl ssh console --app jevsentinel --machine "$MACHINE" -C 'node --input-type=module -e "import(\"./src/groupStore.js\").then(({createGroupStore})=>{const s=createGroupStore();const g=s.load();if(g.length!==1)throw new Error(\"expected exactly one configured group\");s.save(g.map(x=>({...x,enabled:true,monitorCard:\"jee\"})));console.log(JSON.stringify(s.load().map(({chatId,enabled,monitorCard})=>({chatId,enabled,monitorCard}))))})"'
+      - name: Restart production to reload persisted monitoring configuration
+        env:
+          FLY_API_TOKEN: \${{ secrets.FLY_API_TOKEN }}
+        run: |
+          MACHINE="$(flyctl machine list --app jevsentinel --json | jq -r '.[0].id')"
+          flyctl machine restart "$MACHINE" --app jevsentinel
+          sleep 8
       - name: Verify persisted JEE monitoring
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
