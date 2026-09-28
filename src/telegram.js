@@ -781,8 +781,8 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
     persistGroupsNow();
     const card = group.monitorCard ?? "jee";
     await sendMessage(chatId, enabled
-      ? `🟢 <b>JevSentinel monitoring ON.</b>\\n\\nMonitoring: <b>${monitorCardLabel(card)}</b>`
-      : `⚪ <b>JevSentinel monitoring OFF.</b>\\n\\nNo <b>${monitorCardLabel(card)}</b> cards will be processed until /jevon is used.`);
+      ? `🟢 <b>JevSentinel monitoring ON.</b>\n\nMonitoring: <b>${monitorCardLabel(card)}</b>`
+      : `⚪ <b>JevSentinel monitoring OFF.</b>\n\nNo <b>${monitorCardLabel(card)}</b> cards will be processed until /jevon is used.`);
     return true;
   }
 
