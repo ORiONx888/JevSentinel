@@ -510,10 +510,19 @@ export function liveEventSignals(assessment, state, previousAnswers = null) {
     if (Number.isFinite(latest.priceChange5mPct) && Number.isFinite(previous.priceChange5mPct) && latest.priceChange5mPct !== previous.priceChange5mPct) {
       marketChanges.push("5m price change " + formatSignedPct(previous.priceChange5mPct) + "→" + formatSignedPct(latest.priceChange5mPct));
     }
-    if (Number.isFinite(deltas.volume)) marketChanges.push("vol " + formatUsd(deltas.volume));
+    const latestVolume = Number.isFinite(latest.volume5mUsd) ? latest.volume5mUsd : latest.volume;
+    if (Number.isFinite(latestVolume)) {
+      const volumeDelta = Number.isFinite(deltas.volume) ? " (Δ " + (deltas.volume > 0 ? "+" : "") + formatUsd(deltas.volume) + ")" : "";
+      marketChanges.push("vol " + formatUsd(latestVolume) + volumeDelta);
+    } else {
+      marketChanges.push("vol unavailable");
+    }
     if (Number.isFinite(deltas.sellCount5m) && deltas.sellCount5m !== 0) marketChanges.push("sells " + formatNumber(previous.sellCount5m) + "→" + formatNumber(latest.sellCount5m));
     if (Number.isFinite(deltas.buySellRatio5m) && deltas.buySellRatio5m !== 0) marketChanges.push("buy share " + formatPct(previous.buySellRatio5m) + "→" + formatPct(latest.buySellRatio5m));
-    if (Number.isFinite(deltas.liquidity) && deltas.liquidity !== 0) marketChanges.push("liq " + formatUsd(deltas.liquidity));
+    if (Number.isFinite(latest.liquidity)) {
+      const liquidityDelta = Number.isFinite(deltas.liquidity) ? " (Δ " + (deltas.liquidity > 0 ? "+" : "") + formatUsd(deltas.liquidity) + ")" : "";
+      marketChanges.push("liq " + formatUsd(latest.liquidity) + liquidityDelta);
+    }
     if (marketChanges.length) events.push("📊 Live data: " + marketChanges.join(" • "));
   }
 
