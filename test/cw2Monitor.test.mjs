@@ -19,3 +19,15 @@ test("CW2 parser passes only trigger metadata and CA", () => {
   assert.equal(observation.wallets, undefined);
   assert.equal(observation.transfers, undefined);
 });
+
+
+test("CW2 parser extracts ticker from labelled and header formats", () => {
+  assert.equal(buildCw2Observation({
+    text: "CONVICTION PULSE CW2\nTICKER: $BONK\nCA: Fn9RhHqCxrG9hP67LPX8dyBb12Vy1MYL8Y7eYa4Cpump",
+    messageId: 1, chatId: -100
+  }).symbol, "BONK");
+  assert.equal(buildCw2Observation({
+    text: "CONVICTION PULSE CW2 — PEPE\nCA: Fn9RhHqCxrG9hP67LPX8dyBb12Vy1MYL8Y7eYa4Cpump",
+    messageId: 2, chatId: -100
+  }).symbol, "PEPE");
+});
