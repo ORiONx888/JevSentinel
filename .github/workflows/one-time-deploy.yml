@@ -1,0 +1,25 @@
+name: One-time production deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    if: contains(github.event.head_commit.message, '[deploy-js-live]')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Deploy JevSentinel
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        run: flyctl deploy --app jevsentinel --remote-only
+      - name: Verify production machine
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        run: |
+          flyctl machine list --app jevsentinel
+          flyctl status --app jevsentinel
