@@ -507,7 +507,9 @@ export function liveEventSignals(assessment, state, previousAnswers = null) {
   // comparison when a mini-card was emitted for another material reason.
   if (temporal.sampleCount >= 2) {
     const marketChanges = [];
-    if (Number.isFinite(deltas.price)) marketChanges.push("price " + formatUsd(deltas.price));
+    if (Number.isFinite(latest.priceChange5mPct) && Number.isFinite(previous.priceChange5mPct) && latest.priceChange5mPct !== previous.priceChange5mPct) {
+      marketChanges.push("5m price change " + formatSignedPct(previous.priceChange5mPct) + "→" + formatSignedPct(latest.priceChange5mPct));
+    }
     if (Number.isFinite(deltas.volume)) marketChanges.push("vol " + formatUsd(deltas.volume));
     if (Number.isFinite(deltas.sellCount5m) && deltas.sellCount5m !== 0) marketChanges.push("sells " + formatNumber(previous.sellCount5m) + "→" + formatNumber(latest.sellCount5m));
     if (Number.isFinite(deltas.buySellRatio5m) && deltas.buySellRatio5m !== 0) marketChanges.push("buy share " + formatPct(previous.buySellRatio5m) + "→" + formatPct(latest.buySellRatio5m));
