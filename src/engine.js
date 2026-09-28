@@ -72,7 +72,16 @@ export function createJevSentinel({ providers = [], evaluator, telemetry, logger
 }
 
 function intelligenceToSnapshot(intelligence) {
-  const fields = Object.fromEntries(Object.values(intelligence).flatMap((item) => Object.entries(item.fields ?? {})));
+  // Providers expose the same normalized field names. A later provider may
+  // legitimately have a field unavailable (null) while an earlier provider
+  // already supplied a valid value. Do not let those nulls erase live market
+  // telemetry before temporal analysis sees it.
+  const fields = {};
+  for (const item of Object.values(intelligence)) {
+    for (const [key, value] of Object.entries(item.fields ?? {})) {
+      if (value !== null && value !== undefined) fields[key] = value;
+    }
+  }
   const market = fields.marketDynamics ?? {};
   const liquidity = fields.liquidityStructure ?? {};
   const flow = fields.flowDynamics ?? {};
