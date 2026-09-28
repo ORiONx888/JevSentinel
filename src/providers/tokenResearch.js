@@ -12,7 +12,7 @@ export function createTokenResearchProvider({
   rpcUrl = process.env.SOLANA_RPC_URL ?? DEFAULT_RPC,
   dexUrl = DEFAULT_DEX,
   timeoutMs = 2500,
-  cacheMs = 15_000,
+  cacheMs = 2_000,
   maxConcurrent = 2
 } = {}) {
   if (typeof fetchImpl !== "function") throw new TypeError("fetch is required");
