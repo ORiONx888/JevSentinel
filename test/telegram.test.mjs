@@ -13,6 +13,7 @@ import {
   createTelegramBot,
   stoppedTokenKey,
   tokenLinks,
+  parseMonitorCommand,
 } from "../src/telegram.js";
 
 test("token links use the supplied mint", () => {
@@ -371,4 +372,13 @@ test("CW2 cards are no longer recognized as JevSentinel intake", async () => {
   const text = "CONVICTION PULSE CW2 $TEST CA: So11111111111111111111111111111111111111112";
   assert.equal(isEarlyEntryCard(text), false);
   assert.equal(buildEarlyEntryObservation({ text, messageId: 1, chatId: -7 }), null);
+});
+
+
+test("monitor command parses CW2, JEE, status, and rejects unknown cards", () => {
+  assert.deepEqual(parseMonitorCommand("/monitor cw2"), { action: "set", card: "cw2" });
+  assert.deepEqual(parseMonitorCommand("/monitor jee"), { action: "set", card: "jee" });
+  assert.deepEqual(parseMonitorCommand('/monitor "cw2"'), { action: "set", card: "cw2" });
+  assert.deepEqual(parseMonitorCommand("/monitor status"), { action: "status" });
+  assert.equal(parseMonitorCommand("/monitor banana").action, "invalid");
 });
