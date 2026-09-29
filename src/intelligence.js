@@ -9,7 +9,7 @@ const PROVIDER_FIELDS = Object.freeze([
   "marketCapUsd", "priceUsd", "priceChange5mPct", "priceChange1hPct", "volume5mUsd", "volume1hUsd",
   "buyCount5m", "sellCount5m", "buySellRatio5m", "liquidityUsd", "pairAgeHours", "pairAddress", "dex", "source",
   "tokenIntegrity", "tokenProgram", "token2022", "holderStructure", "creatorIntelligence",
-  "walletBehaviour", "flowDynamics", "marketDynamics", "liquidityStructure", "sellability"
+  "walletBehaviour", "flowDynamics", "marketDynamics", "liquidityStructure", "sellability", "socialNarrative", "socialPosts"
 ]);
 
 export function normalizeIntelligence(provider, raw = {}) {

@@ -59,7 +59,8 @@ export function buildEvidenceState(intelligence = {}, temporal = {}, history = [
       ...(research.temporalIntelligence ?? {}),
       ...temporal
     },
-    historicalIntelligence: research.historicalIntelligence ?? buildHistoricalIntelligence(history, temporal)
+    historicalIntelligence: research.historicalIntelligence ?? buildHistoricalIntelligence(history, temporal),
+    socialNarrative: intelligence["social-narrative"]?.fields?.socialNarrative ?? null
   };
 
   evidence.alternativeExplanation = buildAlternativeExplanationEvidence(evidence, history);
