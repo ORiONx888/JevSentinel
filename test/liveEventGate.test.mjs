@@ -58,7 +58,7 @@ test("emits meaningful improvement immediately", () => {
 test("suppresses insignificant telemetry changes", () => {
   const gate = createLiveEventGate({ heartbeatMs: 0 });
   gate.prime(assessment(), state({ price: 1, volume: 10_000 }));
-  const result = gate.evaluate({ assessment: assessment(), state({ price: 0.999, volume: 10_100 }));
+  const result = gate.evaluate({ assessment: assessment(), state: state({ price: 0.999, volume: 10_100 }) });
   assert.equal(result.emit, false);
 });
 
