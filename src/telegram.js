@@ -11,6 +11,7 @@ import { createLiveMonitor } from "./liveMonitor.js";
 import { buildRiskTrajectory } from "./riskTrajectory.js";
 import { MemoryTelemetry } from "./telemetry.js";
 import { buildObservedOutcome } from "./outcomeCollector.js";
+import { createLiveEventGate } from "./liveEventGate.js";
 
 const API_ROOT = "https://api.telegram.org";
 const GROUP_KEY_PATTERN = /^[A-Za-z0-9._-]{20,300}$/;
@@ -537,11 +538,14 @@ export function buildLiveRiskAlert({
   state = null,
   sourceMessageId = null,
   previousAnswers = null,
+  eventOverride = null,
 }) {
   const urgency = urgencyInfo(assessment);
   const action = liveActionState(assessment, state);
   const trajectory = state?.trajectory ?? buildRiskTrajectory({ state, assessment });
-  const events = liveEventSignals(assessment, state, previousAnswers);
+  const events = Array.isArray(eventOverride) && eventOverride.length
+    ? eventOverride
+    : liveEventSignals(assessment, state, previousAnswers);
   const context = liveContext(assessment, state);
   const trajectoryLines = trajectory.reasons?.slice(0, 2) ?? [];
   const lines = [
@@ -745,12 +749,17 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
           observedAt: new Date().toISOString(),
           signalTime: observation.signalTime,
         }, priorStates),
+        eventGate: createLiveEventGate(),
         onAssessment: async (liveResult) => {
-          const liveSummary = answerSummary(liveResult.assessment);
           const previousAnswers = runtime.lastDecisions.get(observation.mint) ?? null;
           const currentAnswers = liveResult.assessment?.answers ?? {};
           const previousAction = runtime.lastActions.get(observation.mint) ?? null;
-          const materialEvent = isMaterialLiveEvent(liveResult.assessment, liveResult.state, previousAnswers, previousAction);
+          const event = liveMonitorConfig.eventGate.evaluate({
+            assessment: liveResult.assessment,
+            state: liveResult.state,
+            intelligence: liveResult.intelligence,
+          });
+          const materialEvent = event.emit;
           runtime.lastDecisions.set(observation.mint, currentAnswers);
           runtime.lastActions.set(observation.mint, liveActionState(liveResult.assessment, liveResult.state));
           runtime.history.set(observation.mint, [
@@ -771,6 +780,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
             state: liveResult.state,
             sourceMessageId: message.message_id,
             previousAnswers,
+            eventOverride: event.events.length ? event.events : null,
           }), { reply_to_message_id: message.message_id, reply_markup: liveAlertKeyboard(observation.mint) });
         },
         onComplete: async (snapshots) => {
@@ -788,6 +798,7 @@ export function createTelegramBot({ token = process.env.TELEGRAM_BOT_TOKEN, call
           runtime.predictionIds.delete(observation.mint);
         }
       };
+      liveMonitorConfig.eventGate.prime(result.assessment, result.state, {});
       liveMonitorConfigs.set(`${chatId}:${observation.mint}`, liveMonitorConfig);
       runtime.liveMonitor.start(liveMonitorConfig);
       logger.log?.("[jevsentinel-telegram] assessment completed; live monitoring started", JSON.stringify({ monitorCard }));
