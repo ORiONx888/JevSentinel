@@ -160,9 +160,11 @@ export function createLiveEventGate({
 
     // A deterioration/improvement acceleration is emitted on the transition
     // into that state, not on every 3-second tick while it remains unchanged.
+    const deteriorationStates = new Set(["selling:increasing", "buyPressure:decreasing", "price:deteriorating", "liquidity:deteriorating", "sellers:increasing", "coordination:increasing"]);
     for (const key of ["selling", "buyPressure", "price", "liquidity", "sellers", "coordination"]) {
       if (changed(previous, current, key) && current[key] && current[key] !== "stable") {
-        return commit("acceleration-" + key, current[key] === "deteriorating" || current[key] === "increasing" ? "deterioration" : "improvement", current, state);
+        const kind = deteriorationStates.has(key + ":" + current[key]) ? "deterioration" : "improvement";
+        return commit("acceleration-" + key, kind, current, state);
       }
     }
 
