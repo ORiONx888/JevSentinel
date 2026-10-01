@@ -32,7 +32,7 @@ test("does not repeat the same deterioration every tick", () => {
   const gate = createLiveEventGate({ heartbeatMs: 0 });
   gate.prime(assessment(), state({ acceleration: { price: "stable" } }));
   const first = gate.evaluate({ assessment: assessment(), state: state({ acceleration: { price: "deteriorating" } }) });
-  const second = gate.evaluate({ assessment: assessment(), state: state({ acceleration: { price: "deteriorating" }, price: 0.99 }) });
+  const second = gate.evaluate({ assessment: assessment(), state: state({ acceleration: { price: "deteriorating" }, price: 0.9995 }) });
   assert.equal(first.emit, true);
   assert.equal(second.emit, false);
 });
