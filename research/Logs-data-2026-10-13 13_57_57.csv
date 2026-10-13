@@ -1,0 +1,517 @@
+"Time","Line","id","labels","streams","streamId","detected_level"
+2026-10-13 13:57:10,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",d777a565b2aeed4b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:57:10,[albert-paper] exit-stats=[],aebb3626c1f60920,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:57:10,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,deaa80a8039efc4e,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:57:10,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,dcb0df628fd12099,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:56:38,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",d085a746d08354df,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:56:38,[albert-paper] exit-stats=[],adc5b41258aa4dfb,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:56:38,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,dbd314123b6a43c7,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:56:38,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,1110e907bc751e6b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:56:04,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",5c56f092b4316d9e,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:56:04,[albert-paper] exit-stats=[],373547554f20d97b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:56:04,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,13a9e57ba184b59e,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:56:04,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,109f171a4eea0337,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:55:35,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",2b99bb6b7cb222d3,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:55:35,[albert-paper] exit-stats=[],47041c65a1fb9a44,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:55:35,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,52b565a9bcee6d7d,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:55:35,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,160e3b215044a47f,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:55:12,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",62e54ca739b56232,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:55:12,[albert-paper] exit-stats=[],9ac55d95707e4ef7,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:55:12,[albert-paper] SG notifications disabled: missing Telegram configuration,68ac314fb2c43fa2,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:55:12,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,c7627c019cd4cc9b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:55:12,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,d1d39a626eeaa0bf,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:54:45,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",575d742eda345f43,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:54:45,[albert-paper] exit-stats=[],f170ef09f9219f0a,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:54:45,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,830c3d015e7474ed,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:54:45,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,4c828379d0384dc0,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:54:21,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",74b2ddf39780ca6d,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:54:21,[albert-paper] exit-stats=[],eead588cfb9ebbf2,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:54:21,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,f50c770e445ba81c,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:54:21,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,a33ed8d8f6acb3ce,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:53:52,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",7ed5b5fc04ad49f4,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:53:52,[albert-paper] exit-stats=[],8f7623e995bbf778,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:53:52,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,e838016fe47bc100,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:53:52,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,6f8f73c91971a329,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:53:19,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",3ed2eba1d8aec19b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:53:19,[albert-paper] exit-stats=[],2391f5387a6f8123,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:53:19,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,be4826345f0fbd57,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:53:19,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,63b9888bbb6afcae,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:52:58,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",881a35db48ec6390,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:52:58,[albert-paper] exit-stats=[],5b1b3cd3ebf7d291,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:52:58,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,caab8b73a147b0a5,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:52:58,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,6817a24f5fb4ea81,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:52:25,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",f433541125921b1a,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:52:25,[albert-paper] exit-stats=[],9f661e7dcee3fabd,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:52:25,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,e7209574660b0d34,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:52:25,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,3e3415fb25c708b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:51:51,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",9ca61637edbd6c17,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:51:51,[albert-paper] exit-stats=[],82c7254ed31d1075,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:51:51,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,dbdf8c6ee326a243,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:51:51,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,87afc935e9227ee9,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:51:24,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",d4a021a1be7d7288,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:51:24,[albert-paper] exit-stats=[],2d142c1a743a2ce2,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:51:24,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,ebdf675ff3b93ac4,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:51:24,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,52824f1f03c3c038,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:50:59,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",17e6ad50b8d12edd,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:50:59,[albert-paper] exit-stats=[],6e28e0dcd76add58,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:50:59,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,115b0cac4bc43e07,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:50:59,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,826e48ec0a14488,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:50:30,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",b010089febeff448,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:50:30,[albert-paper] exit-stats=[],9600f99877cdc586,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:50:30,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,cafc35f2656e08b2,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:50:30,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,855fa20fe50f5270,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:50:01,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",50f5f879f5beffcb,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:50:01,[albert-paper] exit-stats=[],e1ec6f06061eec4d,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:50:01,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,a00ca6730b504a3f,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:50:01,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,62ba7c12012ac386,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:49:30,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",a7f91f92da694f74,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:49:30,[albert-paper] exit-stats=[],db7c36c7f30eac42,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:49:30,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,54b55a7baeaf100f,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:49:30,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,92c3c819de83f55b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:48:57,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",7883b3b23802dc92,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:48:57,[albert-paper] exit-stats=[],848a2566d35def7e,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:48:57,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,1bcdc11c42a8bb07,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:48:57,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,73291e7ad2b0a58b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:48:35,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",5fec0fbc761af711,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:48:35,[albert-paper] exit-stats=[],7b0a3f61dcadbd6b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:48:35,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,dcc4fbca02083df3,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:48:35,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,ebd2c9a14f57792f,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:48:02,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",a0435a68dd2cfedc,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:48:02,[albert-paper] exit-stats=[],90bc4b49fad560c,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:48:02,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,d8c4efa96bcfbe53,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:48:02,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,baf33af9b200736b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:47:29,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",b9b5706fe741170f,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:47:29,[albert-paper] exit-stats=[],416428aba481fc4b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:47:29,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,9fbe73a1e8fb2ab9,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:47:29,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,3cf454c2f4ddeb53,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:47:02,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",fae495f7557f43ec,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:47:02,[albert-paper] exit-stats=[],67f76080248b9a6a,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:47:02,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,3ad7e2dc7a517dfa,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:47:02,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,70652dfa5ca44df1,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:46:32,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",ff11baa0f797c0f0,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:46:32,[albert-paper] exit-stats=[],ef46496b1f358087,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:46:32,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,514930adc5e2d05,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:46:32,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,961de44f577c7bbe,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:46:04,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",a66ae0eba227e735,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:46:04,[albert-paper] exit-stats=[],5c8f4dd3c3a36cb,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:46:04,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,347c5be39d037184,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:46:04,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,a2521796b929f4d1,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:45:34,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",6d1758c01c92179e,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:45:34,[albert-paper] exit-stats=[],913f8dd73f9bab85,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:45:34,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,de8e066491cdbb72,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:45:34,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,e612ad641a57b825,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:45:04,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",22e4b8468262b33,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:45:04,[albert-paper] exit-stats=[],c71d82a392cd281c,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:45:04,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,b9caf3422d49b24e,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:45:04,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,4e5739d4b96a6b1,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:44:34,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",bc4169d203c8661c,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:44:34,[albert-paper] exit-stats=[],892d0aa7dbf93022,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:44:34,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,19713835c047b0fc,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:44:34,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,d6ed3175814c6f9,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:44:01,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",9f2250a7f282ef56,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:44:01,[albert-paper] exit-stats=[],861cbb8b7b4a8c0c,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:44:01,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,97d641024a14057d,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:44:01,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,34eb642b6e4760fb,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:43:28,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",6e9ef33c0ec2c4fb,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:43:28,[albert-paper] exit-stats=[],173045d5d5202f6e,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:43:28,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,8362aaadfa0f3b2d,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:43:28,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,d12529b00c50a41b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:43:09,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",f16531aadfcb2e11,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:43:09,[albert-paper] exit-stats=[],c476cf6cc67d76e2,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:43:09,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,677418619a6c3aea,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:43:09,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,593745268697e501,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:42:44,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",aee7a1e0c24a1ae2,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:42:44,[albert-paper] exit-stats=[],413279757b5b349c,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:42:44,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,aa3846bfadb65c71,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:42:44,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,ad290f8a3bff1feb,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:42:23,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",66ec70a1b5b85e53,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:42:23,[albert-paper] exit-stats=[],11ad9ff23df4d480,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:42:23,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,2db12d286098afcb,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:42:23,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,7a54f9c54dbc54c2,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:41:54,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",2612774d6040e0d7,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:41:54,[albert-paper] exit-stats=[],ca49236d9cb3c79c,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:41:54,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,b0f633c82bda15a4,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:41:54,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,8e2602b747dc4804,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:41:24,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",15e54e158eb26639,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:41:24,[albert-paper] exit-stats=[],1fdf89ce18062825,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:41:24,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,754ff7e70996c7ae,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:41:24,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,962649b8316ec400,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:40:52,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",f1b01c57ffca34db,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:40:52,[albert-paper] exit-stats=[],fad4ff8ee90cde3d,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:40:52,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,6d29dac2ea9dc20,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:40:52,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,dcd8317d1993040d,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:40:20,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",2702eb0de1626964,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:40:20,[albert-paper] exit-stats=[],80bff19727f72079,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:40:20,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,cf58985ecc162c61,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:40:20,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,d0abe1d7c407e2d4,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:39:48,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",3eaeb71364cefb6b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:39:48,[albert-paper] exit-stats=[],aa611a270184af3f,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:39:48,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,a37a33f957c263da,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:39:48,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,6fd211189cc7f51e,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:39:48,[albert-paper] SG notifications disabled: missing Telegram configuration,79c3b80ac57bbab4,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:39:19,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",b6e094b3ae23c261,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:39:19,[albert-paper] exit-stats=[],e6017fbfccca4c01,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:39:19,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,f30a9ba49b788c88,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:39:19,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,231ee8805ab2a9ac,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:39:02,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",92bce4fb0bd1214,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:39:02,[albert-paper] exit-stats=[],ca8d57b9bbed35c6,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:39:02,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,e7f32979fd552f77,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:39:02,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,d4ca7a21afd58265,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:38:37,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",1d5397eaad057f71,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:38:37,[albert-paper] exit-stats=[],4e9fb335c84a2136,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:38:37,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,cadb8e0b7fabddf7,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:38:37,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,3cba08f773788f60,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:38:11,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",204f597626db6e0,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:38:11,[albert-paper] exit-stats=[],794892a758f8fd29,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:38:11,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,77e80ee726403b91,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:38:11,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,45bd3a41e468a8d9,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:37:41,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",37f684a5bd91f59b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:37:41,[albert-paper] exit-stats=[],7ddcc9828ce9ba46,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:37:41,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,2b66033643e8ed9,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:37:41,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,78dd391dfd7acab5,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:37:10,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",4b075d2e49ddc65c,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:37:10,[albert-paper] exit-stats=[],74741030d3c2e8cb,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:37:10,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,7863175b72b8d103,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:37:10,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,c69e653f04c5851a,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:36:41,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",953816e666c68f6f,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:36:41,[albert-paper] exit-stats=[],77b5862426c81e36,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:36:41,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,6891fca3acf68450,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:36:41,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,59744d8e467b4d75,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:36:10,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",b8c6762876272d2f,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:36:10,[albert-paper] exit-stats=[],d565b8c4bda80147,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:36:10,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,f7ad56a64dd6fe34,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:36:10,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,f4c92c8398c05b4d,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:35:37,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",7f6ba69d2c919f8c,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:35:37,[albert-paper] exit-stats=[],d1d5d7e26fccbebf,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:35:37,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,dcd32b08a754e9f5,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:35:37,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,cf6518f25f4d4ba3,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:35:09,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",165a75c76649b15b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:35:09,[albert-paper] exit-stats=[],a0d29571cab23313,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:35:09,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,47b332c600a2b6aa,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:35:09,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,9834181abe613761,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:34:47,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",dd849e0c601c2341,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:34:47,[albert-paper] exit-stats=[],8c394436355317,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:34:47,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,165b5860822694af,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:34:47,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,9c6cbf96c49e32f6,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:34:21,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",1e04fa90cd3c7b13,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:34:21,[albert-paper] exit-stats=[],9c9aee370c553c62,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:34:21,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,d6733ff84cea6c2e,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:34:21,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,b52e5514bddbdb9a,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:33:55,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",aa00f2f754cb8513,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:33:55,[albert-paper] exit-stats=[],f37b2442639c2e3c,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:33:55,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,955f6e26dd561c1e,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:33:55,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,92d9a38e746121a3,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:33:27,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",2c028f5ee130b0c2,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:33:27,[albert-paper] exit-stats=[],787d0d96802b69f,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:33:27,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,e287f22324b9c3b9,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:33:27,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,e244cced4809f93d,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:33:06,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",ce9039d2795c8f8b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:33:06,[albert-paper] exit-stats=[],25089b9f4e1dcb56,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:33:06,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,d32045e18e40eb48,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:33:06,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,10d42d5bb1bfb4b3,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:32:41,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",1927d4c3e95320b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:32:41,[albert-paper] exit-stats=[],3b341dfbb2a84a7c,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:32:41,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,2607520b2c57bd5c,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:32:41,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,d7e66d85014dbe58,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:32:13,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",719a2fb7282610f8,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:32:13,[albert-paper] exit-stats=[],d89c52e9a62036c5,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:32:13,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,b1c141844e1c0148,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:32:13,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,571a100a393cacfb,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:31:41,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",b9fa17502faabf9f,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:31:41,[albert-paper] exit-stats=[],18d9340f43f99b8f,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:31:41,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,f41616df1bbc7fa0,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:31:41,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,94e2192bbcab730a,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:31:12,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",6b5a2f6b9b81dc45,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:31:12,[albert-paper] exit-stats=[],417c3b2bda2d0878,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:31:12,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,acb718b808766bb8,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:31:12,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,6831d4242463eafd,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:30:56,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",1425d6f14fe97b0d,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:30:56,[albert-paper] exit-stats=[],319324a1cfc68207,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:30:56,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,a7528a2a6c64490d,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:30:56,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,b28e18e5e3d95879,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:30:36,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",3c144fd41988cac0,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:30:36,[albert-paper] exit-stats=[],cb4d628ff746e3c9,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:30:36,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,a5fec08242949c77,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:30:36,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,a5f70a7d5ea165b3,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:30:09,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",dd2ca7c4f8778d1c,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:30:09,[albert-paper] exit-stats=[],d1f406a92bae70a0,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:30:09,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,9bbdc49e0354f0e7,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:30:09,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,8b48ffc5a631e56d,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:29:42,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",a3d794c2cccfc483,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:29:42,[albert-paper] exit-stats=[],ef73992a8e00dbe,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:29:42,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,91dfe2dd1ac27916,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:29:42,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,2f361a095bf94333,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:29:11,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",1e082faa80b973c,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:29:11,[albert-paper] exit-stats=[],d519f630c81b577b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:29:11,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,b2dc717ed0df3581,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:29:11,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,4622de163c1c0fb3,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:28:41,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",ee70fe1eda29a2b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:28:41,[albert-paper] exit-stats=[],3faa3695d7e41e60,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:28:41,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,b506ab7973b4e0b3,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:28:41,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,98cc1827544ffc8f,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:28:08,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",65410d4d27edcf9c,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:28:08,[albert-paper] exit-stats=[],411e2c530833a99d,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:28:08,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,16dd1f37f61654a2,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:28:08,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,f4370aff7d94308b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:27:36,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",6e1ccf68451a4d71,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:27:36,[albert-paper] exit-stats=[],ec9cbee40b6a60ed,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:27:36,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,67ee44719b4391f1,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:27:36,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,22a7d880da942770,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:27:03,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",c8d63369f586cee9,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:27:03,[albert-paper] exit-stats=[],5de844a4e93533ab,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:27:03,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,59f6b1663306b04,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:27:03,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,9328017a1680c2df,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:26:40,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",507e3607d76ae46a,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:26:40,[albert-paper] exit-stats=[],ddc48703b95906a8,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:26:40,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,6fd1dc97d9437320,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:26:40,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,2a22b341f93221b2,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:26:21,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",c545dd52b064cc6,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:26:21,[albert-paper] exit-stats=[],80c4e48fee7f9232,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:26:21,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,c6c9071ab892d206,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:26:21,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,8ed3c88bfd797340,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:25:52,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",803baa522acac3ca,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:25:52,[albert-paper] exit-stats=[],63b7ee65b67004ab,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:25:52,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,8d28cb6f40a832d5,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:25:52,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,ff617edab8de4bdb,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:25:24,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",d73ed9a9520fb266,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:25:24,[albert-paper] exit-stats=[],f04a841101d6ad22,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:25:24,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,858ec2802b09f666,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:25:24,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,3b29db334ba920cb,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:24:55,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",831fd0909d06404a,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:24:55,[albert-paper] exit-stats=[],5a6d6209c5e2ef49,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:24:55,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,f60909d2ee753148,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:24:55,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,e9f23edf3eda5907,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:24:25,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",4f9e6295758f882c,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:24:25,[albert-paper] exit-stats=[],b3d99d0f32e07316,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:24:25,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,67f1bf0ad5627443,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:24:25,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,c937a7135319d938,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:24:25,[albert-paper] SG notifications disabled: missing Telegram configuration,480dbe05e5bcff21,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:23:51,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",30b6a7064cf85310,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:23:51,[albert-paper] exit-stats=[],314b8152177f5928,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:23:51,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,3f8ac5761880fbe7,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:23:51,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,4480f028f1b31a21,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:23:18,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",6eae6785d4d8b717,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:23:18,[albert-paper] exit-stats=[],635e1e8e58fc6716,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:23:18,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,f7fa4d2aeb820d4a,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:23:18,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,4874ebdb96a9779a,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:22:44,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",6e7f972f3f6442f8,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:22:44,[albert-paper] exit-stats=[],803d9f4e6d9269ac,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:22:44,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,824cad54d5a1fc49,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:22:44,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,be48bbb01ffe59fc,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:22:17,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",b54f8530fc26f28a,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:22:17,[albert-paper] exit-stats=[],f9c6998aabe13602,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:22:17,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,50bc8d5f67018c48,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:22:17,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,d3d5efdb5df9b2d4,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:21:51,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",861c81695c090da9,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:21:51,[albert-paper] exit-stats=[],6b817e813aeaa6fb,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:21:51,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,fc38aa66890f990a,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:21:51,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,f42531d2adad006b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:21:21,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",a6a7d11c410fd1aa,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:21:21,[albert-paper] exit-stats=[],5e8f7cc96ca4954b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:21:21,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,e1bfe222767bad2,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:21:21,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,c2efa587ec0b3493,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:20:51,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",1925a4dad162b46f,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:20:51,[albert-paper] exit-stats=[],f237ccb7cce8e2d0,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:20:51,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,be92a95cf9449970,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:20:51,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,d56830d2404e8700,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:20:19,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",c3d8273ab85064a4,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:20:19,[albert-paper] exit-stats=[],115811b921d28ec1,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:20:19,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,2f4ce1bb075f4ad1,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:20:19,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,bcaa38f554c071fe,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:19:49,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",af0b5bb776e67671,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:19:49,[albert-paper] exit-stats=[],513d8a8b8480f3e9,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:19:49,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,635c4fa627b75ef,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:19:49,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,87efd111f828b9b5,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:19:16,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",7ac7ca00306ae1fe,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:19:16,[albert-paper] exit-stats=[],5bec55fb4059cbb0,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:19:16,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,3e6c242575823027,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:19:16,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,1716aee28107f581,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:18:40,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",36c7ad5ef0824293,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:18:40,[albert-paper] exit-stats=[],5967683364939838,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:18:40,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,5a75d98fb69484fe,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:18:40,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,168e25f1f910afa0,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:18:10,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",35752fe49a606040,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:18:10,[albert-paper] exit-stats=[],3085585bf8522afc,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:18:10,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,b6852a715856650,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:18:10,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,94f6691a6364e63b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:17:42,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",d43aaa3296f0243c,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:17:42,[albert-paper] exit-stats=[],6119ab26aa6377d8,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:17:42,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,2d5216c8f7eb963c,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:17:42,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,164a8c0c7ad25d6f,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:17:10,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",429415c789182a1c,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:17:10,[albert-paper] exit-stats=[],731222e1bcc72cc8,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:17:10,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,1455a04125a638a6,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:17:10,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,c8d3678ee3ed35cc,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:16:45,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",da12baba70085f88,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:16:45,[albert-paper] exit-stats=[],2f7818cfaf223833,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:16:45,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,508973d78817d24b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:16:45,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,6adabfc450feb224,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:16:14,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",348ac15bad3a1427,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:16:14,[albert-paper] exit-stats=[],ec236be48bd547dd,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:16:14,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,4a4591d90f3f39ac,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:16:14,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,88c3de13deeda61c,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:15:40,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",b4dab636c851d5cd,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:15:40,[albert-paper] exit-stats=[],6f1c9c45d6a807c7,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:15:40,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,477b8c1e0f5f00fd,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:15:40,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,8e4643ad8fe6722c,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:15:06,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",a462a0d2b47df5ec,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:15:06,[albert-paper] exit-stats=[],f636293ef273cd5e,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:15:06,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,191618cd5c60e4d,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:15:06,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,c324cd6c33da4439,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:14:35,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",d370d577a2561a8a,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:14:35,[albert-paper] exit-stats=[],4e128e9d7cf19b68,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:14:35,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,4e7ae4b185f47ccd,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:14:35,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,d39736290facb0e8,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:14:18,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",d74282e48e8a6cd2,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:14:18,[albert-paper] exit-stats=[],5ffd38cd5502f0a8,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:14:18,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,68d64d74f6f59dd4,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:14:18,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,5574b779e388cf10,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:14:02,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",c1786735d7db41ca,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:14:02,[albert-paper] exit-stats=[],431f20641fdb9c39,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:14:02,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,6d65cc32d167d9c3,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:14:02,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,e333650cf1658e80,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:13:46,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",4a11c7c294bb0766,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:13:46,[albert-paper] exit-stats=[],68488fa9226fccd6,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:13:46,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,69e3b3454eef19c4,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:13:46,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,491fb8979d359a7b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:13:22,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",870b6cebb10059d3,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:13:22,[albert-paper] exit-stats=[],24683161412ee96d,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:13:22,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,5d64b21009c041fd,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:13:22,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,9b1dd6766bf35984,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:12:53,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",9f583f45e410e69a,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:12:53,[albert-paper] exit-stats=[],322213b3c6a8e23a,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:12:53,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,dbb3298e7af81621,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:12:53,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,ed1e3fa9460506de,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:12:25,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",e047b015a361e12a,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:12:25,[albert-paper] exit-stats=[],3a334bfd05cf7f80,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:12:25,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,65590ba076b6117f,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:12:25,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,299d2824025a3f5e,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:11:55,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",2163c7f35bb38b2c,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:11:55,[albert-paper] exit-stats=[],46656ead36f77c8f,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:11:55,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,1d3293b30ac04820,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:11:55,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,6968257d2e759439,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:11:23,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",5094bf9228a13283,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:11:23,[albert-paper] exit-stats=[],f92b14b9cf510399,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:11:23,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,b7683b4fd96d42c6,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:11:23,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,b18b335b5ded13bb,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:10:51,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",7c7d440ea1e23b04,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:10:51,[albert-paper] exit-stats=[],321b86a45a502522,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:10:51,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,3ec21594597fc364,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:10:51,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,315aeb3f737ba710,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:10:16,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",1542b5c0173bb2b7,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:10:16,[albert-paper] exit-stats=[],469569ff63a8af65,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:10:16,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,bde470c81e00be46,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:10:16,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,a0d1f03c85d6bc2b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:10:00,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",95ba130164306c69,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:10:00,[albert-paper] exit-stats=[],e9b2591db84b6cca,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:10:00,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,1a8841bf0ac872c2,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:10:00,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,2a37cefdd9c2825b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:09:37,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",bbdc7cf86118fd68,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:09:37,[albert-paper] exit-stats=[],b3342efa25c36a6,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:09:37,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,d7d97abbcdc71efc,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:09:37,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,d03559ada1f1584a,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:09:21,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",4f1682ac70d606e8,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:09:21,[albert-paper] exit-stats=[],ba6be30672d081e1,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:09:21,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,bca3a038db1d9337,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:09:21,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,9a1cd0df5803b09e,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:09:21,[albert-paper] SG notifications disabled: missing Telegram configuration,aca46e17241f573,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:09:05,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",e31fdc752073cce0,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:09:05,[albert-paper] exit-stats=[],8a6a4f236b5899b8,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:09:05,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,3213245f64e90f88,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:09:05,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,8bedace3f38eb503,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:08:38,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",ad9326f0ce5d1a5a,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:08:38,[albert-paper] exit-stats=[],9c01c17c7b4e1d2a,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:08:38,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,d157368d6b6c6459,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:08:38,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,dc820f94fbf34962,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:08:09,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",45aec264860ed311,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:08:09,[albert-paper] exit-stats=[],f470fded9f75eb51,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:08:09,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,2e006a4e60745822,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:08:09,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,36d8c3c17c6d144c,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:07:38,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",a3251644e830c5b7,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:07:38,[albert-paper] exit-stats=[],a50677a3bb106bc9,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:07:38,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,422dd96a03f31288,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:07:38,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,b1e144b9fb2ee6,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:07:08,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",e3017f9c9cdea11c,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:07:08,[albert-paper] exit-stats=[],3210a154e91eb3e7,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:07:08,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,3e87d8d5ed0e76c0,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:07:08,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,9d9fbabd7e1bbc66,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:06:38,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",8a36ca0f854278de,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:06:38,[albert-paper] exit-stats=[],fa2e028ab3f05d3c,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:06:38,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,7c823dcc5b7dba22,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:06:37,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,5bae7ab7de3e246d,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:06:17,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",87496b21c8f8ca6a,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:06:17,[albert-paper] exit-stats=[],71758e86f567ae58,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:06:17,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,c58e3056cfded23b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:06:17,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,e27c4b31f4b3a64d,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:05:46,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",5aded45863c4c2d,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:05:46,[albert-paper] exit-stats=[],75d406e413fe0fd3,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:05:46,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,f78dd379f9546000,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:05:46,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,5f6f021e17d6c182,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:05:18,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",abde7d07db162cc,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:05:18,[albert-paper] exit-stats=[],cec3c7f7ee214144,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:05:18,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,ec89a0b7b22b8b3,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:05:18,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,630a79b41135e579,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:04:52,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",dbad88f22699fac8,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:04:52,[albert-paper] exit-stats=[],f6653b9a745acb1f,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:04:52,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,2e9c376f605387ea,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:04:52,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,72eb248618e8b92a,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:04:28,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",9db3a56acd4132c0,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:04:28,[albert-paper] exit-stats=[],c0e008172097a094,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:04:28,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,e900f2331dc5fe38,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:04:28,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,f6ffdc1a6d4908fe,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:04:01,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",3b9655d5bbd75783,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:04:01,[albert-paper] exit-stats=[],dc93f9f0de6b5f5d,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:04:01,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,7f98344158ac8f45,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:04:01,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,b8f43525e98988b9,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:03:30,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",4a1062746dcc2d1d,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:03:30,[albert-paper] exit-stats=[],60985bd72bf77f66,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:03:30,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,823b38b9f132f759,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:03:30,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,c9e663d6f1ce4e68,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:03:00,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",c5bd562e5d04ba19,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:03:00,[albert-paper] exit-stats=[],ba9b95a3fe582500,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:03:00,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,3c83e2f8ca1dc5b3,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:03:00,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,cb3bcfb99ca0cdb3,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:02:29,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",68d3cd3b7c7abcf5,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:02:29,[albert-paper] exit-stats=[],381df3556860d373,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:02:29,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,b308c51b10f14480,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:02:29,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,97a3ee53746916ab,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:01:54,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",9150df8799fbfab9,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:01:54,[albert-paper] exit-stats=[],e0d7a893f7e68f59,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:01:54,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,cd2d0292c4b82723,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:01:54,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,ddc8a7dad09f638,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:01:27,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",438276986988d31b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:01:27,[albert-paper] exit-stats=[],ef6e0ddaf85eff5e,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:01:27,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,72efe2e2dd7369cd,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:01:27,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,1d609944757c1c9f,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:01:00,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",69cb38fbb626f4c4,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:01:00,[albert-paper] exit-stats=[],cff1efe995af2ffd,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:01:00,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,c8adf137cb0d0668,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:01:00,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,44522a8dd96a4f65,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:00:35,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",db9271fb21a5253c,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:00:35,[albert-paper] exit-stats=[],c3d0534fd2b0303,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:00:35,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,f209b2762f6c849b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:00:35,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,2099b4276e5e46d3,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:00:05,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",191dcf4a7c97480,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:00:05,[albert-paper] exit-stats=[],112c297786988aba,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:00:05,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,92bf18e11ede639f,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 13:00:05,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,65e785d2fec5af7,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 12:59:34,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",81f66f57378927fa,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 12:59:34,[albert-paper] exit-stats=[],f5677ed12e99533e,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 12:59:34,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,dceb8e34192b9e93,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 12:59:34,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,aedc0f0b712d436e,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 12:59:11,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",c45f60de750a42dc,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 12:59:11,[albert-paper] exit-stats=[],c2f1943b11880aa4,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 12:59:11,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,a3ca403de343c780,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 12:59:11,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,9a2e57163f73e28b,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 12:58:40,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",9ef69625e8e221ac,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 12:58:40,[albert-paper] exit-stats=[],9a9382b8321be675,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 12:58:40,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,a607ac9e545fc6a7,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 12:58:40,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,532b29a1e4d41ca8,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 12:58:07,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",34a429d9cdc87704,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 12:58:07,[albert-paper] exit-stats=[],9c8f3be938e0fb1,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 12:58:07,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,fc968c3b2f7bbe22,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 12:58:07,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,f08fc3072405afe,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 12:57:35,"[albert-paper] {""cashSol"":1.192749,""open"":0,""closed"":0,""refusals"":0,""buys"":0,""startingSol"":1.192749}",c47192fb3c091d64,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 12:57:35,[albert-paper] exit-stats=[],c6517ab1193fc0b3,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 12:57:35,[albert-paper] exit-plan=BALANCED_20 mode=EXPLORE reason=explore BALANCED_20: 0/12 trades,1cccef1f17041ed8,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
+2026-10-13 12:57:35,[albert-paper] HOT read OK rows=0 albertOn=false totalHotEvents=0 maxHotEventId=0 watermark=0,e9744c70c6cb00be,[object Object],,0000000000000000e720c4f9eb25cc3ab3015be938e64912,info
